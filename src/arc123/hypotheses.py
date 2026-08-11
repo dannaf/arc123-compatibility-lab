@@ -464,8 +464,9 @@ def propose_structural_hypotheses(
         all_colors = color_inventory([*input_grids, *output_grids])
         backgrounds = {background_color(grid) for grid in input_grids}
         seed_colors = tuple(color for color in all_colors if color not in backgrounds)
+        fill_colors = tuple(color for color in all_colors if color not in backgrounds)
         for seed_color in seed_colors:
-            for fill_color in all_colors:
+            for fill_color in fill_colors:
                 if "line_extend" in enabled:
                     for direction in ("up", "down", "left", "right"):
                         candidates.append(

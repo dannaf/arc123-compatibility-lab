@@ -1440,11 +1440,12 @@ class IterativeHypothesisLearner:
                     evaluated_demo_count=len(theory.demo_evidence),
                 )
                 continue
-            structural_revisions = self._structural_revisions(theory, training_pairs, trace)
-            if structural_revisions:
-                for revised in structural_revisions:
-                    self._push(frontier, revised, seen)
-                continue
+            if self.revision_enabled:
+                structural_revisions = self._structural_revisions(theory, training_pairs, trace)
+                if structural_revisions:
+                    for revised in structural_revisions:
+                        self._push(frontier, revised, seen)
+                    continue
             trace.record(
                 ActionKind.REJECT_RULE,
                 theory_id=theory.theory_id,

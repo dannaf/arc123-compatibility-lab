@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "packet_id": "P0007-ARC12-CONDITIONAL-REVISION-10",
+  "report_title": "# P0007 ARC12 Conditional/Multi-Rule Revision Packet",
+  "report_root": "reports/P0007_arc12_conditional_revision_10",
+  "claim_boundary": "This source-pinned, failure-inclusive curated-development packet tests whether the persistent PartialTheory revision path causes real conditional and multi-rule ARC12 rediscoveries. The controller receives only visible demonstrations and test inputs; no task ID, offline audit category, historical decomposition, GT feature contract, GT solver, or held-out output is a live input. Every task emits a complete answer followed by post-answer all-cell V&V. This is evidence for a bounded architecture mechanism, not an ARC-AGI-1 or ARC-AGI-2 solver claim.",
+  "cohort_reference": {
+    "path": "research/cohorts/ARC12_REVISION_COHORT_001.json",
+    "sha256": "64836e84cdc9396f7772f28d465acf19688565588ccab433fdd851d902a3f861",
+    "task_count": 10
+  },
+  "controller": {
+    "implementation": "persistent_partial_theory",
+    "candidate_limit": 24,
+    "beam_width": 12,
+    "max_revisions": 256,
+    "revision_enabled": true,
+    "generic_operator_families": [
+      "identity",
+      "recolor",
+      "line_extend",
+      "row_span_fill",
+      "row_span_minimum",
+      "component_property_recolor",
+      "component_property_erase",
+      "marker_shape_target_recolor"
+    ]
+  },
+  "ablations": {
+    "no_revision": {
+      "implementation": "persistent_partial_theory",
+      "candidate_limit": 24,
+      "beam_width": 12,
+      "max_revisions": 256,
+      "revision_enabled": false,
+      "generic_operator_families": [
+        "identity",
+        "recolor",
+        "line_extend",
+        "row_span_fill",
+        "row_span_minimum",
+        "component_property_recolor",
+        "component_property_erase",
+        "marker_shape_target_recolor"
+      ]
+    },
+    "no_new_residual_family": {
+      "implementation": "persistent_partial_theory",
+      "candidate_limit": 24,
+      "beam_width": 12,
+      "max_revisions": 256,
+      "revision_enabled": true,
+      "generic_operator_families": [
+        "identity",
+        "recolor",
+        "line_extend",
+        "row_span_fill"
+      ]
+    }
+  },
+  "frozen_generalization_gate": {
+    "minimum_exact_count": 3,
+    "minimum_distinct_generic_families": 2,
+    "minimum_ablation_advantage": 3
+  },
+  "source_pins": {
+    "arc1": {
+      "commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime"
+    },
+    "arc2": {
+      "commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime"
+    }
+  }
+}
