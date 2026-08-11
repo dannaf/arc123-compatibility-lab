@@ -2,6 +2,7 @@
   "schema_version": 1,
   "packet_id": "P0003-ARC12-CURATED-20-TILE-TRANSFER",
   "report_title": "# P0003 ARC12 Fresh 10+10 Tile-Transfer Packet",
+  "report_root": "reports/P0003_arc12_curated_20_tile_transfer",
   "claim_boundary": "This is a source-pinned, non-overlapping 10 ARC1 + 10 ARC2 curated-development transfer packet after the generic repeat_tile operator was added. Selection uses only the curated manifest filenames/splits, prior packet task IDs for exclusion, and a fixed SHA-256 rank; it does not inspect task grids, historical schemas/decompositions, GT solver code, GT feature contracts, or held-out test outputs. The controller receives no historical schema, decomposition, GT feature contract, GT solver, task ID, or held-out test output before committing its complete prediction. Every task receives post-answer YES/NO all-cell V&V. This remains curated development evidence, not an ARC1, ARC2, or ARC3 completion claim.",
   "selection_protocol": {
     "population": "ARC12 curated 60 import minus P0001 and P0002 task IDs",

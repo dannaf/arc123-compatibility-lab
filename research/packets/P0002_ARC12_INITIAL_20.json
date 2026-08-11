@@ -2,6 +2,7 @@
   "schema_version": 1,
   "packet_id": "P0002-ARC12-INITIAL-20",
   "report_title": "# P0002 ARC12 Initial 10+10 Rediscovery Packet",
+  "report_root": "reports/P0002_arc12_initial_20",
   "claim_boundary": "This is a source-pinned 10 ARC1 + 10 ARC2 curated-development baseline for a non-VLM, generic iterative-hypothesis learner. Selection uses only the curated manifest filenames/splits and a fixed SHA-256 rank; it does not inspect task grids, historical schemas/decompositions, GT solver code, GT feature contracts, or held-out test outputs. Historical ARC12 schemas and decomposition mappings are not loaded by the controller. Every task receives a complete candidate grid and post-answer YES/NO all-cell V&V. The packet is not an ARC1, ARC2, or ARC3 completion claim.",
   "selection_protocol": {
     "population": "ARC12 curated 60 import",

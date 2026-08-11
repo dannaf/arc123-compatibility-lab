@@ -2,11 +2,16 @@ from __future__ import annotations
 
 import hashlib
 import json
+import sys
 import unittest
 from pathlib import Path
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPOSITORY_ROOT / "scripts"))
+import run_arc12_tiny_rediscovery as packet_runner
+
+
 PACKETS = (
     (
         REPOSITORY_ROOT / "research" / "packets" / "P0001_ARC12_TINY_REDISCOVERY.json",
@@ -28,6 +33,14 @@ COHORT_PATH = REPOSITORY_ROOT / "research" / "cohorts" / "ARC12_COHORT_IMPORT_00
 
 
 class PacketEvidenceTests(unittest.TestCase):
+    def test_each_packet_declares_its_own_safe_default_report_root(self) -> None:
+        for packet_path, report_root in PACKETS:
+            with self.subTest(packet=packet_path.name):
+                packet = json.loads(packet_path.read_text(encoding="utf-8"))
+                self.assertEqual(packet_runner._default_report_root(packet), report_root)
+        with self.assertRaises(ValueError):
+            packet_runner._default_report_root({"report_root": "../outside"})
+
     def test_every_preregistered_attempt_has_complete_yes_or_no_vv_evidence(self) -> None:
         for packet_path, report_root in PACKETS:
             with self.subTest(packet=packet_path.name):

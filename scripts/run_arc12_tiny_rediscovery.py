@@ -40,6 +40,16 @@ def _write_json(path: Path, payload: Mapping[str, Any]) -> None:
     )
 
 
+def _default_report_root(packet: Mapping[str, Any]) -> Path:
+    raw_path = packet.get("report_root")
+    if not isinstance(raw_path, str) or not raw_path:
+        raise ValueError("packet must declare a repository-relative report_root")
+    relative_path = Path(raw_path)
+    if relative_path.is_absolute() or ".." in relative_path.parts:
+        raise ValueError("packet report_root must stay inside the repository")
+    return REPOSITORY_ROOT / relative_path
+
+
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -215,13 +225,14 @@ def _task_receipt(
 def run_packet(
     arc1_source: Path,
     arc2_source: Path,
-    report_root: Path = DEFAULT_REPORT_ROOT,
+    report_root: Path | None = None,
     packet_path: Path = PACKET_PATH,
 ) -> dict[str, Any]:
     packet = _load_json(packet_path)
     packet_id = packet.get("packet_id")
     if not isinstance(packet_id, str) or not packet_id.startswith("P"):
         raise ValueError("packet must declare a P-series packet identifier")
+    report_root = report_root or _default_report_root(packet)
     source_roots = {"arc1": arc1_source, "arc2": arc2_source}
     for benchmark, source_root in source_roots.items():
         _verify_clean_source(source_root, str(packet["source_pins"][benchmark]["commit"]))
@@ -298,13 +309,15 @@ def main() -> int:
     parser.add_argument("--arc1-source", required=True, type=Path)
     parser.add_argument("--arc2-source", required=True, type=Path)
     parser.add_argument("--packet", type=Path, default=PACKET_PATH)
-    parser.add_argument("--report-root", type=Path, default=DEFAULT_REPORT_ROOT)
+    parser.add_argument("--report-root", type=Path)
     arguments = parser.parse_args()
+    packet = _load_json(arguments.packet)
+    report_root = arguments.report_root or _default_report_root(packet)
     if arguments.run:
         summary = run_packet(
             arguments.arc1_source,
             arguments.arc2_source,
-            arguments.report_root,
+            report_root,
             arguments.packet,
         )
         print(json.dumps(summary, indent=2, sort_keys=True))
@@ -318,10 +331,10 @@ def main() -> int:
             arguments.packet,
         )
         reproduced_artifacts = _artifact_hashes(reproduced_root)
-    persisted = _load_json(arguments.report_root / "receipt.json")
+    persisted = _load_json(report_root / "receipt.json")
     if persisted != reproduced:
         raise ValueError("persisted packet receipt does not reproduce exactly")
-    if _artifact_hashes(arguments.report_root) != reproduced_artifacts:
+    if _artifact_hashes(report_root) != reproduced_artifacts:
         raise ValueError("persisted packet artifacts do not reproduce exactly")
     print(f"{persisted['packet_id']}: verified")
     return 0
