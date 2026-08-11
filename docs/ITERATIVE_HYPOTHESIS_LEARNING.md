@@ -15,6 +15,6 @@
 
 Every trace event is an explicit observable artifact: action name, selected scope, generic hypothesis parameters, prediction coverage, support state, residual count, and counterexample coordinate. The trace is not a proxy for hidden model chain-of-thought.
 
-## P0001 limitation
+## Current negative evidence
 
-P0001's initial grammar succeeds on a row-span fill but fails three other curated tasks. Those failures are useful: they distinguish missing generic operator families from future ranking/parameter/search problems. They must not be converted into a task-specific `_fit_algorithm_*` response.
+P0001's initial grammar succeeds on a row-span fill but fails three other curated tasks. P0002 then records a complete, no-abstention `0/20` ARC1+ARC2 baseline. A generic `repeat_tile` operator passes a synthetic inference/answer test but P0003's pre-registered non-overlapping `0/20` cohort does not demonstrate transfer. These failures distinguish missing generic operator families from future ranking, parameter-binding, or search problems. They must not be converted into a task-specific `_fit_algorithm_*` response.

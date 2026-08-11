@@ -1,0 +1,165 @@
+{
+  "agent_input_contract": {
+    "decomposition_mapping_passed_to_agent": false,
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "historical_schema_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "all_cells_match": false,
+  "benchmark": "arc1",
+  "compared_position_count": 81,
+  "controller_oracle_boundary_scan": "pass",
+  "mismatched_cell_count": 81,
+  "packet_id": "P0002-ARC12-INITIAL-20",
+  "posterior_mass": 0.0,
+  "schema_version": 1,
+  "selected_hypothesis": "fallback_identity_complete_grid",
+  "source_commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+  "source_task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/arc_data/arc1/evaluation/27f8ce4f.json",
+  "task_id": "27f8ce4f",
+  "task_split": "evaluation",
+  "test_cases": [
+    {
+      "all_cells_match": false,
+      "compared_position_count": 81,
+      "expected_output": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          9,
+          6,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          8,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          8,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          9,
+          6,
+          7,
+          9,
+          6,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          8,
+          7,
+          7,
+          8,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          8,
+          7,
+          2,
+          8,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          9,
+          6,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          8,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          8,
+          7
+        ]
+      ],
+      "mismatched_cell_count": 81,
+      "prediction": [
+        [
+          9,
+          6,
+          7
+        ],
+        [
+          8,
+          7,
+          7
+        ],
+        [
+          2,
+          8,
+          7
+        ]
+      ],
+      "test_index": 0
+    }
+  ],
+  "trace_artifacts": {
+    "corpus_callosum": {
+      "path": "corpus_callosum.svg",
+      "sha256": "fa18db08c6e1950e32a533f29ec51fbeb3b3018c163dc902e0741fb64af47432"
+    },
+    "learning_trace": {
+      "path": "learning_trace.json",
+      "sha256": "04925973c67cd3563c992e0f8830306cea0a721ec5bc3de304cfc4838d0c68e8"
+    },
+    "report": {
+      "path": "REPORT.md",
+      "sha256": "74b36b482e15bf22ab9feeaff7bea24fd07a6310dd13252a38a455fb317fd3bb"
+    }
+  },
+  "training_exact": false,
+  "used_fallback": true
+}

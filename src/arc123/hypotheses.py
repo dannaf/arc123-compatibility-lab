@@ -49,6 +49,8 @@ class Hypothesis:
             return self._line_extend(input_grid)
         if self.kind == "row_span_fill":
             return self._row_span_fill(input_grid)
+        if self.kind == "tile_repeat":
+            return self._tile_repeat(input_grid)
         raise ValueError(f"unknown generic hypothesis kind: {self.kind}")
 
     def _recolor(self, input_grid: Grid) -> PartialGrid:
@@ -139,6 +141,22 @@ class Hypothesis:
                     output[row_index][column_index] = fill_color
         return tuple(tuple(row) for row in output)
 
+    def _tile_repeat(self, input_grid: Grid) -> PartialGrid:
+        parameters = self.parameter_map
+        row_factor = int(parameters["row_factor"])
+        column_factor = int(parameters["column_factor"])
+        if row_factor < 1 or column_factor < 1:
+            raise ValueError("tile factors must be positive")
+        height = len(input_grid)
+        width = len(input_grid[0])
+        return tuple(
+            tuple(
+                input_grid[row_index % height][column_index % width]
+                for column_index in range(width * column_factor)
+            )
+            for row_index in range(height * row_factor)
+        )
+
 
 def _same_shape_training_pairs(training_pairs: Sequence[TrainingPair]) -> bool:
     return all(
@@ -188,42 +206,82 @@ def _translation_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypo
     return candidates
 
 
-def propose_base_hypotheses(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
+def _tile_repeat_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
+    factors: set[tuple[int, int]] = set()
+    for input_grid, output_grid in training_pairs:
+        input_height, input_width = len(input_grid), len(input_grid[0])
+        output_height, output_width = len(output_grid), len(output_grid[0])
+        if output_height % input_height or output_width % input_width:
+            return []
+        factors.add((output_height // input_height, output_width // input_width))
+    if len(factors) != 1:
+        return []
+    row_factor, column_factor = factors.pop()
+    if row_factor == 1 and column_factor == 1:
+        return []
+    return [
+        Hypothesis(
+            "tile_repeat",
+            _parameter_tuple(row_factor=row_factor, column_factor=column_factor),
+            description_length=3,
+        )
+    ]
+
+
+def propose_base_hypotheses(
+    training_pairs: Sequence[TrainingPair],
+    enabled_operator_families: Sequence[str] | None = None,
+) -> list[Hypothesis]:
     """Propose generic global relations before inspecting structured residuals."""
 
-    candidates = [Hypothesis("identity", description_length=1)]
+    if enabled_operator_families is None:
+        enabled = frozenset({"identity", "recolor", "mirror", "translate"})
+    else:
+        enabled = frozenset(enabled_operator_families)
+    candidates = [Hypothesis("identity", description_length=1)] if "identity" in enabled else []
     recolor_mapping = _infer_recolor_mapping(training_pairs)
-    if recolor_mapping is not None:
+    if recolor_mapping is not None and "recolor" in enabled:
         candidates.append(Hypothesis("recolor", recolor_mapping, description_length=2))
     if _same_shape_training_pairs(training_pairs):
-        candidates.extend(
-            [
-                Hypothesis(
-                    "mirror",
-                    _parameter_tuple(axis="left_right"),
-                    description_length=2,
-                ),
-                Hypothesis(
-                    "mirror",
-                    _parameter_tuple(axis="top_bottom"),
-                    description_length=2,
-                ),
-                Hypothesis(
-                    "mirror",
-                    _parameter_tuple(axis="rotate_180"),
-                    description_length=2,
-                ),
-            ]
-        )
-        candidates.extend(_translation_candidates(training_pairs))
+        if "mirror" in enabled:
+            candidates.extend(
+                [
+                    Hypothesis(
+                        "mirror",
+                        _parameter_tuple(axis="left_right"),
+                        description_length=2,
+                    ),
+                    Hypothesis(
+                        "mirror",
+                        _parameter_tuple(axis="top_bottom"),
+                        description_length=2,
+                    ),
+                    Hypothesis(
+                        "mirror",
+                        _parameter_tuple(axis="rotate_180"),
+                        description_length=2,
+                    ),
+                ]
+            )
+        if "translate" in enabled:
+            candidates.extend(_translation_candidates(training_pairs))
+    if "repeat_tile" in enabled:
+        candidates.extend(_tile_repeat_candidates(training_pairs))
     return candidates
 
 
-def propose_structural_hypotheses(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
+def propose_structural_hypotheses(
+    training_pairs: Sequence[TrainingPair],
+    enabled_operator_families: Sequence[str] | None = None,
+) -> list[Hypothesis]:
     """Propose generic fill/extension relations only after residual-directed revision."""
 
     if not _same_shape_training_pairs(training_pairs):
         return []
+    if enabled_operator_families is None:
+        enabled = frozenset({"line_extend", "row_span_fill"})
+    else:
+        enabled = frozenset(enabled_operator_families)
     input_grids = [input_grid for input_grid, _ in training_pairs]
     output_grids = [output_grid for _, output_grid in training_pairs]
     all_colors = color_inventory([*input_grids, *output_grids])
@@ -232,23 +290,25 @@ def propose_structural_hypotheses(training_pairs: Sequence[TrainingPair]) -> lis
     candidates: list[Hypothesis] = []
     for seed_color in seed_colors:
         for fill_color in all_colors:
-            for direction in ("up", "down", "left", "right"):
+            if "line_extend" in enabled:
+                for direction in ("up", "down", "left", "right"):
+                    candidates.append(
+                        Hypothesis(
+                            "line_extend",
+                            _parameter_tuple(
+                                direction=direction,
+                                fill_color=fill_color,
+                                seed_color=seed_color,
+                            ),
+                            description_length=4,
+                        )
+                    )
+            if "row_span_fill" in enabled:
                 candidates.append(
                     Hypothesis(
-                        "line_extend",
-                        _parameter_tuple(
-                            direction=direction,
-                            fill_color=fill_color,
-                            seed_color=seed_color,
-                        ),
+                        "row_span_fill",
+                        _parameter_tuple(fill_color=fill_color, seed_color=seed_color),
                         description_length=4,
                     )
                 )
-            candidates.append(
-                Hypothesis(
-                    "row_span_fill",
-                    _parameter_tuple(fill_color=fill_color, seed_color=seed_color),
-                    description_length=4,
-                )
-            )
     return candidates

@@ -67,6 +67,68 @@ class IterativeHypothesisLearnerTests(unittest.TestCase):
         self.assertIn(ActionKind.SPECIALIZE.value, actions)
         self.assertIn(ActionKind.PROMOTE_CONSTRAINT.value, actions)
 
+    def test_generic_tile_repeat_infers_integer_output_factors(self) -> None:
+        environment = self._environment(
+            [
+                {
+                    "input": [[1, 2], [3, 4]],
+                    "output": [
+                        [1, 2, 1, 2, 1, 2],
+                        [3, 4, 3, 4, 3, 4],
+                        [1, 2, 1, 2, 1, 2],
+                        [3, 4, 3, 4, 3, 4],
+                        [1, 2, 1, 2, 1, 2],
+                        [3, 4, 3, 4, 3, 4],
+                    ],
+                },
+                {
+                    "input": [[5, 6], [7, 8]],
+                    "output": [
+                        [5, 6, 5, 6, 5, 6],
+                        [7, 8, 7, 8, 7, 8],
+                        [5, 6, 5, 6, 5, 6],
+                        [7, 8, 7, 8, 7, 8],
+                        [5, 6, 5, 6, 5, 6],
+                        [7, 8, 7, 8, 7, 8],
+                    ],
+                },
+            ],
+            [
+                {
+                    "input": [[9, 0], [0, 9]],
+                    "output": [
+                        [9, 0, 9, 0, 9, 0],
+                        [0, 9, 0, 9, 0, 9],
+                        [9, 0, 9, 0, 9, 0],
+                        [0, 9, 0, 9, 0, 9],
+                        [9, 0, 9, 0, 9, 0],
+                        [0, 9, 0, 9, 0, 9],
+                    ],
+                }
+            ],
+        )
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "repeat_tile")
+        ).solve(environment, "synthetic-tile-repeat")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertEqual(result.selected_hypothesis, "tile_repeat(column_factor=3,row_factor=3)")
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+
+    def test_explicit_empty_operator_vocabulary_does_not_restore_defaults(self) -> None:
+        environment = self._environment(
+            [{"input": [[1]], "output": [[2]]}],
+            [{"input": [[1]], "output": [[2]]}],
+        )
+
+        result = IterativeHypothesisLearner(operator_families=()).solve(
+            environment, "synthetic-empty-vocabulary"
+        )
+
+        self.assertFalse(result.training_exact)
+        self.assertTrue(result.used_fallback)
+
     def test_unknown_partial_prediction_is_not_an_impossible_zero(self) -> None:
         environment = self._environment(
             [{"input": [[0, 1], [0, 0]], "output": [[0, 2], [0, 0]]}],
@@ -105,6 +167,21 @@ class IterativeHypothesisLearnerTests(unittest.TestCase):
         self.assertIn("<svg", rendered)
         self.assertIn("Compatibility core", rendered)
         self.assertIn("UNKNOWN", rendered)
+
+    def test_svg_uses_a_compact_label_for_identity_fallback(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            path = Path(temporary_directory) / "corpus_callosum.svg"
+            render_corpus_callosum_svg(
+                path,
+                ((1, 2), (3, 4)),
+                ((1, 2), (3, 4)),
+                "fallback_identity_complete_grid",
+                {"events": []},
+            )
+            rendered = path.read_text(encoding="utf-8")
+
+        self.assertIn("identity fallback", rendered)
+        self.assertNotIn("fallback_identity_complete_grid", rendered)
 
 
 if __name__ == "__main__":

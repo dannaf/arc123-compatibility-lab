@@ -18,4 +18,4 @@
 - a blind generalization score separated from curated development;
 - evidence that any promoted primitive transfers beyond its originating task/family.
 
-Current P0001 clears only the first two rungs. It is intentionally far below the evidence required to claim that ARC1 or ARC2 has been solved.
+P0001 clears only the first two rungs with `1/4` exact. P0002 supplies the requested initial 10+10 reporting cohort at `0/20`, and P0003 supplies a non-overlapping post-operator transfer cohort at `0/20`. All 44 attempts have complete predictions, durable diagrams, and post-answer YES/NO evidence, but these results remain intentionally far below the evidence required to claim that ARC1 or ARC2 has been solved.

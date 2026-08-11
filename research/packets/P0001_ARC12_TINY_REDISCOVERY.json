@@ -21,6 +21,7 @@
     ]
   },
   "packet_id": "P0001-ARC12-TINY-REDISCOVERY",
+  "report_title": "# P0001 ARC12 Tiny Rediscovery Packet",
   "schema_version": 1,
   "source_pins": {
     "arc1": {

@@ -1,0 +1,234 @@
+{
+  "episode_id": "P0003-ARC12-CURATED-20-TILE-TRANSFER:arc1:8be77c9e",
+  "events": [
+    {
+      "action": "ATTEND",
+      "payload": {
+        "demo_change_counts": [
+          {
+            "changed_cells": 18,
+            "demo_index": 0
+          },
+          {
+            "changed_cells": 18,
+            "demo_index": 1
+          },
+          {
+            "changed_cells": 18,
+            "demo_index": 2
+          }
+        ],
+        "evidence_world_count": 3,
+        "selected_demo": 0
+      },
+      "step": 0
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "generic_candidate_count": 2,
+        "locally_ranked_candidate_count": 2,
+        "stage": "global_generic_relations"
+      },
+      "step": 1
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 1,
+        "hypothesis": "identity",
+        "stage": "global_generic_relations"
+      },
+      "step": 2
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 0,
+        "description_length": 1,
+        "feedback": [
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 0,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 18
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 1,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 18
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 2,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 18
+          }
+        ],
+        "hypothesis": "identity",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 0,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 54
+      },
+      "step": 3
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "identity",
+        "reason": "no_observed_explanatory_coverage",
+        "stage": "global_generic_relations"
+      },
+      "step": 4
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "tile_repeat(column_factor=1,row_factor=2)",
+        "stage": "global_generic_relations"
+      },
+      "step": 5
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 10,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 18,
+            "contradiction_count": 4,
+            "counterexamples": [
+              {
+                "column": 0,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 1,
+                "row": 3
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 14,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 18,
+            "contradiction_count": 4,
+            "counterexamples": [
+              {
+                "column": 0,
+                "demo_index": 1,
+                "observed": 1,
+                "predicted": 0,
+                "row": 3
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 14,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 18,
+            "contradiction_count": 2,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 2,
+                "observed": 1,
+                "predicted": 0,
+                "row": 3
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 16,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "tile_repeat(column_factor=1,row_factor=2)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 44,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 6
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 0,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 1,
+          "row": 3
+        },
+        "hypothesis": "tile_repeat(column_factor=1,row_factor=2)",
+        "stage": "global_generic_relations"
+      },
+      "step": 7
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "tile_repeat(column_factor=1,row_factor=2)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 8
+    },
+    {
+      "action": "SPECIALIZE",
+      "payload": {
+        "next_operator_family": "generic_line_and_span_relations",
+        "reason": "no_global_training_complete_hypothesis",
+        "retained_partial_hypothesis_count": 0
+      },
+      "step": 9
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "generic_candidate_count": 0,
+        "locally_ranked_candidate_count": 0,
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 10
+    },
+    {
+      "action": "COMMIT",
+      "payload": {
+        "complete_prediction_group_count": 0,
+        "fallback_reason": "no_complete_training_compatible_generic_hypothesis",
+        "posterior_mass": 0.0,
+        "selected_hypothesis": "fallback_identity_complete_grid",
+        "training_exact": false
+      },
+      "step": 11
+    }
+  ],
+  "reasoning_visibility": "explicit observable hypothesis/evidence/revision records only",
+  "schema_version": 1
+}
