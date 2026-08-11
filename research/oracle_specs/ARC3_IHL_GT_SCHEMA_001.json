@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "artifact_id": "ARC3-IHL-GT-SCHEMA-001",
+  "purpose": "Normalize observable ARC3 action/transition evidence and optional external hypothesis annotations for offline research.",
+  "required_fields": [
+    "game_id",
+    "trajectory_source",
+    "steps",
+    "verification"
+  ],
+  "step_fields": [
+    "step",
+    "observation",
+    "external_action",
+    "transition",
+    "progress_or_reward",
+    "hypothesis_action",
+    "counterexample_or_confirmation"
+  ],
+  "source_classes": [
+    "observable_action_trajectory",
+    "human_annotation",
+    "post_hoc_rule_oracle",
+    "video_or_transcript_annotation"
+  ],
+  "forbidden_fields": [
+    "private_chain_of_thought",
+    "unreported_oracle_action",
+    "live_policy_answer_leak"
+  ]
+}

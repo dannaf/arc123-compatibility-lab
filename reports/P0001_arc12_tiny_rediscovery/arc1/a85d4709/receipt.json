@@ -1,0 +1,81 @@
+{
+  "agent_input_contract": {
+    "decomposition_mapping_passed_to_agent": false,
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "historical_schema_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "all_cells_match": false,
+  "benchmark": "arc1",
+  "compared_position_count": 9,
+  "controller_oracle_boundary_scan": "pass",
+  "mismatched_cell_count": 9,
+  "packet_id": "P0001-ARC12-TINY-REDISCOVERY",
+  "posterior_mass": 0.0,
+  "schema_version": 1,
+  "selected_hypothesis": "fallback_identity_complete_grid",
+  "source_commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+  "source_task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/arc_data/arc1/training/a85d4709.json",
+  "task_id": "a85d4709",
+  "task_split": "training",
+  "test_cases": [
+    {
+      "all_cells_match": false,
+      "compared_position_count": 9,
+      "expected_output": [
+        [
+          3,
+          3,
+          3
+        ],
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          4,
+          4,
+          4
+        ]
+      ],
+      "mismatched_cell_count": 9,
+      "prediction": [
+        [
+          0,
+          0,
+          5
+        ],
+        [
+          5,
+          0,
+          0
+        ],
+        [
+          0,
+          5,
+          0
+        ]
+      ],
+      "test_index": 0
+    }
+  ],
+  "trace_artifacts": {
+    "corpus_callosum": {
+      "path": "corpus_callosum.svg",
+      "sha256": "733e726a8a11ec31d6bfe291a301c85346184a915d80e1193715dcdae664d918"
+    },
+    "learning_trace": {
+      "path": "learning_trace.json",
+      "sha256": "9de8033fcb1f27bf34c772e4bcbdeefc8449ecdea9b4bdb99f6241af59d004ba"
+    },
+    "report": {
+      "path": "REPORT.md",
+      "sha256": "67dd0f85e6eafd837dd81a29c48674c3d9e2fa5940a78bc5532d14152930280e"
+    }
+  },
+  "training_exact": false,
+  "used_fallback": true
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "artifact_id": "ARC12-IHL-GT-SCHEMA-001",
+  "purpose": "Offline, explicit hypothesis/evidence/revision annotations for ARC12 research; never a live answer mechanism.",
+  "required_fields": [
+    "task_id",
+    "benchmark",
+    "trajectory_source",
+    "steps",
+    "verification"
+  ],
+  "step_fields": [
+    "step",
+    "attention",
+    "observation",
+    "hypothesis_action",
+    "hypothesis_before",
+    "hypothesis_after",
+    "predicted_scope",
+    "support",
+    "counterexamples",
+    "residual_summary"
+  ],
+  "optional_fields": [
+    "rationale_annotation",
+    "final_program"
+  ],
+  "forbidden_fields": [
+    "private_chain_of_thought",
+    "held_out_test_output_before_commit",
+    "live_solver_dispatch_code"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "attempt_count": 4,
+  "attempts": [
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 9,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "a85d4709",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 0,
+      "selected_hypothesis": "row_span_fill(fill_color=2,seed_color=1)",
+      "task_id": "a699fb00",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 32,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "f3e62deb",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 4,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "d037b0a7",
+      "training_exact": false,
+      "used_fallback": true
+    }
+  ],
+  "claim_boundary": "This is a four-task curated development packet for a non-VLM, generic iterative-hypothesis learner. Historical ARC12 schemas and decomposition mappings are not loaded by the controller. Every task receives a complete candidate grid and post-answer YES/NO all-cell V&V. The packet is not an ARC1, ARC2, or ARC3 completion claim.",
+  "complete_wrong_count": 3,
+  "controller_oracle_boundary_scan": "pass",
+  "exact_solve_count": 1,
+  "fallback_count": 3,
+  "packet_id": "P0001-ARC12-TINY-REDISCOVERY",
+  "schema_version": 1,
+  "training_exact_count": 1
+}

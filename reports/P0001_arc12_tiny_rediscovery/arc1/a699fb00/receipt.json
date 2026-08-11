@@ -1,0 +1,291 @@
+{
+  "agent_input_contract": {
+    "decomposition_mapping_passed_to_agent": false,
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "historical_schema_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "all_cells_match": true,
+  "benchmark": "arc1",
+  "compared_position_count": 100,
+  "controller_oracle_boundary_scan": "pass",
+  "mismatched_cell_count": 0,
+  "packet_id": "P0001-ARC12-TINY-REDISCOVERY",
+  "posterior_mass": 1.0,
+  "schema_version": 1,
+  "selected_hypothesis": "row_span_fill(fill_color=2,seed_color=1)",
+  "source_commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+  "source_task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/arc_data/arc1/training/a699fb00.json",
+  "task_id": "a699fb00",
+  "task_split": "training",
+  "test_cases": [
+    {
+      "all_cells_match": true,
+      "compared_position_count": 100,
+      "expected_output": [
+        [
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          2,
+          1,
+          2,
+          1,
+          2,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "mismatched_cell_count": 0,
+      "prediction": [
+        [
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          2,
+          1,
+          2,
+          1,
+          2,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "test_index": 0
+    }
+  ],
+  "trace_artifacts": {
+    "corpus_callosum": {
+      "path": "corpus_callosum.svg",
+      "sha256": "2031dd101f9e8b78af189b7016c8d90eaf6c917058f3df3130abea428c1c5694"
+    },
+    "learning_trace": {
+      "path": "learning_trace.json",
+      "sha256": "8abac1cfbf71a701e804fb7707a87d7dfd61e4128daf8458d0a4dd2a3c057a23"
+    },
+    "report": {
+      "path": "REPORT.md",
+      "sha256": "34d8a96df878cf5bf2aff7d7ad009537ac93d1fbd1236b5c2cedb79a84a6eb1c"
+    }
+  },
+  "training_exact": true,
+  "used_fallback": false
+}

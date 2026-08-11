@@ -1,0 +1,64 @@
+{
+  "claim_boundary": "This is a four-task curated development packet for a non-VLM, generic iterative-hypothesis learner. Historical ARC12 schemas and decomposition mappings are not loaded by the controller. Every task receives a complete candidate grid and post-answer YES/NO all-cell V&V. The packet is not an ARC1, ARC2, or ARC3 completion claim.",
+  "controller": {
+    "candidate_limit": 32,
+    "forbidden_live_inputs": [
+      "task_id",
+      "historical selected schema",
+      "ARC12 decomposition mapping",
+      "GT feature contract",
+      "GT solver code",
+      "held-out test output before commit"
+    ],
+    "generic_operator_families": [
+      "identity",
+      "recolor",
+      "mirror",
+      "translate",
+      "line_extend",
+      "row_span_fill",
+      "partial-with-identity composition"
+    ]
+  },
+  "packet_id": "P0001-ARC12-TINY-REDISCOVERY",
+  "schema_version": 1,
+  "source_pins": {
+    "arc1": {
+      "commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc1"
+    },
+    "arc2": {
+      "commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc2"
+    }
+  },
+  "tasks": [
+    {
+      "benchmark": "arc1",
+      "split": "training",
+      "task_id": "a85d4709"
+    },
+    {
+      "benchmark": "arc1",
+      "split": "training",
+      "task_id": "a699fb00"
+    },
+    {
+      "benchmark": "arc1",
+      "split": "evaluation",
+      "task_id": "f3e62deb"
+    },
+    {
+      "benchmark": "arc2",
+      "split": "training",
+      "task_id": "d037b0a7"
+    }
+  ],
+  "upstream_evidence": {
+    "arc12_issue": "https://github.com/dannaf/arc12-compatibility-lab/issues/4",
+    "curated_manifest_reference": "https://github.com/dannaf/arc12-compatibility-lab/blob/de897e0b944d0583655e11f4272d2c87be425b48/research/arc123_exports/ARC12_CURATED_60_001.json",
+    "singularityml_issue": "https://github.com/dannaf/SingularityML/issues/3541"
+  }
+}
