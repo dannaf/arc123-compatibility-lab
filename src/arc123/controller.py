@@ -11,7 +11,13 @@ from .compatibility import assess_hypothesis
 from .contracts import EnvironmentAction, HypothesisAction, ObservationWorld, TransitionFeedback
 from .hypotheses import Hypothesis, propose_base_hypotheses, propose_structural_hypotheses
 from .model import ActionKind, Grid, HypothesisAssessment, PartialGrid, SolveResult, TrainingPair
-from .perceptions import difference_summary
+from .perceptions import background_color, difference_summary
+from .relational import (
+    deserialize_mapping,
+    infer_component_property_erase_specs,
+    infer_component_property_recolor_specs,
+    infer_marker_shape_target_recolor_specs,
+)
 from .theory import (
     PartialTheory,
     ScopePredicate,
@@ -347,7 +353,11 @@ THEORY_OPERATOR_FAMILIES = (
     "dihedral_tile",
     "line_extend",
     "row_span_fill",
+    "row_span_minimum",
     "scoped_coordinate_transform",
+    "component_property_recolor",
+    "component_property_erase",
+    "marker_shape_target_recolor",
 )
 
 
@@ -365,6 +375,7 @@ class IterativeHypothesisLearner:
         operator_families: Sequence[str] | None = None,
         beam_width: int | None = None,
         max_revisions: int = 96,
+        revision_enabled: bool = True,
     ) -> None:
         if candidate_limit < 1:
             raise ValueError("candidate_limit must be positive")
@@ -378,6 +389,7 @@ class IterativeHypothesisLearner:
         if self.beam_width < 1:
             raise ValueError("beam_width must be positive")
         self.max_revisions = max_revisions
+        self.revision_enabled = revision_enabled
         self._theory_sequence = 0
 
     def _next_theory_id(self) -> str:
@@ -574,6 +586,23 @@ class IterativeHypothesisLearner:
         return (TheoryRule.identity(), *rules)
 
     @staticmethod
+    def _has_equivalent_rule(theory: PartialTheory, candidate: TheoryRule) -> bool:
+        return any(
+            rule.operation == candidate.operation
+            and rule.scope == candidate.scope
+            and rule.parameters == candidate.parameters
+            for rule in theory.rules
+        )
+
+    @staticmethod
+    def _replace_rule(
+        rules: Sequence[TheoryRule], replacement: TheoryRule
+    ) -> tuple[TheoryRule, ...]:
+        return tuple(
+            replacement if rule.rule_id == replacement.rule_id else rule for rule in rules
+        )
+
+    @staticmethod
     def _non_background_colors(input_grid: Grid) -> tuple[int, ...]:
         background = min(
             {color for row in input_grid for color in row},
@@ -608,6 +637,60 @@ class IterativeHypothesisLearner:
         )
         input_grid, _ = training_pairs[counterexample.demo_index]
         revisions: list[PartialTheory] = []
+        if (
+            self._enabled("row_span_minimum")
+            and responsible_rule is not None
+            and responsible_rule.operation == "full_operator"
+        ):
+            parameters = responsible_rule.parameter_map
+            if (
+                parameters.get("operator") == "row_span_fill"
+                and parameters.get("selection", "all") == "all"
+            ):
+                revised_parameters = {
+                    key: value for key, value in parameters.items() if key != "operator"
+                }
+                revised_parameters["selection"] = "global_minimum"
+                revised_hypothesis = Hypothesis(
+                    "row_span_fill",
+                    tuple(sorted(revised_parameters.items())),
+                    responsible_rule.description_length + 1,
+                )
+                revised_rule = TheoryRule.full_operator(
+                    responsible_rule.rule_id, revised_hypothesis
+                )
+                action = HypothesisAction(
+                    ActionKind.SPECIALIZE,
+                    responsible_rule.rule_id,
+                    {
+                        "counterexample": counterexample.as_dict(),
+                        "parameter": "selection",
+                        "from_value": "all",
+                        "to_value": "global_minimum",
+                        "retained_rule_id": responsible_rule.rule_id,
+                    },
+                )
+                child = self._new_theory(
+                    theory,
+                    action,
+                    self._replace_rule(self._with_identity(theory.rules), revised_rule),
+                )
+                trace.record(
+                    ActionKind.ADD_CONDITION,
+                    theory_id=child.theory_id,
+                    parent_theory_id=theory.theory_id,
+                    rule_id=responsible_rule.rule_id,
+                    predicate={"parameter": "selection", "value": "global_minimum"},
+                    trigger_counterexample=counterexample.as_dict(),
+                )
+                trace.record(
+                    ActionKind.BIND_PARAMETER,
+                    theory_id=child.theory_id,
+                    rule_id=responsible_rule.rule_id,
+                    parameter="selection",
+                    value="global_minimum",
+                )
+                return [child]
         if responsible_rule and responsible_rule.operation == "coordinate_transform":
             axis = str(responsible_rule.parameter_map["axis"])
             colors = self._non_background_colors(input_grid)
@@ -750,6 +833,42 @@ class IterativeHypothesisLearner:
         ):
             return revisions
         source_color = input_grid[counterexample.row][counterexample.column]
+        if (
+            counterexample.observed == background_color(input_grid)
+            and source_color != counterexample.observed
+        ):
+            erase = TheoryRule.erase_color_to_background(
+                f"erase-color-{source_color}", source_color
+            )
+            if not self._has_equivalent_rule(theory, erase):
+                action = HypothesisAction(
+                    ActionKind.ADD_RULE,
+                    erase.rule_id,
+                    {
+                        "counterexample": counterexample.as_dict(),
+                        "proposal_family": "counterexample_erase_to_input_background",
+                        "source_color": source_color,
+                        "retained_rule_ids": [rule.rule_id for rule in theory.rules],
+                    },
+                )
+                child = self._new_theory(
+                    theory,
+                    action,
+                    (*self._with_identity(theory.rules), erase),
+                )
+                trace.record(
+                    ActionKind.EXPLAIN_RESIDUAL,
+                    theory_id=child.theory_id,
+                    parent_theory_id=theory.theory_id,
+                    residual_counterexample=counterexample.as_dict(),
+                    added_rule=erase.as_dict(),
+                )
+                trace.record(
+                    ActionKind.COMPOSE_RULE,
+                    theory_id=child.theory_id,
+                    ordered_rule_ids=[rule.rule_id for rule in child.rules],
+                )
+                return [child]
         if source_color != counterexample.observed:
             recolor = recolor_scoped_rule(
                 f"recolor-color-{source_color}-to-{counterexample.observed}",
@@ -793,12 +912,14 @@ class IterativeHypothesisLearner:
     ) -> list[PartialTheory]:
         if not any(
             family in self.operator_families
-            for family in ("line_extend", "row_span_fill", "dihedral_tile")
-        ):
-            return []
-        if any(
-            action.parameters.get("proposal_family") == "structural_residual"
-            for action in theory.history
+            for family in (
+                "line_extend",
+                "row_span_fill",
+                "dihedral_tile",
+                "component_property_recolor",
+                "component_property_erase",
+                "marker_shape_target_recolor",
+            )
         ):
             return []
         observed_pairs = [
@@ -806,54 +927,342 @@ class IterativeHypothesisLearner:
         ]
         if not observed_pairs:
             return []
-        candidates = propose_structural_hypotheses(observed_pairs, self.operator_families)
-        ranked_candidates = sorted(
-            (
-                (candidate, assess_hypothesis(candidate, observed_pairs))
-                for candidate in candidates
-            ),
-            key=lambda item: _rank_key(item[1]),
-            reverse=True,
-        )
         revisions: list[PartialTheory] = []
-        for candidate, assessment in ranked_candidates[: min(self.candidate_limit, self.beam_width)]:
-            rule = TheoryRule.full_operator(f"structural-{candidate.kind}", candidate)
-            action = HypothesisAction(
-                ActionKind.ADD_RULE,
-                rule.rule_id,
-                {
-                    "proposal_family": "structural_residual",
-                    "operator": candidate.kind,
-                    "observed_residual_ranking": {
-                        "matching_cell_count": assessment.matching_cell_count,
-                        "contradiction_count": assessment.contradiction_count,
-                        "unknown_cell_count": assessment.unknown_cell_count,
+        component_specs = (
+            infer_component_property_recolor_specs(observed_pairs)
+            if self._enabled("component_property_recolor")
+            else ()
+        )
+        component_erase_specs = (
+            infer_component_property_erase_specs(observed_pairs)
+            if self._enabled("component_property_erase")
+            else ()
+        )
+        marker_specs = (
+            infer_marker_shape_target_recolor_specs(observed_pairs)
+            if self._enabled("marker_shape_target_recolor")
+            else ()
+        )
+        if not component_specs and not component_erase_specs and not marker_specs and any(
+            family in self.operator_families
+            for family in ("line_extend", "row_span_fill", "dihedral_tile")
+        ):
+            candidates = propose_structural_hypotheses(observed_pairs, self.operator_families)
+            ranked_candidates = sorted(
+                (
+                    (candidate, assess_hypothesis(candidate, observed_pairs))
+                    for candidate in candidates
+                ),
+                key=lambda item: _rank_key(item[1]),
+                reverse=True,
+            )
+            for candidate, assessment in ranked_candidates[: min(self.candidate_limit, self.beam_width)]:
+                rule = TheoryRule.full_operator(f"structural-{candidate.kind}", candidate)
+                if self._has_equivalent_rule(theory, rule):
+                    continue
+                action = HypothesisAction(
+                    ActionKind.ADD_RULE,
+                    rule.rule_id,
+                    {
+                        "proposal_family": "structural_residual",
+                        "operator": candidate.kind,
+                        "observed_residual_ranking": {
+                            "matching_cell_count": assessment.matching_cell_count,
+                            "contradiction_count": assessment.contradiction_count,
+                            "unknown_cell_count": assessment.unknown_cell_count,
+                        },
                     },
-                },
+                )
+                child = self._new_theory(
+                    theory, action, (*self._with_identity(theory.rules), rule)
+                )
+                revisions.append(child)
+                trace.record(
+                    ActionKind.SPECIALIZE,
+                    theory_id=child.theory_id,
+                    parent_theory_id=theory.theory_id,
+                    reason="unexplained_residual_proposed_generic_structural_rule",
+                    added_rule=rule.as_dict(),
+                )
+                if candidate.kind == "dihedral_tile":
+                    trace.record(
+                        ActionKind.EXPLAIN_RESIDUAL,
+                        theory_id=child.theory_id,
+                        parent_theory_id=theory.theory_id,
+                        residual_kind=("contradiction" if theory.counterexamples else "unknown"),
+                        added_rule=rule.as_dict(),
+                    )
+                    trace.record(
+                        ActionKind.COMPOSE_RULE,
+                        theory_id=child.theory_id,
+                        ordered_rule_ids=[item.rule_id for item in child.rules],
+                    )
+        component_erase_rules = tuple(
+            TheoryRule.component_property_erase(
+                f"component-erase-{specification.property_name}-{index}",
+                specification.property_name,
+                specification.values,
             )
-            child = self._new_theory(theory, action, (*theory.rules, rule))
-            revisions.append(child)
-            trace.record(
-                ActionKind.SPECIALIZE,
-                theory_id=child.theory_id,
-                parent_theory_id=theory.theory_id,
-                reason="unexplained_residual_proposed_generic_structural_rule",
-                added_rule=rule.as_dict(),
-            )
-            if candidate.kind == "dihedral_tile":
+            for index, specification in enumerate(component_erase_specs)
+        )
+        if component_specs:
+            for index, specification in enumerate(component_specs):
+                existing_rule = next(
+                    (
+                        item
+                        for item in theory.rules
+                        if item.operation == "component_property_recolor"
+                        and item.parameter_map.get("property") == specification.property_name
+                    ),
+                    None,
+                )
+                if existing_rule is None:
+                    rule = TheoryRule.component_property_recolor(
+                        f"component-property-{specification.property_name}-{index}",
+                        specification.property_name,
+                        specification.mapping,
+                    )
+                    action = HypothesisAction(
+                        ActionKind.ADD_RULE,
+                        rule.rule_id,
+                        {
+                            "proposal_family": "component_property_residual",
+                            "property": specification.property_name,
+                            "mapping_count": len(specification.mapping),
+                            "observed_demo_count": len(observed_pairs),
+                        },
+                    )
+                    paired_erase = min(
+                        component_erase_rules,
+                        key=lambda item: (item.description_length, item.name),
+                        default=None,
+                    )
+                    rules = (*self._with_identity(theory.rules), rule)
+                    added_erase = (
+                        paired_erase is not None
+                        and not self._has_equivalent_rule(theory, paired_erase)
+                    )
+                    if added_erase and paired_erase is not None:
+                        rules = (*rules, paired_erase)
+                    child = self._new_theory(theory, action, rules)
+                    revision_kind = (
+                        "new_partial_rule_and_component_erase"
+                        if added_erase
+                        else "new_partial_rule"
+                    )
+                else:
+                    merged_mapping = deserialize_mapping(
+                        str(existing_rule.parameter_map["mapping"])
+                    )
+                    incompatible = False
+                    for property_value, output_color in specification.mapping:
+                        previous = merged_mapping.get(property_value)
+                        if previous is not None and previous != output_color:
+                            incompatible = True
+                            break
+                        merged_mapping[property_value] = output_color
+                    if incompatible or len(merged_mapping) == len(
+                        deserialize_mapping(str(existing_rule.parameter_map["mapping"]))
+                    ):
+                        continue
+                    rule = TheoryRule.component_property_recolor(
+                        existing_rule.rule_id,
+                        specification.property_name,
+                        tuple(sorted(merged_mapping.items())),
+                    )
+                    action = HypothesisAction(
+                        ActionKind.BIND_PARAMETER,
+                        rule.rule_id,
+                        {
+                            "proposal_family": "component_property_mapping_revision",
+                            "property": specification.property_name,
+                            "from_mapping_count": len(
+                                deserialize_mapping(str(existing_rule.parameter_map["mapping"]))
+                            ),
+                            "to_mapping_count": len(merged_mapping),
+                            "observed_demo_count": len(observed_pairs),
+                        },
+                    )
+                    child = self._new_theory(
+                        theory,
+                        action,
+                        self._replace_rule(self._with_identity(theory.rules), rule),
+                    )
+                    added_erase = False
+                    revision_kind = "mapping_extension"
+                revisions.append(child)
                 trace.record(
                     ActionKind.EXPLAIN_RESIDUAL,
                     theory_id=child.theory_id,
                     parent_theory_id=theory.theory_id,
-                    residual_kind=("contradiction" if theory.counterexamples else "unknown"),
+                    residual_kind="contradiction",
+                    generic_property=specification.property_name,
+                    revision_kind=revision_kind,
                     added_rule=rule.as_dict(),
+                )
+                if added_erase and paired_erase is not None:
+                    trace.record(
+                        ActionKind.ADD_RULE,
+                        theory_id=child.theory_id,
+                        parent_theory_id=theory.theory_id,
+                        rule=paired_erase.as_dict(),
+                        reason="component_property_consistently_erases_to_input_background",
+                    )
+                    trace.record(
+                        ActionKind.EXPLAIN_RESIDUAL,
+                        theory_id=child.theory_id,
+                        parent_theory_id=theory.theory_id,
+                        residual_kind="contradiction",
+                        generic_property=paired_erase.parameter_map["property"],
+                        added_rule=paired_erase.as_dict(),
+                    )
+                trace.record(
+                    ActionKind.COMPOSE_RULE,
+                    theory_id=child.theory_id,
+                    ordered_rule_ids=[item.rule_id for item in child.rules],
+                )
+        elif component_erase_rules:
+            for erase_rule in component_erase_rules:
+                if self._has_equivalent_rule(theory, erase_rule):
+                    continue
+                action = HypothesisAction(
+                    ActionKind.ADD_RULE,
+                    erase_rule.rule_id,
+                    {
+                        "proposal_family": "component_property_erase_residual",
+                        "property": erase_rule.parameter_map["property"],
+                    },
+                )
+                child = self._new_theory(
+                    theory, action, (*self._with_identity(theory.rules), erase_rule)
+                )
+                revisions.append(child)
+                trace.record(
+                    ActionKind.EXPLAIN_RESIDUAL,
+                    theory_id=child.theory_id,
+                    parent_theory_id=theory.theory_id,
+                    residual_kind="contradiction",
+                    added_rule=erase_rule.as_dict(),
                 )
                 trace.record(
                     ActionKind.COMPOSE_RULE,
                     theory_id=child.theory_id,
                     ordered_rule_ids=[item.rule_id for item in child.rules],
                 )
-        return revisions
+        if marker_specs:
+            for index, specification in enumerate(marker_specs):
+                existing_rule = next(
+                    (
+                        item
+                        for item in theory.rules
+                        if item.operation == "marker_shape_target_recolor"
+                        and item.parameter_map.get("marker_color") == specification.marker_color
+                        and item.parameter_map.get("target_color") == specification.target_color
+                    ),
+                    None,
+                )
+                erase_rule = TheoryRule.erase_color_to_background(
+                    f"erase-color-{specification.marker_color}", specification.marker_color
+                )
+                if existing_rule is None:
+                    rule = TheoryRule.marker_shape_target_recolor(
+                        (
+                            "marker-shape-target-"
+                            f"{specification.marker_color}-{specification.target_color}-{index}"
+                        ),
+                        specification.marker_color,
+                        specification.target_color,
+                        specification.mapping,
+                    )
+                    action = HypothesisAction(
+                        ActionKind.ADD_RULE,
+                        rule.rule_id,
+                        {
+                            "proposal_family": "marker_shape_target_residual",
+                            "marker_color": specification.marker_color,
+                            "target_color": specification.target_color,
+                            "mapping_count": len(specification.mapping),
+                            "observed_demo_count": len(observed_pairs),
+                            "paired_partial_rule": erase_rule.rule_id,
+                        },
+                    )
+                    rules = (*self._with_identity(theory.rules), rule)
+                    added_erase = not self._has_equivalent_rule(theory, erase_rule)
+                    if added_erase:
+                        rules = (*rules, erase_rule)
+                    child = self._new_theory(theory, action, rules)
+                    revision_kind = "new_partial_relation_and_erase"
+                else:
+                    merged_mapping = deserialize_mapping(
+                        str(existing_rule.parameter_map["mapping"])
+                    )
+                    incompatible = False
+                    for shape, output_color in specification.mapping:
+                        previous = merged_mapping.get(shape)
+                        if previous is not None and previous != output_color:
+                            incompatible = True
+                            break
+                        merged_mapping[shape] = output_color
+                    previous_count = len(
+                        deserialize_mapping(str(existing_rule.parameter_map["mapping"]))
+                    )
+                    if incompatible or len(merged_mapping) == previous_count:
+                        continue
+                    rule = TheoryRule.marker_shape_target_recolor(
+                        existing_rule.rule_id,
+                        specification.marker_color,
+                        specification.target_color,
+                        tuple(sorted(merged_mapping.items())),
+                    )
+                    action = HypothesisAction(
+                        ActionKind.BIND_PARAMETER,
+                        rule.rule_id,
+                        {
+                            "proposal_family": "marker_shape_mapping_revision",
+                            "from_mapping_count": previous_count,
+                            "to_mapping_count": len(merged_mapping),
+                            "observed_demo_count": len(observed_pairs),
+                        },
+                    )
+                    child = self._new_theory(
+                        theory,
+                        action,
+                        self._replace_rule(self._with_identity(theory.rules), rule),
+                    )
+                    added_erase = False
+                    revision_kind = "mapping_extension"
+                revisions.append(child)
+                trace.record(
+                    ActionKind.EXPLAIN_RESIDUAL,
+                    theory_id=child.theory_id,
+                    parent_theory_id=theory.theory_id,
+                    residual_kind="contradiction",
+                    generic_relation="marker_shape_to_target_color",
+                    revision_kind=revision_kind,
+                    added_rule=rule.as_dict(),
+                )
+                if added_erase:
+                    trace.record(
+                        ActionKind.ADD_RULE,
+                        theory_id=child.theory_id,
+                        parent_theory_id=theory.theory_id,
+                        rule=erase_rule.as_dict(),
+                        reason="marker_cells_are_visible_residuals_to_input_background",
+                    )
+                    trace.record(
+                        ActionKind.EXPLAIN_RESIDUAL,
+                        theory_id=child.theory_id,
+                        parent_theory_id=theory.theory_id,
+                        residual_kind="contradiction",
+                        generic_relation="erase_marker_to_input_background",
+                        added_rule=erase_rule.as_dict(),
+                    )
+                trace.record(
+                    ActionKind.COMPOSE_RULE,
+                    theory_id=child.theory_id,
+                    ordered_rule_ids=[item.rule_id for item in child.rules],
+                )
+        return revisions[: self.candidate_limit]
 
     @staticmethod
     def _fingerprint(theory: PartialTheory) -> str:
@@ -966,7 +1375,38 @@ class IterativeHypothesisLearner:
             revisions += 1
             if best_theory is None or theory.priority() < best_theory.priority():
                 best_theory = theory
-            if theory.counterexamples:
+            if theory.counterexamples and self.revision_enabled:
+                needs_full_conditional_evidence = any(
+                    self._enabled(family)
+                    for family in (
+                        "component_property_recolor",
+                        "component_property_erase",
+                        "marker_shape_target_recolor",
+                    )
+                )
+                needs_discriminating_evidence = self._enabled("row_span_minimum")
+                required_demo_count = (
+                    len(training_pairs)
+                    if needs_full_conditional_evidence
+                    else 2 if needs_discriminating_evidence else 0
+                )
+                if len(theory.evaluated_demo_indices) < required_demo_count:
+                    next_demo = self._choose_next_demo(theory, training_pairs)
+                    if next_demo is not None:
+                        demo_index, reason, information_score = next_demo
+                        observed = self._observe_theory(
+                            theory,
+                            demo_index,
+                            (
+                                "counterexample_requires_visible_conditional_evidence:"
+                                f"{reason}"
+                            ),
+                            information_score,
+                            training_pairs,
+                            trace,
+                        )
+                        self._push(frontier, observed, seen)
+                        continue
                 revisions_from_counterexample = self._counterexample_revisions(
                     theory, training_pairs, trace
                 )

@@ -10,6 +10,14 @@ from .contracts import CompatibilitySupport, HypothesisAction, Residual
 from .hypotheses import Hypothesis
 from .model import ActionKind, Counterexample, Grid, PartialGrid, SupportState, TrainingPair
 from .perceptions import background_color, connected_components
+from .relational import (
+    component_property_erase_writes,
+    component_property_recolor_writes,
+    deserialize_mapping,
+    erase_color_to_background_writes,
+    marker_shape_target_recolor_writes,
+    serialize_mapping,
+)
 
 
 Mask = tuple[tuple[bool, ...], ...]
@@ -116,6 +124,68 @@ class TheoryRule:
             description_length=hypothesis.description_length,
         )
 
+    @classmethod
+    def component_property_recolor(
+        cls,
+        rule_id: str,
+        property_name: str,
+        mapping: Sequence[tuple[str, int]],
+    ) -> "TheoryRule":
+        return cls(
+            rule_id=rule_id,
+            operation="component_property_recolor",
+            parameters=_parameter_tuple(
+                property=property_name,
+                mapping=serialize_mapping(mapping),
+            ),
+            description_length=3 + len(mapping),
+        )
+
+    @classmethod
+    def component_property_erase(
+        cls,
+        rule_id: str,
+        property_name: str,
+        values: Sequence[str],
+    ) -> "TheoryRule":
+        return cls(
+            rule_id=rule_id,
+            operation="component_property_erase",
+            parameters=_parameter_tuple(
+                property=property_name,
+                mapping=serialize_mapping(tuple((value, 0) for value in values)),
+            ),
+            description_length=2 + len(values),
+        )
+
+    @classmethod
+    def marker_shape_target_recolor(
+        cls,
+        rule_id: str,
+        marker_color: int,
+        target_color: int,
+        mapping: Sequence[tuple[str, int]],
+    ) -> "TheoryRule":
+        return cls(
+            rule_id=rule_id,
+            operation="marker_shape_target_recolor",
+            parameters=_parameter_tuple(
+                marker_color=marker_color,
+                target_color=target_color,
+                mapping=serialize_mapping(mapping),
+            ),
+            description_length=4 + len(mapping),
+        )
+
+    @classmethod
+    def erase_color_to_background(cls, rule_id: str, source_color: int) -> "TheoryRule":
+        return cls(
+            rule_id=rule_id,
+            operation="erase_color_to_background",
+            parameters=_parameter_tuple(source_color=source_color),
+            description_length=2,
+        )
+
     @property
     def parameter_map(self) -> dict[str, int | str]:
         return dict(self.parameters)
@@ -135,6 +205,27 @@ class TheoryRule:
             return f"{parameters['axis']}(scope={self.scope.description()})"
         if self.operation == "recolor_scoped":
             return f"recolor(to={parameters['to_color']},scope={self.scope.description()})"
+        if self.operation == "component_property_recolor":
+            mapping_count = len(deserialize_mapping(str(parameters["mapping"])))
+            return (
+                "component_recolor("
+                f"property={parameters['property']},mapping_count={mapping_count})"
+            )
+        if self.operation == "component_property_erase":
+            mapping_count = len(deserialize_mapping(str(parameters["mapping"])))
+            return (
+                "component_erase("
+                f"property={parameters['property']},value_count={mapping_count})"
+            )
+        if self.operation == "marker_shape_target_recolor":
+            mapping_count = len(deserialize_mapping(str(parameters["mapping"])))
+            return (
+                "marker_shape_target_recolor("
+                f"marker={parameters['marker_color']},target={parameters['target_color']},"
+                f"mapping_count={mapping_count})"
+            )
+        if self.operation == "erase_color_to_background":
+            return f"erase(color={parameters['source_color']},to=input_background)"
         if self.operation == "environment_transition":
             return f"environment_transition(effect={parameters['effect']})"
         raise ValueError(f"unknown theory operation: {self.operation}")
@@ -174,6 +265,30 @@ class TheoryRule:
             }
         if self.operation == "environment_transition":
             return {}
+        if self.operation == "component_property_recolor":
+            return component_property_recolor_writes(
+                input_grid,
+                str(self.parameter_map["property"]),
+                str(self.parameter_map["mapping"]),
+            )
+        if self.operation == "component_property_erase":
+            return component_property_erase_writes(
+                input_grid,
+                str(self.parameter_map["property"]),
+                str(self.parameter_map["mapping"]),
+            )
+        if self.operation == "marker_shape_target_recolor":
+            parameters = self.parameter_map
+            return marker_shape_target_recolor_writes(
+                input_grid,
+                int(parameters["marker_color"]),
+                int(parameters["target_color"]),
+                str(parameters["mapping"]),
+            )
+        if self.operation == "erase_color_to_background":
+            return erase_color_to_background_writes(
+                input_grid, int(self.parameter_map["source_color"])
+            )
         component_context = _component_context(input_grid)
         selected = [
             (row, column)

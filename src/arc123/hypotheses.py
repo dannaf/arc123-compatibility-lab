@@ -130,15 +130,28 @@ class Hypothesis:
         parameters = self.parameter_map
         seed_color = int(parameters["seed_color"])
         fill_color = int(parameters["fill_color"])
+        selection = str(parameters.get("selection", "all"))
+        if selection not in {"all", "global_minimum"}:
+            raise ValueError(f"unknown row-span selection: {selection}")
         background = background_color(input_grid)
         output = [list(row) for row in input_grid]
+        spans: list[tuple[int, int, int]] = []
         for row_index, row in enumerate(input_grid):
             seed_columns = [
                 column_index for column_index, color in enumerate(row) if color == seed_color
             ]
             if len(seed_columns) < 2:
                 continue
-            for column_index in range(min(seed_columns), max(seed_columns) + 1):
+            spans.append((row_index, min(seed_columns), max(seed_columns)))
+        if selection == "global_minimum" and spans:
+            minimum_span = min(right - left for _, left, right in spans)
+            spans = [
+                (row_index, left, right)
+                for row_index, left, right in spans
+                if right - left == minimum_span
+            ]
+        for row_index, left, right in spans:
+            for column_index in range(left, right + 1):
                 if output[row_index][column_index] == background:
                     output[row_index][column_index] = fill_color
         return tuple(tuple(row) for row in output)
