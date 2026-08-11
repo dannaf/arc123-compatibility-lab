@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "packet_id": "P0003-ARC12-CURATED-20-TILE-TRANSFER",
+  "report_title": "# P0003 ARC12 Fresh 10+10 Tile-Transfer Packet",
+  "report_root": "reports/P0003_arc12_curated_20_tile_transfer",
+  "claim_boundary": "This is a source-pinned, non-overlapping 10 ARC1 + 10 ARC2 curated-development transfer packet after the generic repeat_tile operator was added. Selection uses only the curated manifest filenames/splits, prior packet task IDs for exclusion, and a fixed SHA-256 rank; it does not inspect task grids, historical schemas/decompositions, GT solver code, GT feature contracts, or held-out test outputs. The controller receives no historical schema, decomposition, GT feature contract, GT solver, task ID, or held-out test output before committing its complete prediction. Every task receives post-answer YES/NO all-cell V&V. This remains curated development evidence, not an ARC1, ARC2, or ARC3 completion claim.",
+  "selection_protocol": {
+    "population": "ARC12 curated 60 import minus P0001 and P0002 task IDs",
+    "method": "take ten lowest SHA-256(salt:benchmark:split:task_id) ranks independently for ARC1 and ARC2",
+    "salt": "ARC123-P0003-CURATED-20-TILE-TRANSFER-001",
+    "allowed_inputs": [
+      "benchmark",
+      "split",
+      "task_id",
+      "prior packet task IDs for exclusion"
+    ],
+    "forbidden_inputs": [
+      "task grid semantics",
+      "historical selected schema",
+      "ARC12 decomposition mapping",
+      "GT feature contract",
+      "GT solver code",
+      "held-out test output"
+    ],
+    "coverage": {
+      "arc1": "ten unseen-after-operator-change ARC1 curated tasks for generic feature/support transfer tracing",
+      "arc2": "ten unseen-after-operator-change ARC2-only curated tasks for generic feature/support transfer tracing"
+    },
+    "excluded_packet_ids": [
+      "P0001-ARC12-TINY-REDISCOVERY",
+      "P0002-ARC12-INITIAL-20"
+    ]
+  },
+  "controller": {
+    "candidate_limit": 32,
+    "forbidden_live_inputs": [
+      "task_id",
+      "historical selected schema",
+      "ARC12 decomposition mapping",
+      "GT feature contract",
+      "GT solver code",
+      "held-out test output before commit"
+    ],
+    "generic_operator_families": [
+      "identity",
+      "recolor",
+      "mirror",
+      "translate",
+      "repeat_tile",
+      "line_extend",
+      "row_span_fill",
+      "partial-with-identity composition"
+    ]
+  },
+  "source_pins": {
+    "arc1": {
+      "commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc1"
+    },
+    "arc2": {
+      "commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc2"
+    }
+  },
+  "tasks": [
+    {
+      "benchmark": "arc1",
+      "split": "evaluation",
+      "task_id": "88207623",
+      "selection_rank_sha256": "19381511d53c05e1f17cfa8598de111b8b0fa5d1f6a828bcebd49152afbdfacb"
+    },
+    {
+      "benchmark": "arc1",
+      "split": "training",
+      "task_id": "bdad9b1f",
+      "selection_rank_sha256": "1a19181cc9f68b168db1b144d6351a8aa5c1bb53f8955e942410bd411c239677"
+    },
+    {
+      "benchmark": "arc1",
+      "split": "evaluation",
+      "task_id": "833dafe3",
+      "selection_rank_sha256": "365656cecfdfdd24c900e442682472ded441f963f280923b6ecfc2a2e8cf8e13"
+    },
+    {
+      "benchmark": "arc1",
+      "split": "training",
+      "task_id": "1f876c06",
+      "selection_rank_sha256": "48b090823aa8873b4089f167e73eb3325cdec0db9f234edc37d9966ddd6c8d3f"
+    },
+    {
+      "benchmark": "arc1",
+      "split": "evaluation",
+      "task_id": "332efdb3",
+      "selection_rank_sha256": "4c97f0bd9b9b353ba3cc67eee888384c1761f29c92c9bce285d48cbb617252cd"
+    },
+    {
+      "benchmark": "arc1",
+      "split": "evaluation",
+      "task_id": "8cb8642d",
+      "selection_rank_sha256": "4f26144d2be24849de6821f80a96509f688ce500e352afc0d592eb3e350a96ea"
+    },
+    {
+      "benchmark": "arc1",
+      "split": "training",
+      "task_id": "a5313dff",
+      "selection_rank_sha256": "55bd21923055a1fd40cb92dd847973f077c2181fc9f5ff014c639c288a1b02e4"
+    },
+    {
+      "benchmark": "arc1",
+      "split": "training",
+      "task_id": "8be77c9e",
+      "selection_rank_sha256": "732028e6a8457c238f35ace77f71c92885470d193cd327cc9a07b4e9760902d2"
+    },
+    {
+      "benchmark": "arc1",
+      "split": "training",
+      "task_id": "2281f1f4",
+      "selection_rank_sha256": "9b1064a93025641caa649082440f5eaca13468372020df83a6a3207fd4b77412"
+    },
+    {
+      "benchmark": "arc1",
+      "split": "evaluation",
+      "task_id": "03560426",
+      "selection_rank_sha256": "a02bb190eed070dbfe8521c63c250e5b5b8fe051b59c4c49257ae8daabffadac"
+    },
+    {
+      "benchmark": "arc2",
+      "split": "training",
+      "task_id": "6ad5bdfd",
+      "selection_rank_sha256": "03857374f4748a7a76c10be966cc82e1eb7fe29933d34e1d60c99e80592552de"
+    },
+    {
+      "benchmark": "arc2",
+      "split": "evaluation",
+      "task_id": "1818057f",
+      "selection_rank_sha256": "14a40b27a258a9534c9f8e4ec20ea46c97f20cec02a4e9b03ea36e816d2ec404"
+    },
+    {
+      "benchmark": "arc2",
+      "split": "training",
+      "task_id": "5ffb2104",
+      "selection_rank_sha256": "38cc1be4446652f9dfcf6d28336acd850f9e2b02ed8fb51caef256e9d231acbf"
+    },
+    {
+      "benchmark": "arc2",
+      "split": "training",
+      "task_id": "5d588b4d",
+      "selection_rank_sha256": "41df2197ee62092791b4a5b60905a7042f795e9606445b3a7f6a84a9d2a08d34"
+    },
+    {
+      "benchmark": "arc2",
+      "split": "training",
+      "task_id": "98cf29f8",
+      "selection_rank_sha256": "4530bc507ecb094ff2fd6f1cc63bf6906da3a1a73484291281c5cfaea96e3f9f"
+    },
+    {
+      "benchmark": "arc2",
+      "split": "training",
+      "task_id": "bae5c565",
+      "selection_rank_sha256": "4d9277d33144a320ca70ac45974763f8160a17dd4508774a66f8845748c628ad"
+    },
+    {
+      "benchmark": "arc2",
+      "split": "training",
+      "task_id": "88a10436",
+      "selection_rank_sha256": "52bb3e3b9d02b127bc3607403c5cc52cf620f3a960f3818d1acbd107f1a8cef7"
+    },
+    {
+      "benchmark": "arc2",
+      "split": "training",
+      "task_id": "a09f6c25",
+      "selection_rank_sha256": "81106a482c3c9b38e5a8a3e099bc7cee2fa0da8def4cf0c712dce0efed365151"
+    },
+    {
+      "benchmark": "arc2",
+      "split": "training",
+      "task_id": "5587a8d0",
+      "selection_rank_sha256": "8fc934e1d62c430ef1ad3378d1d46331957890a18d2cad83ed9cd83211fd2093"
+    },
+    {
+      "benchmark": "arc2",
+      "split": "training",
+      "task_id": "05f2a901",
+      "selection_rank_sha256": "91758763ade2726c798ab34860ca2950c343f331ed9c27ab91252aca8fd20fe1"
+    }
+  ],
+  "upstream_evidence": {
+    "arc12_issue": "https://github.com/dannaf/arc12-compatibility-lab/issues/4",
+    "curated_manifest_reference": "https://github.com/dannaf/arc12-compatibility-lab/blob/de897e0b944d0583655e11f4272d2c87be425b48/research/arc123_exports/ARC12_CURATED_60_001.json",
+    "singularityml_issue": "https://github.com/dannaf/SingularityML/issues/3541",
+    "owner_guidance": "https://github.com/dannaf/SingularityML/issues/3542"
+  }
+}

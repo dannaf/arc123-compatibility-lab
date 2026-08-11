@@ -61,6 +61,13 @@ _PALETTE = {
 }
 
 
+def _operator_label(selected_hypothesis: str) -> str:
+    operator = selected_hypothesis.split("(", 1)[0]
+    if operator == "fallback_identity_complete_grid":
+        return "identity fallback"
+    return operator if len(operator) <= 26 else f"{operator[:23]}..."
+
+
 def _grid_svg(grid: Grid, left: int, top: int, maximum_size: int = 260) -> str:
     height = len(grid)
     width = len(grid[0])
@@ -98,7 +105,7 @@ def render_corpus_callosum_svg(
         if action_labels
         else "No recorded actions"
     )
-    selected_operator = escape(selected_hypothesis.split("(", 1)[0])
+    selected_operator = escape(_operator_label(selected_hypothesis))
     svg = "".join(
         [
             '<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="620" viewBox="0 0 1280 620">',

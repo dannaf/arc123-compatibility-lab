@@ -65,7 +65,7 @@
   "trace_artifacts": {
     "corpus_callosum": {
       "path": "corpus_callosum.svg",
-      "sha256": "733e726a8a11ec31d6bfe291a301c85346184a915d80e1193715dcdae664d918"
+      "sha256": "4af3a34f3db50ddc1439b218ac7a95461c84ec55c7f8595d703f7bc10034657b"
     },
     "learning_trace": {
       "path": "learning_trace.json",

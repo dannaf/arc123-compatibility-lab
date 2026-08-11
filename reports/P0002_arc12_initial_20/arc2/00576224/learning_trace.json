@@ -1,0 +1,117 @@
+{
+  "episode_id": "P0002-ARC12-INITIAL-20:arc2:00576224",
+  "events": [
+    {
+      "action": "ATTEND",
+      "payload": {
+        "demo_change_counts": [
+          {
+            "changed_cells": 36,
+            "demo_index": 0
+          },
+          {
+            "changed_cells": 36,
+            "demo_index": 1
+          }
+        ],
+        "evidence_world_count": 2,
+        "selected_demo": 0
+      },
+      "step": 0
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "generic_candidate_count": 1,
+        "locally_ranked_candidate_count": 1,
+        "stage": "global_generic_relations"
+      },
+      "step": 1
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 1,
+        "hypothesis": "identity",
+        "stage": "global_generic_relations"
+      },
+      "step": 2
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 0,
+        "description_length": 1,
+        "feedback": [
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 0,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 36
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 1,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 36
+          }
+        ],
+        "hypothesis": "identity",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 0,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 72
+      },
+      "step": 3
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "identity",
+        "reason": "no_observed_explanatory_coverage",
+        "stage": "global_generic_relations"
+      },
+      "step": 4
+    },
+    {
+      "action": "SPECIALIZE",
+      "payload": {
+        "next_operator_family": "generic_line_and_span_relations",
+        "reason": "no_global_training_complete_hypothesis",
+        "retained_partial_hypothesis_count": 0
+      },
+      "step": 5
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "generic_candidate_count": 0,
+        "locally_ranked_candidate_count": 0,
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 6
+    },
+    {
+      "action": "COMMIT",
+      "payload": {
+        "complete_prediction_group_count": 0,
+        "fallback_reason": "no_complete_training_compatible_generic_hypothesis",
+        "posterior_mass": 0.0,
+        "selected_hypothesis": "fallback_identity_complete_grid",
+        "training_exact": false
+      },
+      "step": 7
+    }
+  ],
+  "reasoning_visibility": "explicit observable hypothesis/evidence/revision records only",
+  "schema_version": 1
+}

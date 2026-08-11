@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run or reproduce the source-pinned P0001 ARC12 iterative-learning packet."""
+"""Run or reproduce a source-pinned ARC12 iterative-learning packet."""
 
 from __future__ import annotations
 
@@ -40,8 +40,26 @@ def _write_json(path: Path, payload: Mapping[str, Any]) -> None:
     )
 
 
+def _default_report_root(packet: Mapping[str, Any]) -> Path:
+    raw_path = packet.get("report_root")
+    if not isinstance(raw_path, str) or not raw_path:
+        raise ValueError("packet must declare a repository-relative report_root")
+    relative_path = Path(raw_path)
+    if relative_path.is_absolute() or ".." in relative_path.parts:
+        raise ValueError("packet report_root must stay inside the repository")
+    return REPOSITORY_ROOT / relative_path
+
+
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _artifact_hashes(root: Path) -> dict[str, str]:
+    return {
+        str(path.relative_to(root)): _sha256(path)
+        for path in sorted(root.glob("**/*"))
+        if path.is_file()
+    }
 
 
 def _git_output(source_root: Path, arguments: list[str]) -> str:
@@ -147,7 +165,8 @@ def _task_receipt(
         },
     )
     result = IterativeHypothesisLearner(
-        candidate_limit=int(packet["controller"]["candidate_limit"])
+        candidate_limit=int(packet["controller"]["candidate_limit"]),
+        operator_families=tuple(packet["controller"]["generic_operator_families"]),
     ).solve(environment, f"{packet['packet_id']}:{benchmark}:{task_id}")
     validation = environment.post_answer_validate(result.predictions)
     trace_path = report_directory / "learning_trace.json"
@@ -204,11 +223,16 @@ def _task_receipt(
 
 
 def run_packet(
-    arc1_source: Path, arc2_source: Path, report_root: Path = DEFAULT_REPORT_ROOT
+    arc1_source: Path,
+    arc2_source: Path,
+    report_root: Path | None = None,
+    packet_path: Path = PACKET_PATH,
 ) -> dict[str, Any]:
-    packet = _load_json(PACKET_PATH)
-    if packet.get("packet_id") != "P0001-ARC12-TINY-REDISCOVERY":
-        raise ValueError("unexpected packet identifier")
+    packet = _load_json(packet_path)
+    packet_id = packet.get("packet_id")
+    if not isinstance(packet_id, str) or not packet_id.startswith("P"):
+        raise ValueError("packet must declare a P-series packet identifier")
+    report_root = report_root or _default_report_root(packet)
     source_roots = {"arc1": arc1_source, "arc2": arc2_source}
     for benchmark, source_root in source_roots.items():
         _verify_clean_source(source_root, str(packet["source_pins"][benchmark]["commit"]))
@@ -248,7 +272,7 @@ def run_packet(
     }
     _write_json(report_root / "receipt.json", summary)
     lines = [
-        "# P0001 ARC12 Tiny Rediscovery Packet",
+        str(packet.get("report_title", f"# {summary['packet_id']} ARC12 Rediscovery Packet")),
         "",
         f"- Attempts: `{summary['attempt_count']}`",
         f"- Exact post-answer solves: `{summary['exact_solve_count']}/{summary['attempt_count']}`",
@@ -284,21 +308,34 @@ def main() -> int:
     action.add_argument("--verify", action="store_true")
     parser.add_argument("--arc1-source", required=True, type=Path)
     parser.add_argument("--arc2-source", required=True, type=Path)
-    parser.add_argument("--report-root", type=Path, default=DEFAULT_REPORT_ROOT)
+    parser.add_argument("--packet", type=Path, default=PACKET_PATH)
+    parser.add_argument("--report-root", type=Path)
     arguments = parser.parse_args()
+    packet = _load_json(arguments.packet)
+    report_root = arguments.report_root or _default_report_root(packet)
     if arguments.run:
-        summary = run_packet(arguments.arc1_source, arguments.arc2_source, arguments.report_root)
+        summary = run_packet(
+            arguments.arc1_source,
+            arguments.arc2_source,
+            report_root,
+            arguments.packet,
+        )
         print(json.dumps(summary, indent=2, sort_keys=True))
         return 0
     with tempfile.TemporaryDirectory() as temporary_directory:
+        reproduced_root = Path(temporary_directory)
         reproduced = run_packet(
             arguments.arc1_source,
             arguments.arc2_source,
-            Path(temporary_directory),
+            reproduced_root,
+            arguments.packet,
         )
-    persisted = _load_json(arguments.report_root / "receipt.json")
+        reproduced_artifacts = _artifact_hashes(reproduced_root)
+    persisted = _load_json(report_root / "receipt.json")
     if persisted != reproduced:
         raise ValueError("persisted packet receipt does not reproduce exactly")
+    if _artifact_hashes(report_root) != reproduced_artifacts:
+        raise ValueError("persisted packet artifacts do not reproduce exactly")
     print(f"{persisted['packet_id']}: verified")
     return 0
 

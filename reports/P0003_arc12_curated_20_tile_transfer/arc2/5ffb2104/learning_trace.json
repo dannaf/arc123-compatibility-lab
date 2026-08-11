@@ -1,0 +1,6659 @@
+{
+  "episode_id": "P0003-ARC12-CURATED-20-TILE-TRANSFER:arc2:5ffb2104",
+  "events": [
+    {
+      "action": "ATTEND",
+      "payload": {
+        "demo_change_counts": [
+          {
+            "changed_cells": 26,
+            "demo_index": 1
+          },
+          {
+            "changed_cells": 17,
+            "demo_index": 2
+          },
+          {
+            "changed_cells": 16,
+            "demo_index": 0
+          }
+        ],
+        "evidence_world_count": 3,
+        "selected_demo": 1
+      },
+      "step": 0
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "generic_candidate_count": 478,
+        "locally_ranked_candidate_count": 32,
+        "stage": "global_generic_relations"
+      },
+      "step": 1
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=3,row_offset=0)",
+        "stage": "global_generic_relations"
+      },
+      "step": 2
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 37,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 7,
+            "counterexamples": [
+              {
+                "column": 5,
+                "demo_index": 0,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 29,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 21,
+            "counterexamples": [
+              {
+                "column": 5,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 109,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 3,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 6,
+                "row": 1
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=3,row_offset=0)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 165,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 3
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 5,
+          "demo_index": 0,
+          "observed": 2,
+          "predicted": 0,
+          "row": 1
+        },
+        "hypothesis": "translate(column_offset=3,row_offset=0)",
+        "stage": "global_generic_relations"
+      },
+      "step": 4
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=3,row_offset=0)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 5
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=2,row_offset=0)",
+        "stage": "global_generic_relations"
+      },
+      "step": 6
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 46,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 10,
+            "counterexamples": [
+              {
+                "column": 3,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 26,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 25,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 105,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 11,
+            "counterexamples": [
+              {
+                "column": 3,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 25,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=2,row_offset=0)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 156,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 7
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 3,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=2,row_offset=0)",
+        "stage": "global_generic_relations"
+      },
+      "step": 8
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=2,row_offset=0)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 9
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=5,row_offset=0)",
+        "stage": "global_generic_relations"
+      },
+      "step": 10
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 39,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 11,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 25,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 19,
+            "counterexamples": [
+              {
+                "column": 7,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 111,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=5,row_offset=0)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 163,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 11
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=5,row_offset=0)",
+        "stage": "global_generic_relations"
+      },
+      "step": 12
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=5,row_offset=0)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 13
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=4,row_offset=0)",
+        "stage": "global_generic_relations"
+      },
+      "step": 14
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 35,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 11,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 25,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 6,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 113,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 7,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 29,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=4,row_offset=0)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 167,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 15
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=4,row_offset=0)",
+        "stage": "global_generic_relations"
+      },
+      "step": 16
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=4,row_offset=0)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 17
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=2,row_offset=2)",
+        "stage": "global_generic_relations"
+      },
+      "step": 18
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 50,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 11,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 25,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 13,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 23,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=2,row_offset=2)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 152,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 19
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=2,row_offset=2)",
+        "stage": "global_generic_relations"
+      },
+      "step": 20
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=2,row_offset=2)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 21
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=9)",
+        "stage": "global_generic_relations"
+      },
+      "step": 22
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 34,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 13,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 117,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=9)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 168,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 23
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=9)",
+        "stage": "global_generic_relations"
+      },
+      "step": 24
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=9)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 25
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=8)",
+        "stage": "global_generic_relations"
+      },
+      "step": 26
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 36,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 15,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 115,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=8)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 166,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 27
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=8)",
+        "stage": "global_generic_relations"
+      },
+      "step": 28
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=8)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 29
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=7)",
+        "stage": "global_generic_relations"
+      },
+      "step": 30
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 37,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 114,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=7)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 165,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 31
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=7)",
+        "stage": "global_generic_relations"
+      },
+      "step": 32
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=7)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 33
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=6)",
+        "stage": "global_generic_relations"
+      },
+      "step": 34
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 35,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 14,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 116,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=6)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 167,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 35
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=6)",
+        "stage": "global_generic_relations"
+      },
+      "step": 36
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=6)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 37
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=5)",
+        "stage": "global_generic_relations"
+      },
+      "step": 38
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 36,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 15,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 115,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=5)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 166,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 39
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=5)",
+        "stage": "global_generic_relations"
+      },
+      "step": 40
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=5)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 41
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=4)",
+        "stage": "global_generic_relations"
+      },
+      "step": 42
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 36,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 15,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 115,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=4)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 166,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 43
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=4)",
+        "stage": "global_generic_relations"
+      },
+      "step": 44
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=4)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 45
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=3)",
+        "stage": "global_generic_relations"
+      },
+      "step": 46
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 35,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 14,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 116,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=3)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 167,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 47
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=3)",
+        "stage": "global_generic_relations"
+      },
+      "step": 48
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=3)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 49
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=2)",
+        "stage": "global_generic_relations"
+      },
+      "step": 50
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 36,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 15,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 115,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=2)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 166,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 51
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=2)",
+        "stage": "global_generic_relations"
+      },
+      "step": 52
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=2)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 53
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=1)",
+        "stage": "global_generic_relations"
+      },
+      "step": 54
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 36,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 15,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 115,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=1)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 166,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 55
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=1)",
+        "stage": "global_generic_relations"
+      },
+      "step": 56
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=1)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 57
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=0)",
+        "stage": "global_generic_relations"
+      },
+      "step": 58
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 34,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 13,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 117,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=0)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 168,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 59
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=0)",
+        "stage": "global_generic_relations"
+      },
+      "step": 60
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=0)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 61
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=-9)",
+        "stage": "global_generic_relations"
+      },
+      "step": 62
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 34,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 13,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 117,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=-9)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 168,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 63
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=-9)",
+        "stage": "global_generic_relations"
+      },
+      "step": 64
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=-9)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 65
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=-8)",
+        "stage": "global_generic_relations"
+      },
+      "step": 66
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 34,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 13,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 117,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=-8)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 168,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 67
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=-8)",
+        "stage": "global_generic_relations"
+      },
+      "step": 68
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=-8)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 69
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=-7)",
+        "stage": "global_generic_relations"
+      },
+      "step": 70
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 36,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 15,
+            "counterexamples": [
+              {
+                "column": 10,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 6,
+                "row": 0
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 115,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=-7)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 166,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 71
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=-7)",
+        "stage": "global_generic_relations"
+      },
+      "step": 72
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=-7)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 73
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=-6)",
+        "stage": "global_generic_relations"
+      },
+      "step": 74
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 35,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 14,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 116,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=-6)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 167,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 75
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=-6)",
+        "stage": "global_generic_relations"
+      },
+      "step": 76
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=-6)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 77
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=-5)",
+        "stage": "global_generic_relations"
+      },
+      "step": 78
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 34,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 13,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 117,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=-5)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 168,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 79
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=-5)",
+        "stage": "global_generic_relations"
+      },
+      "step": 80
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=-5)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 81
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=-4)",
+        "stage": "global_generic_relations"
+      },
+      "step": 82
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 35,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 14,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 116,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=-4)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 167,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 83
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=-4)",
+        "stage": "global_generic_relations"
+      },
+      "step": 84
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=-4)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 85
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=-3)",
+        "stage": "global_generic_relations"
+      },
+      "step": 86
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 35,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 14,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 116,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=-3)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 167,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 87
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=-3)",
+        "stage": "global_generic_relations"
+      },
+      "step": 88
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=-3)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 89
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=-2)",
+        "stage": "global_generic_relations"
+      },
+      "step": 90
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 36,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 15,
+            "counterexamples": [
+              {
+                "column": 12,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 115,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=-2)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 166,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 91
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=-2)",
+        "stage": "global_generic_relations"
+      },
+      "step": 92
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=-2)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 93
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=9,row_offset=-1)",
+        "stage": "global_generic_relations"
+      },
+      "step": 94
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 39,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 18,
+            "counterexamples": [
+              {
+                "column": 11,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 112,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=9,row_offset=-1)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 163,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 95
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=9,row_offset=-1)",
+        "stage": "global_generic_relations"
+      },
+      "step": 96
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=9,row_offset=-1)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 97
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=8,row_offset=9)",
+        "stage": "global_generic_relations"
+      },
+      "step": 98
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 34,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 13,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 117,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=8,row_offset=9)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 168,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 99
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=8,row_offset=9)",
+        "stage": "global_generic_relations"
+      },
+      "step": 100
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=8,row_offset=9)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 101
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=8,row_offset=8)",
+        "stage": "global_generic_relations"
+      },
+      "step": 102
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 36,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 15,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 115,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=8,row_offset=8)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 166,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 103
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=8,row_offset=8)",
+        "stage": "global_generic_relations"
+      },
+      "step": 104
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=8,row_offset=8)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 105
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=8,row_offset=7)",
+        "stage": "global_generic_relations"
+      },
+      "step": 106
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 37,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 114,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=8,row_offset=7)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 165,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 107
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=8,row_offset=7)",
+        "stage": "global_generic_relations"
+      },
+      "step": 108
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=8,row_offset=7)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 109
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=8,row_offset=6)",
+        "stage": "global_generic_relations"
+      },
+      "step": 110
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 35,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 14,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 116,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=8,row_offset=6)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 167,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 111
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=8,row_offset=6)",
+        "stage": "global_generic_relations"
+      },
+      "step": 112
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=8,row_offset=6)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 113
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=8,row_offset=5)",
+        "stage": "global_generic_relations"
+      },
+      "step": 114
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 37,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 114,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=8,row_offset=5)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 165,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 115
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=8,row_offset=5)",
+        "stage": "global_generic_relations"
+      },
+      "step": 116
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=8,row_offset=5)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 117
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=8,row_offset=4)",
+        "stage": "global_generic_relations"
+      },
+      "step": 118
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 38,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 113,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=8,row_offset=4)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 164,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 119
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=8,row_offset=4)",
+        "stage": "global_generic_relations"
+      },
+      "step": 120
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=8,row_offset=4)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 121
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=8,row_offset=3)",
+        "stage": "global_generic_relations"
+      },
+      "step": 122
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 36,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 15,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 115,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=8,row_offset=3)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 166,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 123
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=8,row_offset=3)",
+        "stage": "global_generic_relations"
+      },
+      "step": 124
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=8,row_offset=3)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 125
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 3,
+        "hypothesis": "translate(column_offset=8,row_offset=2)",
+        "stage": "global_generic_relations"
+      },
+      "step": 126
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 38,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 12,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 0,
+                "observed": 3,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 24,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 9,
+                "demo_index": 1,
+                "observed": 2,
+                "predicted": 0,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 113,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 9,
+            "counterexamples": [
+              {
+                "column": 4,
+                "demo_index": 2,
+                "observed": 2,
+                "predicted": 0,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 27,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "translate(column_offset=8,row_offset=2)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 164,
+        "stage": "global_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 127
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 4,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "hypothesis": "translate(column_offset=8,row_offset=2)",
+        "stage": "global_generic_relations"
+      },
+      "step": 128
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "translate(column_offset=8,row_offset=2)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "global_generic_relations"
+      },
+      "step": 129
+    },
+    {
+      "action": "SPECIALIZE",
+      "payload": {
+        "next_operator_family": "generic_line_and_span_relations",
+        "reason": "no_global_training_complete_hypothesis",
+        "retained_partial_hypothesis_count": 0
+      },
+      "step": 130
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "generic_candidate_count": 150,
+        "locally_ranked_candidate_count": 32,
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 131
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "line_extend(direction=right,fill_color=6,seed_color=6)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 132
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 64,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 13,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 23,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 30,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 100,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 21,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 15,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "line_extend(direction=right,fill_color=6,seed_color=6)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 138,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 133
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "line_extend(direction=right,fill_color=6,seed_color=6)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 134
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "line_extend(direction=right,fill_color=6,seed_color=6)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 135
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "line_extend(direction=down,fill_color=6,seed_color=2)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 136
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 79,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 14,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 22,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 40,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 90,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 25,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 11,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "line_extend(direction=down,fill_color=6,seed_color=2)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 123,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 137
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "line_extend(direction=down,fill_color=6,seed_color=2)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 138
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "line_extend(direction=down,fill_color=6,seed_color=2)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 139
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "line_extend(direction=right,fill_color=2,seed_color=2)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 140
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 65,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 15,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 21,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 34,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 96,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "line_extend(direction=right,fill_color=2,seed_color=2)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 137,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 141
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "line_extend(direction=right,fill_color=2,seed_color=2)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 142
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "line_extend(direction=right,fill_color=2,seed_color=2)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 143
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=8)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 144
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=8)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 145
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=8)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 146
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=8)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 147
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=6)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 148
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=6)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 149
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=6)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 150
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=6)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 151
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=5)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 152
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=5)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 153
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=5)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 154
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=5)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 155
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=3)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 156
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=3)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 157
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=3)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 158
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=3)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 159
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=2)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 160
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=2)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 161
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=2)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 162
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=8,seed_color=2)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 163
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=8)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 164
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=8)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 165
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=8)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 166
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=8)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 167
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=6)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 168
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=6)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 169
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=6)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 170
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=6)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 171
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=5)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 172
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=5)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 173
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=5)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 174
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=5)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 175
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=3)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 176
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=3)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 177
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=3)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 178
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=3)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 179
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=2)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 180
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=2)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 181
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=2)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 182
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=6,seed_color=2)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 183
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=8)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 184
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=8)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 185
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=8)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 186
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=8)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 187
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=6)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 188
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=6)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 189
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=6)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 190
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=6)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 191
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=5)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 192
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=5)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 193
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=5)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 194
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=5)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 195
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=3)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 196
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=3)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 197
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=3)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 198
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=3)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 199
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=2)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 200
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=2)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 201
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=2)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 202
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=5,seed_color=2)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 203
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=8)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 204
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=8)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 205
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=8)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 206
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=8)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 207
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=6)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 208
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=6)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 209
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=6)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 210
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=6)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 211
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=5)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 212
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=5)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 213
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=5)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 214
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=5)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 215
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=3)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 216
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=3)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 217
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=3)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 218
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=3)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 219
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=2)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 220
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=2)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 221
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=2)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 222
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=3,seed_color=2)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 223
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=8)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 224
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=8)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 225
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=8)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 226
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=8)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 227
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=6)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 228
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=6)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 229
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=6)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 230
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=6)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 231
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=5)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 232
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=5)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 233
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=5)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 234
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=5)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 235
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=3)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 236
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=3)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 237
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=3)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 238
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=3)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 239
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=2)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 240
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=2)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 241
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=2)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 242
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=2,seed_color=2)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 243
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=0,seed_color=8)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 244
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=0,seed_color=8)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 245
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=0,seed_color=8)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 246
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=0,seed_color=8)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 247
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=0,seed_color=6)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 248
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=0,seed_color=6)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 249
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=0,seed_color=6)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 250
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=0,seed_color=6)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 251
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=0,seed_color=5)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 252
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=0,seed_color=5)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 253
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=0,seed_color=5)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 254
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=0,seed_color=5)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 255
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "description_length": 4,
+        "hypothesis": "row_span_fill(fill_color=0,seed_color=3)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 256
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 59,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 16,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 0,
+                "observed": 0,
+                "predicted": 3,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 20,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 130,
+            "contradiction_count": 26,
+            "counterexamples": [
+              {
+                "column": 2,
+                "demo_index": 1,
+                "observed": 0,
+                "predicted": 2,
+                "row": 1
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 104,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 17,
+            "counterexamples": [
+              {
+                "column": 1,
+                "demo_index": 2,
+                "observed": 0,
+                "predicted": 2,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 19,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "row_span_fill(fill_color=0,seed_color=3)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 143,
+        "stage": "residual_directed_generic_relations",
+        "unknown_cell_count": 0
+      },
+      "step": 257
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "hypothesis": "row_span_fill(fill_color=0,seed_color=3)",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 258
+    },
+    {
+      "action": "REJECT_HYPOTHESIS",
+      "payload": {
+        "hypothesis": "row_span_fill(fill_color=0,seed_color=3)",
+        "reason": "observed_contradiction_exact_support_zero",
+        "stage": "residual_directed_generic_relations"
+      },
+      "step": 259
+    },
+    {
+      "action": "COMMIT",
+      "payload": {
+        "complete_prediction_group_count": 0,
+        "fallback_reason": "no_complete_training_compatible_generic_hypothesis",
+        "posterior_mass": 0.0,
+        "selected_hypothesis": "fallback_identity_complete_grid",
+        "training_exact": false
+      },
+      "step": 260
+    }
+  ],
+  "reasoning_visibility": "explicit observable hypothesis/evidence/revision records only",
+  "schema_version": 1
+}

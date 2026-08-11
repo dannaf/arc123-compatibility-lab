@@ -1,0 +1,311 @@
+{
+  "agent_input_contract": {
+    "decomposition_mapping_passed_to_agent": false,
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "historical_schema_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "all_cells_match": false,
+  "benchmark": "arc2",
+  "compared_position_count": 110,
+  "controller_oracle_boundary_scan": "pass",
+  "mismatched_cell_count": 6,
+  "packet_id": "P0003-ARC12-CURATED-20-TILE-TRANSFER",
+  "posterior_mass": 0.0,
+  "schema_version": 1,
+  "selected_hypothesis": "fallback_identity_complete_grid",
+  "source_commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+  "source_task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/71f86ff4c5304e452e0659131171f0519b50e21c/arc_data/arc2/training/88a10436.json",
+  "task_id": "88a10436",
+  "task_split": "training",
+  "test_cases": [
+    {
+      "all_cells_match": false,
+      "compared_position_count": 110,
+      "expected_output": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          3,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          3,
+          0,
+          0,
+          0
+        ]
+      ],
+      "mismatched_cell_count": 6,
+      "prediction": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          3,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "test_index": 0
+    }
+  ],
+  "trace_artifacts": {
+    "corpus_callosum": {
+      "path": "corpus_callosum.svg",
+      "sha256": "9d14c1bf34954f5faf0e6635ed9c3411a5003a20628251999885c809fdbb2099"
+    },
+    "learning_trace": {
+      "path": "learning_trace.json",
+      "sha256": "e3251b8f7261def9760343dcb7c35ad48a1f036e8825141585abbcf9a0d225dc"
+    },
+    "report": {
+      "path": "REPORT.md",
+      "sha256": "67707a4b5752cf6396d59bb98fd476bcc80ae90d7c652fed80ed6588840e9e65"
+    }
+  },
+  "training_exact": false,
+  "used_fallback": true
+}

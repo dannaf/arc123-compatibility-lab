@@ -1,0 +1,193 @@
+{
+  "attempt_count": 20,
+  "attempts": [
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 81,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "27f8ce4f",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 7,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "84f2aca1",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 88,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "00dbd492",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 81,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "48f8583b",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 43,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "045e512c",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 12,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "0a1d4ef5",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 24,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "913fb3ed",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 17,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "18419cfa",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 9,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "9a4bb226",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 32,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "009d5c81",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 5,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "4a1cacc2",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 139,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "62593bfd",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 5,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "760b3cac",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 56,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "09629e4f",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 15,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "9b30e358",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 36,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "00576224",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 81,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "8e2edd66",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 36,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "06df4c85",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 136,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "3cd86f4f",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 20,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "2037f2c7",
+      "training_exact": false,
+      "used_fallback": true
+    }
+  ],
+  "claim_boundary": "This is a source-pinned 10 ARC1 + 10 ARC2 curated-development baseline for a non-VLM, generic iterative-hypothesis learner. Selection uses only the curated manifest filenames/splits and a fixed SHA-256 rank; it does not inspect task grids, historical schemas/decompositions, GT solver code, GT feature contracts, or held-out test outputs. Historical ARC12 schemas and decomposition mappings are not loaded by the controller. Every task receives a complete candidate grid and post-answer YES/NO all-cell V&V. The packet is not an ARC1, ARC2, or ARC3 completion claim.",
+  "complete_wrong_count": 20,
+  "controller_oracle_boundary_scan": "pass",
+  "exact_solve_count": 0,
+  "fallback_count": 20,
+  "packet_id": "P0002-ARC12-INITIAL-20",
+  "schema_version": 1,
+  "training_exact_count": 0
+}

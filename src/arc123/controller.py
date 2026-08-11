@@ -26,6 +26,17 @@ class Predictor(Protocol):
     def predict(self, input_grid: Grid) -> Optional[PartialGrid]: ...
 
 
+DEFAULT_OPERATOR_FAMILIES = (
+    "identity",
+    "recolor",
+    "mirror",
+    "translate",
+    "line_extend",
+    "row_span_fill",
+    "partial-with-identity composition",
+)
+
+
 @dataclass(frozen=True)
 class _CompletedPartialHypothesis:
     """Generic composition of a partial theory with identity over its UNKNOWN cells."""
@@ -77,10 +88,17 @@ def _complete_prediction(predictor: Predictor, input_grid: Grid) -> Optional[Gri
 class IterativeHypothesisLearner:
     """Searches visible hypothesis operations rather than dispatching task schemas."""
 
-    def __init__(self, candidate_limit: int = 32) -> None:
+    def __init__(
+        self,
+        candidate_limit: int = 32,
+        operator_families: Sequence[str] | None = None,
+    ) -> None:
         if candidate_limit < 1:
             raise ValueError("candidate_limit must be positive")
         self.candidate_limit = candidate_limit
+        self.operator_families = tuple(
+            DEFAULT_OPERATOR_FAMILIES if operator_families is None else operator_families
+        )
 
     def _rank_candidates(
         self, candidates: Sequence[Predictor], training_pairs: Sequence[TrainingPair]
@@ -234,7 +252,7 @@ class IterativeHypothesisLearner:
         partial: list[tuple[Predictor, HypothesisAssessment]] = []
         self._evaluate_stage(
             "global_generic_relations",
-            propose_base_hypotheses(training_pairs),
+            propose_base_hypotheses(training_pairs, self.operator_families),
             training_pairs,
             trace,
             exact,
@@ -249,13 +267,17 @@ class IterativeHypothesisLearner:
             )
             self._evaluate_stage(
                 "residual_directed_generic_relations",
-                propose_structural_hypotheses(training_pairs),
+                propose_structural_hypotheses(training_pairs, self.operator_families),
                 training_pairs,
                 trace,
                 exact,
                 partial,
             )
-        if not exact and partial:
+        if (
+            not exact
+            and partial
+            and "partial-with-identity composition" in self.operator_families
+        ):
             partial_candidate, partial_assessment = min(
                 partial,
                 key=lambda item: (-item[1].matching_cell_count, item[0].description_length, item[0].name),

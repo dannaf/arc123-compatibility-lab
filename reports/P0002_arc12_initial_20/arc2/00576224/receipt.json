@@ -1,0 +1,107 @@
+{
+  "agent_input_contract": {
+    "decomposition_mapping_passed_to_agent": false,
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "historical_schema_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "all_cells_match": false,
+  "benchmark": "arc2",
+  "compared_position_count": 36,
+  "controller_oracle_boundary_scan": "pass",
+  "mismatched_cell_count": 36,
+  "packet_id": "P0002-ARC12-INITIAL-20",
+  "posterior_mass": 0.0,
+  "schema_version": 1,
+  "selected_hypothesis": "fallback_identity_complete_grid",
+  "source_commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+  "source_task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/71f86ff4c5304e452e0659131171f0519b50e21c/arc_data/arc2/training/00576224.json",
+  "task_id": "00576224",
+  "task_split": "training",
+  "test_cases": [
+    {
+      "all_cells_match": false,
+      "compared_position_count": 36,
+      "expected_output": [
+        [
+          3,
+          2,
+          3,
+          2,
+          3,
+          2
+        ],
+        [
+          7,
+          8,
+          7,
+          8,
+          7,
+          8
+        ],
+        [
+          2,
+          3,
+          2,
+          3,
+          2,
+          3
+        ],
+        [
+          8,
+          7,
+          8,
+          7,
+          8,
+          7
+        ],
+        [
+          3,
+          2,
+          3,
+          2,
+          3,
+          2
+        ],
+        [
+          7,
+          8,
+          7,
+          8,
+          7,
+          8
+        ]
+      ],
+      "mismatched_cell_count": 36,
+      "prediction": [
+        [
+          3,
+          2
+        ],
+        [
+          7,
+          8
+        ]
+      ],
+      "test_index": 0
+    }
+  ],
+  "trace_artifacts": {
+    "corpus_callosum": {
+      "path": "corpus_callosum.svg",
+      "sha256": "42bb417ff706d253f9022f2d5e69abcfa28ce2136442495950a12c7168980137"
+    },
+    "learning_trace": {
+      "path": "learning_trace.json",
+      "sha256": "8b9a41e50f0ad62d4d2fd6dbc75a93f20edfea825aeba7b6bc8c6d1bd320a30f"
+    },
+    "report": {
+      "path": "REPORT.md",
+      "sha256": "459f8c2f4ec9466916538763c1f901977f427c3d8b42e4a04c8f9a956e4cbd09"
+    }
+  },
+  "training_exact": false,
+  "used_fallback": true
+}
