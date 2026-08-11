@@ -1,0 +1,2845 @@
+{
+  "episode_id": "P0005-ARC12-PERSISTENT-THEORY-CURATED-60:anonymous-live-evidence",
+  "events": [
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 1,
+          "name": "identity",
+          "operation": "identity",
+          "parameters": {},
+          "rule_id": "identity",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0001"
+      },
+      "step": 0
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 3,
+          "name": "tile_repeat(column_factor=1,row_factor=2)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 1,
+            "operator": "tile_repeat",
+            "row_factor": 2
+          },
+          "rule_id": "rule-tile_repeat",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0002"
+      },
+      "step": 1
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 2,
+          "name": "left_right(scope=all)",
+          "operation": "coordinate_transform",
+          "parameters": {
+            "axis": "left_right"
+          },
+          "rule_id": "coordinate-left_right",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0003"
+      },
+      "step": 2
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 2,
+          "name": "top_bottom(scope=all)",
+          "operation": "coordinate_transform",
+          "parameters": {
+            "axis": "top_bottom"
+          },
+          "rule_id": "coordinate-top_bottom",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0004"
+      },
+      "step": 3
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 2,
+          "name": "rotate_180(scope=all)",
+          "operation": "coordinate_transform",
+          "parameters": {
+            "axis": "rotate_180"
+          },
+          "rule_id": "coordinate-rotate_180",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0005"
+      },
+      "step": 4
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 18,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 5
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0001"
+      },
+      "step": 6
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 7
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 18,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 0,
+        "explained_cell_count": 9,
+        "residual_cell_count": 9,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 18
+        },
+        "theory_id": "T0001"
+      },
+      "step": 8
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 18,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 9
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0003"
+      },
+      "step": 10
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0003",
+        "theory_name": "left_right(scope=all)"
+      },
+      "step": 11
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 0,
+          "name": "left_right(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 18,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 0,
+        "explained_cell_count": 7,
+        "residual_cell_count": 11,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 18
+        },
+        "theory_id": "T0003"
+      },
+      "step": 12
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 18,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 13
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0004"
+      },
+      "step": 14
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0004",
+        "theory_name": "top_bottom(scope=all)"
+      },
+      "step": 15
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 0,
+          "name": "top_bottom(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 18,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 0,
+        "explained_cell_count": 5,
+        "residual_cell_count": 13,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 18
+        },
+        "theory_id": "T0004"
+      },
+      "step": 16
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 18,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 17
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0005"
+      },
+      "step": 18
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0005",
+        "theory_name": "rotate_180(scope=all)"
+      },
+      "step": 19
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 0,
+          "name": "rotate_180(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 18,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 0,
+        "explained_cell_count": 5,
+        "residual_cell_count": 13,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 18
+        },
+        "theory_id": "T0005"
+      },
+      "step": 20
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 18,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0002"
+      },
+      "step": 21
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "column": 0,
+          "row": 3
+        },
+        "theory_id": "T0002"
+      },
+      "step": 22
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 18,
+        "rule_count": 1,
+        "theory_id": "T0002",
+        "theory_name": "tile_repeat(column_factor=1,row_factor=2)"
+      },
+      "step": 23
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 4,
+          "counterexample_count": 4,
+          "description_length": 3,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 14,
+          "name": "tile_repeat(column_factor=1,row_factor=2)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=1,row_factor=2)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 1,
+                "operator": "tile_repeat",
+                "row_factor": 2
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 14,
+        "residual_cell_count": 4,
+        "support": {
+          "asserted_cell_count": 18,
+          "contradiction_count": 4,
+          "counterexamples": [
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 1,
+              "row": 3
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 14,
+          "observation_id": "arc12-demo:0",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 24
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 18,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 25
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0001"
+      },
+      "step": 26
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 27
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0,
+            1
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 36,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 1,
+        "explained_cell_count": 9,
+        "residual_cell_count": 9,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 18
+        },
+        "theory_id": "T0001"
+      },
+      "step": 28
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 18,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 29
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0003"
+      },
+      "step": 30
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0003",
+        "theory_name": "left_right(scope=all)"
+      },
+      "step": 31
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1
+          ],
+          "matching_cell_count": 0,
+          "name": "left_right(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 36,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 1,
+        "explained_cell_count": 7,
+        "residual_cell_count": 11,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 18
+        },
+        "theory_id": "T0003"
+      },
+      "step": 32
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 18,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 33
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0004"
+      },
+      "step": 34
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0004",
+        "theory_name": "top_bottom(scope=all)"
+      },
+      "step": 35
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1
+          ],
+          "matching_cell_count": 0,
+          "name": "top_bottom(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 36,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 1,
+        "explained_cell_count": 5,
+        "residual_cell_count": 13,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 18
+        },
+        "theory_id": "T0004"
+      },
+      "step": 36
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 18,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 37
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0005"
+      },
+      "step": 38
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0005",
+        "theory_name": "rotate_180(scope=all)"
+      },
+      "step": 39
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1
+          ],
+          "matching_cell_count": 0,
+          "name": "rotate_180(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 36,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 1,
+        "explained_cell_count": 5,
+        "residual_cell_count": 13,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 18
+        },
+        "theory_id": "T0005"
+      },
+      "step": 40
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 18,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0,
+          1
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 41
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0001"
+      },
+      "step": 42
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 43
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 54,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 2,
+        "explained_cell_count": 9,
+        "residual_cell_count": 9,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 18
+        },
+        "theory_id": "T0001"
+      },
+      "step": 44
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 18,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0,
+          1
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 45
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0003"
+      },
+      "step": 46
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0003",
+        "theory_name": "left_right(scope=all)"
+      },
+      "step": 47
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "left_right(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 54,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 2,
+        "explained_cell_count": 5,
+        "residual_cell_count": 13,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 18
+        },
+        "theory_id": "T0003"
+      },
+      "step": 48
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 18,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0,
+          1
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 49
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0004"
+      },
+      "step": 50
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0004",
+        "theory_name": "top_bottom(scope=all)"
+      },
+      "step": 51
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "top_bottom(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 54,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 2,
+        "explained_cell_count": 7,
+        "residual_cell_count": 11,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 18
+        },
+        "theory_id": "T0004"
+      },
+      "step": 52
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 18,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0,
+          1
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 53
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0005"
+      },
+      "step": 54
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0005",
+        "theory_name": "rotate_180(scope=all)"
+      },
+      "step": 55
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "rotate_180(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 54,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 2,
+        "explained_cell_count": 5,
+        "residual_cell_count": 13,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 18
+        },
+        "theory_id": "T0005"
+      },
+      "step": 56
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "initial_proposal": true,
+                "operation": "identity"
+              },
+              "target": "identity"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  18,
+                  0,
+                  2
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  18,
+                  0,
+                  2
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  18,
+                  0,
+                  2
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            }
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 54,
+          "unresolved_unknown": [
+            {
+              "cell_count": 9,
+              "cells": [
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ]
+              ],
+              "observation_id": "arc12-demo:0",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 9,
+              "cells": [
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ]
+              ],
+              "observation_id": "arc12-demo:1",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 9,
+              "cells": [
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ]
+              ],
+              "observation_id": "arc12-demo:2",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            }
+          ]
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0001"
+      },
+      "step": 57
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "axis": "left_right",
+                "initial_proposal": true,
+                "operation": "coordinate_transform",
+                "scope": {
+                  "kind": "all",
+                  "value": null
+                }
+              },
+              "target": "coordinate-left_right"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  18,
+                  0,
+                  2
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  18,
+                  0,
+                  2
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  18,
+                  0,
+                  2
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            }
+          ],
+          "matching_cell_count": 0,
+          "name": "left_right(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 54,
+          "unresolved_unknown": [
+            {
+              "cell_count": 9,
+              "cells": [
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ]
+              ],
+              "observation_id": "arc12-demo:0",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 9,
+              "cells": [
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ]
+              ],
+              "observation_id": "arc12-demo:1",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 9,
+              "cells": [
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ]
+              ],
+              "observation_id": "arc12-demo:2",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            }
+          ]
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0003"
+      },
+      "step": 58
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "axis": "top_bottom",
+                "initial_proposal": true,
+                "operation": "coordinate_transform",
+                "scope": {
+                  "kind": "all",
+                  "value": null
+                }
+              },
+              "target": "coordinate-top_bottom"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  18,
+                  0,
+                  2
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  18,
+                  0,
+                  2
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  18,
+                  0,
+                  2
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            }
+          ],
+          "matching_cell_count": 0,
+          "name": "top_bottom(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 54,
+          "unresolved_unknown": [
+            {
+              "cell_count": 9,
+              "cells": [
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ]
+              ],
+              "observation_id": "arc12-demo:0",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 9,
+              "cells": [
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ]
+              ],
+              "observation_id": "arc12-demo:1",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 9,
+              "cells": [
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ]
+              ],
+              "observation_id": "arc12-demo:2",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            }
+          ]
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0004"
+      },
+      "step": 59
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "axis": "rotate_180",
+                "initial_proposal": true,
+                "operation": "coordinate_transform",
+                "scope": {
+                  "kind": "all",
+                  "value": null
+                }
+              },
+              "target": "coordinate-rotate_180"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  18,
+                  0,
+                  2
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  18,
+                  0,
+                  2
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  18,
+                  0,
+                  2
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            }
+          ],
+          "matching_cell_count": 0,
+          "name": "rotate_180(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 54,
+          "unresolved_unknown": [
+            {
+              "cell_count": 9,
+              "cells": [
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ]
+              ],
+              "observation_id": "arc12-demo:0",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 9,
+              "cells": [
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ]
+              ],
+              "observation_id": "arc12-demo:1",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 9,
+              "cells": [
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ]
+              ],
+              "observation_id": "arc12-demo:2",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            }
+          ]
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0005"
+      },
+      "step": 60
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "causal_next_operation": "scope_or_rule_revision",
+        "counterexample": {
+          "column": 0,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 1,
+          "row": 3
+        },
+        "responsible_rule": {
+          "description_length": 3,
+          "name": "tile_repeat(column_factor=1,row_factor=2)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 1,
+            "operator": "tile_repeat",
+            "row_factor": 2
+          },
+          "rule_id": "rule-tile_repeat",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "responsible_rule_id": "rule-tile_repeat",
+        "theory_id": "T0002"
+      },
+      "step": 61
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 18,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0002"
+      },
+      "step": 62
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "column": 0,
+          "row": 3
+        },
+        "theory_id": "T0002"
+      },
+      "step": 63
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 18,
+        "rule_count": 1,
+        "theory_id": "T0002",
+        "theory_name": "tile_repeat(column_factor=1,row_factor=2)"
+      },
+      "step": 64
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 8,
+          "counterexample_count": 8,
+          "description_length": 3,
+          "evaluated_demo_indices": [
+            0,
+            1
+          ],
+          "matching_cell_count": 28,
+          "name": "tile_repeat(column_factor=1,row_factor=2)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=1,row_factor=2)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 1,
+                "operator": "tile_repeat",
+                "row_factor": 2
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 1,
+        "explained_cell_count": 14,
+        "residual_cell_count": 4,
+        "support": {
+          "asserted_cell_count": 18,
+          "contradiction_count": 4,
+          "counterexamples": [
+            {
+              "column": 0,
+              "demo_index": 1,
+              "observed": 1,
+              "predicted": 0,
+              "row": 3
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 14,
+          "observation_id": "arc12-demo:1",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 65
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "causal_next_operation": "scope_or_rule_revision",
+        "counterexample": {
+          "column": 0,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 1,
+          "row": 3
+        },
+        "responsible_rule": {
+          "description_length": 3,
+          "name": "tile_repeat(column_factor=1,row_factor=2)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 1,
+            "operator": "tile_repeat",
+            "row_factor": 2
+          },
+          "rule_id": "rule-tile_repeat",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "responsible_rule_id": "rule-tile_repeat",
+        "theory_id": "T0002"
+      },
+      "step": 66
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 18,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0,
+          1
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0002"
+      },
+      "step": 67
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "column": 2,
+          "row": 3
+        },
+        "theory_id": "T0002"
+      },
+      "step": 68
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 18,
+        "rule_count": 1,
+        "theory_id": "T0002",
+        "theory_name": "tile_repeat(column_factor=1,row_factor=2)"
+      },
+      "step": 69
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 10,
+          "counterexample_count": 10,
+          "description_length": 3,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 44,
+          "name": "tile_repeat(column_factor=1,row_factor=2)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=1,row_factor=2)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 1,
+                "operator": "tile_repeat",
+                "row_factor": 2
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 2,
+        "explained_cell_count": 16,
+        "residual_cell_count": 2,
+        "support": {
+          "asserted_cell_count": 18,
+          "contradiction_count": 2,
+          "counterexamples": [
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 1,
+              "predicted": 0,
+              "row": 3
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 16,
+          "observation_id": "arc12-demo:2",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 70
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "causal_next_operation": "scope_or_rule_revision",
+        "counterexample": {
+          "column": 0,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 1,
+          "row": 3
+        },
+        "responsible_rule": {
+          "description_length": 3,
+          "name": "tile_repeat(column_factor=1,row_factor=2)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 1,
+            "operator": "tile_repeat",
+            "row_factor": 2
+          },
+          "rule_id": "rule-tile_repeat",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "responsible_rule_id": "rule-tile_repeat",
+        "theory_id": "T0002"
+      },
+      "step": 71
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 10,
+          "counterexamples": [
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 1,
+              "row": 3
+            },
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 1,
+              "row": 3
+            },
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 1,
+              "predicted": 0,
+              "row": 5
+            },
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 1,
+              "predicted": 0,
+              "row": 5
+            },
+            {
+              "column": 0,
+              "demo_index": 1,
+              "observed": 1,
+              "predicted": 0,
+              "row": 3
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 1,
+              "predicted": 0,
+              "row": 3
+            },
+            {
+              "column": 0,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 1,
+              "row": 5
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 1,
+              "row": 5
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 1,
+              "predicted": 0,
+              "row": 3
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 1,
+              "row": 5
+            }
+          ],
+          "description_length": 3,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "initial_proposal": true,
+                "operation": "full_operator"
+              },
+              "target": "rule-tile_repeat"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  18,
+                  0,
+                  2
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  18,
+                  0,
+                  2
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  18,
+                  0,
+                  2
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            }
+          ],
+          "matching_cell_count": 44,
+          "name": "tile_repeat(column_factor=1,row_factor=2)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=1,row_factor=2)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 1,
+                "operator": "tile_repeat",
+                "row_factor": 2
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown": []
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0002"
+      },
+      "step": 72
+    },
+    {
+      "action": "COMMIT",
+      "payload": {
+        "best_partial_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 1,
+          "evaluated_demo_indices": [],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "initial_proposal": true,
+                "operation": "identity"
+              },
+              "target": "identity"
+            }
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 0,
+          "unresolved_unknown": []
+        },
+        "complete_prediction_group_count": 0,
+        "fallback_reason": "no_complete_training_compatible_partial_theory",
+        "posterior_mass": 0.0,
+        "selected_hypothesis": "fallback_identity_complete_grid",
+        "training_exact": false
+      },
+      "step": 73
+    }
+  ],
+  "reasoning_visibility": "explicit observable hypothesis/evidence/revision records only",
+  "schema_version": 1
+}

@@ -62,16 +62,25 @@ _PALETTE = {
 
 
 def _operator_label(selected_hypothesis: str) -> str:
-    operator = selected_hypothesis.split("(", 1)[0]
-    if operator == "fallback_identity_complete_grid":
+    if selected_hypothesis == "fallback_identity_complete_grid":
         return "identity fallback"
+    if "dihedral_tile" in selected_hypothesis:
+        return "dihedral macro-tile"
+    operator = selected_hypothesis.split("(", 1)[0]
     return operator if len(operator) <= 26 else f"{operator[:23]}..."
 
 
-def _grid_svg(grid: Grid, left: int, top: int, maximum_size: int = 260) -> str:
+def _grid_svg(
+    grid: Grid,
+    left: int,
+    top: int,
+    maximum_size: int = 260,
+    minimum_cell: int = 8,
+    highlighted_cells: Sequence[tuple[int, int]] = (),
+) -> str:
     height = len(grid)
     width = len(grid[0])
-    cell = max(8, min(28, maximum_size // max(height, width)))
+    cell = max(minimum_cell, min(28, maximum_size // max(height, width)))
     pieces = [
         f'<rect x="{left - 4}" y="{top - 4}" width="{width * cell + 8}" '
         f'height="{height * cell + 8}" rx="8" fill="#f8fafc" stroke="#475569"/>'
@@ -82,6 +91,11 @@ def _grid_svg(grid: Grid, left: int, top: int, maximum_size: int = 260) -> str:
                 f'<rect x="{left + column_index * cell}" y="{top + row_index * cell}" '
                 f'width="{cell - 1}" height="{cell - 1}" fill="{_PALETTE.get(color, "#94a3b8")}"/>'
             )
+    for row_index, column_index in highlighted_cells:
+        pieces.append(
+            f'<rect x="{left + column_index * cell - 1}" y="{top + row_index * cell - 1}" '
+            f'width="{cell + 1}" height="{cell + 1}" fill="none" stroke="#e11d48" stroke-width="2"/>'
+        )
     return "".join(pieces)
 
 
@@ -100,11 +114,17 @@ def render_corpus_callosum_svg(
         for event in events
         if isinstance(event, Mapping) and isinstance(event.get("action"), str)
     ]
-    action_text = (
-        "ATTEND → PROPOSE → APPLY/COMPARE → COUNTEREXAMPLE → REVISE → COMMIT"
-        if action_labels
-        else "No recorded actions"
-    )
+    if "dihedral_tile" in selected_hypothesis:
+        action_text = "ATTEND → PROPOSE → APPLY/COMPARE → UNKNOWN RESIDUAL → REVISE/COMPOSE → COMMIT"
+    elif not action_labels:
+        action_text = "No recorded actions"
+    elif (
+        ActionKind.EXPLAIN_RESIDUAL.value in action_labels
+        and ActionKind.FIND_COUNTEREXAMPLE.value not in action_labels
+    ):
+        action_text = "ATTEND → PROPOSE → APPLY/COMPARE → UNKNOWN RESIDUAL → REVISE/COMPOSE → COMMIT"
+    else:
+        action_text = "ATTEND → PROPOSE → APPLY/COMPARE → COUNTEREXAMPLE → REVISE → COMMIT"
     selected_operator = escape(_operator_label(selected_hypothesis))
     svg = "".join(
         [
@@ -134,6 +154,106 @@ def render_corpus_callosum_svg(
     )
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(svg, encoding="utf-8")
+
+
+def render_arc3_transition_svg(
+    path: Path,
+    before: Grid,
+    after: Grid,
+    trace: Mapping[str, Any],
+) -> None:
+    """Render only observed public ARC3 states and explicit probe/revision events."""
+
+    events = [event for event in trace.get("events", []) if isinstance(event, Mapping)]
+    probe_events = [
+        event for event in events if event.get("action") == ActionKind.APPLY_LOCALLY.value
+    ]
+    first_probe = probe_events[0].get("payload", {}) if probe_events else {}
+    transition = first_probe.get("transition", {}) if isinstance(first_probe, Mapping) else {}
+    action = transition.get("action", {}) if isinstance(transition, Mapping) else {}
+    parameters = action.get("parameters", {}) if isinstance(action, Mapping) else {}
+    key = escape(str(parameters.get("key", "unknown action")))
+    confirmed = any(
+        event.get("action") == ActionKind.PROMOTE_CONSTRAINT.value for event in events
+    )
+    verdict = "confirmed on two observed transitions" if confirmed else "not confirmed"
+    changed_cells = [
+        (row, column)
+        for row, (before_row, after_row) in enumerate(zip(before, after))
+        for column, (before_cell, after_cell) in enumerate(zip(before_row, after_row))
+        if before_cell != after_cell
+    ]
+    svg = "".join(
+        [
+            '<svg xmlns="http://www.w3.org/2000/svg" width="1420" height="680" viewBox="0 0 1420 680">',
+            '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker></defs>',
+            '<rect width="1420" height="680" fill="#f8fafc"/>',
+            '<text x="44" y="52" font-family="Arial, sans-serif" font-size="29" font-weight="700" fill="#0f172a">ARC123 Real-Transition Corpus-Callosum Trace</text>',
+            '<text x="44" y="81" font-family="Arial, sans-serif" font-size="16" fill="#334155">Recorded public state -> deliberate external probe -> observed refutation -> revised effect hypothesis -> exploit</text>',
+            '<text x="90" y="138" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Observed state before probe</text>',
+            _grid_svg(
+                before,
+                76,
+                160,
+                maximum_size=230,
+                minimum_cell=2,
+                highlighted_cells=changed_cells,
+            ),
+            '<line x1="330" y1="302" x2="528" y2="302" stroke="#2563eb" stroke-width="9" stroke-linecap="round" marker-end="url(#arrow)"/>',
+            '<line x1="330" y1="350" x2="528" y2="350" stroke="#7c3aed" stroke-width="9" stroke-linecap="round" marker-end="url(#arrow)"/>',
+            '<rect x="538" y="198" width="335" height="254" rx="24" fill="#ffffff" stroke="#334155" stroke-width="3"/>',
+            '<text x="568" y="239" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">Shared compatibility core</text>',
+            '<text x="568" y="279" font-family="Arial, sans-serif" font-size="16" fill="#334155">H1: selected action is static</text>',
+            f'<text x="568" y="313" font-family="Arial, sans-serif" font-size="16" fill="#334155">Probe: {key}</text>',
+            '<text x="568" y="347" font-family="Arial, sans-serif" font-size="16" fill="#334155">Observed change refutes H1</text>',
+            '<text x="568" y="381" font-family="Arial, sans-serif" font-size="16" fill="#334155">H2: state change is possible</text>',
+            f'<text x="568" y="415" font-family="Arial, sans-serif" font-size="15" fill="#475569">{escape(verdict)}</text>',
+            '<line x1="883" y1="302" x2="1070" y2="302" stroke="#16a34a" stroke-width="9" stroke-linecap="round" marker-end="url(#arrow)"/>',
+            '<line x1="883" y1="350" x2="1070" y2="350" stroke="#ea580c" stroke-width="9" stroke-linecap="round" marker-end="url(#arrow)"/>',
+            '<text x="1090" y="138" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Observed state after probe</text>',
+            _grid_svg(
+                after,
+                1088,
+                160,
+                maximum_size=230,
+                minimum_cell=2,
+                highlighted_cells=changed_cells,
+            ),
+            '<rect x="44" y="560" width="1332" height="70" rx="12" fill="#e2e8f0"/>',
+            '<text x="66" y="591" font-family="Arial, sans-serif" font-size="15" fill="#0f172a">Red outlines mark cells changed by the recorded probe. All displayed cells are source-pinned public frames; no oracle rule, future trajectory, or simulation is exposed.</text>',
+            '<text x="66" y="615" font-family="Arial, sans-serif" font-size="15" fill="#0f172a">This validates a shared observation/action/revision contract, not an ARC3 level-solve claim.</text>',
+            '</svg>',
+        ]
+    )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(svg, encoding="utf-8")
+
+
+def _compact_trace_value(value: Any) -> Any:
+    if isinstance(value, Mapping):
+        compact: dict[str, Any] = {}
+        for key, child in value.items():
+            if key == "frame" and isinstance(child, list) and child and all(
+                isinstance(row, list) and row for row in child
+            ):
+                colors = sorted(
+                    {cell for row in child for cell in row if isinstance(cell, int)}
+                )
+                compact[key] = {
+                    "grid_summary": {
+                        "height": len(child),
+                        "width": len(child[0]),
+                        "colors": colors,
+                    }
+                }
+            else:
+                compact[str(key)] = _compact_trace_value(child)
+        return compact
+    if isinstance(value, list):
+        return [_compact_trace_value(item) for item in value]
+    if isinstance(value, tuple):
+        return [_compact_trace_value(item) for item in value]
+    return value
 
 
 def render_trace_markdown(trace: Mapping[str, Any]) -> str:
@@ -170,7 +290,9 @@ def render_trace_markdown(trace: Mapping[str, Any]) -> str:
         if event.get("action") not in milestone_actions:
             continue
         payload = event.get("payload", {})
-        summary = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+        summary = json.dumps(
+            _compact_trace_value(payload), ensure_ascii=False, sort_keys=True, separators=(",", ":")
+        )
         lines.append(f"- `{event.get('step')}` `{event.get('action')}` — `{summary}`")
     counterexamples = [
         event
@@ -182,7 +304,7 @@ def render_trace_markdown(trace: Mapping[str, Any]) -> str:
         for event in counterexamples[:5]:
             payload = event.get("payload", {})
             lines.append(
-                f"- `{event.get('step')}` — `{json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(',', ':'))}`"
+                f"- `{event.get('step')}` — `{json.dumps(_compact_trace_value(payload), ensure_ascii=False, sort_keys=True, separators=(',', ':'))}`"
             )
         if len(counterexamples) > 5:
             lines.append(

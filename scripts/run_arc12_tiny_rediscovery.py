@@ -17,7 +17,7 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPOSITORY_ROOT / "src"))
 
 from arc123.adapters.arc12 import ARC12InteractiveEnv
-from arc123.controller import IterativeHypothesisLearner
+from arc123.controller import IterativeHypothesisLearner, StagedCandidateBaseline
 from arc123.traces import render_corpus_callosum_svg, render_trace_markdown
 
 
@@ -85,6 +85,83 @@ def _controller_oracle_boundary_holds() -> bool:
     )
     forbidden_tokens = ("_test_targets", "post_answer_validate", "expected_output")
     return not any(token in controller_source for token in forbidden_tokens)
+
+
+def _controller_for_packet(packet: Mapping[str, Any]) -> object:
+    controller = packet.get("controller")
+    if not isinstance(controller, Mapping):
+        raise ValueError("packet must declare a controller configuration")
+    implementation = str(controller.get("implementation", "staged_candidate_baseline"))
+    candidate_limit = int(controller["candidate_limit"])
+    operator_families = tuple(controller["generic_operator_families"])
+    if implementation == "staged_candidate_baseline":
+        return StagedCandidateBaseline(
+            candidate_limit=candidate_limit,
+            operator_families=operator_families,
+        )
+    if implementation == "persistent_partial_theory":
+        raw_beam_width = controller.get("beam_width")
+        return IterativeHypothesisLearner(
+            candidate_limit=candidate_limit,
+            operator_families=operator_families,
+            beam_width=(int(raw_beam_width) if raw_beam_width is not None else None),
+            max_revisions=int(controller.get("max_revisions", 96)),
+        )
+    raise ValueError(f"unsupported packet controller implementation: {implementation}")
+
+
+def _packet_tasks(packet: Mapping[str, Any]) -> list[Mapping[str, Any]]:
+    raw_tasks = packet.get("tasks")
+    if isinstance(raw_tasks, list):
+        return raw_tasks
+    cohort_reference = packet.get("cohort_import")
+    if not isinstance(cohort_reference, Mapping):
+        raise ValueError("packet must declare tasks or a cohort_import reference")
+    raw_path = cohort_reference.get("path")
+    expected_hash = cohort_reference.get("sha256")
+    if not isinstance(raw_path, str) or not isinstance(expected_hash, str):
+        raise ValueError("cohort_import must declare a path and sha256")
+    relative_path = Path(raw_path)
+    if relative_path.is_absolute() or ".." in relative_path.parts:
+        raise ValueError("cohort_import path must remain inside this repository")
+    cohort_path = REPOSITORY_ROOT / relative_path
+    if _sha256(cohort_path) != expected_hash:
+        raise ValueError("cohort import does not match the packet's immutable sha256")
+    cohort = _load_json(cohort_path).get("curated_60")
+    if not isinstance(cohort, Mapping):
+        raise ValueError("cohort import lacks curated_60 metadata")
+    if int(cohort.get("task_count", 0)) != int(cohort_reference.get("task_count", 0)):
+        raise ValueError("cohort import task count does not match packet declaration")
+    source_pins = cohort.get("source_pins")
+    packet_pins = packet.get("source_pins")
+    if not isinstance(source_pins, Mapping) or not isinstance(packet_pins, Mapping):
+        raise ValueError("cohort import or packet lacks source pins")
+    task_ids = cohort.get("task_ids")
+    if not isinstance(task_ids, Mapping):
+        raise ValueError("cohort import lacks task IDs")
+    tasks: list[Mapping[str, Any]] = []
+    for benchmark in ("arc1", "arc2"):
+        cohort_pin = source_pins.get(benchmark)
+        packet_pin = packet_pins.get(benchmark)
+        benchmark_tasks = task_ids.get(benchmark)
+        if not isinstance(cohort_pin, Mapping) or not isinstance(packet_pin, Mapping):
+            raise ValueError(f"cohort import lacks {benchmark} source pin")
+        if cohort_pin.get("commit") != packet_pin.get("commit"):
+            raise ValueError(f"{benchmark} cohort/source packet commit mismatch")
+        if not isinstance(benchmark_tasks, list):
+            raise ValueError(f"cohort import lacks {benchmark} task IDs")
+        for task in benchmark_tasks:
+            if not isinstance(task, Mapping):
+                raise ValueError(f"cohort import has invalid {benchmark} task")
+            tasks.append({"benchmark": benchmark, **dict(task)})
+    return tasks
+
+
+def _episode_id(packet: Mapping[str, Any], benchmark: str, task_id: str) -> str:
+    controller = packet.get("controller")
+    if isinstance(controller, Mapping) and controller.get("implementation") == "persistent_partial_theory":
+        return f"{packet['packet_id']}:anonymous-live-evidence"
+    return f"{packet['packet_id']}:{benchmark}:{task_id}"
 
 
 def _render_report(receipt: Mapping[str, Any], trace: Mapping[str, Any]) -> str:
@@ -164,10 +241,9 @@ def _task_receipt(
             ),
         },
     )
-    result = IterativeHypothesisLearner(
-        candidate_limit=int(packet["controller"]["candidate_limit"]),
-        operator_families=tuple(packet["controller"]["generic_operator_families"]),
-    ).solve(environment, f"{packet['packet_id']}:{benchmark}:{task_id}")
+    result = _controller_for_packet(packet).solve(
+        environment, _episode_id(packet, benchmark, task_id)
+    )
     validation = environment.post_answer_validate(result.predictions)
     trace_path = report_directory / "learning_trace.json"
     diagram_path = report_directory / "corpus_callosum.svg"
@@ -239,7 +315,7 @@ def run_packet(
     if not _controller_oracle_boundary_holds():
         raise ValueError("controller source violates the held-out-target boundary")
     task_receipts = []
-    for task in packet["tasks"]:
+    for task in _packet_tasks(packet):
         if not isinstance(task, Mapping):
             raise ValueError("packet task must be an object")
         benchmark = str(task["benchmark"])

@@ -51,6 +51,8 @@ class Hypothesis:
             return self._row_span_fill(input_grid)
         if self.kind == "tile_repeat":
             return self._tile_repeat(input_grid)
+        if self.kind == "dihedral_tile":
+            return self._dihedral_tile(input_grid)
         raise ValueError(f"unknown generic hypothesis kind: {self.kind}")
 
     def _recolor(self, input_grid: Grid) -> PartialGrid:
@@ -157,6 +159,57 @@ class Hypothesis:
             for row_index in range(height * row_factor)
         )
 
+    def _dihedral_tile(self, input_grid: Grid) -> PartialGrid:
+        parameters = self.parameter_map
+        row_factor = int(parameters["row_factor"])
+        column_factor = int(parameters["column_factor"])
+        template = str(parameters["template"]).split(";")
+        if row_factor < 1 or column_factor < 1 or len(template) != row_factor * column_factor:
+            raise ValueError("dihedral tile parameters are malformed")
+        height = len(input_grid)
+        width = len(input_grid[0])
+        orientations: dict[str, Grid] = {
+            "identity": input_grid,
+            "flip_lr": tuple(tuple(reversed(row)) for row in input_grid),
+            "flip_tb": tuple(reversed(input_grid)),
+            "rotate_180": tuple(tuple(reversed(row)) for row in reversed(input_grid)),
+        }
+        if height == width:
+            orientations.update(
+                {
+                    "rotate_90": tuple(
+                        tuple(input_grid[height - 1 - column][row] for column in range(width))
+                        for row in range(height)
+                    ),
+                    "rotate_270": tuple(
+                        tuple(input_grid[column][width - 1 - row] for column in range(width))
+                        for row in range(height)
+                    ),
+                    "transpose": tuple(
+                        tuple(input_grid[column][row] for column in range(width))
+                        for row in range(height)
+                    ),
+                    "anti_transpose": tuple(
+                        tuple(
+                            input_grid[height - 1 - column][width - 1 - row]
+                            for column in range(width)
+                        )
+                        for row in range(height)
+                    ),
+                }
+            )
+        blank = tuple(tuple(background_color(input_grid) for _ in range(width)) for _ in range(height))
+        blocks = [orientations[label] if label != "blank" else blank for label in template]
+        return tuple(
+            tuple(
+                cell
+                for column_block in range(column_factor)
+                for cell in blocks[row_block * column_factor + column_block][row]
+            )
+            for row_block in range(row_factor)
+            for row in range(height)
+        )
+
 
 def _same_shape_training_pairs(training_pairs: Sequence[TrainingPair]) -> bool:
     return all(
@@ -228,6 +281,115 @@ def _tile_repeat_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypo
     ]
 
 
+def _dihedral_orientations(input_grid: Grid) -> dict[str, Grid]:
+    height = len(input_grid)
+    width = len(input_grid[0])
+    orientations: dict[str, Grid] = {
+        "identity": input_grid,
+        "flip_lr": tuple(tuple(reversed(row)) for row in input_grid),
+        "flip_tb": tuple(reversed(input_grid)),
+        "rotate_180": tuple(tuple(reversed(row)) for row in reversed(input_grid)),
+    }
+    if height == width:
+        orientations.update(
+            {
+                "rotate_90": tuple(
+                    tuple(input_grid[height - 1 - column][row] for column in range(width))
+                    for row in range(height)
+                ),
+                "rotate_270": tuple(
+                    tuple(input_grid[column][width - 1 - row] for column in range(width))
+                    for row in range(height)
+                ),
+                "transpose": tuple(
+                    tuple(input_grid[column][row] for column in range(width))
+                    for row in range(height)
+                ),
+                "anti_transpose": tuple(
+                    tuple(
+                        input_grid[height - 1 - column][width - 1 - row]
+                        for column in range(width)
+                    )
+                    for row in range(height)
+                ),
+            }
+        )
+    return orientations
+
+
+def _dihedral_tile_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
+    factors: set[tuple[int, int]] = set()
+    possible_labels: list[set[str]] | None = None
+    label_order = (
+        "identity",
+        "flip_lr",
+        "flip_tb",
+        "rotate_180",
+        "rotate_90",
+        "rotate_270",
+        "transpose",
+        "anti_transpose",
+        "blank",
+    )
+    for input_grid, output_grid in training_pairs:
+        height, width = len(input_grid), len(input_grid[0])
+        output_height, output_width = len(output_grid), len(output_grid[0])
+        if output_height % height or output_width % width:
+            return []
+        row_factor, column_factor = output_height // height, output_width // width
+        if row_factor == 1 and column_factor == 1:
+            return []
+        factors.add((row_factor, column_factor))
+        orientations = _dihedral_orientations(input_grid)
+        background = background_color(input_grid)
+        example_labels: list[set[str]] = []
+        for row_block in range(row_factor):
+            for column_block in range(column_factor):
+                block = tuple(
+                    tuple(
+                        output_grid[row_block * height + row][column_block * width + column]
+                        for column in range(width)
+                    )
+                    for row in range(height)
+                )
+                labels = {name for name, transformed in orientations.items() if transformed == block}
+                if all(cell == background for row in block for cell in row):
+                    labels.add("blank")
+                if not labels:
+                    return []
+                example_labels.append(labels)
+        if possible_labels is None:
+            possible_labels = example_labels
+        else:
+            if len(possible_labels) != len(example_labels):
+                return []
+            possible_labels = [
+                previous & current
+                for previous, current in zip(possible_labels, example_labels)
+            ]
+            if any(not labels for labels in possible_labels):
+                return []
+    if len(factors) != 1 or possible_labels is None:
+        return []
+    row_factor, column_factor = factors.pop()
+    template = tuple(
+        next(label for label in label_order if label in labels) for labels in possible_labels
+    )
+    if all(label == "identity" for label in template):
+        return []
+    return [
+        Hypothesis(
+            "dihedral_tile",
+            _parameter_tuple(
+                column_factor=column_factor,
+                row_factor=row_factor,
+                template=";".join(template),
+            ),
+            description_length=5 + sum(label != "identity" for label in template),
+        )
+    ]
+
+
 def propose_base_hypotheses(
     training_pairs: Sequence[TrainingPair],
     enabled_operator_families: Sequence[str] | None = None,
@@ -267,6 +429,8 @@ def propose_base_hypotheses(
             candidates.extend(_translation_candidates(training_pairs))
     if "repeat_tile" in enabled:
         candidates.extend(_tile_repeat_candidates(training_pairs))
+    if "dihedral_tile" in enabled:
+        candidates.extend(_dihedral_tile_candidates(training_pairs))
     return candidates
 
 
@@ -276,39 +440,40 @@ def propose_structural_hypotheses(
 ) -> list[Hypothesis]:
     """Propose generic fill/extension relations only after residual-directed revision."""
 
-    if not _same_shape_training_pairs(training_pairs):
-        return []
     if enabled_operator_families is None:
-        enabled = frozenset({"line_extend", "row_span_fill"})
+        enabled = frozenset({"line_extend", "row_span_fill", "dihedral_tile"})
     else:
         enabled = frozenset(enabled_operator_families)
-    input_grids = [input_grid for input_grid, _ in training_pairs]
-    output_grids = [output_grid for _, output_grid in training_pairs]
-    all_colors = color_inventory([*input_grids, *output_grids])
-    backgrounds = {background_color(grid) for grid in input_grids}
-    seed_colors = tuple(color for color in all_colors if color not in backgrounds)
     candidates: list[Hypothesis] = []
-    for seed_color in seed_colors:
-        for fill_color in all_colors:
-            if "line_extend" in enabled:
-                for direction in ("up", "down", "left", "right"):
+    if _same_shape_training_pairs(training_pairs):
+        input_grids = [input_grid for input_grid, _ in training_pairs]
+        output_grids = [output_grid for _, output_grid in training_pairs]
+        all_colors = color_inventory([*input_grids, *output_grids])
+        backgrounds = {background_color(grid) for grid in input_grids}
+        seed_colors = tuple(color for color in all_colors if color not in backgrounds)
+        for seed_color in seed_colors:
+            for fill_color in all_colors:
+                if "line_extend" in enabled:
+                    for direction in ("up", "down", "left", "right"):
+                        candidates.append(
+                            Hypothesis(
+                                "line_extend",
+                                _parameter_tuple(
+                                    direction=direction,
+                                    fill_color=fill_color,
+                                    seed_color=seed_color,
+                                ),
+                                description_length=4,
+                            )
+                        )
+                if "row_span_fill" in enabled:
                     candidates.append(
                         Hypothesis(
-                            "line_extend",
-                            _parameter_tuple(
-                                direction=direction,
-                                fill_color=fill_color,
-                                seed_color=seed_color,
-                            ),
+                            "row_span_fill",
+                            _parameter_tuple(fill_color=fill_color, seed_color=seed_color),
                             description_length=4,
                         )
                     )
-            if "row_span_fill" in enabled:
-                candidates.append(
-                    Hypothesis(
-                        "row_span_fill",
-                        _parameter_tuple(fill_color=fill_color, seed_color=seed_color),
-                        description_length=4,
-                    )
-                )
+    if "dihedral_tile" in enabled:
+        candidates.extend(_dihedral_tile_candidates(training_pairs))
     return candidates

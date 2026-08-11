@@ -1,0 +1,645 @@
+{
+  "artifact_id": "ARC3-IHL-GT-INVENTORY-001",
+  "asset_inventory": [
+    {
+      "audit_limitation": "A post-hoc report is not automatically a time-ordered hypothesis annotation.",
+      "audit_reuse_status": "trace/visualization and post-hoc debugging evidence",
+      "classification": "post_hoc_rule_oracle",
+      "entries": [
+        {
+          "path": "reports/arc3_blind/cn04-L1/brainsurgery.json",
+          "sha256": "843a44ff12769a7b7887f67fb94eb9267c61404d144d89b1c1e8924e51311ce6"
+        },
+        {
+          "path": "reports/arc3_blind/ft09-L2/brainsurgery.json",
+          "sha256": "27fc77f990a22270bd83c3e277926544e8f8303508bca232f171b49ab881085f"
+        },
+        {
+          "path": "reports/arc3_blind/ft09-L3/brainsurgery.json",
+          "sha256": "f4359d4a41caed273292a3877a3aa1caf3802d592a10b986395735b61fc815c7"
+        },
+        {
+          "path": "reports/arc3_blind/g50t-L1/brainsurgery.json",
+          "sha256": "8066f9083743dfddb51bc388bb06cd1ae72c1d12555a0f27d12b314f51c2a0ec"
+        },
+        {
+          "path": "reports/arc3_blind/g50t-L2/brainsurgery.json",
+          "sha256": "c0585547f00c4a88e2b88a3365e419442aac404e906623276bbd43e1fcd28cab"
+        },
+        {
+          "path": "reports/arc3_blind/m0r0-L2/brainsurgery.json",
+          "sha256": "79027693813825cabe00311c7364440c3aaad9dfea8c204e6d7266ea392336fa"
+        },
+        {
+          "path": "reports/arc3_blind/r11l-L1/brain_surgery/r11l-495a7899/L1/brainsurgery.json",
+          "sha256": "47238feb5a4934200b59a82bdac7dd739f01bd0f51912435280df5bc29ea9273"
+        },
+        {
+          "path": "reports/arc3_blind/r11l-L1/brain_surgery/r11l-495a7899/L2/brainsurgery.json",
+          "sha256": "c827eba856358ff7eafc1ecedf805cc5d79cba51d4348675509c3372c064ac0a"
+        },
+        {
+          "path": "reports/arc3_blind/r11l-L2/brainsurgery.json",
+          "sha256": "f12f2e68a920bc049e6f026f0406dd1a33d188a6605e9fcf60d0e5a14c9236b0"
+        },
+        {
+          "path": "reports/arc3_blind/re86-transfer-2637-2641/brain_surgery/re86-8af5384d/L1/brainsurgery.json",
+          "sha256": "1c3af19dda096072ed02ab68ea01d1eb38fb896159cd07e1daf54453be1e2fa6"
+        },
+        {
+          "path": "reports/arc3_blind/sk48-L1/brain_surgery/sk48-d8078629/L1/brainsurgery.json",
+          "sha256": "4f963087d27ca5d4562d6c3b16ba2cc76e10d28403a96d4ebf97f47c01154fb9"
+        },
+        {
+          "path": "reports/arc3_blind/su15-L1/brain_surgery/su15-1944f8ab/L1/brainsurgery.json",
+          "sha256": "633cf5ebea533049bbcf5640f516ed26bc05c935c6eeee3b08656b8674b47096"
+        },
+        {
+          "path": "reports/arc3_blind/tn36-L1/brain_surgery/tn36-ef4dde99/L1/brainsurgery.json",
+          "sha256": "653aa68bdd0cec7b7e783a52f657b8ce4512eaa346c8b6f7189533e5008e740d"
+        },
+        {
+          "path": "reports/arc3_blind/tr87-L1/brain_surgery/tr87-cd924810/L1/brainsurgery.json",
+          "sha256": "846ebffff357fcf49decf08d783c2eb6e30566f07fcfb31220258b3330662696"
+        },
+        {
+          "path": "reports/arc3_blind/tu93-L1/brainsurgery.json",
+          "sha256": "4fa6145c5ed54e6e2904f9933407999954c6703f6503a5a2661694e4db659978"
+        },
+        {
+          "path": "reports/arc3_blind/tu93-L2/brainsurgery.json",
+          "sha256": "256f6c8d7244f42a335f972a5b6a66a9edd7809f74ced7169456424335334ec3"
+        },
+        {
+          "path": "reports/arc3_blind/vc33-L2/brain_surgery/vc33-5430563c/L2/brainsurgery.json",
+          "sha256": "d3175b06239a6aef34695c3467fdf88e82f6986c90170b0e8eb912d12aedd36d"
+        },
+        {
+          "path": "reports/arc3_blind/vc33-L3/brain_surgery/vc33-5430563c/L3/brainsurgery.json",
+          "sha256": "84e9c76885798b5e00c9ec9745c0142433a9f68eab3f71bd435f5411ec380ff3"
+        },
+        {
+          "path": "reports/arc3_blind/wa30-L1/brain_surgery/wa30-ee6fef47/L1/brainsurgery.json",
+          "sha256": "5529c710a642839f7daefab77fac80f6f5b2da5e0120ababc2d6b079a632229f"
+        }
+      ],
+      "entry_count": 19,
+      "live_learner_access": false,
+      "new_annotation_required": true,
+      "reuse_decision": "post-hoc debugging/visualization evidence; not a time-ordered live trajectory",
+      "source_asset_class": "brain_surgery_records"
+    },
+    {
+      "audit_limitation": "Video media is not parsed or exposed to the live controller.",
+      "audit_reuse_status": "offline visual evidence provenance",
+      "classification": "video_only_commentary",
+      "entries": [
+        {
+          "path": "data/demo-videos/ls20/ls20-L1.mp4",
+          "sha256": "08a16ddf65ce8f15db8c98a422cb81bc197544254c798132300bea840428b658"
+        },
+        {
+          "path": "data/demo-videos/ls20/ls20-L2.mp4",
+          "sha256": "f80869585993a5fefeaa814239278571c19cd9ab5f220c3c054c95475a9310f1"
+        },
+        {
+          "path": "data/demo-videos/ls20/ls20-L3.mp4",
+          "sha256": "544281b3e882c6459efdf16db47d6333cd2ffcec762e2b028fb031e86e62a3f0"
+        },
+        {
+          "path": "data/demo-videos/ls20/ls20-L4.mp4",
+          "sha256": "2d05bf8a0d76c1fcd10840f1c784fdd49deff00d3f0b2f05b1fe355e6cc868fc"
+        },
+        {
+          "path": "data/demo-videos/m0r0/m0r0-L1.mp4",
+          "sha256": "1346ad68ac2d1992a13e5500e265304d01a875cb326d6757d7f9e1d9935fcc51"
+        },
+        {
+          "path": "data/demo-videos/m0r0/m0r0-L2.mp4",
+          "sha256": "925839acbcb5858a5c2c2eaa039f2df16d22b8ac00b25ec8a722c413443b1e7d"
+        },
+        {
+          "path": "data/demo-videos/m0r0/m0r0-L3.mp4",
+          "sha256": "f8c92ea651c99ff30a2812e3b675008e0414426551e8c450aa99c768b8d02d0a"
+        },
+        {
+          "path": "data/demo-videos/m0r0/m0r0-L4.mp4",
+          "sha256": "8fb8c9daa76617fc70414cf5ecb8148e255b570b627406c2144d7c3ad5dd1dc7"
+        },
+        {
+          "path": "data/demo-videos/m0r0/m0r0-L5.mp4",
+          "sha256": "2c35d67cae78f8dae5a847188e6965b2ee28c9a0c65c96ac4036d8bc4ef8a39f"
+        },
+        {
+          "path": "data/demo-videos/m0r0/m0r0-L6.mp4",
+          "sha256": "4e8a03ff026286d6ab24b874a65486b0941b00ecc406999ced387eb4cf6e189b"
+        },
+        {
+          "path": "data/demo-videos/re86/re86-L1.mp4",
+          "sha256": "10212d369f41f5e1e2a5890709a5e3454200b8a6969d2bb93d8540477f9d9e7b"
+        },
+        {
+          "path": "data/demo-videos/re86/re86-L2.mp4",
+          "sha256": "41653ce7c6a2a92844195e1732a2a38fd713040afd1fc2b20451ab032a3b7f58"
+        },
+        {
+          "path": "data/demo-videos/re86/re86-L3.mp4",
+          "sha256": "c1e07cc05a7da3f56d0c57b2259c601a50ff7dd95e0713db90c75bbd004c8470"
+        },
+        {
+          "path": "data/demo-videos/re86/re86-L4.mp4",
+          "sha256": "8616beb11ddcd203da52af711edcaa43f0fac40cfe3aaa6b5a7e108cd413aa74"
+        },
+        {
+          "path": "data/demo-videos/re86/re86-L5.mp4",
+          "sha256": "61ced09543c24653aa0a9eb44bb4d8686ad9e2af3bfbdf36009e72e73dfb70b7"
+        },
+        {
+          "path": "data/demo-videos/re86/re86-L6.mp4",
+          "sha256": "97661b88ab72f7d41d98c9f561de84a8047350393acb52229185b5bc062bfc7d"
+        },
+        {
+          "path": "data/demo-videos/re86/re86-L7.mp4",
+          "sha256": "602ed6dea5e0f9cbdc3f2a7d2150bcd90d5e1b390c2932648ebec5f4e514ef12"
+        },
+        {
+          "path": "data/demo-videos/re86/re86-L8.mp4",
+          "sha256": "2d25317c8627376210a9ece0c5040ebe1772f1148064ad36bb8f38d606357dbe"
+        },
+        {
+          "path": "data/demo-videos/ri1l/ri1l-L1.mp4",
+          "sha256": "c80ce3b9a41337ed110cc33ba79f356c395cdffe7e830986f4260346f1e62776"
+        },
+        {
+          "path": "data/demo-videos/ri1l/ri1l-L2.mp4",
+          "sha256": "dde8978d987fe004c307cc80007114f2650cf9405acc0216e95e9b52cc27ccb8"
+        },
+        {
+          "path": "data/demo-videos/ri1l/ri1l-L3.mp4",
+          "sha256": "9084564f7c98e66b4768f713fe39f64ff7ba9ea180f2499f9ea93e7a98d8a92e"
+        },
+        {
+          "path": "data/demo-videos/ri1l/ri1l-L4.mp4",
+          "sha256": "2f3e503638b5c82a2dbbb36da2e7957a2ee6ab23921cca1567431e1ff833dfe9"
+        },
+        {
+          "path": "data/demo-videos/ri1l/ri1l-L5.mp4",
+          "sha256": "c9b2bc8bf29461d2cd8e1b68d2a0207a7996ed8e2850c2d2a3a07397af5b4a45"
+        },
+        {
+          "path": "data/demo-videos/ri1l/ri1l-L6.mp4",
+          "sha256": "196280fe8131f530e667ab600a0a4a1a591c4826e664e421af50211edd49c638"
+        },
+        {
+          "path": "data/demo-videos/s5i5/s5i5-L1.mp4",
+          "sha256": "a89651ad39411842638cf2f3f0d919c5b4c93b44dc4c4be4036aaa30670c91cf"
+        },
+        {
+          "path": "data/demo-videos/s5i5/s5i5-L2.mp4",
+          "sha256": "9d972a04c0be824bc9ad50603f8acc806c9073014c38c1388d77518e8203da86"
+        },
+        {
+          "path": "data/demo-videos/s5i5/s5i5-L3.mp4",
+          "sha256": "0e829edf4fbbcab6db9800a42779bb94461f989a8f7d2bce6d6fa3eaa16edf1f"
+        },
+        {
+          "path": "data/demo-videos/s5i5/s5i5-L4.mp4",
+          "sha256": "55625b618260f9c48204f1d3e5888cadca614dce9a56e8a7cb02eeb274fd27a6"
+        },
+        {
+          "path": "data/demo-videos/s5i5/s5i5-L5.mp4",
+          "sha256": "394eb5a68b7ef43afd222b59c848bbb0cabee197fd0fe700f3442760f7fd9622"
+        },
+        {
+          "path": "data/demo-videos/s5i5/s5i5-L6.mp4",
+          "sha256": "95e301c809a433f51ff43bb87fc31cbae1604b622310d0549e97b8b07cfd8002"
+        },
+        {
+          "path": "data/demo-videos/s5i5/s5i5-L7.mp4",
+          "sha256": "88efc91e3c6887c5e88ee863f4bca37d65164dd160edbade5e19037603f15841"
+        },
+        {
+          "path": "data/demo-videos/s5i5/s5i5-L8.mp4",
+          "sha256": "882a5db7a07a39ae7fcbffd71d128f91188a1d261dc252d97802c433a544057b"
+        }
+      ],
+      "entry_count": 32,
+      "live_learner_access": false,
+      "new_annotation_required": true,
+      "reuse_decision": "visual provenance only; requires transcription or explicit annotation before structured GT use",
+      "source_asset_class": "demo_video_media"
+    },
+    {
+      "audit_limitation": "Commentary requires explicit normalization before it can become an IHL annotation record.",
+      "audit_reuse_status": "offline annotation and commentary provenance",
+      "classification": "human_or_frontier_reasoning_annotation",
+      "entries": [
+        {
+          "path": "data/demo-videos/m0r0/transcript.json",
+          "sha256": "cc4e58e6dbed778c8ed9cbc9d16276de109e4ab6c9d94391c0f440e9f559eed9"
+        },
+        {
+          "path": "data/demo-videos/re86/transcript.json",
+          "sha256": "8aee7eee140c4a716e7af3ab85b80284a2735752f5509fa5171fc9a2f0fc255e"
+        },
+        {
+          "path": "data/demo-videos/ri1l/transcript.json",
+          "sha256": "5655d4277e6b8d6b3f6869bffa2b04191cec6d9e940157b23f87d1157ad4a6e9"
+        },
+        {
+          "path": "data/demo-videos/s5i5/transcript.json",
+          "sha256": "3fc97d7abc8cc9bfb0250a18c898eaea207e82fcabd7bb7882272081648fc085"
+        },
+        {
+          "path": "data/demo-videos/s5i5/transcript.md",
+          "sha256": "eb12c17e134506566f57c7fae8beb196cbae726fb7440cc5f109d64a30cb58ad"
+        },
+        {
+          "path": "reports/ls20/transcript.json",
+          "sha256": "2798731ee9313a2f8efa933e0d3ead3671cda14ab422fa71a9bf4f29ea006e9d"
+        },
+        {
+          "path": "reports/ls20/transcript.md",
+          "sha256": "dcd7abc0efe27473159604c045a995ef0051a94ce3f96bcbe582181866fd1674"
+        }
+      ],
+      "entry_count": 7,
+      "live_learner_access": false,
+      "new_annotation_required": true,
+      "reuse_decision": "offline commentary provenance; requires explicit normalization before structured GT use",
+      "source_asset_class": "observable_demo_commentary_transcripts"
+    },
+    {
+      "audit_limitation": "The sampled JSONL records contain actions, frames, and state but no structured hypothesis/revision annotation schema.",
+      "audit_reuse_status": "directly reusable action/observation evidence",
+      "classification": "observable_real_action_trajectory",
+      "entries": [
+        {
+          "path": "demos/human_play/ls20-9607627b_20260626T010655/trajectory.jsonl",
+          "sha256": "6508e435af5e786b004e9b9ac845dfba50f1c95c6c62197071aa84d92b02baf9"
+        },
+        {
+          "path": "demos/human_play/ls20-9607627b_20260626T011224/trajectory.jsonl",
+          "sha256": "0000bb02832c98c824405831368b8130d96afdfe2c364b3f8c0e6971e75802bc"
+        },
+        {
+          "path": "demos/human_play/ls20-9607627b_20260626T012253/trajectory.jsonl",
+          "sha256": "1cf019be9703c07d5992cf3c41f1ab029e98307d170f2f29b14997c20e0a50bc"
+        },
+        {
+          "path": "demos/human_play/ls20_20260626T010528/trajectory.jsonl",
+          "sha256": "e365098b2351d43cb7754a6aaab5ace2c13635e2ee5d61247d7cc64626f28988"
+        },
+        {
+          "path": "demos/human_play/ls20_20260626T011138/trajectory.jsonl",
+          "sha256": "63f974b6504ba60241a0168fbcf01305c4af86340d8d96d4f9b36266d9308505"
+        },
+        {
+          "path": "demos/human_play/ls20_20260626T011857/trajectory.jsonl",
+          "sha256": "0e7438cb82b186a8fd1c8fd5843ad052443e29c45497f6851030016385b65164"
+        },
+        {
+          "path": "demos/human_play/m0r0-492f87ba_20260626T013555/trajectory.jsonl",
+          "sha256": "799dd75be63078effecc5084425697e2c91a89b8d3263c4990878d3f93674cdb"
+        },
+        {
+          "path": "demos/human_play/m0r0-492f87ba_20260626T014058/trajectory.jsonl",
+          "sha256": "bb5b107df457e8b97d92a14105d13c6455297289168179e434ef1e5b89fb9b93"
+        }
+      ],
+      "entry_count": 8,
+      "live_learner_access": false,
+      "new_annotation_required": false,
+      "reuse_decision": "usable as source-pinned external transition evidence; no hypothesis labels are imported",
+      "source_asset_class": "observable_human_action_trajectories"
+    },
+    {
+      "audit_limitation": "Reports must remain offline and cannot seed live policy state.",
+      "audit_reuse_status": "human-readable validation evidence",
+      "classification": "post_hoc_rule_oracle",
+      "entries": [
+        {
+          "path": "reports/arc3_blind/s5i5-L2/ORACLE_DIFF_REPORT.md",
+          "sha256": "63d2452bfaf9352d7a3092d774e5c44f166a3308efdf8f0e1d247ac27dcf3b74"
+        },
+        {
+          "path": "reports/m0r0_l1_blind_1980/ORACLE_DIFF_REPORT.md",
+          "sha256": "7f6ebcb1cf2e79fccac8f69d3a73113075680fd12feae2efae10b89e476ea9e0"
+        },
+        {
+          "path": "reports/real_games/issue_2161/s5i5/ORACLE_DIFF_REPORT.md",
+          "sha256": "0d2df4b7be4bf98f954999f266cf39ecae77d575707683c14abe3a74d5f22e9c"
+        },
+        {
+          "path": "reports/real_games/issue_2166/ls20/ORACLE_DIFF_REPORT.md",
+          "sha256": "f74dc5aadb97967355697a1466113e2fc1f478b47fe2cfca670ab164b4c89c18"
+        },
+        {
+          "path": "reports/real_games/issue_2744/cd82-fb555c5d/cd82-fb555c5d/ORACLE_DIFF_REPORT.md",
+          "sha256": "04753ac916c0acc92a3b84e8e1092029b8121027b9a6925ee9630d494e09de25"
+        },
+        {
+          "path": "reports/real_games/ls20/ORACLE_DIFF_REPORT.md",
+          "sha256": "6c5348807bd8d969d1cb2e158d6b5c9a97e44f053bd0729faf362069e23e334f"
+        },
+        {
+          "path": "reports/real_games/r11l/ORACLE_DIFF_REPORT.md",
+          "sha256": "25e760f3044fef2dc3387a39edb5c529a3fa8bf243b99073051f95768ff27066"
+        },
+        {
+          "path": "reports/real_games/re86/ORACLE_DIFF_REPORT.md",
+          "sha256": "c3578d588592c6c39d63edfa3da93beb4849df9b393a0c83fb226e9d4d1f2636"
+        },
+        {
+          "path": "reports/real_games/ri1l/live_runs/r11l-495a7899/ORACLE_DIFF_REPORT.md",
+          "sha256": "708adaabce94dcc502e4bb9f5e358c925455cb2b824ad4a9ed81aa057220b3c0"
+        },
+        {
+          "path": "reports/real_games/s5i5/ORACLE_DIFF_REPORT.md",
+          "sha256": "a77b5a354f6d8c1fc607cf89abf00bf60b539935562205f8efc04835a87214bf"
+        },
+        {
+          "path": "reports/tu93_L1_blind/ORACLE_DIFF_REPORT.md",
+          "sha256": "f88f9b096c61eda7b18058f3b2dc4e0f8a788f31e27fba8ce756fbc323442f69"
+        }
+      ],
+      "entry_count": 11,
+      "live_learner_access": false,
+      "new_annotation_required": false,
+      "reuse_decision": "post-run human-readable comparison only; never initialize learner state",
+      "source_asset_class": "offline_oracle_diff_reports"
+    },
+    {
+      "audit_limitation": "A diff or final rule comparison is not by itself an IHL reasoning trajectory.",
+      "audit_reuse_status": "post-answer validation/oracle-comparison evidence",
+      "classification": "post_hoc_rule_oracle",
+      "entries": [
+        {
+          "path": "reports/arc3_blind/s5i5-L2/offline_oracle_diff.json",
+          "sha256": "9ffa1ec786a40de9a59270ddfba56a12df0cbe2f9997cddca282d17c9c93848c"
+        },
+        {
+          "path": "reports/m0r0_l1_blind_1980/offline_oracle_diff.json",
+          "sha256": "953e2aca0dbe1c51899cabb93c2202413dfa4d7412285dc9f328cb19289cee8b"
+        },
+        {
+          "path": "reports/real_games/issue_2161/s5i5/offline_oracle_diff.json",
+          "sha256": "6027d8b0331c6b5549e233504208e461a9eb6db1ec7fd9e72c836bd4792cdccd"
+        },
+        {
+          "path": "reports/real_games/issue_2166/ls20/offline_oracle_diff.json",
+          "sha256": "f9f222c39e7dd91bfc2008aad25992186dffba6a9dfea8d79be32c052ca854bb"
+        },
+        {
+          "path": "reports/real_games/issue_2744/cd82-fb555c5d/cd82-fb555c5d/offline_oracle_diff.json",
+          "sha256": "a291abe754b904863430b8d9516d9bb6358ff23708d15161cbf81db4706b4d4d"
+        },
+        {
+          "path": "reports/real_games/ls20/offline_oracle_diff.json",
+          "sha256": "c545cf43b123f540a28753bb947ff2f68a79e5fb918d5e5f5d89143f45f6b724"
+        },
+        {
+          "path": "reports/real_games/r11l/offline_oracle_diff.json",
+          "sha256": "3e590d376db255413dc15f462a2f0a3bac756383612957905275cdbbd7480bbb"
+        },
+        {
+          "path": "reports/real_games/re86/offline_oracle_diff.json",
+          "sha256": "17d1bcc657b41c9a2655b91276a6e9ae84687a3f61bca47d2a7db4becdb1cc54"
+        },
+        {
+          "path": "reports/real_games/ri1l/live_runs/r11l-495a7899/offline_oracle_diff.json",
+          "sha256": "84c7cbf0afd8d8a379166cab719851aefb95b49cdeda6d88e3b6b57e63e0f064"
+        },
+        {
+          "path": "reports/real_games/s5i5/offline_oracle_diff.json",
+          "sha256": "17c1df7c8268a2e6d55ade40d750096c7c63a6ee2f9e189094a5b20b7044fd99"
+        },
+        {
+          "path": "reports/tu93_L1_blind/offline_oracle_diff.json",
+          "sha256": "85bc679ac9075c944b7048df31dc48846671a27823c4f40b597a87931120abe0"
+        }
+      ],
+      "entry_count": 11,
+      "live_learner_access": false,
+      "new_annotation_required": false,
+      "reuse_decision": "post-run comparison only; never initialize learner state",
+      "source_asset_class": "offline_oracle_diffs"
+    },
+    {
+      "audit_limitation": "These oracle maps are not live ARC123 controller inputs.",
+      "audit_reuse_status": "post-play validation oracle evidence",
+      "classification": "post_hoc_rule_oracle",
+      "entries": [
+        {
+          "path": "state/oracle/ls20_objects.json",
+          "sha256": "ea0ad86496b63c09823880f691cfd596185901963b1d7bf53b091df440966e49"
+        },
+        {
+          "path": "state/oracle/ls20_phases.json",
+          "sha256": "529fa72e9320af87486552cf4caf05f66865db3c45ebf3a079bde7eaf17de326"
+        },
+        {
+          "path": "state/oracle/ls20_rules.json",
+          "sha256": "ee3c0bc2b785d746c653995477b6a922b0b2cc8be314267198451afbf6effd3d"
+        },
+        {
+          "path": "state/oracle/m0r0_objects.json",
+          "sha256": "25c1608790c826621d9dfcac1c8f43941f65be73c8d51f73d57b4d0e1c7f6090"
+        },
+        {
+          "path": "state/oracle/m0r0_phases.json",
+          "sha256": "e451b869774ecb96aab53cf6181d0ab3f5d68fd392a6969ebf117c70e47debe7"
+        },
+        {
+          "path": "state/oracle/m0r0_rules.json",
+          "sha256": "6306fcebdc389cd158658b9759987bd49ffcaac056f1ef092bf31a7eeddce9e2"
+        },
+        {
+          "path": "state/oracle/merged_rules.json",
+          "sha256": "e2adda304c62f0de18c9098f934cb51b65c07ee3cd2a12618e3014020dbd00c8"
+        },
+        {
+          "path": "state/oracle/re86_objects.json",
+          "sha256": "9151229a5657ce513717c81204c11e613261e9fb464ab481871440eb027e105f"
+        },
+        {
+          "path": "state/oracle/re86_phases.json",
+          "sha256": "b744edd463af3be950f084ac8227629c9eb4306cdcadc7c886e14a4d5e8dadc1"
+        },
+        {
+          "path": "state/oracle/re86_rules.json",
+          "sha256": "c6d35a60695e656b65ed456995125491219dff13dc4220cc4206f2246d4292e4"
+        },
+        {
+          "path": "state/oracle/ri1l_objects.json",
+          "sha256": "a7c3bc3fc422e3746b8f2ff75d03e449c04867473e52afbb0014fb3fc20c49a9"
+        },
+        {
+          "path": "state/oracle/ri1l_phases.json",
+          "sha256": "0723fbdfec625ad75616f3a8b406346fa191302e3c695c7e840e098b6c403ed4"
+        },
+        {
+          "path": "state/oracle/ri1l_rules.json",
+          "sha256": "c37bf3b34adaeedb979fc1a0df571be3e2e52a09682f2e22d53597cbaa13ddf9"
+        },
+        {
+          "path": "state/oracle/s5i5_objects.json",
+          "sha256": "f3261aac24e242992bbbacb38aa3c85e569cf1ec5d05aafb21b7e21517178e91"
+        },
+        {
+          "path": "state/oracle/s5i5_phases.json",
+          "sha256": "e16d9eda6ed4525a4ec9285ea14617a06bf22e32e37008a8c5d6fd6afeea9783"
+        },
+        {
+          "path": "state/oracle/s5i5_rules.json",
+          "sha256": "011957ad145934ae0798d47f9d0e7fdb805319fea79a6d55e37b5db0628df91b"
+        },
+        {
+          "path": "state/oracle/universal_rules.json",
+          "sha256": "0e7081688baad67c8a33d3b201435cae1c393305065f18276ca681adcb47e3a0"
+        }
+      ],
+      "entry_count": 17,
+      "live_learner_access": false,
+      "new_annotation_required": false,
+      "reuse_decision": "post-run oracle comparison only; never initialize learner state",
+      "source_asset_class": "offline_oracle_rule_phase_object_maps"
+    },
+    {
+      "audit_limitation": "The guards enforce isolation; they do not provide task-solving supervision.",
+      "audit_reuse_status": "directly reusable boundary checks",
+      "classification": "unsuitable_or_leaky_artifact",
+      "entries": [
+        {
+          "path": "scripts/arc3_agent/blind_actuation_oracle_gate.py",
+          "sha256": "78501652eb999bdc66bfb7e112fbf3f7f15aae2a9f0fc476b1fb862534bfda1b"
+        },
+        {
+          "path": "scripts/arc3_agent/blind_learner_gate.py",
+          "sha256": "04f19ac1bbc8416bb4dca2a4b7cc64ce43f8a3c78be980fc762b60569834811f"
+        },
+        {
+          "path": "scripts/arc3_agent/blind_public_learner_oracle_diff.py",
+          "sha256": "52561078fb54f24fd20855f6fe6e1113a4760c0528d27dc0c0888d6cf7bf03a6"
+        },
+        {
+          "path": "scripts/arc3_agent/online_exact_support_confirm.py",
+          "sha256": "af910bbb540f32512b89beab2ee163a28399be3b017bf50eaa692d2f8e182b23"
+        },
+        {
+          "path": "scripts/demo_oracle_leak_guard.py",
+          "sha256": "9074bafd4ae7743636f7daf0b4a4622332f27d6af188291bc18e21babdd2fb45"
+        },
+        {
+          "path": "scripts/oracle_paths.py",
+          "sha256": "627a8027327cc3808200671ab4e4692b63965f360eeb52be0b3962950e427701"
+        }
+      ],
+      "entry_count": 6,
+      "live_learner_access": false,
+      "new_annotation_required": false,
+      "reuse_decision": "boundary-control assets, not learning evidence; reuse only as test controls",
+      "source_asset_class": "oracle_isolation_guards"
+    },
+    {
+      "audit_limitation": "The level segments and their manifest preserve outcomes and actions, but require explicit normalization before they become IHL hypothesis/revision annotations.",
+      "audit_reuse_status": "directly reusable per-level action/observation evidence",
+      "classification": "observable_real_action_trajectory",
+      "entries": [
+        {
+          "path": "demos/human_play/segmented/ls20_L1_human.jsonl",
+          "sha256": "70f83f41eb54ec81cf8ac0ec9e4e0b1a4ec5ccf4ab9868f48513f0d08a00434d"
+        },
+        {
+          "path": "demos/human_play/segmented/ls20_L2_human.jsonl",
+          "sha256": "a62f1d914787e55fd8c086508b37aa4a666e40e144aa66532b71d2b939f58a0c"
+        },
+        {
+          "path": "demos/human_play/segmented/ls20_L3_human.jsonl",
+          "sha256": "4f9a037153584501d74f4fbc5389bf6e29da0260d6b894f621062e218fa02080"
+        },
+        {
+          "path": "demos/human_play/segmented/ls20_L4_human.jsonl",
+          "sha256": "a1143224d6ea6eb420d3ed9fd6a1a299082178d67a9390533e9c253c1d4ac712"
+        },
+        {
+          "path": "demos/human_play/segmented/ls20_L5_human.jsonl",
+          "sha256": "651167083c74b6d57f30daf301bd361739a4505272e76e542d7a1bd7caee0ce2"
+        },
+        {
+          "path": "demos/human_play/segmented/ls20_L6_human.jsonl",
+          "sha256": "ca4291705c4aa7e63d4b1ed1cff409d5fe254073dbcdd84f4895d08ae952e380"
+        },
+        {
+          "path": "demos/human_play/segmented/ls20_L7_human_FAILED.jsonl",
+          "sha256": "6e5acc38d0a9f6d60d714be093856e6fa3bf1185e928471153ea5e0c019ed10a"
+        },
+        {
+          "path": "demos/human_play/segmented/ls20_MANIFEST.json",
+          "sha256": "072e7db95aa660b63a0fbd8b1909d4426a4e6d70b4c99fce548016327ae3625c"
+        }
+      ],
+      "entry_count": 8,
+      "live_learner_access": false,
+      "new_annotation_required": true,
+      "reuse_decision": "usable as source-pinned per-level external transition evidence; add explicit public annotations only offline",
+      "source_asset_class": "segmented_human_level_trajectories"
+    },
+    {
+      "audit_limitation": "These analysis-only process models can inform an auditable annotation schema, but their task-specific conclusions must never enter live controller state.",
+      "audit_reuse_status": "offline reasoning-process annotation provenance",
+      "classification": "human_or_frontier_reasoning_annotation",
+      "entries": [
+        {
+          "path": "reports/demo_reasoning/m0r0_L1_reasoning_model.md",
+          "sha256": "5540f8b47d6c9e395457160aa2ef760da58e622498282aedb17c2aaf4fbe3cd2"
+        },
+        {
+          "path": "reports/demo_reasoning/s5i5_L1_reasoning_model.md",
+          "sha256": "8d937e8977d09b5c1a11b0c561f94950aee5f5d61aaaf12c0e8afab50b17d708"
+        }
+      ],
+      "entry_count": 2,
+      "live_learner_access": false,
+      "new_annotation_required": true,
+      "reuse_decision": "offline annotation provenance only; normalize only under an approved no-live-leak protocol",
+      "source_asset_class": "structured_reasoning_process_models"
+    }
+  ],
+  "audited_asset_snapshot": {
+    "commit": "c0f27916881071fe4c9f622383d5c47a3bcc05ab",
+    "repository": "https://github.com/dannaf/SingularityML",
+    "role": "durable source snapshot used by the upstream audit entries"
+  },
+  "inventory_count": 10,
+  "live_agent_boundary": {
+    "final_rule_visible_to_live_agent": false,
+    "inventory_visible_to_live_agent": false,
+    "oracle_comparison_only_after_run": true,
+    "trajectory_oracle_visible_to_live_agent": false
+  },
+  "reuse_vs_new_annotation_decision": {
+    "directly_reusable_now": [
+      "observable_real_action_trajectory as source-pinned replay environment evidence",
+      "oracle_isolation_guards as boundary-test controls"
+    ],
+    "requires_new_or_approved_normalization": [
+      "segmented trajectories need explicit public hypothesis/revision annotations",
+      "reasoning and commentary records require offline-only normalization approval",
+      "video media requires transcription or annotation"
+    ],
+    "validation_only": [
+      "post-hoc rules, oracle diffs, and brain-surgery reports remain post-run comparisons"
+    ]
+  },
+  "schema_reference": "research/oracle_specs/ARC3_IHL_GT_SCHEMA_001.json",
+  "schema_version": 1,
+  "source_pin": {
+    "commit": "d32b91e6b442079fbd46f0cd17c608485032d278",
+    "path": "docs/ARC3_ORACLE_ASSET_AUDIT_001.json",
+    "repository": "https://github.com/dannaf/SingularityML",
+    "sha256": "fa6abbd08eb476c15b3f397149fadfa8d95dffb29b553fbef73d902aad4b7e74",
+    "url": "https://github.com/dannaf/SingularityML/blob/d32b91e6b442079fbd46f0cd17c608485032d278/docs/ARC3_ORACLE_ASSET_AUDIT_001.json"
+  },
+  "title": "Source-pinned ARC3 artifact inventory for offline IHL GT work"
+}

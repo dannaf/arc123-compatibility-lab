@@ -1,0 +1,555 @@
+{
+  "artifact_id": "ARC12-IHL-GT-PILOT-001",
+  "live_agent_boundary": {
+    "generic_decomposition_visible_to_live_agent": false,
+    "gt_solver_visible_to_live_agent": false,
+    "held_out_test_output_visible_before_commit": false,
+    "historical_schema_visible_to_live_agent": false,
+    "records_visible_to_live_agent": false
+  },
+  "purpose": "Offline learner-development comparison and V&V only; never a live answer mechanism.",
+  "record_count": 4,
+  "records": [
+    {
+      "benchmark": "arc1",
+      "final_program": {
+        "composition_depth": 6,
+        "learned_parameter_kinds": [
+          "learned_shape_color_support"
+        ],
+        "perception_operators": [
+          "background_mode",
+          "same_color_8connected_marker"
+        ],
+        "rediscovery_status": {
+          "search_cost": null,
+          "status": "not_evaluated_against_origin_schema",
+          "value": null
+        },
+        "relation_operators": [
+          "dihedral_marker_signature",
+          "foreground_size_role"
+        ],
+        "transform_operators": [
+          "SELECT",
+          "FILTER",
+          "COPY",
+          "RECOLOR",
+          "OVERLAY",
+          "ORDER_SEQUENCE"
+        ]
+      },
+      "live_agent_input": false,
+      "offline_only": true,
+      "record_id": "ARC12-IHL-GT-PILOT-001:arc1:009d5c81",
+      "steps": [
+        {
+          "attention": {
+            "locus": "offline curated-record metadata and generic decomposition",
+            "purpose": "post-answer diagnostic comparison only"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_GENERIC_DECOMPOSITION",
+          "hypothesis_after": {
+            "candidate_generic_program": {
+              "composition_depth": 6,
+              "learned_parameter_kinds": [
+                "learned_shape_color_support"
+              ],
+              "perception_operators": [
+                "background_mode",
+                "same_color_8connected_marker"
+              ],
+              "rediscovery_status": {
+                "search_cost": null,
+                "status": "not_evaluated_against_origin_schema",
+                "value": null
+              },
+              "relation_operators": [
+                "dihedral_marker_signature",
+                "foreground_size_role"
+              ],
+              "transform_operators": [
+                "SELECT",
+                "FILTER",
+                "COPY",
+                "RECOLOR",
+                "OVERLAY",
+                "ORDER_SEQUENCE"
+              ]
+            }
+          },
+          "hypothesis_before": null,
+          "observation": {
+            "perception_operators": [
+              "background_mode",
+              "same_color_8connected_marker"
+            ],
+            "relation_operators": [
+              "dihedral_marker_signature",
+              "foreground_size_role"
+            ],
+            "task_source_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/arc_data/arc1/evaluation/009d5c81.json"
+          },
+          "predicted_scope": {
+            "boundary": "no held-out test cells or answer grid are materialized",
+            "coverage": "not a live prediction"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "offline_generic_program_descriptor"
+          },
+          "residual_summary": {
+            "live_controller_loaded": false,
+            "status": "requires independent live learner comparison"
+          },
+          "revision": {
+            "multiple_valid_trajectories_permitted": true,
+            "status": "not_applicable_to_post_hoc_seed_record"
+          },
+          "step": 0,
+          "support": {
+            "rediscovery_status": {
+              "search_cost": null,
+              "status": "not_evaluated_against_origin_schema",
+              "value": null
+            },
+            "source_historical_vv": {
+              "all_cells_match": true,
+              "compared_position_count": 196,
+              "mismatched_cell_count": 0,
+              "test_case_count": 1,
+              "verdict": "YES"
+            }
+          }
+        }
+      ],
+      "task_id": "009d5c81",
+      "trajectory_source": {
+        "curated_record": {
+          "commit": "525000ab1f78fb1e66906149f72f6e8eac34ab71",
+          "path": "research/arc123_exports/ARC12_CURATED_60_001.json",
+          "repository": "https://github.com/dannaf/arc12-compatibility-lab"
+        },
+        "generic_decomposition": {
+          "commit": "525000ab1f78fb1e66906149f72f6e8eac34ab71",
+          "path": "research/arc123_exports/ARC12_CURATED_60_DECOMPOSITIONS_001.json",
+          "repository": "https://github.com/dannaf/arc12-compatibility-lab"
+        },
+        "task_source": {
+          "commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+          "feature_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/docs/arc1_gt/features/009d5c81.json",
+          "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+          "task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/arc_data/arc1/evaluation/009d5c81.json"
+        }
+      },
+      "verification": {
+        "held_out_test_output_before_commit_present": false,
+        "hidden_chain_of_thought_present": false,
+        "live_solver_dispatch_code_present": false,
+        "source_historical_vv_present": true,
+        "source_pin_checked": true
+      }
+    },
+    {
+      "benchmark": "arc1",
+      "final_program": {
+        "composition_depth": 6,
+        "learned_parameter_kinds": [],
+        "perception_operators": [
+          "input_color",
+          "topological_enclosure"
+        ],
+        "rediscovery_status": {
+          "search_cost": null,
+          "status": "not_evaluated_against_origin_schema",
+          "value": null
+        },
+        "relation_operators": [],
+        "transform_operators": [
+          "SELECT",
+          "FILTER",
+          "COPY",
+          "RECOLOR",
+          "OVERLAY",
+          "ORDER_SEQUENCE"
+        ]
+      },
+      "live_agent_input": false,
+      "offline_only": true,
+      "record_id": "ARC12-IHL-GT-PILOT-001:arc1:00d62c1b",
+      "steps": [
+        {
+          "attention": {
+            "locus": "offline curated-record metadata and generic decomposition",
+            "purpose": "post-answer diagnostic comparison only"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_GENERIC_DECOMPOSITION",
+          "hypothesis_after": {
+            "candidate_generic_program": {
+              "composition_depth": 6,
+              "learned_parameter_kinds": [],
+              "perception_operators": [
+                "input_color",
+                "topological_enclosure"
+              ],
+              "rediscovery_status": {
+                "search_cost": null,
+                "status": "not_evaluated_against_origin_schema",
+                "value": null
+              },
+              "relation_operators": [],
+              "transform_operators": [
+                "SELECT",
+                "FILTER",
+                "COPY",
+                "RECOLOR",
+                "OVERLAY",
+                "ORDER_SEQUENCE"
+              ]
+            }
+          },
+          "hypothesis_before": null,
+          "observation": {
+            "perception_operators": [
+              "input_color",
+              "topological_enclosure"
+            ],
+            "relation_operators": [],
+            "task_source_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/arc_data/arc1/training/00d62c1b.json"
+          },
+          "predicted_scope": {
+            "boundary": "no held-out test cells or answer grid are materialized",
+            "coverage": "not a live prediction"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "offline_generic_program_descriptor"
+          },
+          "residual_summary": {
+            "live_controller_loaded": false,
+            "status": "requires independent live learner comparison"
+          },
+          "revision": {
+            "multiple_valid_trajectories_permitted": true,
+            "status": "not_applicable_to_post_hoc_seed_record"
+          },
+          "step": 0,
+          "support": {
+            "rediscovery_status": {
+              "search_cost": null,
+              "status": "not_evaluated_against_origin_schema",
+              "value": null
+            },
+            "source_historical_vv": {
+              "all_cells_match": true,
+              "compared_position_count": 400,
+              "mismatched_cell_count": 0,
+              "test_case_count": 1,
+              "verdict": "YES"
+            }
+          }
+        }
+      ],
+      "task_id": "00d62c1b",
+      "trajectory_source": {
+        "curated_record": {
+          "commit": "525000ab1f78fb1e66906149f72f6e8eac34ab71",
+          "path": "research/arc123_exports/ARC12_CURATED_60_001.json",
+          "repository": "https://github.com/dannaf/arc12-compatibility-lab"
+        },
+        "generic_decomposition": {
+          "commit": "525000ab1f78fb1e66906149f72f6e8eac34ab71",
+          "path": "research/arc123_exports/ARC12_CURATED_60_DECOMPOSITIONS_001.json",
+          "repository": "https://github.com/dannaf/arc12-compatibility-lab"
+        },
+        "task_source": {
+          "commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+          "feature_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/docs/arc1_gt/features/00d62c1b.json",
+          "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+          "task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/arc_data/arc1/training/00d62c1b.json"
+        }
+      },
+      "verification": {
+        "held_out_test_output_before_commit_present": false,
+        "hidden_chain_of_thought_present": false,
+        "live_solver_dispatch_code_present": false,
+        "source_historical_vv_present": true,
+        "source_pin_checked": true
+      }
+    },
+    {
+      "benchmark": "arc2",
+      "final_program": {
+        "composition_depth": 6,
+        "learned_parameter_kinds": [
+          "integer_output_scale"
+        ],
+        "perception_operators": [],
+        "rediscovery_status": {
+          "search_cost": null,
+          "status": "not_evaluated_against_origin_schema",
+          "value": null
+        },
+        "relation_operators": [
+          "vertical_band_index"
+        ],
+        "transform_operators": [
+          "SELECT",
+          "FILTER",
+          "COPY",
+          "REFLECT",
+          "OVERLAY",
+          "ORDER_SEQUENCE"
+        ]
+      },
+      "live_agent_input": false,
+      "offline_only": true,
+      "record_id": "ARC12-IHL-GT-PILOT-001:arc2:00576224",
+      "steps": [
+        {
+          "attention": {
+            "locus": "offline curated-record metadata and generic decomposition",
+            "purpose": "post-answer diagnostic comparison only"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_GENERIC_DECOMPOSITION",
+          "hypothesis_after": {
+            "candidate_generic_program": {
+              "composition_depth": 6,
+              "learned_parameter_kinds": [
+                "integer_output_scale"
+              ],
+              "perception_operators": [],
+              "rediscovery_status": {
+                "search_cost": null,
+                "status": "not_evaluated_against_origin_schema",
+                "value": null
+              },
+              "relation_operators": [
+                "vertical_band_index"
+              ],
+              "transform_operators": [
+                "SELECT",
+                "FILTER",
+                "COPY",
+                "REFLECT",
+                "OVERLAY",
+                "ORDER_SEQUENCE"
+              ]
+            }
+          },
+          "hypothesis_before": null,
+          "observation": {
+            "perception_operators": [],
+            "relation_operators": [
+              "vertical_band_index"
+            ],
+            "task_source_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/71f86ff4c5304e452e0659131171f0519b50e21c/arc_data/arc2/training/00576224.json"
+          },
+          "predicted_scope": {
+            "boundary": "no held-out test cells or answer grid are materialized",
+            "coverage": "not a live prediction"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "offline_generic_program_descriptor"
+          },
+          "residual_summary": {
+            "live_controller_loaded": false,
+            "status": "requires independent live learner comparison"
+          },
+          "revision": {
+            "multiple_valid_trajectories_permitted": true,
+            "status": "not_applicable_to_post_hoc_seed_record"
+          },
+          "step": 0,
+          "support": {
+            "rediscovery_status": {
+              "search_cost": null,
+              "status": "not_evaluated_against_origin_schema",
+              "value": null
+            },
+            "source_historical_vv": {
+              "all_cells_match": true,
+              "compared_position_count": 36,
+              "mismatched_cell_count": 0,
+              "test_case_count": 1,
+              "verdict": "YES"
+            }
+          }
+        }
+      ],
+      "task_id": "00576224",
+      "trajectory_source": {
+        "curated_record": {
+          "commit": "525000ab1f78fb1e66906149f72f6e8eac34ab71",
+          "path": "research/arc123_exports/ARC12_CURATED_60_001.json",
+          "repository": "https://github.com/dannaf/arc12-compatibility-lab"
+        },
+        "generic_decomposition": {
+          "commit": "525000ab1f78fb1e66906149f72f6e8eac34ab71",
+          "path": "research/arc123_exports/ARC12_CURATED_60_DECOMPOSITIONS_001.json",
+          "repository": "https://github.com/dannaf/arc12-compatibility-lab"
+        },
+        "task_source": {
+          "commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+          "feature_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/71f86ff4c5304e452e0659131171f0519b50e21c/docs/arc2_gt/features/00576224.json",
+          "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+          "task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/71f86ff4c5304e452e0659131171f0519b50e21c/arc_data/arc2/training/00576224.json"
+        }
+      },
+      "verification": {
+        "held_out_test_output_before_commit_present": false,
+        "hidden_chain_of_thought_present": false,
+        "live_solver_dispatch_code_present": false,
+        "source_historical_vv_present": true,
+        "source_pin_checked": true
+      }
+    },
+    {
+      "benchmark": "arc2",
+      "final_program": {
+        "composition_depth": 6,
+        "learned_parameter_kinds": [],
+        "perception_operators": [
+          "background_mode"
+        ],
+        "rediscovery_status": {
+          "search_cost": null,
+          "status": "not_evaluated_against_origin_schema",
+          "value": null
+        },
+        "relation_operators": [
+          "block_owner_color"
+        ],
+        "transform_operators": [
+          "SELECT",
+          "FILTER",
+          "COPY",
+          "RECOLOR",
+          "OVERLAY",
+          "ORDER_SEQUENCE"
+        ]
+      },
+      "live_agent_input": false,
+      "offline_only": true,
+      "record_id": "ARC12-IHL-GT-PILOT-001:arc2:007bbfb7",
+      "steps": [
+        {
+          "attention": {
+            "locus": "offline curated-record metadata and generic decomposition",
+            "purpose": "post-answer diagnostic comparison only"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_GENERIC_DECOMPOSITION",
+          "hypothesis_after": {
+            "candidate_generic_program": {
+              "composition_depth": 6,
+              "learned_parameter_kinds": [],
+              "perception_operators": [
+                "background_mode"
+              ],
+              "rediscovery_status": {
+                "search_cost": null,
+                "status": "not_evaluated_against_origin_schema",
+                "value": null
+              },
+              "relation_operators": [
+                "block_owner_color"
+              ],
+              "transform_operators": [
+                "SELECT",
+                "FILTER",
+                "COPY",
+                "RECOLOR",
+                "OVERLAY",
+                "ORDER_SEQUENCE"
+              ]
+            }
+          },
+          "hypothesis_before": null,
+          "observation": {
+            "perception_operators": [
+              "background_mode"
+            ],
+            "relation_operators": [
+              "block_owner_color"
+            ],
+            "task_source_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/71f86ff4c5304e452e0659131171f0519b50e21c/arc_data/arc2/training/007bbfb7.json"
+          },
+          "predicted_scope": {
+            "boundary": "no held-out test cells or answer grid are materialized",
+            "coverage": "not a live prediction"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "offline_generic_program_descriptor"
+          },
+          "residual_summary": {
+            "live_controller_loaded": false,
+            "status": "requires independent live learner comparison"
+          },
+          "revision": {
+            "multiple_valid_trajectories_permitted": true,
+            "status": "not_applicable_to_post_hoc_seed_record"
+          },
+          "step": 0,
+          "support": {
+            "rediscovery_status": {
+              "search_cost": null,
+              "status": "not_evaluated_against_origin_schema",
+              "value": null
+            },
+            "source_historical_vv": {
+              "all_cells_match": true,
+              "compared_position_count": 81,
+              "mismatched_cell_count": 0,
+              "test_case_count": 1,
+              "verdict": "YES"
+            }
+          }
+        }
+      ],
+      "task_id": "007bbfb7",
+      "trajectory_source": {
+        "curated_record": {
+          "commit": "525000ab1f78fb1e66906149f72f6e8eac34ab71",
+          "path": "research/arc123_exports/ARC12_CURATED_60_001.json",
+          "repository": "https://github.com/dannaf/arc12-compatibility-lab"
+        },
+        "generic_decomposition": {
+          "commit": "525000ab1f78fb1e66906149f72f6e8eac34ab71",
+          "path": "research/arc123_exports/ARC12_CURATED_60_DECOMPOSITIONS_001.json",
+          "repository": "https://github.com/dannaf/arc12-compatibility-lab"
+        },
+        "task_source": {
+          "commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+          "feature_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/71f86ff4c5304e452e0659131171f0519b50e21c/docs/arc2_gt/features/007bbfb7.json",
+          "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+          "task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/71f86ff4c5304e452e0659131171f0519b50e21c/arc_data/arc2/training/007bbfb7.json"
+        }
+      },
+      "verification": {
+        "held_out_test_output_before_commit_present": false,
+        "hidden_chain_of_thought_present": false,
+        "live_solver_dispatch_code_present": false,
+        "source_historical_vv_present": true,
+        "source_pin_checked": true
+      }
+    }
+  ],
+  "schema_reference": "research/oracle_specs/ARC12_IHL_GT_SCHEMA_001.json",
+  "schema_version": 1,
+  "selection_protocol": "two lexicographically first curated task IDs per benchmark; source metadata only",
+  "source_pin": {
+    "artifacts": {
+      "research/arc123_exports/ARC12_CURATED_60_001.json": "00d50d7ddb9d3e0e80298c9b1c3268a67223e6e1834e9220643840b02d98c6bc",
+      "research/arc123_exports/ARC12_CURATED_60_DECOMPOSITIONS_001.json": "a2661d20b8f5cc255866e55ffab077f653cd6f8463e15e5855df13f081d786e8"
+    },
+    "commit": "525000ab1f78fb1e66906149f72f6e8eac34ab71",
+    "repository": "https://github.com/dannaf/arc12-compatibility-lab"
+  },
+  "title": "Source-pinned ARC12 IHL GT pilot: externally reportable generic decompositions"
+}

@@ -116,6 +116,68 @@ class IterativeHypothesisLearnerTests(unittest.TestCase):
         self.assertEqual(result.selected_hypothesis, "tile_repeat(column_factor=3,row_factor=3)")
         self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
 
+    def test_dihedral_tiling_is_inferred_from_visible_macro_blocks(self) -> None:
+        environment = self._environment(
+            [
+                {
+                    "input": [[7, 9], [4, 3]],
+                    "output": [
+                        [7, 9, 7, 9, 7, 9],
+                        [4, 3, 4, 3, 4, 3],
+                        [9, 7, 9, 7, 9, 7],
+                        [3, 4, 3, 4, 3, 4],
+                        [7, 9, 7, 9, 7, 9],
+                        [4, 3, 4, 3, 4, 3],
+                    ],
+                },
+                {
+                    "input": [[1, 2], [5, 6]],
+                    "output": [
+                        [1, 2, 1, 2, 1, 2],
+                        [5, 6, 5, 6, 5, 6],
+                        [2, 1, 2, 1, 2, 1],
+                        [6, 5, 6, 5, 6, 5],
+                        [1, 2, 1, 2, 1, 2],
+                        [5, 6, 5, 6, 5, 6],
+                    ],
+                },
+            ],
+            [
+                {
+                    "input": [[3, 2], [7, 8]],
+                    "output": [
+                        [3, 2, 3, 2, 3, 2],
+                        [7, 8, 7, 8, 7, 8],
+                        [2, 3, 2, 3, 2, 3],
+                        [8, 7, 8, 7, 8, 7],
+                        [3, 2, 3, 2, 3, 2],
+                        [7, 8, 7, 8, 7, 8],
+                    ],
+                }
+            ],
+        )
+
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "dihedral_tile")
+        ).solve(environment, "synthetic-dihedral-tile")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertIn("dihedral_tile", result.selected_hypothesis)
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+        actions = [event["action"] for event in result.trace["events"]]
+        self.assertLess(actions.index(ActionKind.SPECIALIZE.value), actions.index(ActionKind.COMPOSE_RULE.value))
+        self.assertIn(ActionKind.EXPLAIN_RESIDUAL.value, actions)
+        compare_snapshots = [
+            event["payload"]["current_theory"]
+            for event in result.trace["events"]
+            if event["action"] == ActionKind.COMPARE.value
+            and "current_theory" in event["payload"]
+        ]
+        self.assertTrue(compare_snapshots)
+        self.assertTrue(all("revision_count" in snapshot for snapshot in compare_snapshots))
+        self.assertTrue(all("history" not in snapshot for snapshot in compare_snapshots))
+
     def test_explicit_empty_operator_vocabulary_does_not_restore_defaults(self) -> None:
         environment = self._environment(
             [{"input": [[1]], "output": [[2]]}],
