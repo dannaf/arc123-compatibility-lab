@@ -1,0 +1,354 @@
+{
+  "attempt_count": 40,
+  "attempts": [
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "84db8fc4",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "ba9d41b8",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "025d127b",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "623ea044",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "a64e4611",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "8ee62060",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "516b51b7",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc1",
+      "selected_hypothesis": "adjacent_bilateral_cellwise_combine(axis=vertical,table=0:0:5;0:2:0;3:0:0;3:2:0)",
+      "task_id": "66f2d22f",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "d6ad076f",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "2bcee788",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc1",
+      "selected_hypothesis": "central_separator_cellwise_combine(axis=horizontal,table=0:0:3;0:2:0;7:0:0;7:2:0)",
+      "task_id": "6430c8c4",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "1990f7a8",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc1",
+      "selected_hypothesis": "central_separator_cellwise_combine(axis=horizontal,table=0:0:8;0:6:0;2:0:0;2:6:0)",
+      "task_id": "0c9aba6e",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "13713586",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "2697da3f",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "93b581b8",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "264363fd",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "e41c6fd3",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "90f3ed37",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc1",
+      "selected_hypothesis": "compose(identity,dihedral_tile(column_factor=2,row_factor=2,template=identity;flip_lr;flip_tb;rotate_180))",
+      "task_id": "3af2c5a8",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "22806e14",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc2",
+      "selected_hypothesis": "distinct_nonbackground_scale",
+      "task_id": "b91ae062",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "92e50de0",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "72a961c9",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "652646ff",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "1b60fb0c",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "c444b776",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc2",
+      "selected_hypothesis": "central_separator_cellwise_combine(axis=horizontal,table=0:0:0;0:2:3;1:0:3;1:2:0)",
+      "task_id": "99b1bc43",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "7b0280bc",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "48131b3c",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "dc1df850",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "88e364bc",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "64efde09",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "800d221b",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "9aaea919",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "2ba387bc",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "58f5dbd5",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "16de56c4",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "0934a4d8",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "53fb4810",
+      "training_exact": false,
+      "used_fallback": true
+    }
+  ],
+  "claim_boundary": "This source-pinned, failure-inclusive development packet measures two generic relations on P0020's immutable fourth disjoint 20 ARC-AGI-1 plus 20 ARC-AGI-2 filename-only cohort. `adjacent_bilateral_cellwise_combine` splits exactly two adjacent equal panels, learns one aligned finite color-pair-to-output table exclusively from visible demonstrations, rejects conflicting orientations, and returns no partial value for an unseen test pair. `distinct_nonbackground_scale` derives the current grid's unique modal background and dynamically expands every cell by the number of distinct non-background colors; it refuses tied-background or factor-less grids. P0020's `4/40` source-pinned baseline is the same-cohort pre-change denominator. This is development evidence only, not independent transfer evidence and not an ARC-AGI-1 or ARC-AGI-2 solver claim. The live controller receives only visible training input/output examples and test inputs. It receives no task ID, imported cohort metadata, GT feature contract, GT solver, historical decomposition, or held-out output before committing a complete grid. P0020's baseline bytes and reports remain immutable; P0021 results may not retune this frozen controller or its operator vocabulary.",
+  "complete_wrong_count": 34,
+  "controller_oracle_boundary_scan": "pass",
+  "exact_solve_count": 6,
+  "exact_solve_count_by_benchmark": {
+    "arc1": 4,
+    "arc2": 2
+  },
+  "fallback_count": 34,
+  "frozen_controller": {
+    "commit": "15833b3826281b49f70da8b9c7b2060ca1f00b8b",
+    "source_files": {
+      "scripts/freeze_arc12_filename_holdout.py": "f12bdd878fd43a50dcd37286f6370a028f780bd2449b2ff48634ed03b4d997d1",
+      "scripts/run_arc12_filename_holdout.py": "df34d80ba4e2f5cef70c0b7a24db2ad462130d1a0f37161ce267742a4ed00a3e",
+      "src/arc123/adapters/arc12.py": "db3acb45c794dcc3a1f7cdde2c52a58a2315e11e882c554e4901f876493ffd88",
+      "src/arc123/compatibility.py": "679e3efa3e71aaf9f8b3ca48cfcd517b9b87a3525cdb8db56cd4a3ba509ab8df",
+      "src/arc123/contracts.py": "3acd65973085eca77093dfeaf39adbe4176770e66993d147404d1b184d2001e3",
+      "src/arc123/controller.py": "9ea567ac7721682d4b328d381c2e9c31bc805549f4b773b0aa22381a026d5168",
+      "src/arc123/hypotheses.py": "e882aafd16b9944567e43968f0231cdac2e0e0f63b4ea729eafabb9d79eaea2e",
+      "src/arc123/model.py": "ba4fc4177414ecea6bced1b0f3866b0c72a1ce09c681c19737dd875a6f55a3ab",
+      "src/arc123/perceptions.py": "a916b0d3961f5b85c853abba67b55bf0dfa8e6a1b24d1b139768a3836218b82a",
+      "src/arc123/relational.py": "230c2f4c8321d3465b7680db3fa9678fbee1a34183b4665765b64ac382e2dfc2",
+      "src/arc123/theory.py": "552e089498773809005849fb39e88b18bd633bd0e8d3e0b5653d54ce14045f01",
+      "src/arc123/traces.py": "edb79dfd8c781ae3df15046c83114694788163928dd4634296004f64d846b3c1"
+    }
+  },
+  "packet_id": "P0021-ARC12-BILATERAL-SCALE-DEVELOPMENT-40",
+  "schema_version": 1,
+  "training_exact_count": 6
+}
