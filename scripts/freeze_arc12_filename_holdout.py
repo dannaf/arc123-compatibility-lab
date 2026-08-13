@@ -8,13 +8,24 @@ import hashlib
 import json
 import subprocess
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any, Iterable, Mapping
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_EXCLUSION_IMPORT = REPOSITORY_ROOT / "research" / "cohorts" / "ARC12_COHORT_IMPORT_001.json"
 DEFAULT_SALT = "arc123-issue-2-fresh-frozen-self-mask-v1"
 DEFAULT_ALLOCATION = {"evaluation": 12, "training": 13}
+DEFAULT_ARTIFACT_ID = "ARC12-FILENAME-ONLY-FRESH-FROZEN-001"
+DEFAULT_TITLE = "ARC12 Fresh Filename-Only Frozen 25+25 Cohort"
+DEFAULT_COHORT_KEY = "frozen_filename_only_50"
+DEFAULT_CLAIM_BOUNDARY = (
+    "This cohort is frozen before any selected task is parsed, visualized, scored, or used "
+    "for operator design. Selection reads only benchmark labels, split names, and filenames. "
+    "Selected source JSON bytes are read only as opaque SHA-256 integrity commitments; their "
+    "JSON content is not decoded by this freezer. The cohort excludes every task ID declared "
+    "by its frozen roster imports, conservatively across both benchmarks, and prevents "
+    "cross-benchmark duplicate IDs within this fresh cohort."
+)
 
 
 def _sha256_bytes(payload: bytes) -> str:
@@ -87,6 +98,44 @@ def _excluded_task_ids(imported: Mapping[str, Any]) -> set[str]:
     return excluded
 
 
+def _task_records(value: Any) -> Iterable[Mapping[str, Any]]:
+    if isinstance(value, Mapping):
+        if isinstance(value.get("task_id"), str):
+            yield value
+        for nested in value.values():
+            yield from _task_records(nested)
+    elif isinstance(value, list):
+        for nested in value:
+            yield from _task_records(nested)
+
+
+def _excluded_task_ids_from_imports(
+    import_paths: Iterable[Path],
+) -> tuple[set[str], list[dict[str, Any]]]:
+    excluded: set[str] = set()
+    metadata: list[dict[str, Any]] = []
+    for import_path in import_paths:
+        imported = _load_json(import_path)
+        imported_ids = {
+            str(record["task_id"])
+            for record in _task_records(imported)
+            if isinstance(record.get("task_id"), str) and record["task_id"]
+        }
+        if not imported_ids:
+            raise ValueError(f"exclusion import has no task IDs: {import_path}")
+        excluded.update(imported_ids)
+        metadata.append(
+            {
+                "path": str(import_path.relative_to(REPOSITORY_ROOT)),
+                "sha256": _sha256_bytes(import_path.read_bytes()),
+                "excluded_task_id_count": len(imported_ids),
+            }
+        )
+    if not excluded:
+        raise ValueError("exclusion imports do not provide prior ARC12 task IDs")
+    return excluded, metadata
+
+
 def _filename_inventory(source_root: Path, benchmark: str) -> list[dict[str, str]]:
     task_root = source_root / "arc_data" / benchmark
     records: list[dict[str, str]] = []
@@ -153,13 +202,14 @@ def _manifest(
     arc2_source: Path,
     arc1_repository: str,
     arc2_repository: str,
-    exclusion_import: Path,
+    exclusion_imports: tuple[Path, ...],
     salt: str,
+    artifact_id: str,
+    title: str,
+    cohort_key: str,
+    claim_boundary: str,
 ) -> dict[str, Any]:
-    imported = _load_json(exclusion_import)
-    excluded_task_ids = _excluded_task_ids(imported)
-    if not excluded_task_ids:
-        raise ValueError("exclusion import does not provide prior ARC12 task IDs")
+    excluded_task_ids, import_metadata = _excluded_task_ids_from_imports(exclusion_imports)
     source_roots = {"arc1": arc1_source, "arc2": arc2_source}
     repositories = {"arc1": arc1_repository, "arc2": arc2_repository}
     inventories = {
@@ -205,9 +255,9 @@ def _manifest(
         raise ValueError("frozen selection contains cross-benchmark duplicate task IDs")
     return {
         "schema_version": 1,
-        "artifact_id": "ARC12-FILENAME-ONLY-FRESH-FROZEN-001",
-        "title": "ARC12 Fresh Filename-Only Frozen 25+25 Cohort",
-        "claim_boundary": "This cohort is frozen before any selected task is parsed, visualized, scored, or used for operator design. Selection reads only benchmark labels, split names, and filenames. Selected source JSON bytes are read only as opaque SHA-256 integrity commitments; their JSON content is not decoded by this freezer. The cohort excludes every task ID previously present in the imported curated-60 or frozen-disjoint-50 rosters, conservatively across both benchmarks, and prevents cross-benchmark duplicate IDs within this fresh cohort.",
+        "artifact_id": artifact_id,
+        "title": title,
+        "claim_boundary": claim_boundary,
         "live_controller_boundary": {
             "task_id_passed_to_agent": False,
             "cohort_metadata_passed_to_agent": False,
@@ -215,7 +265,7 @@ def _manifest(
             "gt_solver_imported_or_called": False,
             "held_out_outputs_passed_to_agent": False,
         },
-        "frozen_filename_only_50": {
+        cohort_key: {
             "task_count": 50,
             "per_benchmark_task_count": sum(DEFAULT_ALLOCATION.values()),
             "source_pins": source_pins,
@@ -231,11 +281,7 @@ def _manifest(
                 ],
                 "method": "stratified sha256(salt:benchmark:split:task_id) rank over filenames",
                 "selection_salt": salt,
-                "prior_roster_import": {
-                    "path": str(exclusion_import.relative_to(REPOSITORY_ROOT)),
-                    "sha256": _sha256_bytes(exclusion_import.read_bytes()),
-                    "excluded_task_id_count": len(excluded_task_ids),
-                },
+                "prior_roster_imports": import_metadata,
                 "selection_metadata": inventory_metadata,
             },
             "tasks": tasks,
@@ -257,11 +303,32 @@ def main() -> int:
         default="https://github.com/dannaf/arc3-compatibility-lab-prime",
     )
     parser.add_argument("--exclusion-import", type=Path, default=DEFAULT_EXCLUSION_IMPORT)
+    parser.add_argument(
+        "--exclude-import",
+        action="append",
+        default=[],
+        type=Path,
+        help="Additional repository-relative frozen roster to exclude; may be repeated.",
+    )
     parser.add_argument("--salt", default=DEFAULT_SALT)
+    parser.add_argument("--artifact-id", default=DEFAULT_ARTIFACT_ID)
+    parser.add_argument("--title", default=DEFAULT_TITLE)
+    parser.add_argument("--cohort-key", default=DEFAULT_COHORT_KEY)
+    parser.add_argument("--claim-boundary", default=DEFAULT_CLAIM_BOUNDARY)
     arguments = parser.parse_args()
     output = arguments.output.resolve()
     if output.exists():
         raise ValueError(f"refusing to overwrite frozen cohort: {output}")
+    if not arguments.artifact_id or not arguments.title or not arguments.cohort_key:
+        raise ValueError("artifact ID, title, and cohort key must be non-empty")
+    exclusion_imports = tuple(
+        dict.fromkeys(
+            [
+                arguments.exclusion_import.resolve(),
+                *(item.resolve() for item in arguments.exclude_import),
+            ]
+        )
+    )
     _write_json(
         output,
         _manifest(
@@ -269,8 +336,12 @@ def main() -> int:
             arguments.arc2_source,
             arguments.arc1_repository,
             arguments.arc2_repository,
-            arguments.exclusion_import,
+            exclusion_imports,
             arguments.salt,
+            arguments.artifact_id,
+            arguments.title,
+            arguments.cohort_key,
+            arguments.claim_boundary,
         ),
     )
     print(f"frozen filename-only cohort written: {output}")

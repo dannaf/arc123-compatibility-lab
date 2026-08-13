@@ -62,6 +62,22 @@ class FilenameHoldoutFreezerTests(unittest.TestCase):
                 {"evaluation": 2},
             )
 
+    def test_additional_frozen_rosters_are_excluded_without_grid_access(self) -> None:
+        import_paths = (
+            REPOSITORY_ROOT / "research" / "cohorts" / "ARC12_COHORT_IMPORT_001.json",
+            REPOSITORY_ROOT / "research" / "cohorts" / "ARC12_FILENAME_HOLDOUT_001.json",
+            REPOSITORY_ROOT / "research" / "cohorts" / "ARC12_DEVELOPMENT_COHORT_001.json",
+            REPOSITORY_ROOT / "research" / "cohorts" / "ARC12_DEVELOPMENT_COHORT_002.json",
+            REPOSITORY_ROOT / "research" / "cohorts" / "ARC12_DEVELOPMENT_COHORT_003.json",
+            REPOSITORY_ROOT / "research" / "cohorts" / "ARC12_DEVELOPMENT_COHORT_004.json",
+        )
+
+        task_ids, imports = freezer._excluded_task_ids_from_imports(import_paths)
+
+        self.assertEqual(len(imports), 6)
+        self.assertGreaterEqual(len(task_ids), 320)
+        self.assertTrue(all(len(item["sha256"]) == 64 for item in imports))
+
 
 if __name__ == "__main__":
     unittest.main()
