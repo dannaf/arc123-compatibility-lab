@@ -44,6 +44,7 @@ PACKETS = (
     ),
 )
 COHORT_PATH = REPOSITORY_ROOT / "research" / "cohorts" / "ARC12_COHORT_IMPORT_001.json"
+P0011_PACKET = REPOSITORY_ROOT / "research" / "packets" / "P0011_ARC12_DIHEDRAL_COORDINATE_CURATED_60.json"
 
 
 class PacketEvidenceTests(unittest.TestCase):
@@ -142,6 +143,18 @@ class PacketEvidenceTests(unittest.TestCase):
         ).read_text(encoding="utf-8")
         self.assertIn("dihedral macro-tile", dihedral_diagram)
         self.assertIn("UNKNOWN RESIDUAL", dihedral_diagram)
+
+    def test_p0011_pins_its_unfrozen_baseline_and_does_not_rewrite_p0008(self) -> None:
+        packet = json.loads(P0011_PACKET.read_text(encoding="utf-8"))
+        tasks = packet_runner._packet_tasks(packet)
+
+        self.assertEqual(len(tasks), 60)
+        self.assertIn("dihedral_transform", packet["controller"]["generic_operator_families"])
+        self.assertFalse(packet["external_mutation_allowed"])
+        self.assertFalse(packet["benchmark_submission_allowed"])
+        self.assertTrue(packet["acceptance"]["do_not_rewrite_p0008_frozen_measurement"])
+        packet_runner._verify_packet_boundary(packet)
+        packet_runner._verify_baseline_reference(packet)
 
     def test_persistent_theory_packet_traces_do_not_receive_task_identifiers(self) -> None:
         for packet_path, report_root in PACKETS[3:]:

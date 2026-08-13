@@ -79,6 +79,43 @@ def _verify_clean_source(source_root: Path, expected_commit: str) -> None:
         raise ValueError(f"source must remain clean/read-only: {source_root}")
 
 
+def _repository_relative_path(raw_path: str) -> Path:
+    relative_path = Path(raw_path)
+    if relative_path.is_absolute() or ".." in relative_path.parts:
+        raise ValueError("packet path must remain inside this repository")
+    return relative_path
+
+
+def _verify_packet_boundary(packet: Mapping[str, Any]) -> None:
+    for field in ("external_mutation_allowed", "benchmark_submission_allowed"):
+        if field in packet and packet[field] is not False:
+            raise ValueError(f"packet must forbid {field.removesuffix('_allowed')}")
+
+
+def _verify_baseline_reference(packet: Mapping[str, Any]) -> None:
+    reference = packet.get("baseline_reference")
+    if reference is None:
+        return
+    if not isinstance(reference, Mapping):
+        raise ValueError("packet baseline_reference must be an object")
+    raw_path = reference.get("receipt_path")
+    expected_hash = reference.get("receipt_sha256")
+    packet_id = reference.get("packet_id")
+    exact_solve_count = reference.get("exact_solve_count")
+    if not isinstance(raw_path, str) or not isinstance(expected_hash, str):
+        raise ValueError("packet baseline reference lacks a receipt path/hash")
+    if not isinstance(packet_id, str) or not isinstance(exact_solve_count, int):
+        raise ValueError("packet baseline reference lacks its expected outcome")
+    receipt_path = REPOSITORY_ROOT / _repository_relative_path(raw_path)
+    if _sha256(receipt_path) != expected_hash:
+        raise ValueError("packet baseline receipt hash has changed")
+    receipt = _load_json(receipt_path)
+    if receipt.get("packet_id") != packet_id:
+        raise ValueError("packet baseline receipt has the wrong packet ID")
+    if receipt.get("exact_solve_count") != exact_solve_count:
+        raise ValueError("packet baseline receipt has the wrong exact count")
+
+
 def _controller_oracle_boundary_holds() -> bool:
     controller_source = (REPOSITORY_ROOT / "src" / "arc123" / "controller.py").read_text(
         encoding="utf-8"
@@ -308,6 +345,8 @@ def run_packet(
     packet_id = packet.get("packet_id")
     if not isinstance(packet_id, str) or not packet_id.startswith("P"):
         raise ValueError("packet must declare a P-series packet identifier")
+    _verify_packet_boundary(packet)
+    _verify_baseline_reference(packet)
     report_root = report_root or _default_report_root(packet)
     source_roots = {"arc1": arc1_source, "arc2": arc2_source}
     for benchmark, source_root in source_roots.items():
