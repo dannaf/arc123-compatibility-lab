@@ -1,0 +1,434 @@
+{
+  "attempt_count": 50,
+  "attempts": [
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "63613498",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "bc1d5164",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "a59b95c0",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "995c5fa3",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "6df30ad6",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "ded97339",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "272f95fa",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "b190f7f5",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "e66aafb8",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "e73095fd",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "d4f3cd78",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "25094a63",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "7e02026e",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "5289ad53",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "6f473927",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc1",
+      "selected_hypothesis": "top_bottom(scope=all)",
+      "task_id": "68b16354",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "256b0a75",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "5daaa586",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc1",
+      "selected_hypothesis": "self_contained_subset_crop",
+      "task_id": "23b5c85d",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "1da012fc",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "a8610ef7",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "cad67732",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "50f325b5",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "57aa92db",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "694f12f3",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "81c0276b",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "ac0c5833",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "caa06a1f",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "7468f01a",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "b9e38dc0",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "182e5d0f",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "b1fc8b8e",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "3e6067c3",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "e619ca6e",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "60d73be6",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "b0f4d537",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc2",
+      "selected_hypothesis": "adjacent_bilateral_cellwise_combine(axis=horizontal,table=0:0:0;0:4:6;9:0:6;9:4:0)",
+      "task_id": "31d5ba1a",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "351d6448",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "ba26e723",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "d5c634a2",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "4a21e3da",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "db695cfb",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "581f7754",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "cbebaa4b",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "7491f3cf",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "80a900e0",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "13e47133",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "6e453dd6",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "31f7f899",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "446ef5d2",
+      "training_exact": false,
+      "used_fallback": true
+    }
+  ],
+  "claim_boundary": "This source-pinned, failure-inclusive transfer packet measures the unchanged P0021 bilateral/scale controller vocabulary on a fresh filename-only 25 ARC-AGI-1 plus 25 ARC-AGI-2 cohort. The P0022 cohort was frozen after the P0021 implementation checkpoint and before any selected P0022 task grid was parsed, visualized, scored, or used for further operator design. It excludes every task ID declared by the historical import, P0013 frozen roster, and all four disjoint development rosters. `adjacent_bilateral_cellwise_combine` remains limited to exactly two equal adjacent panels with one conflict-free visible-pair table, and `distinct_nonbackground_scale` remains limited to a unique modal background and current-grid distinct non-background count; neither family branches on task ID or fixed colors. This is an independently selected transfer measurement, not a benchmark submission and not an ARC-AGI-1 or ARC-AGI-2 solver claim. The live controller receives only visible training input/output examples and test inputs. It receives no task ID, cohort metadata, GT feature contract, GT solver, historical decomposition, or held-out output before committing a complete grid. No P0022 outcome may retune this frozen controller or its operator vocabulary.",
+  "complete_wrong_count": 47,
+  "controller_oracle_boundary_scan": "pass",
+  "exact_solve_count": 3,
+  "exact_solve_count_by_benchmark": {
+    "arc1": 2,
+    "arc2": 1
+  },
+  "fallback_count": 47,
+  "frozen_controller": {
+    "commit": "cf3ff72abc98d8c8654d50694ca18ce68700b3af",
+    "source_files": {
+      "scripts/freeze_arc12_filename_holdout.py": "95ba0409d32b65a69bf53df9300f4636ab64b22def533f47d2c8fe72e29b8c85",
+      "scripts/run_arc12_filename_holdout.py": "df34d80ba4e2f5cef70c0b7a24db2ad462130d1a0f37161ce267742a4ed00a3e",
+      "src/arc123/adapters/arc12.py": "db3acb45c794dcc3a1f7cdde2c52a58a2315e11e882c554e4901f876493ffd88",
+      "src/arc123/compatibility.py": "679e3efa3e71aaf9f8b3ca48cfcd517b9b87a3525cdb8db56cd4a3ba509ab8df",
+      "src/arc123/contracts.py": "3acd65973085eca77093dfeaf39adbe4176770e66993d147404d1b184d2001e3",
+      "src/arc123/controller.py": "9ea567ac7721682d4b328d381c2e9c31bc805549f4b773b0aa22381a026d5168",
+      "src/arc123/hypotheses.py": "e882aafd16b9944567e43968f0231cdac2e0e0f63b4ea729eafabb9d79eaea2e",
+      "src/arc123/model.py": "ba4fc4177414ecea6bced1b0f3866b0c72a1ce09c681c19737dd875a6f55a3ab",
+      "src/arc123/perceptions.py": "a916b0d3961f5b85c853abba67b55bf0dfa8e6a1b24d1b139768a3836218b82a",
+      "src/arc123/relational.py": "230c2f4c8321d3465b7680db3fa9678fbee1a34183b4665765b64ac382e2dfc2",
+      "src/arc123/theory.py": "552e089498773809005849fb39e88b18bd633bd0e8d3e0b5653d54ce14045f01",
+      "src/arc123/traces.py": "edb79dfd8c781ae3df15046c83114694788163928dd4634296004f64d846b3c1"
+    }
+  },
+  "packet_id": "P0022-ARC12-BILATERAL-SCALE-TRANSFER-50",
+  "schema_version": 1,
+  "training_exact_count": 3
+}
