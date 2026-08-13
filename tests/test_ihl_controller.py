@@ -447,6 +447,106 @@ class IterativeHypothesisLearnerTests(unittest.TestCase):
             },
         )
 
+    def test_frame_interior_crop_rederives_a_unique_largest_outline(self) -> None:
+        environment = self._environment(
+            [
+                {
+                    "input": [
+                        [0, 1, 0, 1, 0, 1],
+                        [1, 7, 7, 7, 7, 0],
+                        [0, 7, 1, 2, 7, 1],
+                        [1, 7, 3, 4, 7, 0],
+                        [0, 7, 7, 7, 7, 1],
+                    ],
+                    "output": [[1, 2], [3, 4]],
+                },
+                {
+                    "input": [
+                        [0, 1, 0, 1, 0, 1, 0],
+                        [1, 8, 8, 8, 8, 8, 1],
+                        [0, 8, 6, 7, 5, 8, 0],
+                        [1, 8, 4, 3, 2, 8, 1],
+                        [0, 8, 8, 8, 8, 8, 0],
+                        [1, 0, 1, 0, 1, 0, 1],
+                    ],
+                    "output": [[6, 7, 5], [4, 3, 2]],
+                },
+            ],
+            [
+                {
+                    "input": [
+                        [0, 1, 0, 1, 0, 1],
+                        [1, 4, 4, 4, 4, 0],
+                        [0, 4, 9, 8, 4, 1],
+                        [1, 4, 7, 6, 4, 0],
+                        [0, 4, 4, 4, 4, 1],
+                    ],
+                    "output": [[9, 8], [7, 6]],
+                }
+            ],
+        )
+
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "frame_interior_crop"),
+            candidate_limit=12,
+            beam_width=8,
+        ).solve(environment, "synthetic-frame-interior-crop")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertEqual(result.selected_hypothesis, "frame_interior_crop")
+        self.assertEqual(result.predictions[0], ((9, 8), (7, 6)))
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+
+    def test_frame_interior_crop_refuses_equal_largest_outline_ties(self) -> None:
+        ambiguous = (
+            (0, 1, 1, 1, 0, 2, 2, 2, 0),
+            (0, 1, 3, 1, 0, 2, 4, 2, 0),
+            (0, 1, 1, 1, 0, 2, 2, 2, 0),
+        )
+        self.assertIsNone(Hypothesis("frame_interior_crop").predict(ambiguous))
+
+    def test_central_separator_cellwise_combine_uses_visible_pairs_only(self) -> None:
+        environment = self._environment(
+            [
+                {
+                    "input": [[0, 1, 9, 0, 0], [1, 0, 9, 1, 0], [0, 1, 9, 1, 1]],
+                    "output": [[0, 2], [1, 0], [2, 1]],
+                },
+                {
+                    "input": [[1, 1, 8, 0, 1], [0, 0, 8, 1, 0], [1, 0, 8, 1, 1]],
+                    "output": [[2, 1], [2, 0], [1, 2]],
+                },
+            ],
+            [
+                {
+                    "input": [[1, 0, 7, 0, 1], [0, 1, 7, 1, 0]],
+                    "output": [[2, 2], [2, 2]],
+                }
+            ],
+        )
+
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "central_separator_cellwise_combine"),
+            candidate_limit=12,
+            beam_width=8,
+        ).solve(environment, "synthetic-central-separator-cellwise-combine")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertIn("central_separator_cellwise_combine", result.selected_hypothesis)
+        self.assertEqual(result.predictions[0], ((2, 2), (2, 2)))
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+
+        candidate = next(
+            item
+            for item in propose_base_hypotheses(
+                environment.training_pairs, ("central_separator_cellwise_combine",)
+            )
+            if item.kind == "central_separator_cellwise_combine"
+        )
+        self.assertIsNone(candidate.predict(((2, 0, 7, 0, 0),)))
+
     def test_explicit_empty_operator_vocabulary_does_not_restore_defaults(self) -> None:
         environment = self._environment(
             [{"input": [[1]], "output": [[2]]}],

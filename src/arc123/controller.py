@@ -53,6 +53,8 @@ DEFAULT_OPERATOR_FAMILIES = (
     "mirror",
     "dihedral_transform",
     "translate",
+    "frame_interior_crop",
+    "central_separator_cellwise_combine",
     "line_extend",
     "row_span_fill",
     "partial-with-identity composition",
@@ -361,6 +363,8 @@ THEORY_OPERATOR_FAMILIES = (
     "self_mask_macro_stamp",
     "axis_mode_denoise",
     "self_contained_subset_crop",
+    "frame_interior_crop",
+    "central_separator_cellwise_combine",
     "line_extend",
     "row_span_fill",
     "row_span_minimum",
@@ -439,6 +443,8 @@ class IterativeHypothesisLearner:
                 "self_mask_macro_stamp",
                 "axis_mode_denoise",
                 "self_contained_subset_crop",
+                "frame_interior_crop",
+                "central_separator_cellwise_combine",
             }
         ]
         remaining = [
@@ -454,6 +460,8 @@ class IterativeHypothesisLearner:
                 "self_mask_macro_stamp",
                 "axis_mode_denoise",
                 "self_contained_subset_crop",
+                "frame_interior_crop",
+                "central_separator_cellwise_combine",
             }
         ]
         for candidate in [*preferred, *remaining][: self.candidate_limit]:
@@ -510,6 +518,8 @@ class IterativeHypothesisLearner:
                     "self_mask_macro_stamp(",
                     "axis_mode_denoise",
                     "self_contained_subset_crop",
+                    "frame_interior_crop",
+                    "central_separator_cellwise_combine",
                 )
             ):
                 return 0, theory.theory_id

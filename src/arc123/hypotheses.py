@@ -61,6 +61,10 @@ class Hypothesis:
             return self._axis_mode_denoise(input_grid)
         if self.kind == "self_contained_subset_crop":
             return self._self_contained_subset_crop(input_grid)
+        if self.kind == "frame_interior_crop":
+            return self._frame_interior_crop(input_grid)
+        if self.kind == "central_separator_cellwise_combine":
+            return self._central_separator_cellwise_combine(input_grid)
         raise ValueError(f"unknown generic hypothesis kind: {self.kind}")
 
     def _recolor(self, input_grid: Grid) -> PartialGrid:
@@ -377,6 +381,41 @@ class Hypothesis:
             return None
         return next(iter(minimum_crops))
 
+    def _frame_interior_crop(self, input_grid: Grid) -> Optional[PartialGrid]:
+        """Extract the interior of the unique largest uniform rectangular outline."""
+
+        frame = _unique_largest_uniform_frame(input_grid)
+        if frame is None:
+            return None
+        top, left, bottom, right = frame
+        return tuple(
+            tuple(input_grid[row_index][column_index] for column_index in range(left + 1, right))
+            for row_index in range(top + 1, bottom)
+        )
+
+    def _central_separator_cellwise_combine(
+        self, input_grid: Grid
+    ) -> Optional[PartialGrid]:
+        """Apply a learned pair-to-output table across a visible central separator."""
+
+        parameters = self.parameter_map
+        axis = str(parameters["axis"])
+        table = _decode_cellwise_table(str(parameters["table"]))
+        panels = _central_separator_panels(input_grid, axis)
+        if panels is None:
+            return None
+        first_panel, second_panel = panels
+        output: list[tuple[int, ...]] = []
+        for first_row, second_row in zip(first_panel, second_panel):
+            output_row: list[int] = []
+            for first_color, second_color in zip(first_row, second_row):
+                pair = (first_color, second_color)
+                if pair not in table:
+                    return None
+                output_row.append(table[pair])
+            output.append(tuple(output_row))
+        return tuple(output)
+
 
 def _same_shape_training_pairs(training_pairs: Sequence[TrainingPair]) -> bool:
     return all(
@@ -439,6 +478,105 @@ def _axis_mode_projection(
             sum(support for _, support in line_modes),
         )
     raise ValueError(f"unknown mode-denoise axis: {axis}")
+
+
+def _unique_largest_uniform_frame(
+    input_grid: Grid,
+) -> Optional[tuple[int, int, int, int]]:
+    """Return the unique maximum-area non-solid uniform rectangular outline."""
+
+    height = len(input_grid)
+    width = len(input_grid[0])
+    candidates: list[tuple[int, tuple[int, int, int, int]]] = []
+    for top in range(height - 2):
+        for bottom in range(top + 2, height):
+            for left in range(width - 2):
+                for right in range(left + 2, width):
+                    frame_color = input_grid[top][left]
+                    border_matches = (
+                        all(input_grid[top][column] == frame_color for column in range(left, right + 1))
+                        and all(
+                            input_grid[bottom][column] == frame_color
+                            for column in range(left, right + 1)
+                        )
+                        and all(
+                            input_grid[row][left] == frame_color
+                            for row in range(top + 1, bottom)
+                        )
+                        and all(
+                            input_grid[row][right] == frame_color
+                            for row in range(top + 1, bottom)
+                        )
+                    )
+                    if not border_matches:
+                        continue
+                    if all(
+                        input_grid[row][column] == frame_color
+                        for row in range(top + 1, bottom)
+                        for column in range(left + 1, right)
+                    ):
+                        continue
+                    candidates.append(
+                        (
+                            (bottom - top - 1) * (right - left - 1),
+                            (top, left, bottom, right),
+                        )
+                    )
+    if not candidates:
+        return None
+    maximum_area = max(area for area, _ in candidates)
+    maximum_frames = [frame for area, frame in candidates if area == maximum_area]
+    return maximum_frames[0] if len(maximum_frames) == 1 else None
+
+
+def _central_separator_panels(
+    input_grid: Grid, axis: str
+) -> Optional[tuple[Grid, Grid]]:
+    """Split equal panels only at a uniform central divider line."""
+
+    height = len(input_grid)
+    width = len(input_grid[0])
+    if axis == "vertical":
+        if width < 3 or width % 2 != 1:
+            return None
+        divider_column = width // 2
+        if len({input_grid[row][divider_column] for row in range(height)}) != 1:
+            return None
+        return (
+            tuple(tuple(row[:divider_column]) for row in input_grid),
+            tuple(tuple(row[divider_column + 1 :]) for row in input_grid),
+        )
+    if axis == "horizontal":
+        if height < 3 or height % 2 != 1:
+            return None
+        divider_row = height // 2
+        if len(set(input_grid[divider_row])) != 1:
+            return None
+        return input_grid[:divider_row], input_grid[divider_row + 1 :]
+    raise ValueError(f"unknown central separator axis: {axis}")
+
+
+def _encode_cellwise_table(table: dict[tuple[int, int], int]) -> str:
+    return ";".join(
+        f"{first_color}:{second_color}:{output_color}"
+        for (first_color, second_color), output_color in sorted(table.items())
+    )
+
+
+def _decode_cellwise_table(encoded: str) -> dict[tuple[int, int], int]:
+    table: dict[tuple[int, int], int] = {}
+    if not encoded:
+        raise ValueError("cellwise table must not be empty")
+    for entry in encoded.split(";"):
+        fields = entry.split(":")
+        if len(fields) != 3:
+            raise ValueError("cellwise table entry is malformed")
+        first_color, second_color, output_color = (int(field) for field in fields)
+        pair = (first_color, second_color)
+        if pair in table and table[pair] != output_color:
+            raise ValueError("cellwise table assigns conflicting outputs")
+        table[pair] = output_color
+    return table
 
 
 def _infer_recolor_mapping(
@@ -657,6 +795,72 @@ def _self_contained_subset_crop_candidates(
     return []
 
 
+def _frame_interior_crop_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
+    """Keep frame extraction only when every visible output agrees."""
+
+    if not training_pairs:
+        return []
+    hypothesis = Hypothesis("frame_interior_crop", description_length=5)
+    if all(
+        hypothesis.predict(input_grid) == _full(output_grid)
+        for input_grid, output_grid in training_pairs
+    ):
+        return [hypothesis]
+    return []
+
+
+def _central_separator_cellwise_combine_candidates(
+    training_pairs: Sequence[TrainingPair],
+) -> list[Hypothesis]:
+    """Infer a visible-panel lookup table and retain only exact demonstrations."""
+
+    candidates: list[Hypothesis] = []
+    for axis in ("vertical", "horizontal"):
+        table: dict[tuple[int, int], int] = {}
+        valid = bool(training_pairs)
+        for input_grid, output_grid in training_pairs:
+            panels = _central_separator_panels(input_grid, axis)
+            if panels is None:
+                valid = False
+                break
+            first_panel, second_panel = panels
+            if (
+                len(output_grid) != len(first_panel)
+                or len(output_grid[0]) != len(first_panel[0])
+            ):
+                valid = False
+                break
+            for first_row, second_row, output_row in zip(
+                first_panel, second_panel, output_grid
+            ):
+                for first_color, second_color, output_color in zip(
+                    first_row, second_row, output_row
+                ):
+                    pair = (first_color, second_color)
+                    prior = table.get(pair)
+                    if prior is not None and prior != output_color:
+                        valid = False
+                        break
+                    table[pair] = output_color
+                if not valid:
+                    break
+            if not valid:
+                break
+        if not valid or not table:
+            continue
+        hypothesis = Hypothesis(
+            "central_separator_cellwise_combine",
+            _parameter_tuple(axis=axis, table=_encode_cellwise_table(table)),
+            description_length=4 + len(table),
+        )
+        if all(
+            hypothesis.predict(input_grid) == _full(output_grid)
+            for input_grid, output_grid in training_pairs
+        ):
+            candidates.append(hypothesis)
+    return candidates
+
+
 def _dihedral_tile_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
     factors: set[tuple[int, int]] = set()
     possible_labels: list[set[str]] | None = None
@@ -747,6 +951,8 @@ def propose_base_hypotheses(
                 "self_mask_macro_stamp",
                 "axis_mode_denoise",
                 "self_contained_subset_crop",
+                "frame_interior_crop",
+                "central_separator_cellwise_combine",
             }
         )
     else:
@@ -790,6 +996,10 @@ def propose_base_hypotheses(
         candidates.extend(_axis_mode_denoise_candidates(training_pairs))
     if "self_contained_subset_crop" in enabled:
         candidates.extend(_self_contained_subset_crop_candidates(training_pairs))
+    if "frame_interior_crop" in enabled:
+        candidates.extend(_frame_interior_crop_candidates(training_pairs))
+    if "central_separator_cellwise_combine" in enabled:
+        candidates.extend(_central_separator_cellwise_combine_candidates(training_pairs))
     return candidates
 
 
