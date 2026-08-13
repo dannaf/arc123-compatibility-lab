@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sys
 import unittest
 from pathlib import Path
@@ -77,6 +78,28 @@ class FilenameHoldoutFreezerTests(unittest.TestCase):
         self.assertEqual(len(imports), 6)
         self.assertGreaterEqual(len(task_ids), 320)
         self.assertTrue(all(len(item["sha256"]) == 64 for item in imports))
+
+    def test_p0022_transfer_cohort_is_disjoint_from_every_prior_roster(self) -> None:
+        cohort_path = REPOSITORY_ROOT / "research" / "cohorts" / "ARC12_FILENAME_HOLDOUT_002.json"
+        cohort = json.loads(cohort_path.read_text(encoding="utf-8"))
+        frozen = cohort["frozen_filename_only_50_p0022"]
+        import_paths = tuple(
+            REPOSITORY_ROOT / item["path"]
+            for item in frozen["selection_protocol"]["prior_roster_imports"]
+        )
+        prior_ids, imports = freezer._excluded_task_ids_from_imports(import_paths)
+        selected_ids = {
+            record["task_id"]
+            for records in frozen["tasks"].values()
+            for record in records
+        }
+
+        self.assertEqual(frozen["task_count"], 50)
+        self.assertEqual({benchmark: len(records) for benchmark, records in frozen["tasks"].items()}, {"arc1": 25, "arc2": 25})
+        self.assertEqual(len(selected_ids), 50)
+        self.assertTrue(selected_ids.isdisjoint(prior_ids))
+        self.assertEqual(len(imports), 6)
+        self.assertTrue(all(value is False for value in cohort["live_controller_boundary"].values()))
 
 
 if __name__ == "__main__":
