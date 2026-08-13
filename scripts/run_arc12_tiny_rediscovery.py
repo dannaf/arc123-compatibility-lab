@@ -116,6 +116,28 @@ def _verify_baseline_reference(packet: Mapping[str, Any]) -> None:
         raise ValueError("packet baseline receipt has the wrong exact count")
 
 
+def _baseline_comparison(packet: Mapping[str, Any], summary: Mapping[str, Any]) -> dict[str, Any] | None:
+    reference = packet.get("baseline_reference")
+    if not isinstance(reference, Mapping):
+        return None
+    receipt_path = REPOSITORY_ROOT / _repository_relative_path(str(reference["receipt_path"]))
+    baseline = _load_json(receipt_path)
+    baseline_exact = int(baseline["exact_solve_count"])
+    baseline_attempts = int(baseline["attempt_count"])
+    current_exact = int(summary["exact_solve_count"])
+    current_attempts = int(summary["attempt_count"])
+    return {
+        "packet_id": baseline["packet_id"],
+        "receipt_path": str(reference["receipt_path"]),
+        "receipt_sha256": str(reference["receipt_sha256"]),
+        "exact_solve_count": baseline_exact,
+        "attempt_count": baseline_attempts,
+        "current_exact_solve_count": current_exact,
+        "current_attempt_count": current_attempts,
+        "exact_solve_delta": current_exact - baseline_exact,
+    }
+
+
 def _controller_oracle_boundary_holds() -> bool:
     controller_source = (REPOSITORY_ROOT / "src" / "arc123" / "controller.py").read_text(
         encoding="utf-8"
@@ -385,6 +407,9 @@ def run_packet(
             for item in task_receipts
         ],
     }
+    baseline_comparison = _baseline_comparison(packet, summary)
+    if baseline_comparison is not None:
+        summary["baseline_comparison"] = baseline_comparison
     _write_json(report_root / "receipt.json", summary)
     lines = [
         str(packet.get("report_title", f"# {summary['packet_id']} ARC12 Rediscovery Packet")),
@@ -395,9 +420,27 @@ def run_packet(
         f"- Training-compatible theories: `{summary['training_exact_count']}`",
         f"- Complete-grid fallbacks: `{summary['fallback_count']}`",
         "",
-        "| Benchmark | Task | Outcome | Training exact | Selected hypothesis | Report |",
-        "| --- | --- | --- | --- | --- | --- |",
     ]
+    baseline_comparison = summary.get("baseline_comparison")
+    if isinstance(baseline_comparison, Mapping):
+        lines.extend(
+            [
+                "## Pre-Registered Baseline Comparison",
+                "",
+                f"- Baseline packet: `{baseline_comparison['packet_id']}`",
+                f"- Baseline exact solves: `{baseline_comparison['exact_solve_count']}/{baseline_comparison['attempt_count']}`",
+                f"- This packet exact solves: `{baseline_comparison['current_exact_solve_count']}/{baseline_comparison['current_attempt_count']}`",
+                f"- Exact-solve delta: `{baseline_comparison['exact_solve_delta']}`",
+                "- The immutable P0008 frozen 25+25 result is not rerun or rewritten by this development packet.",
+                "",
+            ]
+        )
+    lines.extend(
+        [
+            "| Benchmark | Task | Outcome | Training exact | Selected hypothesis | Report |",
+            "| --- | --- | --- | --- | --- | --- |",
+        ]
+    )
     for item in task_receipts:
         outcome = "YES" if item["all_cells_match"] else "NO"
         report = f"{item['benchmark']}/{item['task_id']}/REPORT.md"

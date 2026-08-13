@@ -42,6 +42,13 @@ PACKETS = (
         / "P0006_ARC12_RESIDUAL_DIHEDRAL_TILE_CURATED_60.json",
         REPOSITORY_ROOT / "reports" / "P0006_arc12_residual_dihedral_tile_curated_60",
     ),
+    (
+        REPOSITORY_ROOT
+        / "research"
+        / "packets"
+        / "P0011_ARC12_DIHEDRAL_COORDINATE_CURATED_60.json",
+        REPOSITORY_ROOT / "reports" / "P0011_arc12_dihedral_coordinate_curated_60",
+    ),
 )
 COHORT_PATH = REPOSITORY_ROOT / "research" / "cohorts" / "ARC12_COHORT_IMPORT_001.json"
 P0011_PACKET = REPOSITORY_ROOT / "research" / "packets" / "P0011_ARC12_DIHEDRAL_COORDINATE_CURATED_60.json"
@@ -146,6 +153,8 @@ class PacketEvidenceTests(unittest.TestCase):
 
     def test_p0011_pins_its_unfrozen_baseline_and_does_not_rewrite_p0008(self) -> None:
         packet = json.loads(P0011_PACKET.read_text(encoding="utf-8"))
+        report_root = PACKETS[-1][1]
+        summary = json.loads((report_root / "receipt.json").read_text(encoding="utf-8"))
         tasks = packet_runner._packet_tasks(packet)
 
         self.assertEqual(len(tasks), 60)
@@ -155,6 +164,18 @@ class PacketEvidenceTests(unittest.TestCase):
         self.assertTrue(packet["acceptance"]["do_not_rewrite_p0008_frozen_measurement"])
         packet_runner._verify_packet_boundary(packet)
         packet_runner._verify_baseline_reference(packet)
+        self.assertEqual(summary["exact_solve_count"], 4)
+        self.assertEqual(summary["baseline_comparison"]["exact_solve_count"], 4)
+        self.assertEqual(summary["baseline_comparison"]["exact_solve_delta"], 0)
+        self.assertFalse(
+            any(
+                "dihedral_transform" in attempt["selected_hypothesis"]
+                for attempt in summary["attempts"]
+            )
+        )
+        readme = (report_root / "README.md").read_text(encoding="utf-8")
+        self.assertIn("## Pre-Registered Baseline Comparison", readme)
+        self.assertIn("Exact-solve delta: `0`", readme)
 
     def test_persistent_theory_packet_traces_do_not_receive_task_identifiers(self) -> None:
         for packet_path, report_root in PACKETS[3:]:
