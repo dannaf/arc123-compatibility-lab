@@ -19,8 +19,9 @@
 | P0015 | P0014 plus generic axis-mode denoising | 2/40 (`+0`) | Per-input row/column modal-support inference is synthetically valid but produces no same-cohort exact gain. |
 | P0016 | Second disjoint filename-only development 20 ARC1 + 20 ARC2 baseline | 0/40 | A new source-pinned, disjoint pre-change baseline; all 40 complete NOs and diagrams are retained. |
 | P0017 | P0016 plus generic self-contained-subset crop | 0/40 (`+0`) | Input-color-subset closure and unique-minimum crop are synthetically valid but produce no same-cohort exact gain. |
+| P0018 | Third disjoint filename-only development 20 ARC1 + 20 ARC2 baseline | 3/40 | A source-pinned pre-component/bounding-box-portfolio baseline: 2 ARC1 and 1 ARC2 exact result; all 37 complete NOs and diagrams are retained. |
 
-P0012's 60 reports, P0013's 50 reports, and P0014–P0017's 40 reports each retain a committed full grid, explicit YES/NO all-cell validation, learning trace, receipt, and native corpus-callosum SVG; there are no abstentions or discarded failures. P0013's fresh roster and P0014/P0016's disjoint development rosters were selected before any selected JSON was decoded, using only source-pinned filenames, split labels, fixed SHA-256 ranking, and opaque source-byte checksums.
+P0012's 60 reports, P0013's 50 reports, and P0014–P0018's 40 reports each retain a committed full grid, explicit YES/NO all-cell validation, learning trace, receipt, and native corpus-callosum SVG; there are no abstentions or discarded failures. P0013's fresh roster and P0014/P0016/P0018's disjoint development rosters were selected before any selected JSON was decoded, using only source-pinned filenames, split labels, fixed SHA-256 ranking, and opaque source-byte checksums.
 
 ## What has been validated
 
@@ -35,13 +36,14 @@ P0012's 60 reports, P0013's 50 reports, and P0014–P0017's 40 reports each reta
 - P0015 adds a generic `axis_mode_denoise` primitive. It dynamically recomputes row/column unique modes and modal support per grid, refuses all ties, and is proven by synthetic mixed-orientation examples. An offline-only source-pinned GT feature vocabulary motivated the family but is neither imported nor available to the live controller. The P0015 comparison is `2/40` versus P0014's `2/40` (`+0`), so it has no task-independent transfer evidence.
 - P0016 freezes a second metadata-only development cohort that excludes P0012, P0013, and P0014/P0015 task IDs. Its baseline is `0/40`; every task has a source-pinned full-grid post-answer V&V record and a visually reviewed corpus-callosum diagram.
 - P0017 adds a generic `self_contained_subset_crop` primitive. It enumerates only colors visible in the current input, finds subset-induced rectangles closed under their own colors, and returns a crop only when the smallest non-full-grid candidate is unique. A source-pinned offline-only GT feature vocabulary motivated it, but the live controller imports none of that material. P0017 remains `0/40` versus P0016's `0/40` (`+0`), so it also has no task-independent transfer evidence.
+- P0018 freezes a third metadata-only development cohort that excludes every prior imported, holdout, and development roster. Its P0017-vocabulary baseline is `3/40` (`2` ARC1 and `1` ARC2), source-pinned and clean-process reproducible; all 40 reports were retained and a varied solved/failed SVG sample was visually checked for legibility.
 - ARC12 and ARC3 adapters use shared neutral contracts. The ARC3 adapter reads only an allowed, source-pinned public segmented trajectory, hides source/future metadata from the agent view, and refuses unmatched actions rather than simulating a result.
 - The offline-only `ARC12-IHL-GT` pilot and `ARC3-IHL-GT` audit inventory are materialized and schema-validated. Tests ensure live adapters do not import those oracle-lane readers and reject oracle/final-rule paths.
 - Brain-surgery reports are deterministic artifacts. The packet verifier reproduces the complete output directory, not merely the top-level score receipt.
 
 ## What is not validated
 
-- No ARC-AGI-1 or ARC-AGI-2 solver claim is justified. P0012 reaches only `8/60` on a development cohort, P0015 is unchanged at `2/40` on a separate development cohort, P0017 is unchanged at `0/40` on another disjoint development cohort, and the independently frozen P0013 cohort is `0/50` exact. Neither result supports a benchmark-wide solver claim.
+- No ARC-AGI-1 or ARC-AGI-2 solver claim is justified. P0012 reaches only `8/60` on a development cohort, P0015 is unchanged at `2/40` on a separate development cohort, P0017 is unchanged at `0/40` on another disjoint development cohort, P0018's new baseline is only `3/40`, and the independently frozen P0013 cohort is `0/50` exact. None supports a benchmark-wide solver claim.
 - P0012 was designed and measured on the same curated development roster, so its `+4` is not independent transfer evidence. P0013 is the relevant new generalization evidence and is negative.
 - Issue #2's architecture mechanism is supported by synthetic revision tests and a small set of retained, failure-inclusive traces. Its final acceptance/closure still requires broad, independently replicated transfer; P0013 rules out closing it on the current operator vocabulary.
 - P0004 validates a real recorded transition stream and shared contracts, not blind live ARC3 play or a solved ARC3 level.
@@ -51,10 +53,10 @@ P0012's 60 reports, P0013's 50 reports, and P0014–P0017's 40 reports each reta
 ## Next gated work
 
 1. Preserve P0013 as immutable negative evidence. It may inform an offline failure taxonomy, but no selected P0013 task may alter its frozen controller or be represented as a P0013 improvement.
-2. P0014/P0015 and P0016/P0017 are now exposed development evidence. Before testing the next family, create a new filename-only development cohort excluding all prior P0012–P0017 task IDs. Do not choose it from task-grid semantics.
-3. Add only generic, independently testable perception/action families: component correspondence, frame/interior masks, crop/extract, periodic repetition, panel-aware relation binding, and row/column aggregation. Do not add a task-ID branch or `_fit_algorithm_*` fitter.
-4. For each candidate family, first add a synthetic unit contract and a trace-level counterexample test. Register its provenance and reuse expectation before it reaches a real ARC packet.
-5. Measure each promoted family on the separate development cohort, retain every complete failure, and distinguish development replay from fresh transfer.
+2. P0018 is now exposed development evidence. Test the next family only against its frozen same-cohort `3/40` denominator; do not alter the P0018 baseline controller or choose a successor cohort from task-grid semantics.
+3. Add only generic, independently testable perception/action families. The next candidate is a component/bounding-box portfolio that rederives background, 4/8-connected components, area, bounding boxes, and ties from each visible grid; it must not branch on task ID, fixed colors, GT labels, or `_fit_algorithm_*` fitting.
+4. For each portfolio member, first add a synthetic unit contract, ambiguity/tie refusal, and trace-level counterexample test. Its offline provenance may motivate a family but must never be imported, parsed, or passed to the live controller.
+5. Pre-register a P0019 same-cohort comparison packet pinned after implementation, retain every complete failure and task-level YES/NO report, and distinguish this development replay from fresh transfer.
 6. Freeze a new source-pinned filename-only holdout after the implementation checkpoint. Its score alone may support a limited transfer statement; it still cannot support an ARC solver claim without substantially broader evidence.
 7. Replace the recorded ARC3 replay with a blind public game-session adapter before making any ARC3-solving claim; use oracle assets only after play for V&V.
 
