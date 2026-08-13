@@ -65,6 +65,10 @@ class Hypothesis:
             return self._frame_interior_crop(input_grid)
         if self.kind == "central_separator_cellwise_combine":
             return self._central_separator_cellwise_combine(input_grid)
+        if self.kind == "adjacent_bilateral_cellwise_combine":
+            return self._adjacent_bilateral_cellwise_combine(input_grid)
+        if self.kind == "distinct_nonbackground_scale":
+            return self._distinct_nonbackground_scale(input_grid)
         raise ValueError(f"unknown generic hypothesis kind: {self.kind}")
 
     def _recolor(self, input_grid: Grid) -> PartialGrid:
@@ -416,6 +420,46 @@ class Hypothesis:
             output.append(tuple(output_row))
         return tuple(output)
 
+    def _adjacent_bilateral_cellwise_combine(
+        self, input_grid: Grid
+    ) -> Optional[PartialGrid]:
+        """Apply a learned pair table across two adjacent equal input panels."""
+
+        parameters = self.parameter_map
+        axis = str(parameters["axis"])
+        table = _decode_cellwise_table(str(parameters["table"]))
+        panels = _adjacent_bilateral_panels(input_grid, axis)
+        if panels is None:
+            return None
+        first_panel, second_panel = panels
+        output: list[tuple[int, ...]] = []
+        for first_row, second_row in zip(first_panel, second_panel):
+            output_row: list[int] = []
+            for first_color, second_color in zip(first_row, second_row):
+                pair = (first_color, second_color)
+                if pair not in table:
+                    return None
+                output_row.append(table[pair])
+            output.append(tuple(output_row))
+        return tuple(output)
+
+    def _distinct_nonbackground_scale(self, input_grid: Grid) -> Optional[PartialGrid]:
+        """Scale each cell by the current grid's uniquely inferred non-background count."""
+
+        background = _unique_background_color(input_grid)
+        if background is None:
+            return None
+        factor = len(
+            {color for row in input_grid for color in row if color != background}
+        )
+        if factor < 2:
+            return None
+        expanded_rows = [
+            tuple(color for input_color in row for color in (input_color,) * factor)
+            for row in input_grid
+        ]
+        return tuple(row for row in expanded_rows for _ in range(factor))
+
 
 def _same_shape_training_pairs(training_pairs: Sequence[TrainingPair]) -> bool:
     return all(
@@ -556,6 +600,29 @@ def _central_separator_panels(
     raise ValueError(f"unknown central separator axis: {axis}")
 
 
+def _adjacent_bilateral_panels(
+    input_grid: Grid, axis: str
+) -> Optional[tuple[Grid, Grid]]:
+    """Split a grid into exactly two adjacent, equally shaped panels."""
+
+    height = len(input_grid)
+    width = len(input_grid[0])
+    if axis == "vertical":
+        if width < 2 or width % 2:
+            return None
+        split_column = width // 2
+        return (
+            tuple(tuple(row[:split_column]) for row in input_grid),
+            tuple(tuple(row[split_column:]) for row in input_grid),
+        )
+    if axis == "horizontal":
+        if height < 2 or height % 2:
+            return None
+        split_row = height // 2
+        return input_grid[:split_row], input_grid[split_row:]
+    raise ValueError(f"unknown adjacent bilateral axis: {axis}")
+
+
 def _encode_cellwise_table(table: dict[tuple[int, int], int]) -> str:
     return ";".join(
         f"{first_color}:{second_color}:{output_color}"
@@ -577,6 +644,18 @@ def _decode_cellwise_table(encoded: str) -> dict[tuple[int, int], int]:
             raise ValueError("cellwise table assigns conflicting outputs")
         table[pair] = output_color
     return table
+
+
+def _unique_background_color(input_grid: Grid) -> Optional[int]:
+    """Return a unique modal color, retaining uncertainty when the mode ties."""
+
+    counts: dict[int, int] = {}
+    for row in input_grid:
+        for color in row:
+            counts[color] = counts.get(color, 0) + 1
+    maximum_count = max(counts.values())
+    candidates = [color for color, count in counts.items() if count == maximum_count]
+    return candidates[0] if len(candidates) == 1 else None
 
 
 def _infer_recolor_mapping(
@@ -861,6 +940,74 @@ def _central_separator_cellwise_combine_candidates(
     return candidates
 
 
+def _adjacent_bilateral_cellwise_combine_candidates(
+    training_pairs: Sequence[TrainingPair],
+) -> list[Hypothesis]:
+    """Infer one unambiguous adjacent-panel table from visible demonstrations."""
+
+    candidates: list[Hypothesis] = []
+    for axis in ("vertical", "horizontal"):
+        table: dict[tuple[int, int], int] = {}
+        valid = bool(training_pairs)
+        for input_grid, output_grid in training_pairs:
+            panels = _adjacent_bilateral_panels(input_grid, axis)
+            if panels is None:
+                valid = False
+                break
+            first_panel, second_panel = panels
+            if (
+                len(output_grid) != len(first_panel)
+                or len(output_grid[0]) != len(first_panel[0])
+            ):
+                valid = False
+                break
+            for first_row, second_row, output_row in zip(
+                first_panel, second_panel, output_grid
+            ):
+                for first_color, second_color, output_color in zip(
+                    first_row, second_row, output_row
+                ):
+                    pair = (first_color, second_color)
+                    prior = table.get(pair)
+                    if prior is not None and prior != output_color:
+                        valid = False
+                        break
+                    table[pair] = output_color
+                if not valid:
+                    break
+            if not valid:
+                break
+        if not valid or not table:
+            continue
+        hypothesis = Hypothesis(
+            "adjacent_bilateral_cellwise_combine",
+            _parameter_tuple(axis=axis, table=_encode_cellwise_table(table)),
+            description_length=4 + len(table),
+        )
+        if all(
+            hypothesis.predict(input_grid) == _full(output_grid)
+            for input_grid, output_grid in training_pairs
+        ):
+            candidates.append(hypothesis)
+    return candidates if len(candidates) == 1 else []
+
+
+def _distinct_nonbackground_scale_candidates(
+    training_pairs: Sequence[TrainingPair],
+) -> list[Hypothesis]:
+    """Keep dynamic pixel scaling only when every demonstration agrees."""
+
+    if not training_pairs:
+        return []
+    hypothesis = Hypothesis("distinct_nonbackground_scale", description_length=4)
+    if all(
+        hypothesis.predict(input_grid) == _full(output_grid)
+        for input_grid, output_grid in training_pairs
+    ):
+        return [hypothesis]
+    return []
+
+
 def _dihedral_tile_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
     factors: set[tuple[int, int]] = set()
     possible_labels: list[set[str]] | None = None
@@ -953,6 +1100,8 @@ def propose_base_hypotheses(
                 "self_contained_subset_crop",
                 "frame_interior_crop",
                 "central_separator_cellwise_combine",
+                "adjacent_bilateral_cellwise_combine",
+                "distinct_nonbackground_scale",
             }
         )
     else:
@@ -1000,6 +1149,10 @@ def propose_base_hypotheses(
         candidates.extend(_frame_interior_crop_candidates(training_pairs))
     if "central_separator_cellwise_combine" in enabled:
         candidates.extend(_central_separator_cellwise_combine_candidates(training_pairs))
+    if "adjacent_bilateral_cellwise_combine" in enabled:
+        candidates.extend(_adjacent_bilateral_cellwise_combine_candidates(training_pairs))
+    if "distinct_nonbackground_scale" in enabled:
+        candidates.extend(_distinct_nonbackground_scale_candidates(training_pairs))
     return candidates
 
 

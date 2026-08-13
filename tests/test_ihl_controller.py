@@ -547,6 +547,92 @@ class IterativeHypothesisLearnerTests(unittest.TestCase):
         )
         self.assertIsNone(candidate.predict(((2, 0, 7, 0, 0),)))
 
+    def test_adjacent_bilateral_combine_rederives_a_visible_pair_table(self) -> None:
+        environment = self._environment(
+            [
+                {
+                    "input": [[0, 3, 0, 2], [3, 0, 2, 0]],
+                    "output": [[5, 0], [0, 5]],
+                },
+                {
+                    "input": [[0, 3, 2, 0], [3, 0, 0, 2]],
+                    "output": [[0, 0], [0, 0]],
+                },
+            ],
+            [
+                {
+                    "input": [[0, 3, 0, 0], [0, 3, 2, 2]],
+                    "output": [[5, 0], [0, 0]],
+                }
+            ],
+        )
+
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "adjacent_bilateral_cellwise_combine"),
+            candidate_limit=12,
+            beam_width=8,
+        ).solve(environment, "synthetic-adjacent-bilateral-cellwise-combine")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertIn("adjacent_bilateral_cellwise_combine", result.selected_hypothesis)
+        self.assertEqual(result.predictions[0], ((5, 0), (0, 0)))
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+
+        candidate = next(
+            item
+            for item in propose_base_hypotheses(
+                environment.training_pairs, ("adjacent_bilateral_cellwise_combine",)
+            )
+            if item.kind == "adjacent_bilateral_cellwise_combine"
+        )
+        self.assertIsNone(candidate.predict(((2, 3, 0, 2),)))
+
+    def test_distinct_nonbackground_scale_rederives_its_factor_per_grid(self) -> None:
+        def scale_cells(input_grid: list[list[int]], factor: int) -> list[list[int]]:
+            expanded_rows = [
+                [color for input_color in row for color in [input_color] * factor]
+                for row in input_grid
+            ]
+            return [row for expanded_row in expanded_rows for row in [expanded_row] * factor]
+
+        training_first = [[0, 1], [2, 0]]
+        training_second = [[0, 3, 4], [5, 0, 0]]
+        test_input = [[0, 6, 7], [8, 9, 0]]
+        environment = self._environment(
+            [
+                {"input": training_first, "output": scale_cells(training_first, 2)},
+                {"input": training_second, "output": scale_cells(training_second, 3)},
+            ],
+            [{"input": test_input, "output": scale_cells(test_input, 4)}],
+        )
+
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "distinct_nonbackground_scale"),
+            candidate_limit=12,
+            beam_width=8,
+        ).solve(environment, "synthetic-distinct-nonbackground-scale")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertEqual(result.selected_hypothesis, "distinct_nonbackground_scale")
+        self.assertEqual(result.predictions[0], tuple(tuple(row) for row in scale_cells(test_input, 4)))
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+
+    def test_distinct_nonbackground_scale_refuses_tied_background_evidence(self) -> None:
+        ambiguous = ((1, 2), (3, 4))
+        self.assertIsNone(Hypothesis("distinct_nonbackground_scale").predict(ambiguous))
+        self.assertNotIn(
+            "distinct_nonbackground_scale",
+            {
+                candidate.kind
+                for candidate in propose_base_hypotheses(
+                    ((ambiguous, ((1, 1, 2, 2), (1, 1, 2, 2), (3, 3, 4, 4), (3, 3, 4, 4))),),
+                    ("distinct_nonbackground_scale",),
+                )
+            },
+        )
+
     def test_explicit_empty_operator_vocabulary_does_not_restore_defaults(self) -> None:
         environment = self._environment(
             [{"input": [[1]], "output": [[2]]}],
