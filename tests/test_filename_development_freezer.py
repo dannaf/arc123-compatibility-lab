@@ -28,6 +28,23 @@ class FilenameDevelopmentFreezerTests(unittest.TestCase):
         self.assertGreaterEqual(len(task_ids), 160)
         self.assertTrue(all(len(item["sha256"]) == 64 for item in imports))
 
+    def test_additional_frozen_roster_can_be_excluded_without_grid_access(self) -> None:
+        p0014_cohort = REPOSITORY_ROOT / "research" / "cohorts" / "ARC12_DEVELOPMENT_COHORT_001.json"
+        task_ids, imports = freezer._excluded_task_ids(
+            (*freezer.DEFAULT_EXCLUSION_IMPORTS, p0014_cohort)
+        )
+        p0014 = json.loads(p0014_cohort.read_text(encoding="utf-8"))
+        p0014_ids = {
+            record["task_id"]
+            for records in p0014["development_filename_only_40"]["tasks"].values()
+            for record in records
+        }
+
+        self.assertEqual(len(imports), 3)
+        self.assertEqual(len(p0014_ids), 40)
+        self.assertTrue(p0014_ids.issubset(task_ids))
+        self.assertGreaterEqual(len(task_ids), 200)
+
 
 if __name__ == "__main__":
     unittest.main()

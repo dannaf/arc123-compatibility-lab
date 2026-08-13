@@ -19,6 +19,17 @@ DEFAULT_EXCLUSION_IMPORTS = (
 )
 DEFAULT_SALT = "arc123-issue-2-band-axis-development-v1"
 DEFAULT_ALLOCATION = {"evaluation": 10, "training": 10}
+DEFAULT_ARTIFACT_ID = "ARC12-FILENAME-ONLY-DEVELOPMENT-001"
+DEFAULT_TITLE = "ARC12 Fresh Filename-Only Development 20+20 Cohort"
+DEFAULT_COHORT_KEY = "development_filename_only_40"
+DEFAULT_CLAIM_BOUNDARY = (
+    "This is a source-pinned development cohort selected only from benchmark labels, split "
+    "names, and filenames before the next generic operator implementation is evaluated. It "
+    "excludes all task IDs found in both the historical ARC12 import and the P0013 fresh "
+    "frozen cohort, conservatively across benchmarks. Selected JSON bytes are read only as "
+    "opaque source integrity checksums and are not decoded by this freezer. Any result is "
+    "development evidence, not an independent generalization claim."
+)
 
 
 def _sha256(path: Path) -> str:
@@ -66,6 +77,10 @@ def _manifest(
     arc2_repository: str,
     exclusion_imports: tuple[Path, ...],
     salt: str,
+    artifact_id: str,
+    title: str,
+    cohort_key: str,
+    claim_boundary: str,
 ) -> dict[str, Any]:
     excluded_task_ids, import_metadata = _excluded_task_ids(exclusion_imports)
     source_roots = {"arc1": arc1_source, "arc2": arc2_source}
@@ -119,9 +134,9 @@ def _manifest(
         raise ValueError("development selection contains cross-benchmark duplicate task IDs")
     return {
         "schema_version": 1,
-        "artifact_id": "ARC12-FILENAME-ONLY-DEVELOPMENT-001",
-        "title": "ARC12 Fresh Filename-Only Development 20+20 Cohort",
-        "claim_boundary": "This is a source-pinned development cohort selected only from benchmark labels, split names, and filenames before the next generic operator implementation is evaluated. It excludes all task IDs found in both the historical ARC12 import and the P0013 fresh frozen cohort, conservatively across benchmarks. Selected JSON bytes are read only as opaque source integrity checksums and are not decoded by this freezer. Any result is development evidence, not an independent generalization claim.",
+        "artifact_id": artifact_id,
+        "title": title,
+        "claim_boundary": claim_boundary,
         "live_controller_boundary": {
             "task_id_passed_to_agent": False,
             "cohort_metadata_passed_to_agent": False,
@@ -129,7 +144,7 @@ def _manifest(
             "gt_solver_imported_or_called": False,
             "held_out_outputs_passed_to_agent": False,
         },
-        "development_filename_only_40": {
+        cohort_key: {
             "task_count": 40,
             "per_benchmark_task_count": sum(DEFAULT_ALLOCATION.values()),
             "source_pins": source_pins,
@@ -167,10 +182,31 @@ def main() -> int:
         default="https://github.com/dannaf/arc3-compatibility-lab-prime",
     )
     parser.add_argument("--salt", default=DEFAULT_SALT)
+    parser.add_argument(
+        "--exclude-import",
+        action="append",
+        default=[],
+        type=Path,
+        help="Additional repository-relative frozen roster to exclude; may be repeated.",
+    )
+    parser.add_argument("--artifact-id", default=DEFAULT_ARTIFACT_ID)
+    parser.add_argument("--title", default=DEFAULT_TITLE)
+    parser.add_argument("--cohort-key", default=DEFAULT_COHORT_KEY)
+    parser.add_argument("--claim-boundary", default=DEFAULT_CLAIM_BOUNDARY)
     arguments = parser.parse_args()
     output = arguments.output.resolve()
     if output.exists():
         raise ValueError(f"refusing to overwrite frozen development cohort: {output}")
+    if not arguments.artifact_id or not arguments.title or not arguments.cohort_key:
+        raise ValueError("artifact ID, title, and cohort key must be non-empty")
+    exclusion_imports = tuple(
+        dict.fromkeys(
+            [
+                *DEFAULT_EXCLUSION_IMPORTS,
+                *(item.resolve() for item in arguments.exclude_import),
+            ]
+        )
+    )
     freezer._write_json(
         output,
         _manifest(
@@ -178,8 +214,12 @@ def main() -> int:
             arguments.arc2_source,
             arguments.arc1_repository,
             arguments.arc2_repository,
-            DEFAULT_EXCLUSION_IMPORTS,
+            exclusion_imports,
             arguments.salt,
+            arguments.artifact_id,
+            arguments.title,
+            arguments.cohort_key,
+            arguments.claim_boundary,
         ),
     )
     print(f"filename-only development cohort written: {output}")
