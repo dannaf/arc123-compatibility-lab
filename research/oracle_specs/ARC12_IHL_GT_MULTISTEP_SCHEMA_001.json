@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "artifact_id": "ARC12-IHL-GT-MULTISTEP-SCHEMA-001",
+  "purpose": "Offline, explicit, source-pinned sequential hypothesis/evidence/revision annotations for ARC12 research; never a live answer mechanism.",
+  "record_required_fields": [
+    "task_id",
+    "benchmark",
+    "trajectory_source",
+    "steps",
+    "final_program",
+    "verification"
+  ],
+  "step_required_fields": [
+    "step",
+    "source_trace_event",
+    "attention",
+    "observation",
+    "hypothesis_action",
+    "hypothesis_before",
+    "hypothesis_after",
+    "predicted_scope",
+    "prediction",
+    "support",
+    "counterexamples",
+    "revision",
+    "residual_summary"
+  ],
+  "forbidden_fields": [
+    "private_chain_of_thought",
+    "held_out_test_output_before_commit",
+    "live_solver_dispatch_code",
+    "expected_output"
+  ],
+  "required_boundaries": [
+    "offline_only",
+    "no_answer_grid_in_annotation_steps",
+    "no_live_agent_access",
+    "post_answer_vv_only"
+  ]
+}
