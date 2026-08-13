@@ -43,6 +43,8 @@ class Hypothesis:
             return self._recolor(input_grid)
         if self.kind == "mirror":
             return self._mirror(input_grid)
+        if self.kind == "dihedral_transform":
+            return self._dihedral_transform(input_grid)
         if self.kind == "translate":
             return self._translate(input_grid)
         if self.kind == "line_extend":
@@ -75,6 +77,32 @@ class Hypothesis:
         if axis == "rotate_180":
             return tuple(tuple(reversed(row)) for row in reversed(input_grid))
         raise ValueError(f"unknown mirror axis: {axis}")
+
+    def _dihedral_transform(self, input_grid: Grid) -> PartialGrid:
+        axis = str(self.parameter_map["axis"])
+        height = len(input_grid)
+        width = len(input_grid[0])
+        if axis == "transpose":
+            return tuple(
+                tuple(input_grid[row][column] for row in range(height))
+                for column in range(width)
+            )
+        if axis == "anti_transpose":
+            return tuple(
+                tuple(input_grid[height - 1 - row][width - 1 - column] for row in range(height))
+                for column in range(width)
+            )
+        if axis == "rotate_90":
+            return tuple(
+                tuple(input_grid[height - 1 - row][column] for row in range(height))
+                for column in range(width)
+            )
+        if axis == "rotate_270":
+            return tuple(
+                tuple(input_grid[row][width - 1 - column] for row in range(height))
+                for column in range(width)
+            )
+        raise ValueError(f"unknown dihedral transform axis: {axis}")
 
     def _translate(self, input_grid: Grid) -> PartialGrid:
         parameters = self.parameter_map
@@ -272,6 +300,22 @@ def _translation_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypo
     return candidates
 
 
+def _dihedral_transform_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
+    """Infer shape-aware coordinate transforms directly from visible examples."""
+
+    axes = ("transpose", "anti_transpose", "rotate_90", "rotate_270")
+    candidates: list[Hypothesis] = []
+    for axis in axes:
+        hypothesis = Hypothesis(
+            "dihedral_transform",
+            _parameter_tuple(axis=axis),
+            description_length=2,
+        )
+        if all(hypothesis.predict(input_grid) == _full(output_grid) for input_grid, output_grid in training_pairs):
+            candidates.append(hypothesis)
+    return candidates
+
+
 def _tile_repeat_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
     factors: set[tuple[int, int]] = set()
     for input_grid, output_grid in training_pairs:
@@ -410,7 +454,9 @@ def propose_base_hypotheses(
     """Propose generic global relations before inspecting structured residuals."""
 
     if enabled_operator_families is None:
-        enabled = frozenset({"identity", "recolor", "mirror", "translate"})
+        enabled = frozenset(
+            {"identity", "recolor", "mirror", "dihedral_transform", "translate"}
+        )
     else:
         enabled = frozenset(enabled_operator_families)
     candidates = [Hypothesis("identity", description_length=1)] if "identity" in enabled else []
@@ -440,6 +486,8 @@ def propose_base_hypotheses(
             )
         if "translate" in enabled:
             candidates.extend(_translation_candidates(training_pairs))
+    if "dihedral_transform" in enabled:
+        candidates.extend(_dihedral_transform_candidates(training_pairs))
     if "repeat_tile" in enabled:
         candidates.extend(_tile_repeat_candidates(training_pairs))
     if "dihedral_tile" in enabled:

@@ -116,6 +116,38 @@ class IterativeHypothesisLearnerTests(unittest.TestCase):
         self.assertEqual(result.selected_hypothesis, "tile_repeat(column_factor=3,row_factor=3)")
         self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
 
+    def test_rectangular_dihedral_transform_is_inferred_from_visible_examples(self) -> None:
+        environment = self._environment(
+            [
+                {
+                    "input": [[1, 2, 3], [4, 5, 6]],
+                    "output": [[1, 4], [2, 5], [3, 6]],
+                },
+                {
+                    "input": [[7, 8], [9, 0], [1, 2]],
+                    "output": [[7, 9, 1], [8, 0, 2]],
+                },
+            ],
+            [
+                {
+                    "input": [[3, 1, 4, 1], [5, 9, 2, 6]],
+                    "output": [[3, 5], [1, 9], [4, 2], [1, 6]],
+                }
+            ],
+        )
+
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "dihedral_transform"),
+            candidate_limit=12,
+            beam_width=8,
+        ).solve(environment, "synthetic-rectangular-transpose")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertEqual(result.selected_hypothesis, "dihedral_transform(axis=transpose)")
+        self.assertEqual(result.predictions[0], ((3, 5), (1, 9), (4, 2), (1, 6)))
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+
     def test_dihedral_tiling_is_inferred_from_visible_macro_blocks(self) -> None:
         environment = self._environment(
             [
