@@ -360,6 +360,7 @@ THEORY_OPERATOR_FAMILIES = (
     "dihedral_tile",
     "self_mask_macro_stamp",
     "axis_mode_denoise",
+    "self_contained_subset_crop",
     "line_extend",
     "row_span_fill",
     "row_span_minimum",
@@ -437,6 +438,7 @@ class IterativeHypothesisLearner:
                 "dihedral_transform",
                 "self_mask_macro_stamp",
                 "axis_mode_denoise",
+                "self_contained_subset_crop",
             }
         ]
         remaining = [
@@ -451,6 +453,7 @@ class IterativeHypothesisLearner:
                 "dihedral_transform",
                 "self_mask_macro_stamp",
                 "axis_mode_denoise",
+                "self_contained_subset_crop",
             }
         ]
         for candidate in [*preferred, *remaining][: self.candidate_limit]:
@@ -506,6 +509,7 @@ class IterativeHypothesisLearner:
                     "dihedral_transform(",
                     "self_mask_macro_stamp(",
                     "axis_mode_denoise",
+                    "self_contained_subset_crop",
                 )
             ):
                 return 0, theory.theory_id

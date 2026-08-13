@@ -59,6 +59,8 @@ class Hypothesis:
             return self._self_mask_macro_stamp(input_grid)
         if self.kind == "axis_mode_denoise":
             return self._axis_mode_denoise(input_grid)
+        if self.kind == "self_contained_subset_crop":
+            return self._self_contained_subset_crop(input_grid)
         raise ValueError(f"unknown generic hypothesis kind: {self.kind}")
 
     def _recolor(self, input_grid: Grid) -> PartialGrid:
@@ -327,6 +329,54 @@ class Hypothesis:
             return None
         return row_grid if row_support > column_support else column_grid
 
+    def _self_contained_subset_crop(self, input_grid: Grid) -> Optional[PartialGrid]:
+        """Crop the unique smallest rectangle closed under an input color subset.
+
+        A candidate subset contributes every row and column containing one of its
+        colors.  Its induced rectangle is valid only when every cell inside it has a
+        color from that same subset.  The operation uses no learned color identity:
+        it returns a crop only when the smallest valid rectangle is unique.
+        """
+
+        height = len(input_grid)
+        width = len(input_grid[0])
+        colors = tuple(sorted({color for row in input_grid for color in row}))
+        if len(colors) < 2 or len(colors) > 10:
+            return None
+        candidates: list[tuple[int, PartialGrid]] = []
+        for mask in range(1, (1 << len(colors)) - 1):
+            selected_colors = {
+                color for index, color in enumerate(colors) if mask & (1 << index)
+            }
+            coordinates = [
+                (row_index, column_index)
+                for row_index, row in enumerate(input_grid)
+                for column_index, color in enumerate(row)
+                if color in selected_colors
+            ]
+            top = min(row_index for row_index, _ in coordinates)
+            bottom = max(row_index for row_index, _ in coordinates)
+            left = min(column_index for _, column_index in coordinates)
+            right = max(column_index for _, column_index in coordinates)
+            if top == 0 and bottom == height - 1 and left == 0 and right == width - 1:
+                continue
+            crop = tuple(
+                tuple(input_grid[row_index][column_index] for column_index in range(left, right + 1))
+                for row_index in range(top, bottom + 1)
+            )
+            if any(color not in selected_colors for row in crop for color in row):
+                continue
+            candidates.append(((bottom - top + 1) * (right - left + 1), crop))
+        if not candidates:
+            return None
+        minimum_area = min(area for area, _ in candidates)
+        minimum_crops = {
+            crop for area, crop in candidates if area == minimum_area
+        }
+        if len(minimum_crops) != 1:
+            return None
+        return next(iter(minimum_crops))
+
 
 def _same_shape_training_pairs(training_pairs: Sequence[TrainingPair]) -> bool:
     return all(
@@ -591,6 +641,22 @@ def _axis_mode_denoise_candidates(training_pairs: Sequence[TrainingPair]) -> lis
     return []
 
 
+def _self_contained_subset_crop_candidates(
+    training_pairs: Sequence[TrainingPair],
+) -> list[Hypothesis]:
+    """Keep a dynamic input-color crop only when every visible output agrees."""
+
+    if not training_pairs:
+        return []
+    hypothesis = Hypothesis("self_contained_subset_crop", description_length=8)
+    if all(
+        hypothesis.predict(input_grid) == _full(output_grid)
+        for input_grid, output_grid in training_pairs
+    ):
+        return [hypothesis]
+    return []
+
+
 def _dihedral_tile_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
     factors: set[tuple[int, int]] = set()
     possible_labels: list[set[str]] | None = None
@@ -680,6 +746,7 @@ def propose_base_hypotheses(
                 "translate",
                 "self_mask_macro_stamp",
                 "axis_mode_denoise",
+                "self_contained_subset_crop",
             }
         )
     else:
@@ -721,6 +788,8 @@ def propose_base_hypotheses(
         candidates.extend(_self_mask_macro_stamp_candidates(training_pairs))
     if "axis_mode_denoise" in enabled:
         candidates.extend(_axis_mode_denoise_candidates(training_pairs))
+    if "self_contained_subset_crop" in enabled:
+        candidates.extend(_self_contained_subset_crop_candidates(training_pairs))
     return candidates
 
 

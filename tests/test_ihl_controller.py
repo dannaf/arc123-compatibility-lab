@@ -384,6 +384,69 @@ class IterativeHypothesisLearnerTests(unittest.TestCase):
             },
         )
 
+    def test_self_contained_subset_crop_discovers_input_relative_payload(self) -> None:
+        environment = self._environment(
+            [
+                {
+                    "input": [
+                        [0, 3, 0, 0, 0, 0, 3],
+                        [0, 1, 2, 1, 0, 0, 0],
+                        [0, 2, 1, 2, 0, 4, 0],
+                        [0, 0, 0, 0, 0, 0, 0],
+                        [4, 0, 0, 0, 0, 0, 0],
+                    ],
+                    "output": [[1, 2, 1], [2, 1, 2]],
+                },
+                {
+                    "input": [
+                        [7, 0, 0, 0, 0, 0, 7],
+                        [0, 5, 6, 5, 0, 0, 0],
+                        [0, 6, 5, 6, 0, 8, 0],
+                        [0, 0, 0, 0, 0, 0, 0],
+                        [8, 0, 0, 0, 0, 0, 0],
+                    ],
+                    "output": [[5, 6, 5], [6, 5, 6]],
+                },
+            ],
+            [
+                {
+                    "input": [
+                        [9, 0, 0, 0, 0, 9],
+                        [0, 3, 4, 3, 0, 0],
+                        [0, 4, 3, 4, 0, 8],
+                        [8, 0, 0, 0, 0, 0],
+                    ],
+                    "output": [[3, 4, 3], [4, 3, 4]],
+                }
+            ],
+        )
+
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "self_contained_subset_crop"),
+            candidate_limit=12,
+            beam_width=8,
+        ).solve(environment, "synthetic-self-contained-subset-crop")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertEqual(result.selected_hypothesis, "self_contained_subset_crop")
+        self.assertEqual(result.predictions[0], ((3, 4, 3), (4, 3, 4)))
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+
+    def test_self_contained_subset_crop_refuses_equal_area_payload_ties(self) -> None:
+        ambiguous = ((0, 1, 1, 0, 2, 2, 0), (0, 1, 1, 0, 2, 2, 0))
+        self.assertIsNone(Hypothesis("self_contained_subset_crop").predict(ambiguous))
+        self.assertNotIn(
+            "self_contained_subset_crop",
+            {
+                candidate.kind
+                for candidate in propose_base_hypotheses(
+                    ((ambiguous, ((1, 1), (1, 1))),),
+                    ("self_contained_subset_crop",),
+                )
+            },
+        )
+
     def test_explicit_empty_operator_vocabulary_does_not_restore_defaults(self) -> None:
         environment = self._environment(
             [{"input": [[1]], "output": [[2]]}],
