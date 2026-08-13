@@ -70,6 +70,14 @@ class Hypothesis:
             return self._adjacent_bilateral_cellwise_combine(input_grid)
         if self.kind == "distinct_nonbackground_scale":
             return self._distinct_nonbackground_scale(input_grid)
+        if self.kind == "distinct_color_scale":
+            return self._distinct_color_scale(input_grid)
+        if self.kind == "quadrant_odd_one_out":
+            return self._quadrant_odd_one_out(input_grid)
+        if self.kind == "singleton_foreground_border":
+            return self._singleton_foreground_border(input_grid)
+        if self.kind == "distinct_color_count_line":
+            return self._distinct_color_count_line(input_grid)
         if self.kind == "separated_panel_cellwise_combine":
             return self._separated_panel_cellwise_combine(input_grid)
         if self.kind == "anti_diagonal_nonbackground_stream":
@@ -468,6 +476,80 @@ class Hypothesis:
             for row in input_grid
         ]
         return tuple(row for row in expanded_rows for _ in range(factor))
+
+    def _distinct_color_scale(self, input_grid: Grid) -> PartialGrid:
+        """Scale each cell by the complete color inventory of the current grid."""
+
+        factor = len({color for row in input_grid for color in row})
+        expanded_rows = [
+            tuple(color for input_color in row for color in (input_color,) * factor)
+            for row in input_grid
+        ]
+        return tuple(row for row in expanded_rows for _ in range(factor))
+
+    def _quadrant_odd_one_out(self, input_grid: Grid) -> Optional[PartialGrid]:
+        """Return the unique quadrant when three central-divider quadrants agree."""
+
+        quadrants = _central_equal_quadrants(input_grid)
+        if quadrants is None:
+            return None
+        unique = [
+            quadrant
+            for quadrant in quadrants
+            if sum(quadrant == other for other in quadrants) == 1
+        ]
+        return unique[0] if len(unique) == 1 else None
+
+    def _singleton_foreground_border(self, input_grid: Grid) -> Optional[PartialGrid]:
+        """Project a unique interior foreground seed onto its input-sized border."""
+
+        background = _unique_background_color(input_grid)
+        if background is None:
+            return None
+        height = len(input_grid)
+        width = len(input_grid[0])
+        if height < 3 or width < 3:
+            return None
+        foreground = [
+            (row_index, column_index, color)
+            for row_index, row in enumerate(input_grid)
+            for column_index, color in enumerate(row)
+            if color != background
+        ]
+        if len(foreground) != 1:
+            return None
+        row_index, column_index, seed_color = foreground[0]
+        if row_index in {0, height - 1} or column_index in {0, width - 1}:
+            return None
+        return tuple(
+            tuple(
+                seed_color
+                if row in {0, height - 1} or column in {0, width - 1}
+                else background
+                for column in range(width)
+            )
+            for row in range(height)
+        )
+
+    def _distinct_color_count_line(self, input_grid: Grid) -> Optional[PartialGrid]:
+        """Render a learned line motif selected by the input's color-count relation."""
+
+        parameters = self.parameter_map
+        count_to_line = _decode_count_to_line_mapping(str(parameters["count_to_line"]))
+        line_name = count_to_line.get(len({color for row in input_grid for color in row}))
+        if line_name is None:
+            return None
+        height = len(input_grid)
+        width = len(input_grid[0])
+        cells = _full_line_cells(height, width, line_name)
+        if cells is None:
+            return None
+        background = int(parameters["background_color"])
+        foreground = int(parameters["foreground_color"])
+        return tuple(
+            tuple(foreground if (row, column) in cells else background for column in range(width))
+            for row in range(height)
+        )
 
     def _separated_panel_cellwise_combine(
         self, input_grid: Grid
@@ -921,6 +1003,108 @@ def _unique_foreground_bbox(
     )
 
 
+def _central_equal_quadrants(input_grid: Grid) -> Optional[tuple[Grid, Grid, Grid, Grid]]:
+    """Split one central uniform cross into four non-empty equal quadrants."""
+
+    height = len(input_grid)
+    width = len(input_grid[0])
+    if height < 3 or width < 3 or height % 2 != 1 or width % 2 != 1:
+        return None
+    separator_row = height // 2
+    separator_column = width // 2
+    separator_color = input_grid[separator_row][separator_column]
+    if any(color != separator_color for color in input_grid[separator_row]):
+        return None
+    if any(
+        input_grid[row_index][separator_column] != separator_color
+        for row_index in range(height)
+    ):
+        return None
+    top_left = tuple(
+        tuple(row[:separator_column]) for row in input_grid[:separator_row]
+    )
+    top_right = tuple(
+        tuple(row[separator_column + 1 :]) for row in input_grid[:separator_row]
+    )
+    bottom_left = tuple(
+        tuple(row[:separator_column]) for row in input_grid[separator_row + 1 :]
+    )
+    bottom_right = tuple(
+        tuple(row[separator_column + 1 :]) for row in input_grid[separator_row + 1 :]
+    )
+    return top_left, top_right, bottom_left, bottom_right
+
+
+_COUNT_LINE_NAMES = (
+    "top_row",
+    "bottom_row",
+    "left_column",
+    "right_column",
+    "main_diagonal",
+    "anti_diagonal",
+)
+
+
+def _full_line_cells(height: int, width: int, line_name: str) -> Optional[frozenset[tuple[int, int]]]:
+    if height < 2 or width < 2:
+        return None
+    if line_name == "top_row":
+        return frozenset((0, column) for column in range(width))
+    if line_name == "bottom_row":
+        return frozenset((height - 1, column) for column in range(width))
+    if line_name == "left_column":
+        return frozenset((row, 0) for row in range(height))
+    if line_name == "right_column":
+        return frozenset((row, width - 1) for row in range(height))
+    if height != width:
+        return None
+    if line_name == "main_diagonal":
+        return frozenset((index, index) for index in range(height))
+    if line_name == "anti_diagonal":
+        return frozenset((index, width - 1 - index) for index in range(height))
+    raise ValueError(f"unknown full-line motif: {line_name}")
+
+
+def _full_line_signature(input_grid: Grid) -> Optional[tuple[int, int, str]]:
+    background = _unique_background_color(input_grid)
+    if background is None:
+        return None
+    foreground = {color for row in input_grid for color in row if color != background}
+    if len(foreground) != 1:
+        return None
+    height = len(input_grid)
+    width = len(input_grid[0])
+    observed = frozenset(
+        (row_index, column_index)
+        for row_index, row in enumerate(input_grid)
+        for column_index, color in enumerate(row)
+        if color != background
+    )
+    for line_name in _COUNT_LINE_NAMES:
+        if observed == _full_line_cells(height, width, line_name):
+            return background, next(iter(foreground)), line_name
+    return None
+
+
+def _encode_count_to_line_mapping(mapping: dict[int, str]) -> str:
+    return ";".join(f"{count}:{line_name}" for count, line_name in sorted(mapping.items()))
+
+
+def _decode_count_to_line_mapping(encoded: str) -> dict[int, str]:
+    mapping: dict[int, str] = {}
+    if not encoded:
+        raise ValueError("count-to-line mapping must not be empty")
+    for entry in encoded.split(";"):
+        raw_count, separator, line_name = entry.partition(":")
+        if not separator or not raw_count or line_name not in _COUNT_LINE_NAMES:
+            raise ValueError("count-to-line mapping entry is malformed")
+        count = int(raw_count)
+        if count < 1 or (count in mapping and mapping[count] != line_name):
+            raise ValueError("count-to-line mapping is conflicting")
+        mapping[count] = line_name
+    return mapping
+
+
 def _infer_recolor_mapping(
     training_pairs: Sequence[TrainingPair],
 ) -> Optional[tuple[tuple[str, int | str], ...]]:
@@ -949,16 +1133,17 @@ def _translation_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypo
         for column_offset in range(-max_width + 1, max_width):
             if row_offset == 0 and column_offset == 0:
                 continue
-            candidates.append(
-                Hypothesis(
-                    "translate",
-                    _parameter_tuple(
-                        row_offset=row_offset, column_offset=column_offset
-                    ),
-                    description_length=3,
-                )
+            hypothesis = Hypothesis(
+                "translate",
+                _parameter_tuple(row_offset=row_offset, column_offset=column_offset),
+                description_length=3,
             )
-    return candidates
+            if all(
+                hypothesis.predict(input_grid) == _full(output_grid)
+                for input_grid, output_grid in training_pairs
+            ):
+                candidates.append(hypothesis)
+    return candidates if len(candidates) == 1 else []
 
 
 def _dihedral_transform_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
@@ -1271,6 +1456,91 @@ def _distinct_nonbackground_scale_candidates(
     return []
 
 
+def _distinct_color_scale_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
+    """Keep full-palette scaling only when every visible output agrees."""
+
+    if not training_pairs:
+        return []
+    hypothesis = Hypothesis("distinct_color_scale", description_length=3)
+    if all(
+        hypothesis.predict(input_grid) == _full(output_grid)
+        for input_grid, output_grid in training_pairs
+    ):
+        return [hypothesis]
+    return []
+
+
+def _quadrant_odd_one_out_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
+    """Keep a central-cross odd-quadrant projection only under full agreement."""
+
+    if not training_pairs:
+        return []
+    hypothesis = Hypothesis("quadrant_odd_one_out", description_length=4)
+    if all(
+        hypothesis.predict(input_grid) == _full(output_grid)
+        for input_grid, output_grid in training_pairs
+    ):
+        return [hypothesis]
+    return []
+
+
+def _singleton_foreground_border_candidates(
+    training_pairs: Sequence[TrainingPair],
+) -> list[Hypothesis]:
+    """Keep one-seed border projection only when every visible output agrees."""
+
+    if not training_pairs:
+        return []
+    hypothesis = Hypothesis("singleton_foreground_border", description_length=4)
+    if all(
+        hypothesis.predict(input_grid) == _full(output_grid)
+        for input_grid, output_grid in training_pairs
+    ):
+        return [hypothesis]
+    return []
+
+
+def _distinct_color_count_line_candidates(
+    training_pairs: Sequence[TrainingPair],
+) -> list[Hypothesis]:
+    """Infer a conflict-free count-to-line mapping from visible line outputs."""
+
+    if not training_pairs:
+        return []
+    count_to_line: dict[int, str] = {}
+    backgrounds: set[int] = set()
+    foregrounds: set[int] = set()
+    for input_grid, output_grid in training_pairs:
+        signature = _full_line_signature(output_grid)
+        if signature is None:
+            return []
+        background, foreground, line_name = signature
+        count = len({color for row in input_grid for color in row})
+        prior = count_to_line.get(count)
+        if prior is not None and prior != line_name:
+            return []
+        count_to_line[count] = line_name
+        backgrounds.add(background)
+        foregrounds.add(foreground)
+    if len(backgrounds) != 1 or len(foregrounds) != 1:
+        return []
+    hypothesis = Hypothesis(
+        "distinct_color_count_line",
+        _parameter_tuple(
+            background_color=next(iter(backgrounds)),
+            count_to_line=_encode_count_to_line_mapping(count_to_line),
+            foreground_color=next(iter(foregrounds)),
+        ),
+        description_length=4 + len(count_to_line),
+    )
+    if all(
+        hypothesis.predict(input_grid) == _full(output_grid)
+        for input_grid, output_grid in training_pairs
+    ):
+        return [hypothesis]
+    return []
+
+
 def _separated_panel_cellwise_combine_candidates(
     training_pairs: Sequence[TrainingPair],
 ) -> list[Hypothesis]:
@@ -1512,6 +1782,10 @@ def propose_base_hypotheses(
                 "central_separator_cellwise_combine",
                 "adjacent_bilateral_cellwise_combine",
                 "distinct_nonbackground_scale",
+                "distinct_color_scale",
+                "quadrant_odd_one_out",
+                "singleton_foreground_border",
+                "distinct_color_count_line",
                 "separated_panel_cellwise_combine",
                 "anti_diagonal_nonbackground_stream",
                 "symmetric_foreground_quadrant_crop",
@@ -1567,6 +1841,14 @@ def propose_base_hypotheses(
         candidates.extend(_adjacent_bilateral_cellwise_combine_candidates(training_pairs))
     if "distinct_nonbackground_scale" in enabled:
         candidates.extend(_distinct_nonbackground_scale_candidates(training_pairs))
+    if "distinct_color_scale" in enabled:
+        candidates.extend(_distinct_color_scale_candidates(training_pairs))
+    if "quadrant_odd_one_out" in enabled:
+        candidates.extend(_quadrant_odd_one_out_candidates(training_pairs))
+    if "singleton_foreground_border" in enabled:
+        candidates.extend(_singleton_foreground_border_candidates(training_pairs))
+    if "distinct_color_count_line" in enabled:
+        candidates.extend(_distinct_color_count_line_candidates(training_pairs))
     if "separated_panel_cellwise_combine" in enabled:
         candidates.extend(_separated_panel_cellwise_combine_candidates(training_pairs))
     if "anti_diagonal_nonbackground_stream" in enabled:

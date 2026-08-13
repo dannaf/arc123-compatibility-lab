@@ -57,6 +57,10 @@ DEFAULT_OPERATOR_FAMILIES = (
     "central_separator_cellwise_combine",
     "adjacent_bilateral_cellwise_combine",
     "distinct_nonbackground_scale",
+    "distinct_color_scale",
+    "quadrant_odd_one_out",
+    "singleton_foreground_border",
+    "distinct_color_count_line",
     "separated_panel_cellwise_combine",
     "anti_diagonal_nonbackground_stream",
     "symmetric_foreground_quadrant_crop",
@@ -373,6 +377,10 @@ THEORY_OPERATOR_FAMILIES = (
     "central_separator_cellwise_combine",
     "adjacent_bilateral_cellwise_combine",
     "distinct_nonbackground_scale",
+    "distinct_color_scale",
+    "quadrant_odd_one_out",
+    "singleton_foreground_border",
+    "distinct_color_count_line",
     "separated_panel_cellwise_combine",
     "anti_diagonal_nonbackground_stream",
     "symmetric_foreground_quadrant_crop",
@@ -459,6 +467,10 @@ class IterativeHypothesisLearner:
                 "central_separator_cellwise_combine",
                 "adjacent_bilateral_cellwise_combine",
                 "distinct_nonbackground_scale",
+                "distinct_color_scale",
+                "quadrant_odd_one_out",
+                "singleton_foreground_border",
+                "distinct_color_count_line",
                 "separated_panel_cellwise_combine",
                 "anti_diagonal_nonbackground_stream",
                 "symmetric_foreground_quadrant_crop",
@@ -482,6 +494,10 @@ class IterativeHypothesisLearner:
                 "central_separator_cellwise_combine",
                 "adjacent_bilateral_cellwise_combine",
                 "distinct_nonbackground_scale",
+                "distinct_color_scale",
+                "quadrant_odd_one_out",
+                "singleton_foreground_border",
+                "distinct_color_count_line",
                 "separated_panel_cellwise_combine",
                 "anti_diagonal_nonbackground_stream",
                 "symmetric_foreground_quadrant_crop",
@@ -530,32 +546,28 @@ class IterativeHypothesisLearner:
                     parent_theory_id=theory.parent_theory_id,
                     rule=rule.as_dict(),
                 )
-        def initial_priority(theory: PartialTheory) -> tuple[int, str]:
-            rule = theory.rules[0]
-            if rule.operation == "coordinate_transform":
-                return 1, theory.theory_id
-            if rule.operation == "identity" or theory.name.startswith(
-                (
-                    "recolor(",
-                    "tile_repeat(",
-                    "dihedral_transform(",
-                    "self_mask_macro_stamp(",
-                    "axis_mode_denoise",
-                    "self_contained_subset_crop",
-                    "frame_interior_crop",
-                    "central_separator_cellwise_combine",
-                    "adjacent_bilateral_cellwise_combine",
-                    "distinct_nonbackground_scale",
-                    "separated_panel_cellwise_combine",
-                    "anti_diagonal_nonbackground_stream",
-                    "symmetric_foreground_quadrant_crop",
-                    "uniform_block_self_stamp_fractal",
-                )
-            ):
-                return 0, theory.theory_id
-            return 2, theory.theory_id
-
-        return sorted(theories, key=initial_priority)[: self.candidate_limit]
+        assessed_theories = [
+            (theory, assess_hypothesis(theory, training_pairs)) for theory in theories
+        ]
+        for theory, assessment in assessed_theories:
+            trace.record(
+                ActionKind.COMPARE,
+                stage="initial_candidate_pre_beam_compatibility",
+                theory_id=theory.theory_id,
+                **assessment.as_dict(),
+            )
+        ranked_theories = sorted(
+            assessed_theories,
+            key=lambda item: (
+                not item[1].is_training_exact,
+                item[1].contradiction_count,
+                item[1].unknown_cell_count,
+                -item[1].matching_cell_count,
+                item[1].description_length,
+                item[0].name,
+            ),
+        )
+        return [theory for theory, _ in ranked_theories[: self.candidate_limit]]
 
     @staticmethod
     def _demo_information_score(input_grid: Grid, output_grid: Grid) -> tuple[int, int, int]:
@@ -1444,7 +1456,10 @@ class IterativeHypothesisLearner:
         frontier: list[PartialTheory] = []
         seen: set[str] = set()
         for theory in self._initial_theories(training_pairs, trace):
-            self._push(frontier, theory, seen)
+            fingerprint = self._fingerprint(theory)
+            if fingerprint not in seen:
+                seen.add(fingerprint)
+                frontier.append(theory)
         exact_theories: list[PartialTheory] = []
         best_theory: PartialTheory | None = None
         revisions = 0
