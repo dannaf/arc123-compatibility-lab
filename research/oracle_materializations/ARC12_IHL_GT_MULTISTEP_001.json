@@ -1,0 +1,1673 @@
+{
+  "artifact_id": "ARC12-IHL-GT-MULTISTEP-001",
+  "live_agent_boundary": {
+    "annotation_visible_to_live_agent": false,
+    "gt_solver_visible_to_live_agent": false,
+    "held_out_answer_grid_visible_before_commit": false,
+    "records_visible_to_live_agent": false,
+    "source_diagram_visible_to_live_agent": false,
+    "source_receipt_visible_to_live_agent": false,
+    "source_trace_visible_to_live_agent": false
+  },
+  "purpose": "Offline learner-development comparison and V&V only; deterministic projections of published explicit traces, never a live answer mechanism.",
+  "record_count": 3,
+  "records": [
+    {
+      "benchmark": "arc1",
+      "final_program": {
+        "post_answer_vv": {
+          "all_cells_match": true,
+          "answer_grid_included": false,
+          "compared_position_count": 196,
+          "mismatched_cell_count": 0,
+          "training_exact": true,
+          "verdict": "YES"
+        },
+        "selected_hypothesis": "compose(identity,marker_shape_target_recolor(marker=1,target=8,mapping_count=3),erase(color=1,to=input_background))",
+        "source_commit_event_step": 1010
+      },
+      "live_agent_input": false,
+      "offline_only": true,
+      "record_id": "ARC12-IHL-GT-MULTISTEP-001:arc1:009d5c81",
+      "steps": [
+        {
+          "attention": {
+            "source_trace_action": "PROPOSE"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_PROPOSE",
+          "hypothesis_after": {
+            "parent_theory_id": "T0000",
+            "rule": {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            "theory_id": "T0001"
+          },
+          "hypothesis_before": {
+            "parent_theory_id": "T0000"
+          },
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "no_revision_at_this_milestone"
+          },
+          "source_trace_event": {
+            "action": "PROPOSE",
+            "step": 0
+          },
+          "step": 0,
+          "support": {
+            "source_trace_action": "PROPOSE",
+            "source_trace_step": 0,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "reason": "initial_highest_observed_change_and_color_discrimination",
+            "selected_demo": 3,
+            "selected_region": {
+              "column": 7,
+              "row": 0
+            },
+            "source_trace_action": "ATTEND"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_ATTEND",
+          "hypothesis_after": {
+            "theory_id": "T0001"
+          },
+          "hypothesis_before": {},
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "no_revision_at_this_milestone"
+          },
+          "source_trace_event": {
+            "action": "ATTEND",
+            "step": 2
+          },
+          "step": 1,
+          "support": {
+            "source_trace_action": "ATTEND",
+            "source_trace_step": 2,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "COMPARE"
+          },
+          "counterexamples": [
+            {
+              "column": 7,
+              "demo_index": 3,
+              "observed": 7,
+              "predicted": 8,
+              "row": 0
+            }
+          ],
+          "hypothesis_action": "OFFLINE_TRACE_COMPARE",
+          "hypothesis_after": {
+            "theory": {
+              "contradiction_count": 37,
+              "matching_cell_count": 159,
+              "name": "identity",
+              "parent_theory_id": "T0000",
+              "theory_id": "T0001",
+              "unknown_cell_count": 0
+            },
+            "theory_id": "T0001"
+          },
+          "hypothesis_before": {},
+          "observation": {
+            "compatibility": {
+              "contradiction_count": 37,
+              "exact_support_zero": true,
+              "matching_cell_count": 159,
+              "support_state": "IMPOSSIBLE",
+              "unknown_cell_count": 0
+            },
+            "demo_index": 3,
+            "explained_cell_count": 159,
+            "residual_cell_count": 37
+          },
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {
+            "explained_cell_count": 159,
+            "residual_cell_count": 37
+          },
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "no_revision_at_this_milestone"
+          },
+          "source_trace_event": {
+            "action": "COMPARE",
+            "step": 4
+          },
+          "step": 2,
+          "support": {
+            "source_trace_action": "COMPARE",
+            "source_trace_step": 4,
+            "theory_summary": {
+              "contradiction_count": 37,
+              "matching_cell_count": 159,
+              "name": "identity",
+              "parent_theory_id": "T0000",
+              "theory_id": "T0001",
+              "unknown_cell_count": 0
+            }
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "FIND_COUNTEREXAMPLE"
+          },
+          "counterexamples": [
+            {
+              "column": 7,
+              "demo_index": 0,
+              "observed": 2,
+              "predicted": 8,
+              "row": 1
+            }
+          ],
+          "hypothesis_action": "OFFLINE_TRACE_FIND_COUNTEREXAMPLE",
+          "hypothesis_after": {
+            "theory_id": "T0001"
+          },
+          "hypothesis_before": {},
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "causal_next_operation": "scope_or_rule_revision",
+            "derived_from_explicit_trace": true,
+            "kind": "counterexample_gate",
+            "responsible_rule_id": "identity"
+          },
+          "source_trace_event": {
+            "action": "FIND_COUNTEREXAMPLE",
+            "step": 21
+          },
+          "step": 3,
+          "support": {
+            "source_trace_action": "FIND_COUNTEREXAMPLE",
+            "source_trace_step": 21,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "EXPLAIN_RESIDUAL"
+          },
+          "counterexamples": [
+            {
+              "column": 7,
+              "demo_index": 0,
+              "observed": 2,
+              "predicted": 8,
+              "row": 1
+            }
+          ],
+          "hypothesis_action": "OFFLINE_TRACE_EXPLAIN_RESIDUAL",
+          "hypothesis_after": {
+            "parent_theory_id": "T0001",
+            "rule": {
+              "description_length": 2,
+              "name": "recolor(to=2,scope=color==8)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 2
+              },
+              "rule_id": "recolor-color-8-to-2",
+              "scope": {
+                "kind": "color_equals",
+                "value": 8
+              }
+            },
+            "theory_id": "T0002"
+          },
+          "hypothesis_before": {
+            "parent_theory_id": "T0001"
+          },
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "residual_rule_addition",
+            "rule": {
+              "description_length": 2,
+              "name": "recolor(to=2,scope=color==8)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 2
+              },
+              "rule_id": "recolor-color-8-to-2",
+              "scope": {
+                "kind": "color_equals",
+                "value": 8
+              }
+            }
+          },
+          "source_trace_event": {
+            "action": "EXPLAIN_RESIDUAL",
+            "step": 22
+          },
+          "step": 4,
+          "support": {
+            "source_trace_action": "EXPLAIN_RESIDUAL",
+            "source_trace_step": 22,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "COMPOSE_RULE"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_COMPOSE_RULE",
+          "hypothesis_after": {
+            "ordered_rule_ids": [
+              "identity",
+              "recolor-color-8-to-2"
+            ],
+            "theory_id": "T0002"
+          },
+          "hypothesis_before": {},
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "ordered_rule_composition",
+            "ordered_rule_ids": [
+              "identity",
+              "recolor-color-8-to-2"
+            ]
+          },
+          "source_trace_event": {
+            "action": "COMPOSE_RULE",
+            "step": 23
+          },
+          "step": 5,
+          "support": {
+            "source_trace_action": "COMPOSE_RULE",
+            "source_trace_step": 23,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "reason": "component_property_consistently_erases_to_input_background",
+            "source_trace_action": "ADD_RULE"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_ADD_RULE",
+          "hypothesis_after": {
+            "parent_theory_id": "T0001",
+            "rule": {
+              "description_length": 5,
+              "name": "component_erase(property=shape,value_count=3)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;0,1;0,2;1,0;1,2\",0],[\"0,1;1,0;1,1;1,2\",0],[\"0,1;1,0;1,1;1,2;2,1\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            "theory_id": "T0003"
+          },
+          "hypothesis_before": {
+            "parent_theory_id": "T0001"
+          },
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "rule_addition",
+            "rule": {
+              "description_length": 5,
+              "name": "component_erase(property=shape,value_count=3)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;0,1;0,2;1,0;1,2\",0],[\"0,1;1,0;1,1;1,2\",0],[\"0,1;1,0;1,1;1,2;2,1\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          },
+          "source_trace_event": {
+            "action": "ADD_RULE",
+            "step": 25
+          },
+          "step": 6,
+          "support": {
+            "source_trace_action": "ADD_RULE",
+            "source_trace_step": 25,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "PROMOTE_CONSTRAINT"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_PROMOTE_CONSTRAINT",
+          "hypothesis_after": {
+            "theory_id": "T0044"
+          },
+          "hypothesis_before": {},
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {
+            "evaluated_demo_count": 5,
+            "rule_count": 9,
+            "status": "complete_training_compatibility_after_revision"
+          },
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "training_compatibility_promotion"
+          },
+          "source_trace_event": {
+            "action": "PROMOTE_CONSTRAINT",
+            "step": 996
+          },
+          "step": 7,
+          "support": {
+            "source_trace_action": "PROMOTE_CONSTRAINT",
+            "source_trace_step": 996,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "COMMIT"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_COMMIT",
+          "hypothesis_after": {
+            "theory_id": "T0004"
+          },
+          "hypothesis_before": {},
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "no_revision_at_this_milestone"
+          },
+          "source_trace_event": {
+            "action": "COMMIT",
+            "step": 1010
+          },
+          "step": 8,
+          "support": {
+            "source_trace_action": "COMMIT",
+            "source_trace_step": 1010,
+            "theory_summary": {}
+          }
+        }
+      ],
+      "task_id": "009d5c81",
+      "trajectory_source": {
+        "p0007_corpus_callosum": {
+          "commit": "64ce50d15c8e1bc687b21e293745a681546f5f67",
+          "path": "reports/P0007_arc12_conditional_revision_10/arc1/009d5c81/corpus_callosum.svg",
+          "repository": "https://github.com/dannaf/arc123-compatibility-lab",
+          "sha256": "b2a978377b26b0808c9aba192bb20fdfeb80370178d1e43e8a488fd01312d87b",
+          "url": "https://github.com/dannaf/arc123-compatibility-lab/blob/64ce50d15c8e1bc687b21e293745a681546f5f67/reports/P0007_arc12_conditional_revision_10/arc1/009d5c81/corpus_callosum.svg"
+        },
+        "p0007_receipt": {
+          "commit": "64ce50d15c8e1bc687b21e293745a681546f5f67",
+          "path": "reports/P0007_arc12_conditional_revision_10/arc1/009d5c81/receipt.json",
+          "repository": "https://github.com/dannaf/arc123-compatibility-lab",
+          "sha256": "f0240f2ff741e2105b1fe3110a1e263328b8b4a7eb02a1c1ca2ab9aaaf7bf8d3",
+          "url": "https://github.com/dannaf/arc123-compatibility-lab/blob/64ce50d15c8e1bc687b21e293745a681546f5f67/reports/P0007_arc12_conditional_revision_10/arc1/009d5c81/receipt.json"
+        },
+        "p0007_trace": {
+          "commit": "64ce50d15c8e1bc687b21e293745a681546f5f67",
+          "path": "reports/P0007_arc12_conditional_revision_10/arc1/009d5c81/learning_trace.json",
+          "repository": "https://github.com/dannaf/arc123-compatibility-lab",
+          "sha256": "d7de0cb59053161e5baa2accb897bc196847361bab19138bd3a3698fad7342e0",
+          "url": "https://github.com/dannaf/arc123-compatibility-lab/blob/64ce50d15c8e1bc687b21e293745a681546f5f67/reports/P0007_arc12_conditional_revision_10/arc1/009d5c81/learning_trace.json"
+        },
+        "task_source_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/arc_data/arc1/evaluation/009d5c81.json"
+      },
+      "verification": {
+        "explicit_step_order_checked": true,
+        "held_out_test_output_before_commit_present": false,
+        "hidden_chain_of_thought_present": false,
+        "live_solver_dispatch_code_present": false,
+        "source_diagram_hash_checked": true,
+        "source_pin_checked": true,
+        "source_receipt_hash_checked": true,
+        "source_trace_hash_checked": true
+      }
+    },
+    {
+      "benchmark": "arc2",
+      "final_program": {
+        "post_answer_vv": {
+          "all_cells_match": true,
+          "answer_grid_included": false,
+          "compared_position_count": 24,
+          "mismatched_cell_count": 0,
+          "training_exact": true,
+          "verdict": "YES"
+        },
+        "selected_hypothesis": "compose(identity,row_span_fill(fill_color=2,seed_color=2,selection=global_minimum))",
+        "source_commit_event_step": 1022
+      },
+      "live_agent_input": false,
+      "offline_only": true,
+      "record_id": "ARC12-IHL-GT-MULTISTEP-001:arc2:5ad8a7c0",
+      "steps": [
+        {
+          "attention": {
+            "source_trace_action": "PROPOSE"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_PROPOSE",
+          "hypothesis_after": {
+            "parent_theory_id": "T0000",
+            "rule": {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            "theory_id": "T0001"
+          },
+          "hypothesis_before": {
+            "parent_theory_id": "T0000"
+          },
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "no_revision_at_this_milestone"
+          },
+          "source_trace_event": {
+            "action": "PROPOSE",
+            "step": 0
+          },
+          "step": 0,
+          "support": {
+            "source_trace_action": "PROPOSE",
+            "source_trace_step": 0,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "reason": "initial_highest_observed_change_and_color_discrimination",
+            "selected_demo": 0,
+            "selected_region": {
+              "column": 1,
+              "row": 0
+            },
+            "source_trace_action": "ATTEND"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_ATTEND",
+          "hypothesis_after": {
+            "theory_id": "T0001"
+          },
+          "hypothesis_before": {},
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "no_revision_at_this_milestone"
+          },
+          "source_trace_event": {
+            "action": "ATTEND",
+            "step": 2
+          },
+          "step": 1,
+          "support": {
+            "source_trace_action": "ATTEND",
+            "source_trace_step": 2,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "COMPARE"
+          },
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 2,
+              "predicted": 0,
+              "row": 0
+            }
+          ],
+          "hypothesis_action": "OFFLINE_TRACE_COMPARE",
+          "hypothesis_after": {
+            "theory": {
+              "contradiction_count": 8,
+              "matching_cell_count": 16,
+              "name": "identity",
+              "parent_theory_id": "T0000",
+              "theory_id": "T0001",
+              "unknown_cell_count": 0
+            },
+            "theory_id": "T0001"
+          },
+          "hypothesis_before": {},
+          "observation": {
+            "compatibility": {
+              "contradiction_count": 8,
+              "exact_support_zero": true,
+              "matching_cell_count": 16,
+              "support_state": "IMPOSSIBLE",
+              "unknown_cell_count": 0
+            },
+            "demo_index": 0,
+            "explained_cell_count": 16,
+            "residual_cell_count": 8
+          },
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {
+            "explained_cell_count": 16,
+            "residual_cell_count": 8
+          },
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "no_revision_at_this_milestone"
+          },
+          "source_trace_event": {
+            "action": "COMPARE",
+            "step": 4
+          },
+          "step": 2,
+          "support": {
+            "source_trace_action": "COMPARE",
+            "source_trace_step": 4,
+            "theory_summary": {
+              "contradiction_count": 8,
+              "matching_cell_count": 16,
+              "name": "identity",
+              "parent_theory_id": "T0000",
+              "theory_id": "T0001",
+              "unknown_cell_count": 0
+            }
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "FIND_COUNTEREXAMPLE"
+          },
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 2,
+              "predicted": 0,
+              "row": 0
+            }
+          ],
+          "hypothesis_action": "OFFLINE_TRACE_FIND_COUNTEREXAMPLE",
+          "hypothesis_after": {
+            "theory_id": "T0001"
+          },
+          "hypothesis_before": {},
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "causal_next_operation": "scope_or_rule_revision",
+            "derived_from_explicit_trace": true,
+            "kind": "counterexample_gate",
+            "responsible_rule_id": "identity"
+          },
+          "source_trace_event": {
+            "action": "FIND_COUNTEREXAMPLE",
+            "step": 21
+          },
+          "step": 3,
+          "support": {
+            "source_trace_action": "FIND_COUNTEREXAMPLE",
+            "source_trace_step": 21,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "EXPLAIN_RESIDUAL"
+          },
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 2,
+              "predicted": 0,
+              "row": 0
+            }
+          ],
+          "hypothesis_action": "OFFLINE_TRACE_EXPLAIN_RESIDUAL",
+          "hypothesis_after": {
+            "parent_theory_id": "T0001",
+            "rule": {
+              "description_length": 2,
+              "name": "recolor(to=2,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 2
+              },
+              "rule_id": "recolor-color-0-to-2",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            },
+            "theory_id": "T0002"
+          },
+          "hypothesis_before": {
+            "parent_theory_id": "T0001"
+          },
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "residual_rule_addition",
+            "rule": {
+              "description_length": 2,
+              "name": "recolor(to=2,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 2
+              },
+              "rule_id": "recolor-color-0-to-2",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            }
+          },
+          "source_trace_event": {
+            "action": "EXPLAIN_RESIDUAL",
+            "step": 22
+          },
+          "step": 4,
+          "support": {
+            "source_trace_action": "EXPLAIN_RESIDUAL",
+            "source_trace_step": 22,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "COMPOSE_RULE"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_COMPOSE_RULE",
+          "hypothesis_after": {
+            "ordered_rule_ids": [
+              "identity",
+              "recolor-color-0-to-2"
+            ],
+            "theory_id": "T0002"
+          },
+          "hypothesis_before": {},
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "ordered_rule_composition",
+            "ordered_rule_ids": [
+              "identity",
+              "recolor-color-0-to-2"
+            ]
+          },
+          "source_trace_event": {
+            "action": "COMPOSE_RULE",
+            "step": 23
+          },
+          "step": 5,
+          "support": {
+            "source_trace_action": "COMPOSE_RULE",
+            "source_trace_step": 23,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "reason": "unexplained_residual_proposed_generic_structural_rule",
+            "source_trace_action": "SPECIALIZE"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_SPECIALIZE",
+          "hypothesis_after": {
+            "parent_theory_id": "T0001",
+            "rule": {
+              "description_length": 4,
+              "name": "row_span_fill(fill_color=2,seed_color=2)",
+              "operation": "full_operator",
+              "parameters": {
+                "fill_color": 2,
+                "operator": "row_span_fill",
+                "seed_color": 2
+              },
+              "rule_id": "structural-row_span_fill",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            "theory_id": "T0003"
+          },
+          "hypothesis_before": {
+            "parent_theory_id": "T0001"
+          },
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "scope_or_parameter_specialization"
+          },
+          "source_trace_event": {
+            "action": "SPECIALIZE",
+            "step": 24
+          },
+          "step": 6,
+          "support": {
+            "source_trace_action": "SPECIALIZE",
+            "source_trace_step": 24,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "PROMOTE_CONSTRAINT"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_PROMOTE_CONSTRAINT",
+          "hypothesis_after": {
+            "theory_id": "T0044"
+          },
+          "hypothesis_before": {},
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {
+            "evaluated_demo_count": 5,
+            "rule_count": 4,
+            "status": "complete_training_compatibility_after_revision"
+          },
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "training_compatibility_promotion"
+          },
+          "source_trace_event": {
+            "action": "PROMOTE_CONSTRAINT",
+            "step": 848
+          },
+          "step": 7,
+          "support": {
+            "source_trace_action": "PROMOTE_CONSTRAINT",
+            "source_trace_step": 848,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "COMMIT"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_COMMIT",
+          "hypothesis_after": {
+            "theory_id": "T0008"
+          },
+          "hypothesis_before": {},
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "no_revision_at_this_milestone"
+          },
+          "source_trace_event": {
+            "action": "COMMIT",
+            "step": 1022
+          },
+          "step": 8,
+          "support": {
+            "source_trace_action": "COMMIT",
+            "source_trace_step": 1022,
+            "theory_summary": {}
+          }
+        }
+      ],
+      "task_id": "5ad8a7c0",
+      "trajectory_source": {
+        "p0007_corpus_callosum": {
+          "commit": "64ce50d15c8e1bc687b21e293745a681546f5f67",
+          "path": "reports/P0007_arc12_conditional_revision_10/arc2/5ad8a7c0/corpus_callosum.svg",
+          "repository": "https://github.com/dannaf/arc123-compatibility-lab",
+          "sha256": "d80c76ddbaf6fbb713ec8fda94d8b04b40ee582675dea633f28906576b88dcb2",
+          "url": "https://github.com/dannaf/arc123-compatibility-lab/blob/64ce50d15c8e1bc687b21e293745a681546f5f67/reports/P0007_arc12_conditional_revision_10/arc2/5ad8a7c0/corpus_callosum.svg"
+        },
+        "p0007_receipt": {
+          "commit": "64ce50d15c8e1bc687b21e293745a681546f5f67",
+          "path": "reports/P0007_arc12_conditional_revision_10/arc2/5ad8a7c0/receipt.json",
+          "repository": "https://github.com/dannaf/arc123-compatibility-lab",
+          "sha256": "7123f9beb961f558482dedfe54c8b7cd9835c65fe8231bfec520244a3693e4eb",
+          "url": "https://github.com/dannaf/arc123-compatibility-lab/blob/64ce50d15c8e1bc687b21e293745a681546f5f67/reports/P0007_arc12_conditional_revision_10/arc2/5ad8a7c0/receipt.json"
+        },
+        "p0007_trace": {
+          "commit": "64ce50d15c8e1bc687b21e293745a681546f5f67",
+          "path": "reports/P0007_arc12_conditional_revision_10/arc2/5ad8a7c0/learning_trace.json",
+          "repository": "https://github.com/dannaf/arc123-compatibility-lab",
+          "sha256": "64b997e49213475f2813e198e34fa3c86504af70aa24cf8d30b3272351434d13",
+          "url": "https://github.com/dannaf/arc123-compatibility-lab/blob/64ce50d15c8e1bc687b21e293745a681546f5f67/reports/P0007_arc12_conditional_revision_10/arc2/5ad8a7c0/learning_trace.json"
+        },
+        "task_source_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/71f86ff4c5304e452e0659131171f0519b50e21c/arc_data/arc2/training/5ad8a7c0.json"
+      },
+      "verification": {
+        "explicit_step_order_checked": true,
+        "held_out_test_output_before_commit_present": false,
+        "hidden_chain_of_thought_present": false,
+        "live_solver_dispatch_code_present": false,
+        "source_diagram_hash_checked": true,
+        "source_pin_checked": true,
+        "source_receipt_hash_checked": true,
+        "source_trace_hash_checked": true
+      }
+    },
+    {
+      "benchmark": "arc2",
+      "final_program": {
+        "post_answer_vv": {
+          "all_cells_match": true,
+          "answer_grid_included": false,
+          "compared_position_count": 1458,
+          "mismatched_cell_count": 0,
+          "training_exact": true,
+          "verdict": "YES"
+        },
+        "selected_hypothesis": "compose(identity,component_recolor(property=symmetry,mapping_count=3),component_erase(property=shape,value_count=1))",
+        "source_commit_event_step": 1054
+      },
+      "live_agent_input": false,
+      "offline_only": true,
+      "record_id": "ARC12-IHL-GT-MULTISTEP-001:arc2:a09f6c25",
+      "steps": [
+        {
+          "attention": {
+            "source_trace_action": "PROPOSE"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_PROPOSE",
+          "hypothesis_after": {
+            "parent_theory_id": "T0000",
+            "rule": {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            "theory_id": "T0001"
+          },
+          "hypothesis_before": {
+            "parent_theory_id": "T0000"
+          },
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "no_revision_at_this_milestone"
+          },
+          "source_trace_event": {
+            "action": "PROPOSE",
+            "step": 0
+          },
+          "step": 0,
+          "support": {
+            "source_trace_action": "PROPOSE",
+            "source_trace_step": 0,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "reason": "initial_highest_observed_change_and_color_discrimination",
+            "selected_demo": 0,
+            "selected_region": {
+              "column": 3,
+              "row": 0
+            },
+            "source_trace_action": "ATTEND"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_ATTEND",
+          "hypothesis_after": {
+            "theory_id": "T0001"
+          },
+          "hypothesis_before": {},
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "no_revision_at_this_milestone"
+          },
+          "source_trace_event": {
+            "action": "ATTEND",
+            "step": 2
+          },
+          "step": 1,
+          "support": {
+            "source_trace_action": "ATTEND",
+            "source_trace_step": 2,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "COMPARE"
+          },
+          "counterexamples": [
+            {
+              "column": 3,
+              "demo_index": 0,
+              "observed": 6,
+              "predicted": 2,
+              "row": 0
+            }
+          ],
+          "hypothesis_action": "OFFLINE_TRACE_COMPARE",
+          "hypothesis_after": {
+            "theory": {
+              "contradiction_count": 63,
+              "matching_cell_count": 298,
+              "name": "identity",
+              "parent_theory_id": "T0000",
+              "theory_id": "T0001",
+              "unknown_cell_count": 0
+            },
+            "theory_id": "T0001"
+          },
+          "hypothesis_before": {},
+          "observation": {
+            "compatibility": {
+              "contradiction_count": 63,
+              "exact_support_zero": true,
+              "matching_cell_count": 298,
+              "support_state": "IMPOSSIBLE",
+              "unknown_cell_count": 0
+            },
+            "demo_index": 0,
+            "explained_cell_count": 298,
+            "residual_cell_count": 63
+          },
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {
+            "explained_cell_count": 298,
+            "residual_cell_count": 63
+          },
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "no_revision_at_this_milestone"
+          },
+          "source_trace_event": {
+            "action": "COMPARE",
+            "step": 4
+          },
+          "step": 2,
+          "support": {
+            "source_trace_action": "COMPARE",
+            "source_trace_step": 4,
+            "theory_summary": {
+              "contradiction_count": 63,
+              "matching_cell_count": 298,
+              "name": "identity",
+              "parent_theory_id": "T0000",
+              "theory_id": "T0001",
+              "unknown_cell_count": 0
+            }
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "FIND_COUNTEREXAMPLE"
+          },
+          "counterexamples": [
+            {
+              "column": 3,
+              "demo_index": 0,
+              "observed": 6,
+              "predicted": 2,
+              "row": 0
+            }
+          ],
+          "hypothesis_action": "OFFLINE_TRACE_FIND_COUNTEREXAMPLE",
+          "hypothesis_after": {
+            "theory_id": "T0001"
+          },
+          "hypothesis_before": {},
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "causal_next_operation": "scope_or_rule_revision",
+            "derived_from_explicit_trace": true,
+            "kind": "counterexample_gate",
+            "responsible_rule_id": "identity"
+          },
+          "source_trace_event": {
+            "action": "FIND_COUNTEREXAMPLE",
+            "step": 13
+          },
+          "step": 3,
+          "support": {
+            "source_trace_action": "FIND_COUNTEREXAMPLE",
+            "source_trace_step": 13,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "EXPLAIN_RESIDUAL"
+          },
+          "counterexamples": [
+            {
+              "column": 3,
+              "demo_index": 0,
+              "observed": 6,
+              "predicted": 2,
+              "row": 0
+            }
+          ],
+          "hypothesis_action": "OFFLINE_TRACE_EXPLAIN_RESIDUAL",
+          "hypothesis_after": {
+            "parent_theory_id": "T0001",
+            "rule": {
+              "description_length": 2,
+              "name": "recolor(to=6,scope=color==2)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 6
+              },
+              "rule_id": "recolor-color-2-to-6",
+              "scope": {
+                "kind": "color_equals",
+                "value": 2
+              }
+            },
+            "theory_id": "T0002"
+          },
+          "hypothesis_before": {
+            "parent_theory_id": "T0001"
+          },
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "residual_rule_addition",
+            "rule": {
+              "description_length": 2,
+              "name": "recolor(to=6,scope=color==2)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 6
+              },
+              "rule_id": "recolor-color-2-to-6",
+              "scope": {
+                "kind": "color_equals",
+                "value": 2
+              }
+            }
+          },
+          "source_trace_event": {
+            "action": "EXPLAIN_RESIDUAL",
+            "step": 14
+          },
+          "step": 4,
+          "support": {
+            "source_trace_action": "EXPLAIN_RESIDUAL",
+            "source_trace_step": 14,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "COMPOSE_RULE"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_COMPOSE_RULE",
+          "hypothesis_after": {
+            "ordered_rule_ids": [
+              "identity",
+              "recolor-color-2-to-6"
+            ],
+            "theory_id": "T0002"
+          },
+          "hypothesis_before": {},
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "ordered_rule_composition",
+            "ordered_rule_ids": [
+              "identity",
+              "recolor-color-2-to-6"
+            ]
+          },
+          "source_trace_event": {
+            "action": "COMPOSE_RULE",
+            "step": 15
+          },
+          "step": 5,
+          "support": {
+            "source_trace_action": "COMPOSE_RULE",
+            "source_trace_step": 15,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "reason": "component_property_consistently_erases_to_input_background",
+            "source_trace_action": "ADD_RULE"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_ADD_RULE",
+          "hypothesis_after": {
+            "parent_theory_id": "T0001",
+            "rule": {
+              "description_length": 3,
+              "name": "component_erase(property=shape,value_count=1)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            "theory_id": "T0003"
+          },
+          "hypothesis_before": {
+            "parent_theory_id": "T0001"
+          },
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "rule_addition",
+            "rule": {
+              "description_length": 3,
+              "name": "component_erase(property=shape,value_count=1)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          },
+          "source_trace_event": {
+            "action": "ADD_RULE",
+            "step": 17
+          },
+          "step": 6,
+          "support": {
+            "source_trace_action": "ADD_RULE",
+            "source_trace_step": 17,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "PROMOTE_CONSTRAINT"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_PROMOTE_CONSTRAINT",
+          "hypothesis_after": {
+            "theory_id": "T0063"
+          },
+          "hypothesis_before": {},
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {
+            "evaluated_demo_count": 3,
+            "rule_count": 23,
+            "status": "complete_training_compatibility_after_revision"
+          },
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "training_compatibility_promotion"
+          },
+          "source_trace_event": {
+            "action": "PROMOTE_CONSTRAINT",
+            "step": 1033
+          },
+          "step": 7,
+          "support": {
+            "source_trace_action": "PROMOTE_CONSTRAINT",
+            "source_trace_step": 1033,
+            "theory_summary": {}
+          }
+        },
+        {
+          "attention": {
+            "source_trace_action": "COMMIT"
+          },
+          "counterexamples": [],
+          "hypothesis_action": "OFFLINE_TRACE_COMMIT",
+          "hypothesis_after": {
+            "theory_id": "T0004"
+          },
+          "hypothesis_before": {},
+          "observation": {},
+          "predicted_scope": {
+            "boundary": "offline-only; no live task answer or held-out answer grid is materialized",
+            "coverage": "source-pinned explicit trace milestone only"
+          },
+          "prediction": {
+            "answer_grid_included": false,
+            "kind": "post_hoc_explicit_trace_milestone"
+          },
+          "rationale_annotation": {
+            "construction": "deterministic structural projection of an explicit public trace event",
+            "private_reasoning_included": false
+          },
+          "residual_summary": {},
+          "revision": {
+            "derived_from_explicit_trace": true,
+            "kind": "no_revision_at_this_milestone"
+          },
+          "source_trace_event": {
+            "action": "COMMIT",
+            "step": 1054
+          },
+          "step": 8,
+          "support": {
+            "source_trace_action": "COMMIT",
+            "source_trace_step": 1054,
+            "theory_summary": {}
+          }
+        }
+      ],
+      "task_id": "a09f6c25",
+      "trajectory_source": {
+        "p0007_corpus_callosum": {
+          "commit": "64ce50d15c8e1bc687b21e293745a681546f5f67",
+          "path": "reports/P0007_arc12_conditional_revision_10/arc2/a09f6c25/corpus_callosum.svg",
+          "repository": "https://github.com/dannaf/arc123-compatibility-lab",
+          "sha256": "dac5125336b64dfc9e97687e7c18e9a192b73f05670419a166155cbf9fa972be",
+          "url": "https://github.com/dannaf/arc123-compatibility-lab/blob/64ce50d15c8e1bc687b21e293745a681546f5f67/reports/P0007_arc12_conditional_revision_10/arc2/a09f6c25/corpus_callosum.svg"
+        },
+        "p0007_receipt": {
+          "commit": "64ce50d15c8e1bc687b21e293745a681546f5f67",
+          "path": "reports/P0007_arc12_conditional_revision_10/arc2/a09f6c25/receipt.json",
+          "repository": "https://github.com/dannaf/arc123-compatibility-lab",
+          "sha256": "f0974b642e89a4f04c01b07118a6ce35777c4f43e7118f64880ad74178f69d18",
+          "url": "https://github.com/dannaf/arc123-compatibility-lab/blob/64ce50d15c8e1bc687b21e293745a681546f5f67/reports/P0007_arc12_conditional_revision_10/arc2/a09f6c25/receipt.json"
+        },
+        "p0007_trace": {
+          "commit": "64ce50d15c8e1bc687b21e293745a681546f5f67",
+          "path": "reports/P0007_arc12_conditional_revision_10/arc2/a09f6c25/learning_trace.json",
+          "repository": "https://github.com/dannaf/arc123-compatibility-lab",
+          "sha256": "13f0c6c89d01f02ee9667641a747632340313cf24490ff8840298b949096ae84",
+          "url": "https://github.com/dannaf/arc123-compatibility-lab/blob/64ce50d15c8e1bc687b21e293745a681546f5f67/reports/P0007_arc12_conditional_revision_10/arc2/a09f6c25/learning_trace.json"
+        },
+        "task_source_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/71f86ff4c5304e452e0659131171f0519b50e21c/arc_data/arc2/training/a09f6c25.json"
+      },
+      "verification": {
+        "explicit_step_order_checked": true,
+        "held_out_test_output_before_commit_present": false,
+        "hidden_chain_of_thought_present": false,
+        "live_solver_dispatch_code_present": false,
+        "source_diagram_hash_checked": true,
+        "source_pin_checked": true,
+        "source_receipt_hash_checked": true,
+        "source_trace_hash_checked": true
+      }
+    }
+  ],
+  "schema_reference": "research/oracle_specs/ARC12_IHL_GT_MULTISTEP_SCHEMA_001.json",
+  "schema_version": 1,
+  "selection_protocol": "all P0007 records pre-declared in the packet that are exact with causal-trace acceptance; no additional task selection after materialization",
+  "source_pin": {
+    "commit": "64ce50d15c8e1bc687b21e293745a681546f5f67",
+    "repository": "https://github.com/dannaf/arc123-compatibility-lab"
+  },
+  "title": "Source-pinned ARC12 IHL GT: explicit offline multistep trace annotations"
+}
