@@ -24,6 +24,8 @@ The live learner receives demonstrations and a test input, builds/revises explic
 - `P0013-ARC12-FRESH-FILENAME-FROZEN-50` freezes the P0012-era controller/evaluator bytes and a new source-pinned filename-only 25+25 cohort before selected JSON is decoded. It is `0/50` exact, with all 50 complete NO reports retained. This negative holdout result rules out any ARC1/ARC2 solver claim for the current vocabulary.
 - `P0014-ARC12-DEVELOPMENT-BASELINE-40` freezes a disjoint filename-only 20+20 development roster and its pre-change controller: `2/40` exact, with every complete NO retained and source-pinned reproducibility verified.
 - `P0015-ARC12-AXIS-MODE-DENOISE-DEVELOPMENT-40` adds a generic, per-input row/column modal-support denoising relation. It is synthetically validated but remains `2/40` on the same P0014 roster (`+0`); no transfer or solver capability is claimed.
+- `P0016-ARC12-DEVELOPMENT-BASELINE-40` freezes a second, disjoint filename-only 20+20 development roster and its pre-change controller: `0/40` exact, all complete NO reports retained.
+- `P0017-ARC12-SELF-CONTAINED-SUBSET-CROP-DEVELOPMENT-40` adds a generic unique-minimum color-subset crop relation. It is synthetically validated but remains `0/40` on P0016's roster (`+0`); no transfer or solver capability is claimed.
 - Offline-only ARC12 pilot and ARC3 source-audit inventory manifests are materialized under `research/oracle_materializations/`; live adapters reject oracle/final-rule paths.
 - The result is a first architecture test, **not** an ARC1, ARC2, or ARC3 completion claim.
 - The 60-task curated curriculum and frozen disjoint 25+25 denominator are imported by immutable [ARC12 handoff pins](research/cohorts/ARC12_COHORT_IMPORT_001.json).
@@ -79,6 +81,16 @@ python3 scripts/run_arc12_filename_holdout.py --verify \
   --report-root reports/P0015_arc12_axis_mode_denoise_development_40 \
   --arc1-source /path/to/arc1-source \
   --arc2-source /path/to/arc2-source
+python3 scripts/run_arc12_filename_holdout.py --verify \
+  --packet research/packets/P0016_ARC12_DEVELOPMENT_BASELINE_40.json \
+  --report-root reports/P0016_arc12_development_baseline_40 \
+  --arc1-source /path/to/arc1-source \
+  --arc2-source /path/to/arc2-source
+python3 scripts/run_arc12_filename_holdout.py --verify \
+  --packet research/packets/P0017_ARC12_SELF_CONTAINED_SUBSET_CROP_DEVELOPMENT_40.json \
+  --report-root reports/P0017_arc12_self_contained_subset_crop_development_40 \
+  --arc1-source /path/to/arc1-source \
+  --arc2-source /path/to/arc2-source
 python3 scripts/materialize_oracle_lane.py \
   --arc12-root /path/to/arc12-compatibility-lab \
   --arc12-commit 525000ab1f78fb1e66906149f72f6e8eac34ab71 \
@@ -95,5 +107,5 @@ The source check requires clean detached revisions specified in the packet. P001
 - `src/arc123/` — generic perception, hypothesis, persistent theory, compatibility, controller, trace, and adapter code.
 - `research/cohorts/` — source-pinned ARC12 curriculum/generalization metadata.
 - `research/oracle_specs/` and `research/oracle_materializations/` — offline-only observable schemas and source-pinned pilot/audit outputs.
-- `reports/` — retained ARC12 reports through P0015, including complete development and frozen-holdout V&V evidence.
+- `reports/` — retained ARC12 reports through P0017, including complete development and frozen-holdout V&V evidence.
 - `docs/` — architecture, validation, oracle, and visualization protocol.
