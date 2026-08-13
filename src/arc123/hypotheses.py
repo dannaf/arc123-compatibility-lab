@@ -499,10 +499,17 @@ class Hypothesis:
 
         if len(input_grid) != 1:
             return None
-        background = _unique_background_color(input_grid)
+        raw_background = self.parameter_map.get("background_color")
+        background = (
+            _unique_background_color(input_grid)
+            if raw_background is None
+            else int(raw_background)
+        )
         if background is None:
             return None
         source_row = input_grid[0]
+        if background not in source_row:
+            return None
         nonbackground_count = sum(color != background for color in source_row)
         if not nonbackground_count:
             return None
@@ -1326,11 +1333,29 @@ def _separated_panel_cellwise_combine_candidates(
 def _anti_diagonal_nonbackground_stream_candidates(
     training_pairs: Sequence[TrainingPair],
 ) -> list[Hypothesis]:
-    """Keep dynamic anti-diagonal expansion only when every demonstration agrees."""
+    """Infer a shared visible output background for dynamic anti-diagonal streams."""
 
     if not training_pairs:
         return []
-    hypothesis = Hypothesis("anti_diagonal_nonbackground_stream", description_length=6)
+    shared_backgrounds: set[int] | None = None
+    for input_grid, output_grid in training_pairs:
+        background = _unique_background_color(output_grid)
+        if background is None or all(background != color for row in input_grid for color in row):
+            return []
+        current_backgrounds = {background}
+        shared_backgrounds = (
+            current_backgrounds
+            if shared_backgrounds is None
+            else shared_backgrounds & current_backgrounds
+        )
+    if shared_backgrounds is None or len(shared_backgrounds) != 1:
+        return []
+    background = next(iter(shared_backgrounds))
+    hypothesis = Hypothesis(
+        "anti_diagonal_nonbackground_stream",
+        _parameter_tuple(background_color=background),
+        description_length=7,
+    )
     if all(
         hypothesis.predict(input_grid) == _full(output_grid)
         for input_grid, output_grid in training_pairs

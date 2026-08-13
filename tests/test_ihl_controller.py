@@ -688,7 +688,7 @@ class IterativeHypothesisLearnerTests(unittest.TestCase):
                         output[row_index][column_index] = color
             return output
 
-        first_input = [1, 0, 0, 2]
+        first_input = [1, 0, 2]
         second_input = [0, 3, 0]
         test_input = [0, 4, 0, 5]
         environment = self._environment(
@@ -707,13 +707,35 @@ class IterativeHypothesisLearnerTests(unittest.TestCase):
 
         self.assertTrue(result.training_exact)
         self.assertFalse(result.used_fallback)
-        self.assertEqual(result.selected_hypothesis, "anti_diagonal_nonbackground_stream")
+        self.assertEqual(
+            result.selected_hypothesis,
+            "anti_diagonal_nonbackground_stream(background_color=0)",
+        )
         self.assertEqual(
             result.predictions[0], tuple(tuple(row) for row in stream_output(test_input))
         )
         self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
         self.assertIsNone(
             Hypothesis("anti_diagonal_nonbackground_stream").predict(((1, 2, 3, 4),))
+        )
+        conflicting_background_pairs = (
+            (
+                ((0, 1, 0),),
+                tuple(tuple(row) for row in stream_output([0, 1, 0])),
+            ),
+            (
+                ((1, 2, 1),),
+                ((1, 1, 1), (1, 1, 2), (1, 2, 1)),
+            ),
+        )
+        self.assertNotIn(
+            "anti_diagonal_nonbackground_stream",
+            {
+                candidate.kind
+                for candidate in propose_base_hypotheses(
+                    conflicting_background_pairs, ("anti_diagonal_nonbackground_stream",)
+                )
+            },
         )
 
     def test_symmetric_foreground_quadrant_crop_uses_canonical_equivalent_quadrant(
