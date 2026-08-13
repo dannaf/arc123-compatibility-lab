@@ -10,8 +10,13 @@
 | P0004 | Source-pinned recorded public ARC3 `ls20` L1 transition probe | 2 observed transitions | The shared observation/action/revision contract can make, revise, and exploit a minimal external mechanics hypothesis. This is not a level-solved result. |
 | P0005 | Persistent-theory controller across imported ARC12 curated 60 | 1/60 | The new controller produces complete, V&V-backed outputs for all 60. Its one exact row-span-fill result is insufficient for the multi-step curated-revision acceptance bar. |
 | P0006 | P0005 plus residual-directed dihedral/blank macro tiling | 4/60 | Three additional exact tasks are solved by a generic template intersected over visible training blocks, then composed after an unresolved residual. All 56 failures remain retained. |
+| P0007 | Conditional/multi-rule ARC12 revision cohort | 3/10 | The persistent theory can retain and revise a useful partial rule on three source-pinned tasks; this gates the historical P0008 measurement only. |
+| P0008 | Historical frozen disjoint 25 ARC1 + 25 ARC2 cohort | 0/50 | The earlier frozen controller does not generalize on this immutable denominator. |
+| P0011 | Curated-60 rectangular dihedral-coordinate development gate | 4/60 (`+0`) | The generic rectangular dihedral implementation is synthetically valid but adds no curated exact result. |
+| P0012 | Curated-60 self-mask macro-stamp development gate | 8/60 (`+4`) | A generic relative-selector macro relation exactly solves four additional curated tasks; this is a development result only. |
+| P0013 | Fresh filename-only frozen 25 ARC1 + 25 ARC2 cohort | 0/50 | The P0012-era controller has no exact result on a new byte-pinned, source-pinned, independently selected holdout. |
 
-The frozen P0001–P0003 baseline contains 44 retained ARC12 task attempts. P0005 and P0006 each add a separate full 60-task, failure-inclusive persistent-theory measurement. Every entry has a committed full grid, explicit YES/NO all-cell validation, learning trace, and native corpus-callosum SVG; there are no abstentions or discarded failures. P0004 is a separate ARC3 transition-contract experiment with its own source-pinned trace and diagram.
+P0012's 60 reports and P0013's 50 reports each retain a committed full grid, explicit YES/NO all-cell validation, learning trace, receipt, and native corpus-callosum SVG; there are no abstentions or discarded failures. P0013's fresh roster was selected before any selected JSON was decoded, using only source-pinned filenames, split labels, fixed SHA-256 ranking, and opaque source-byte checksums.
 
 ## What has been validated
 
@@ -20,26 +25,29 @@ The frozen P0001–P0003 baseline contains 44 retained ARC12 task attempts. P000
 - Compatibility preserves `UNKNOWN != IMPOSSIBLE`; observed contradiction receives exact zero support while incomplete partial theories remain explicit rather than being treated as failure.
 - The default learner now revises a first-class `PartialTheory`: a counterexample can change only the offending rule's scope, retain its explanatory region, add a residual rule, and compose the result. Synthetic tests exercise that causal sequence and dynamic demo selection.
 - P0006 records four exact curated outcomes under the persistent controller. Its three dihedral-tile results follow `identity partial theory → UNKNOWN residual → generic structural proposal → ordered composition → exact train theory → test commit`; the row-span result also retains explicit counterexamples.
+- P0012 adds a generic self-mask macro-stamp relation. It infers a relative most/least-frequency, zero, or nonzero selector and either an input or selector-mask template exclusively from visible demonstrations; it produces four additional exact curated results without task IDs or test-target access.
+- P0013 validates the stronger measurement boundary itself: a clean detached source revision, frozen controller/evaluator bytes, source-task SHA-256 values, fixed 25+25 roster, source-pinned `--verify`, and visually reviewed corpus-callosum diagrams. Its score is nevertheless `0/50`.
 - ARC12 and ARC3 adapters use shared neutral contracts. The ARC3 adapter reads only an allowed, source-pinned public segmented trajectory, hides source/future metadata from the agent view, and refuses unmatched actions rather than simulating a result.
 - The offline-only `ARC12-IHL-GT` pilot and `ARC3-IHL-GT` audit inventory are materialized and schema-validated. Tests ensure live adapters do not import those oracle-lane readers and reject oracle/final-rule paths.
 - Brain-surgery reports are deterministic artifacts. The packet verifier reproduces the complete output directory, not merely the top-level score receipt.
 
 ## What is not validated
 
-- No ARC-AGI-1 or ARC-AGI-2 solver claim is justified. P0006 reaches `4/60` exact curated results, far below a credible benchmark-wide solver result; neither 10+10 baseline cohort has a successful answer.
-- Issue #2's architecture mechanism is now supported by both synthetic state-transition tests and four failure-inclusive curated residual-revision traces. Its final acceptance/closure still requires independent review of those traces, broader generic transfer, and a clearly separated frozen generalization result. The frozen P0001–P0003 baseline score must not be relabeled as a score for the new controller.
+- No ARC-AGI-1 or ARC-AGI-2 solver claim is justified. P0012 reaches only `8/60` on a development cohort, while the independently frozen P0013 cohort is `0/50` exact. Neither result supports a benchmark-wide solver claim.
+- P0012 was designed and measured on the same curated development roster, so its `+4` is not independent transfer evidence. P0013 is the relevant new generalization evidence and is negative.
+- Issue #2's architecture mechanism is supported by synthetic revision tests and a small set of retained, failure-inclusive traces. Its final acceptance/closure still requires broad, independently replicated transfer; P0013 rules out closing it on the current operator vocabulary.
 - P0004 validates a real recorded transition stream and shared contracts, not blind live ARC3 play or a solved ARC3 level.
 - The generic grammar does not yet cover object selection, bounding-box crop/extraction, region filling, structured repetition, panel relations, or multi-step composition at the required breadth.
 - P0002/P0003 are curated-development evidence, not the frozen 25+25 generalization denominator.
 
 ## Next gated work
 
-1. Run the persistent-theory controller on a pre-registered new ARC12 multi-step-revision cohort. Write a no-abstention report, trace, diagram, and post-answer verdict for every attempted task; retain failures exactly as successes are retained.
-2. Add only generic, independently testable perception/action families: component correspondence, frame/interior masks, crop/extract, periodic repetition, and panel-aware relation binding. Do not add a task-ID branch or `_fit_algorithm_*` fitter.
-3. For each candidate family, first add a synthetic unit contract and a trace-level counterexample test. Register its provenance and reuse expectation before it reaches a real ARC packet.
-4. Freeze each packet's operator vocabulary so old reports reproduce even when later generic primitives are added.
-5. Evaluate each promoted family on a new filename-only, non-overlapping curated cohort. Retain every failure and distinguish development replay from fresh transfer.
-6. After credible curated-60 rediscovery progress, freeze the learner and evaluate the unchanged ARC12 disjoint 25 ARC1 + 25 ARC2 denominator. No frozen target may guide grammar changes.
+1. Preserve P0013 as immutable negative evidence. It may inform an offline failure taxonomy, but no selected P0013 task may alter its frozen controller or be represented as a P0013 improvement.
+2. Before testing any family motivated by that taxonomy, create a separate filename-only development cohort that excludes P0012 and P0013 task IDs. Do not choose it from task-grid semantics.
+3. Add only generic, independently testable perception/action families: component correspondence, frame/interior masks, crop/extract, periodic repetition, panel-aware relation binding, and row/column aggregation. Do not add a task-ID branch or `_fit_algorithm_*` fitter.
+4. For each candidate family, first add a synthetic unit contract and a trace-level counterexample test. Register its provenance and reuse expectation before it reaches a real ARC packet.
+5. Measure each promoted family on the separate development cohort, retain every complete failure, and distinguish development replay from fresh transfer.
+6. Freeze a new source-pinned filename-only holdout after the implementation checkpoint. Its score alone may support a limited transfer statement; it still cannot support an ARC solver claim without substantially broader evidence.
 7. Replace the recorded ARC3 replay with a blind public game-session adapter before making any ARC3-solving claim; use oracle assets only after play for V&V.
 
 ## Promotion rule

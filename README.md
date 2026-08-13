@@ -20,6 +20,8 @@ The live learner receives demonstrations and a test input, builds/revises explic
 - `P0004-ARC3-REAL-TRANSITION-PROBE` uses the same observation/action/revision contracts against two source-pinned, recorded public ARC3 transitions. It confirms a minimal external probe/revision/exploit loop; it explicitly makes **no ARC3 level-solved claim**.
 - `P0005-ARC12-PERSISTENT-THEORY-CURATED-60` measures the new persistent-theory controller on all imported curated tasks: `1/60` exact, `59/60` committed complete NO answers, and a report/diagram/receipt for every attempt. It demonstrates the mechanism and its present coverage limit, not an ARC1/ARC2 solution.
 - `P0006-ARC12-RESIDUAL-DIHEDRAL-TILE-CURATED-60` adds one generic residual-directed orientation/blank macro-tile family and reaches `4/60` exact, with all `56` failures retained. The three new exact tasks use explicit residual targeting and ordered composition; this is development evidence, not a benchmark-solver claim.
+- `P0012-ARC12-SELF-MASK-MACRO-STAMP-CURATED-60` adds an input-relative macro-stamp family and reaches `8/60` on the same curated development roster (`+4` over P0011). It is development evidence only, not a transfer or solver claim.
+- `P0013-ARC12-FRESH-FILENAME-FROZEN-50` freezes the P0012-era controller/evaluator bytes and a new source-pinned filename-only 25+25 cohort before selected JSON is decoded. It is `0/50` exact, with all 50 complete NO reports retained. This negative holdout result rules out any ARC1/ARC2 solver claim for the current vocabulary.
 - Offline-only ARC12 pilot and ARC3 source-audit inventory manifests are materialized under `research/oracle_materializations/`; live adapters reject oracle/final-rule paths.
 - The result is a first architecture test, **not** an ARC1, ARC2, or ARC3 completion claim.
 - The 60-task curated curriculum and frozen disjoint 25+25 denominator are imported by immutable [ARC12 handoff pins](research/cohorts/ARC12_COHORT_IMPORT_001.json).
@@ -55,6 +57,16 @@ python3 scripts/run_arc12_tiny_rediscovery.py --verify \
   --report-root reports/P0006_arc12_residual_dihedral_tile_curated_60 \
   --arc1-source /path/to/arc1-source \
   --arc2-source /path/to/arc2-source
+python3 scripts/run_arc12_tiny_rediscovery.py --verify \
+  --packet research/packets/P0012_ARC12_SELF_MASK_MACRO_STAMP_CURATED_60.json \
+  --report-root reports/P0012_arc12_self_mask_macro_stamp_curated_60 \
+  --arc1-source /path/to/arc1-source \
+  --arc2-source /path/to/arc2-source
+python3 scripts/run_arc12_filename_holdout.py --verify \
+  --packet research/packets/P0013_ARC12_FRESH_FILENAME_FROZEN_50.json \
+  --report-root reports/P0013_arc12_fresh_filename_frozen_50 \
+  --arc1-source /path/to/arc1-source \
+  --arc2-source /path/to/arc2-source
 python3 scripts/materialize_oracle_lane.py \
   --arc12-root /path/to/arc12-compatibility-lab \
   --arc12-commit 525000ab1f78fb1e66906149f72f6e8eac34ab71 \
@@ -71,5 +83,5 @@ The source check requires clean detached revisions specified in the packet. `--r
 - `src/arc123/` — generic perception, hypothesis, persistent theory, compatibility, controller, trace, and adapter code.
 - `research/cohorts/` — source-pinned ARC12 curriculum/generalization metadata.
 - `research/oracle_specs/` and `research/oracle_materializations/` — offline-only observable schemas and source-pinned pilot/audit outputs.
-- `reports/` — retained P0001/P0002/P0003 baseline reports, P0004's real-transition report, and P0005/P0006 persistent-theory ARC12 reports.
+- `reports/` — retained ARC12 reports through P0013, including complete development and frozen-holdout V&V evidence.
 - `docs/` — architecture, validation, oracle, and visualization protocol.
