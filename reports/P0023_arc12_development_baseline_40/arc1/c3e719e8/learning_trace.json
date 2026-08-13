@@ -1,0 +1,7063 @@
+{
+  "episode_id": "P0023-ARC12-DEVELOPMENT-BASELINE-40:anonymous-frozen-measurement",
+  "events": [
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 1,
+          "name": "identity",
+          "operation": "identity",
+          "parameters": {},
+          "rule_id": "identity",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0001"
+      },
+      "step": 0
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 3,
+          "name": "tile_repeat(column_factor=3,row_factor=3)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 3,
+            "operator": "tile_repeat",
+            "row_factor": 3
+          },
+          "rule_id": "rule-tile_repeat",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0002"
+      },
+      "step": 1
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 5,
+          "name": "self_mask_macro_stamp(blank_color=0,selector=most_frequent,template=input)",
+          "operation": "full_operator",
+          "parameters": {
+            "blank_color": 0,
+            "operator": "self_mask_macro_stamp",
+            "selector": "most_frequent",
+            "template": "input"
+          },
+          "rule_id": "rule-self_mask_macro_stamp",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0003"
+      },
+      "step": 2
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 2,
+          "name": "left_right(scope=all)",
+          "operation": "coordinate_transform",
+          "parameters": {
+            "axis": "left_right"
+          },
+          "rule_id": "coordinate-left_right",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0004"
+      },
+      "step": 3
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 2,
+          "name": "top_bottom(scope=all)",
+          "operation": "coordinate_transform",
+          "parameters": {
+            "axis": "top_bottom"
+          },
+          "rule_id": "coordinate-top_bottom",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0005"
+      },
+      "step": 4
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 2,
+          "name": "rotate_180(scope=all)",
+          "operation": "coordinate_transform",
+          "parameters": {
+            "axis": "rotate_180"
+          },
+          "rule_id": "coordinate-rotate_180",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0006"
+      },
+      "step": 5
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 6
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0001"
+      },
+      "step": 7
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 8
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 81,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 0,
+        "explained_cell_count": 9,
+        "residual_cell_count": 72,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 81
+        },
+        "theory_id": "T0001"
+      },
+      "step": 9
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 10
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0004"
+      },
+      "step": 11
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0004",
+        "theory_name": "left_right(scope=all)"
+      },
+      "step": 12
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 0,
+          "name": "left_right(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 81,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 0,
+        "explained_cell_count": 3,
+        "residual_cell_count": 78,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 81
+        },
+        "theory_id": "T0004"
+      },
+      "step": 13
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 14
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0005"
+      },
+      "step": 15
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0005",
+        "theory_name": "top_bottom(scope=all)"
+      },
+      "step": 16
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 0,
+          "name": "top_bottom(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 81,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 0,
+        "explained_cell_count": 3,
+        "residual_cell_count": 78,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 81
+        },
+        "theory_id": "T0005"
+      },
+      "step": 17
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0006"
+      },
+      "step": 18
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0006"
+      },
+      "step": 19
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0006",
+        "theory_name": "rotate_180(scope=all)"
+      },
+      "step": 20
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 0,
+          "name": "rotate_180(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0006",
+          "unknown_cell_count": 81,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 0,
+        "explained_cell_count": 5,
+        "residual_cell_count": 76,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 81
+        },
+        "theory_id": "T0006"
+      },
+      "step": 21
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0002"
+      },
+      "step": 22
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "column": 3,
+          "row": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 23
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 81,
+        "rule_count": 1,
+        "theory_id": "T0002",
+        "theory_name": "tile_repeat(column_factor=3,row_factor=3)"
+      },
+      "step": 24
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 54,
+          "counterexample_count": 54,
+          "description_length": 3,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 27,
+          "name": "tile_repeat(column_factor=3,row_factor=3)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=3,row_factor=3)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 3,
+                "operator": "tile_repeat",
+                "row_factor": 3
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 27,
+        "residual_cell_count": 54,
+        "support": {
+          "asserted_cell_count": 81,
+          "contradiction_count": 54,
+          "counterexamples": [
+            {
+              "column": 3,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 27,
+          "observation_id": "arc12-demo:0",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 25
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 26
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0003"
+      },
+      "step": 27
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 81,
+        "rule_count": 1,
+        "theory_id": "T0003",
+        "theory_name": "self_mask_macro_stamp(blank_color=0,selector=most_frequent,template=input)"
+      },
+      "step": 28
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 5,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 81,
+          "name": "self_mask_macro_stamp(blank_color=0,selector=most_frequent,template=input)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 5,
+              "name": "self_mask_macro_stamp(blank_color=0,selector=most_frequent,template=input)",
+              "operation": "full_operator",
+              "parameters": {
+                "blank_color": 0,
+                "operator": "self_mask_macro_stamp",
+                "selector": "most_frequent",
+                "template": "input"
+              },
+              "rule_id": "rule-self_mask_macro_stamp",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 81,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 81,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 81,
+          "observation_id": "arc12-demo:0",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0003"
+      },
+      "step": 29
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 30
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0003"
+      },
+      "step": 31
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 81,
+        "rule_count": 1,
+        "theory_id": "T0003",
+        "theory_name": "self_mask_macro_stamp(blank_color=0,selector=most_frequent,template=input)"
+      },
+      "step": 32
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 5,
+          "evaluated_demo_indices": [
+            0,
+            2
+          ],
+          "matching_cell_count": 162,
+          "name": "self_mask_macro_stamp(blank_color=0,selector=most_frequent,template=input)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 5,
+              "name": "self_mask_macro_stamp(blank_color=0,selector=most_frequent,template=input)",
+              "operation": "full_operator",
+              "parameters": {
+                "blank_color": 0,
+                "operator": "self_mask_macro_stamp",
+                "selector": "most_frequent",
+                "template": "input"
+              },
+              "rule_id": "rule-self_mask_macro_stamp",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 2,
+        "explained_cell_count": 81,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 81,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 81,
+          "observation_id": "arc12-demo:2",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0003"
+      },
+      "step": 33
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          0,
+          2
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 34
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0003"
+      },
+      "step": 35
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 81,
+        "rule_count": 1,
+        "theory_id": "T0003",
+        "theory_name": "self_mask_macro_stamp(blank_color=0,selector=most_frequent,template=input)"
+      },
+      "step": 36
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 5,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 243,
+          "name": "self_mask_macro_stamp(blank_color=0,selector=most_frequent,template=input)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 5,
+              "name": "self_mask_macro_stamp(blank_color=0,selector=most_frequent,template=input)",
+              "operation": "full_operator",
+              "parameters": {
+                "blank_color": 0,
+                "operator": "self_mask_macro_stamp",
+                "selector": "most_frequent",
+                "template": "input"
+              },
+              "rule_id": "rule-self_mask_macro_stamp",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 1,
+        "explained_cell_count": 81,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 81,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 81,
+          "observation_id": "arc12-demo:1",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0003"
+      },
+      "step": 37
+    },
+    {
+      "action": "PROMOTE_CONSTRAINT",
+      "payload": {
+        "evaluated_demo_count": 3,
+        "rule_count": 1,
+        "status": "complete_training_compatibility_after_revision",
+        "theory_id": "T0003"
+      },
+      "step": 38
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 39
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0001"
+      },
+      "step": 40
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 41
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 162,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 2,
+        "explained_cell_count": 0,
+        "residual_cell_count": 81,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 81
+        },
+        "theory_id": "T0001"
+      },
+      "step": 42
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 43
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0004"
+      },
+      "step": 44
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0004",
+        "theory_name": "left_right(scope=all)"
+      },
+      "step": 45
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "left_right(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 162,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 2,
+        "explained_cell_count": 0,
+        "residual_cell_count": 81,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 81
+        },
+        "theory_id": "T0004"
+      },
+      "step": 46
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 47
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0005"
+      },
+      "step": 48
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0005",
+        "theory_name": "top_bottom(scope=all)"
+      },
+      "step": 49
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "top_bottom(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 162,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 2,
+        "explained_cell_count": 0,
+        "residual_cell_count": 81,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 81
+        },
+        "theory_id": "T0005"
+      },
+      "step": 50
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0006"
+      },
+      "step": 51
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0006"
+      },
+      "step": 52
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0006",
+        "theory_name": "rotate_180(scope=all)"
+      },
+      "step": 53
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "rotate_180(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0006",
+          "unknown_cell_count": 162,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 2,
+        "explained_cell_count": 0,
+        "residual_cell_count": 81,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 81
+        },
+        "theory_id": "T0006"
+      },
+      "step": 54
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          0,
+          2
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 55
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0001"
+      },
+      "step": 56
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 57
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 243,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 1,
+        "explained_cell_count": 9,
+        "residual_cell_count": 72,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 81
+        },
+        "theory_id": "T0001"
+      },
+      "step": 58
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          0,
+          2
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 59
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0004"
+      },
+      "step": 60
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0004",
+        "theory_name": "left_right(scope=all)"
+      },
+      "step": 61
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "left_right(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 243,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 1,
+        "explained_cell_count": 7,
+        "residual_cell_count": 74,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 81
+        },
+        "theory_id": "T0004"
+      },
+      "step": 62
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          0,
+          2
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 63
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0005"
+      },
+      "step": 64
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0005",
+        "theory_name": "top_bottom(scope=all)"
+      },
+      "step": 65
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "top_bottom(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 243,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 1,
+        "explained_cell_count": 7,
+        "residual_cell_count": 74,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 81
+        },
+        "theory_id": "T0005"
+      },
+      "step": 66
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          0,
+          2
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0006"
+      },
+      "step": 67
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0006"
+      },
+      "step": 68
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0006",
+        "theory_name": "rotate_180(scope=all)"
+      },
+      "step": 69
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "rotate_180(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0006",
+          "unknown_cell_count": 243,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 1,
+        "explained_cell_count": 5,
+        "residual_cell_count": 76,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 81
+        },
+        "theory_id": "T0006"
+      },
+      "step": 70
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "initial_proposal": true,
+                "operation": "identity"
+              },
+              "target": "identity"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  5
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  5
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  4
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            }
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 243,
+          "unresolved_unknown": [
+            {
+              "cell_count": 72,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ]
+              ],
+              "observation_id": "arc12-demo:0",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 72,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ]
+              ],
+              "observation_id": "arc12-demo:1",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 72,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ]
+              ],
+              "observation_id": "arc12-demo:2",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            }
+          ]
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0001"
+      },
+      "step": 71
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "axis": "left_right",
+                "initial_proposal": true,
+                "operation": "coordinate_transform",
+                "scope": {
+                  "kind": "all",
+                  "value": null
+                }
+              },
+              "target": "coordinate-left_right"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  5
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  5
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  4
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            }
+          ],
+          "matching_cell_count": 0,
+          "name": "left_right(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 243,
+          "unresolved_unknown": [
+            {
+              "cell_count": 72,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ]
+              ],
+              "observation_id": "arc12-demo:0",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 72,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ]
+              ],
+              "observation_id": "arc12-demo:1",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 72,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ]
+              ],
+              "observation_id": "arc12-demo:2",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            }
+          ]
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0004"
+      },
+      "step": 72
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "axis": "top_bottom",
+                "initial_proposal": true,
+                "operation": "coordinate_transform",
+                "scope": {
+                  "kind": "all",
+                  "value": null
+                }
+              },
+              "target": "coordinate-top_bottom"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  5
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  5
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  4
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            }
+          ],
+          "matching_cell_count": 0,
+          "name": "top_bottom(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 243,
+          "unresolved_unknown": [
+            {
+              "cell_count": 72,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ]
+              ],
+              "observation_id": "arc12-demo:0",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 72,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ]
+              ],
+              "observation_id": "arc12-demo:1",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 72,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ]
+              ],
+              "observation_id": "arc12-demo:2",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            }
+          ]
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0005"
+      },
+      "step": 73
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "axis": "rotate_180",
+                "initial_proposal": true,
+                "operation": "coordinate_transform",
+                "scope": {
+                  "kind": "all",
+                  "value": null
+                }
+              },
+              "target": "coordinate-rotate_180"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  5
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  5
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  4
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            }
+          ],
+          "matching_cell_count": 0,
+          "name": "rotate_180(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0006",
+          "unknown_cell_count": 243,
+          "unresolved_unknown": [
+            {
+              "cell_count": 72,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ]
+              ],
+              "observation_id": "arc12-demo:0",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 72,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ]
+              ],
+              "observation_id": "arc12-demo:1",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 72,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ]
+              ],
+              "observation_id": "arc12-demo:2",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            }
+          ]
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0006"
+      },
+      "step": 74
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "causal_next_operation": "scope_or_rule_revision",
+        "counterexample": {
+          "column": 3,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "responsible_rule": {
+          "description_length": 3,
+          "name": "tile_repeat(column_factor=3,row_factor=3)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 3,
+            "operator": "tile_repeat",
+            "row_factor": 3
+          },
+          "rule_id": "rule-tile_repeat",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "responsible_rule_id": "rule-tile_repeat",
+        "theory_id": "T0002"
+      },
+      "step": 75
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0002"
+      },
+      "step": 76
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "column": 0,
+          "row": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 77
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 81,
+        "rule_count": 1,
+        "theory_id": "T0002",
+        "theory_name": "tile_repeat(column_factor=3,row_factor=3)"
+      },
+      "step": 78
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 99,
+          "counterexample_count": 99,
+          "description_length": 3,
+          "evaluated_demo_indices": [
+            0,
+            2
+          ],
+          "matching_cell_count": 63,
+          "name": "tile_repeat(column_factor=3,row_factor=3)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=3,row_factor=3)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 3,
+                "operator": "tile_repeat",
+                "row_factor": 3
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 2,
+        "explained_cell_count": 36,
+        "residual_cell_count": 45,
+        "support": {
+          "asserted_cell_count": 81,
+          "contradiction_count": 45,
+          "counterexamples": [
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 6,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 36,
+          "observation_id": "arc12-demo:2",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 79
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "causal_next_operation": "scope_or_rule_revision",
+        "counterexample": {
+          "column": 3,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "responsible_rule": {
+          "description_length": 3,
+          "name": "tile_repeat(column_factor=3,row_factor=3)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 3,
+            "operator": "tile_repeat",
+            "row_factor": 3
+          },
+          "rule_id": "rule-tile_repeat",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "responsible_rule_id": "rule-tile_repeat",
+        "theory_id": "T0002"
+      },
+      "step": 80
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 1,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          0,
+          2
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0002"
+      },
+      "step": 81
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "column": 3,
+          "row": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 82
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 81,
+        "rule_count": 1,
+        "theory_id": "T0002",
+        "theory_name": "tile_repeat(column_factor=3,row_factor=3)"
+      },
+      "step": 83
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 126,
+          "counterexample_count": 126,
+          "description_length": 3,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 117,
+          "name": "tile_repeat(column_factor=3,row_factor=3)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=3,row_factor=3)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 3,
+                "operator": "tile_repeat",
+                "row_factor": 3
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 1,
+        "explained_cell_count": 54,
+        "residual_cell_count": 27,
+        "support": {
+          "asserted_cell_count": 81,
+          "contradiction_count": 27,
+          "counterexamples": [
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 54,
+          "observation_id": "arc12-demo:1",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 84
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "causal_next_operation": "scope_or_rule_revision",
+        "counterexample": {
+          "column": 3,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "responsible_rule": {
+          "description_length": 3,
+          "name": "tile_repeat(column_factor=3,row_factor=3)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 3,
+            "operator": "tile_repeat",
+            "row_factor": 3
+          },
+          "rule_id": "rule-tile_repeat",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "responsible_rule_id": "rule-tile_repeat",
+        "theory_id": "T0002"
+      },
+      "step": 85
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 126,
+          "counterexamples": [
+            {
+              "column": 3,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 4,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 8,
+              "row": 0
+            },
+            {
+              "column": 5,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 7,
+              "row": 0
+            },
+            {
+              "column": 6,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 7,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 8,
+              "row": 0
+            },
+            {
+              "column": 8,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 7,
+              "row": 0
+            },
+            {
+              "column": 3,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 9,
+              "row": 1
+            },
+            {
+              "column": 4,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 5,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 8,
+              "row": 1
+            },
+            {
+              "column": 6,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 9,
+              "row": 1
+            },
+            {
+              "column": 7,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 8,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 8,
+              "row": 1
+            },
+            {
+              "column": 3,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 7,
+              "row": 2
+            },
+            {
+              "column": 4,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 9,
+              "row": 2
+            },
+            {
+              "column": 5,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 6,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 7,
+              "row": 2
+            },
+            {
+              "column": 7,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 9,
+              "row": 2
+            },
+            {
+              "column": 8,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 8,
+              "row": 3
+            },
+            {
+              "column": 2,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 7,
+              "row": 3
+            },
+            {
+              "column": 6,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 7,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 8,
+              "row": 3
+            },
+            {
+              "column": 8,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 7,
+              "row": 3
+            },
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 9,
+              "row": 4
+            },
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 2,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 8,
+              "row": 4
+            },
+            {
+              "column": 6,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 9,
+              "row": 4
+            },
+            {
+              "column": 7,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 8,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 8,
+              "row": 4
+            },
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 7,
+              "row": 5
+            },
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 9,
+              "row": 5
+            },
+            {
+              "column": 2,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 6,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 7,
+              "row": 5
+            },
+            {
+              "column": 7,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 9,
+              "row": 5
+            },
+            {
+              "column": 8,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 8,
+              "row": 6
+            },
+            {
+              "column": 2,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 7,
+              "row": 6
+            },
+            {
+              "column": 3,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 4,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 8,
+              "row": 6
+            },
+            {
+              "column": 5,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 7,
+              "row": 6
+            },
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 9,
+              "row": 7
+            },
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 2,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 8,
+              "row": 7
+            },
+            {
+              "column": 3,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 9,
+              "row": 7
+            },
+            {
+              "column": 4,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 5,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 8,
+              "row": 7
+            },
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 7,
+              "row": 8
+            },
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 9,
+              "row": 8
+            },
+            {
+              "column": 2,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 3,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 7,
+              "row": 8
+            },
+            {
+              "column": 4,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 9,
+              "row": 8
+            },
+            {
+              "column": 5,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 0
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 6,
+              "row": 0
+            },
+            {
+              "column": 5,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 0
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 5,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 1
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 2
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 2
+            },
+            {
+              "column": 5,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 2
+            },
+            {
+              "column": 0,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 3
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 6,
+              "row": 3
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 3
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 3
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 6,
+              "row": 3
+            },
+            {
+              "column": 5,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 3
+            },
+            {
+              "column": 0,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 4
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 5,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 4
+            },
+            {
+              "column": 0,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 5
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 5
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 5
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 5
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 5
+            },
+            {
+              "column": 5,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 8,
+              "row": 5
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 6,
+              "row": 0
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 0
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 0
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 4,
+              "row": 1
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 6,
+              "row": 1
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 8,
+              "row": 1
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 2
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 2
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 8,
+              "row": 2
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 6,
+              "row": 3
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 3
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 3
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 6,
+              "row": 3
+            },
+            {
+              "column": 4,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 3
+            },
+            {
+              "column": 5,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 3
+            },
+            {
+              "column": 6,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 6,
+              "row": 3
+            },
+            {
+              "column": 7,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 3
+            },
+            {
+              "column": 8,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 3
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 4,
+              "row": 4
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 6,
+              "row": 4
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 8,
+              "row": 4
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 4,
+              "row": 4
+            },
+            {
+              "column": 4,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 6,
+              "row": 4
+            },
+            {
+              "column": 5,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 8,
+              "row": 4
+            },
+            {
+              "column": 6,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 4,
+              "row": 4
+            },
+            {
+              "column": 7,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 6,
+              "row": 4
+            },
+            {
+              "column": 8,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 8,
+              "row": 4
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 5
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 5
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 8,
+              "row": 5
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 5
+            },
+            {
+              "column": 4,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 5
+            },
+            {
+              "column": 5,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 8,
+              "row": 5
+            },
+            {
+              "column": 6,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 5
+            },
+            {
+              "column": 7,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 5
+            },
+            {
+              "column": 8,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 8,
+              "row": 5
+            },
+            {
+              "column": 6,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 6,
+              "row": 6
+            },
+            {
+              "column": 7,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 6
+            },
+            {
+              "column": 8,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 6
+            },
+            {
+              "column": 6,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 4,
+              "row": 7
+            },
+            {
+              "column": 7,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 6,
+              "row": 7
+            },
+            {
+              "column": 8,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 8,
+              "row": 7
+            },
+            {
+              "column": 6,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 8
+            },
+            {
+              "column": 7,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 9,
+              "row": 8
+            },
+            {
+              "column": 8,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 8,
+              "row": 8
+            }
+          ],
+          "description_length": 3,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "initial_proposal": true,
+                "operation": "full_operator"
+              },
+              "target": "rule-tile_repeat"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  5
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  5
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  4
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            }
+          ],
+          "matching_cell_count": 117,
+          "name": "tile_repeat(column_factor=3,row_factor=3)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=3,row_factor=3)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 3,
+                "operator": "tile_repeat",
+                "row_factor": 3
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown": []
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0002"
+      },
+      "step": 86
+    },
+    {
+      "action": "COMMIT",
+      "payload": {
+        "complete_prediction_group_count": 1,
+        "final_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 5,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "initial_proposal": true,
+                "operation": "full_operator"
+              },
+              "target": "rule-self_mask_macro_stamp"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  5
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  5
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  1,
+                  4
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            }
+          ],
+          "matching_cell_count": 243,
+          "name": "self_mask_macro_stamp(blank_color=0,selector=most_frequent,template=input)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 5,
+              "name": "self_mask_macro_stamp(blank_color=0,selector=most_frequent,template=input)",
+              "operation": "full_operator",
+              "parameters": {
+                "blank_color": 0,
+                "operator": "self_mask_macro_stamp",
+                "selector": "most_frequent",
+                "template": "input"
+              },
+              "rule_id": "rule-self_mask_macro_stamp",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 0,
+          "unresolved_unknown": []
+        },
+        "posterior_mass": 1.0,
+        "selected_hypothesis": "self_mask_macro_stamp(blank_color=0,selector=most_frequent,template=input)",
+        "theory_id": "T0003",
+        "training_exact": true
+      },
+      "step": 87
+    }
+  ],
+  "reasoning_visibility": "explicit observable hypothesis/evidence/revision records only",
+  "schema_version": 1
+}

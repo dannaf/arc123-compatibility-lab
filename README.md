@@ -31,6 +31,7 @@ The live learner receives demonstrations and a test input, builds/revises explic
 - `P0020-ARC12-DEVELOPMENT-BASELINE-40` freezes a fourth disjoint filename-only 20+20 cohort after the P0019 checkpoint: `4/40` exact (`3` ARC1, `1` ARC2), including three cross-cohort central-separator selections. Every `36` complete NO report is retained; this is a limited disjoint development replication, not a solver claim.
 - `P0021-ARC12-BILATERAL-SCALE-DEVELOPMENT-40` compares two guarded input-derived relations against P0020's frozen controller on the same fourth cohort: `6/40` exact (`+2`; one ARC1 adjacent-bilateral pair table and one ARC2 dynamic non-background-color scale), with all `34` complete NO reports retained and reproducible. This is same-cohort development evidence only.
 - `P0022-ARC12-BILATERAL-SCALE-TRANSFER-50` freezes a new filename-only 25+25 transfer cohort excluding every prior imported, frozen, and development roster: `3/50` exact (`2` ARC1, `1` ARC2), with all `47` complete NO reports retained and reproducible. The ARC2 exact result uses the guarded adjacent-bilateral relation on an unseen task; this is limited primitive-level transfer evidence, not a solver claim.
+- `P0023-ARC12-DEVELOPMENT-BASELINE-40` freezes a fifth disjoint filename-only 20+20 development cohort after P0022: `3/40` exact (`3` ARC1, `0` ARC2), with all `37` complete NO reports retained and reproducible. It is the immutable pre-change denominator for the next generic portfolio, not a solver claim.
 - Offline-only ARC12 pilot and ARC3 source-audit inventory manifests are materialized under `research/oracle_materializations/`; live adapters reject oracle/final-rule paths.
 - The result is a first architecture test, **not** an ARC1, ARC2, or ARC3 completion claim.
 - The 60-task curated curriculum and frozen disjoint 25+25 denominator are imported by immutable [ARC12 handoff pins](research/cohorts/ARC12_COHORT_IMPORT_001.json).
@@ -121,6 +122,11 @@ python3 scripts/run_arc12_filename_holdout.py --verify \
   --report-root reports/P0022_arc12_bilateral_scale_transfer_50 \
   --arc1-source /path/to/arc1-source \
   --arc2-source /path/to/arc2-source
+python3 scripts/run_arc12_filename_holdout.py --verify \
+  --packet research/packets/P0023_ARC12_DEVELOPMENT_BASELINE_40.json \
+  --report-root reports/P0023_arc12_development_baseline_40 \
+  --arc1-source /path/to/arc1-source \
+  --arc2-source /path/to/arc2-source
 python3 scripts/materialize_oracle_lane.py \
   --arc12-root /path/to/arc12-compatibility-lab \
   --arc12-commit 525000ab1f78fb1e66906149f72f6e8eac34ab71 \
@@ -130,12 +136,12 @@ python3 scripts/run_arc3_real_transition_probe.py --verify \
   --singularityml-root /path/to/SingularityML
 ```
 
-The source check requires clean detached revisions specified in the packet. P0013's controller bytes are intentionally historic, so verify it from a clean worktree at `df56d6b8c9a3da62e4f42c08e40d5ff6c31c6dc2`; P0018's baseline bytes are frozen at `260c212129445d1ba4bbda8cfa42f62b41a3446d`; P0019's geometry bytes are frozen at `f7246acf27dccc88a12b065ed6e2dbc1461f177c`; P0020's baseline bytes are frozen at `e7c5bac56acb1119fcb305c1596edaa6966b043f`; P0021's bilateral/scale bytes are frozen at `15833b3826281b49f70da8b9c7b2060ca1f00b8b`; P0022's fresh-transfer bytes are frozen at `cf3ff72abc98d8c8654d50694ca18ce68700b3af`. After a later controller-source change, verify any historic packet from its matching clean worktree; source-pinned regression tests retain the historic-byte audit in the evolving branch. `--run` writes a report, explicit JSON trace, native SVG corpus-callosum diagram, complete prediction, and post-answer verdict for every task.
+The source check requires clean detached revisions specified in the packet. P0013's controller bytes are intentionally historic, so verify it from a clean worktree at `df56d6b8c9a3da62e4f42c08e40d5ff6c31c6dc2`; P0018's baseline bytes are frozen at `260c212129445d1ba4bbda8cfa42f62b41a3446d`; P0019's geometry bytes are frozen at `f7246acf27dccc88a12b065ed6e2dbc1461f177c`; P0020's baseline bytes are frozen at `e7c5bac56acb1119fcb305c1596edaa6966b043f`; P0021's bilateral/scale bytes are frozen at `15833b3826281b49f70da8b9c7b2060ca1f00b8b`; P0022's fresh-transfer and P0023 baseline bytes are frozen at `cf3ff72abc98d8c8654d50694ca18ce68700b3af` and `4a4f70ae1735568ad87d3f46c085f59effb95fd8`, respectively. After a later controller-source change, verify any historic packet from its matching clean worktree; source-pinned regression tests retain the historic-byte audit in the evolving branch. `--run` writes a report, explicit JSON trace, native SVG corpus-callosum diagram, complete prediction, and post-answer verdict for every task.
 
 ## Repository map
 
 - `src/arc123/` — generic perception, hypothesis, persistent theory, compatibility, controller, trace, and adapter code.
 - `research/cohorts/` — source-pinned ARC12 curriculum/generalization metadata.
 - `research/oracle_specs/` and `research/oracle_materializations/` — offline-only observable schemas and source-pinned pilot/audit outputs.
-- `reports/` — retained ARC12 reports through P0022, including complete development and frozen-holdout V&V evidence.
+- `reports/` — retained ARC12 reports through P0023, including complete development and frozen-holdout V&V evidence.
 - `docs/` — architecture, validation, oracle, and visualization protocol.
