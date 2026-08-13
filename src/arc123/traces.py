@@ -247,10 +247,14 @@ def render_arc3_mechanics_svg(
         else {}
     )
     effects = motion_model.get("action_effects", []) if isinstance(motion_model, Mapping) else []
-    effect_text = " · ".join(
+    effect_labels = [
         f"{item.get('key')}: {item.get('delta')}"
         for item in effects
         if isinstance(item, Mapping)
+    ]
+    effect_lines = (
+        " · ".join(effect_labels[:2]),
+        " · ".join(effect_labels[2:]),
     )
     choices = result.get("action_choices", [])
     action_text = " → ".join(
@@ -302,10 +306,11 @@ def render_arc3_mechanics_svg(
             '<text x="540" y="218" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">Shared compatibility core</text>',
             f'<text x="540" y="258" font-family="Arial, sans-serif" font-size="16" fill="#334155">Public history: {escape(str(history_count))} transitions</text>',
             '<text x="540" y="292" font-family="Arial, sans-serif" font-size="14" fill="#475569">Observed action-motion map</text>',
-            f'<text x="540" y="318" font-family="Arial, sans-serif" font-size="13" fill="#0f172a">{escape(effect_text)}</text>',
-            f'<text x="540" y="354" font-family="Arial, sans-serif" font-size="16" fill="#334155">First selected action: {escape(str(first_key))}</text>',
-            f'<text x="540" y="384" font-family="Arial, sans-serif" font-size="15" fill="#475569">Non-default: {escape(str(first_non_default))}; red = visible beacon</text>',
-            '<text x="540" y="418" font-family="Arial, sans-serif" font-size="15" fill="#475569">Unknown action effects remain uncommitted</text>',
+            f'<text x="540" y="318" font-family="Arial, sans-serif" font-size="13" fill="#0f172a">{escape(effect_lines[0])}</text>',
+            f'<text x="540" y="340" font-family="Arial, sans-serif" font-size="13" fill="#0f172a">{escape(effect_lines[1])}</text>',
+            f'<text x="540" y="378" font-family="Arial, sans-serif" font-size="16" fill="#334155">First selected action: {escape(str(first_key))}</text>',
+            f'<text x="540" y="408" font-family="Arial, sans-serif" font-size="15" fill="#475569">Non-default: {escape(str(first_non_default))}; red = visible beacon</text>',
+            '<text x="540" y="442" font-family="Arial, sans-serif" font-size="15" fill="#475569">Unknown action effects remain uncommitted</text>',
             '<line x1="920" y1="300" x2="1070" y2="300" stroke="#16a34a" stroke-width="9" stroke-linecap="round" marker-end="url(#mechanics-arrow)"/>',
             '<line x1="920" y1="350" x2="1070" y2="350" stroke="#ea580c" stroke-width="9" stroke-linecap="round" marker-end="url(#mechanics-arrow)"/>',
             '<text x="1088" y="138" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Recorded state after progress</text>',
