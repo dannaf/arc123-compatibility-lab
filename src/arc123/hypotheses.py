@@ -55,6 +55,8 @@ class Hypothesis:
             return self._tile_repeat(input_grid)
         if self.kind == "dihedral_tile":
             return self._dihedral_tile(input_grid)
+        if self.kind == "self_mask_macro_stamp":
+            return self._self_mask_macro_stamp(input_grid)
         raise ValueError(f"unknown generic hypothesis kind: {self.kind}")
 
     def _recolor(self, input_grid: Grid) -> PartialGrid:
@@ -251,6 +253,58 @@ class Hypothesis:
             for row in range(height)
         )
 
+    def _self_mask_macro_stamp(self, input_grid: Grid) -> Optional[PartialGrid]:
+        """Stamp an input-derived template into a macro-grid selected by input cells.
+
+        The selector is a relative color role rather than a task-specific color.  The
+        output has one input-sized block for each input cell; selected cells receive
+        the learned template and all other blocks receive the learned blank color.
+        """
+
+        parameters = self.parameter_map
+        selector_name = str(parameters["selector"])
+        template_name = str(parameters["template"])
+        blank_color = int(parameters["blank_color"])
+        selector = _self_macro_selector(input_grid, selector_name)
+        if selector is None:
+            return None
+
+        height = len(input_grid)
+        width = len(input_grid[0])
+        if template_name == "input":
+            template: Grid = input_grid
+        elif template_name == "selected_mask_other_color":
+            other_colors = {
+                color
+                for row_index, row in enumerate(input_grid)
+                for column_index, color in enumerate(row)
+                if not selector[row_index][column_index]
+            }
+            if len(other_colors) != 1:
+                return None
+            other_color = next(iter(other_colors))
+            if other_color == blank_color:
+                return None
+            template = tuple(
+                tuple(
+                    other_color if selector[row_index][column_index] else blank_color
+                    for column_index in range(width)
+                )
+                for row_index in range(height)
+            )
+        else:
+            raise ValueError(f"unknown self-mask macro template: {template_name}")
+
+        return tuple(
+            tuple(
+                template[row_index % height][column_index % width]
+                if selector[row_index // height][column_index // width]
+                else blank_color
+                for column_index in range(width * width)
+            )
+            for row_index in range(height * height)
+        )
+
 
 def _same_shape_training_pairs(training_pairs: Sequence[TrainingPair]) -> bool:
     return all(
@@ -374,6 +428,78 @@ def _dihedral_orientations(input_grid: Grid) -> dict[str, Grid]:
     return orientations
 
 
+def _self_macro_selector(
+    input_grid: Grid, selector_name: str
+) -> Optional[tuple[tuple[bool, ...], ...]]:
+    """Return a role-based mask without carrying an input color across examples."""
+
+    counts: dict[int, int] = {}
+    for row in input_grid:
+        for color in row:
+            counts[color] = counts.get(color, 0) + 1
+    if selector_name == "most_frequent":
+        selected_color = min(counts, key=lambda color: (-counts[color], color))
+        return tuple(tuple(color == selected_color for color in row) for row in input_grid)
+    if selector_name == "least_frequent":
+        selected_color = min(counts, key=lambda color: (counts[color], color))
+        return tuple(tuple(color == selected_color for color in row) for row in input_grid)
+    if selector_name == "zero":
+        if 0 not in counts:
+            return None
+        return tuple(tuple(color == 0 for color in row) for row in input_grid)
+    if selector_name == "nonzero":
+        if set(counts) == {0}:
+            return None
+        return tuple(tuple(color != 0 for color in row) for row in input_grid)
+    raise ValueError(f"unknown self-mask macro selector: {selector_name}")
+
+
+def _self_mask_macro_stamp_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
+    """Infer a visible-example-only macro stamping relation.
+
+    This family deliberately requires output dimensions of ``H² × W²``: the input
+    acts both as a source of a role-based selector and as the dimensions of the
+    macro-grid.  Candidates are retained only when one relative selector and one
+    template relation explain every demonstrated output exactly.
+    """
+
+    if not training_pairs:
+        return []
+    for input_grid, output_grid in training_pairs:
+        height = len(input_grid)
+        width = len(input_grid[0])
+        if len(output_grid) != height * height or len(output_grid[0]) != width * width:
+            return []
+    output_color_sets = [
+        {color for row in output_grid for color in row}
+        for _, output_grid in training_pairs
+    ]
+    blank_candidates = set(output_color_sets[0])
+    for output_colors in output_color_sets[1:]:
+        blank_candidates.intersection_update(output_colors)
+    candidates: list[Hypothesis] = []
+    for blank_color in sorted(blank_candidates):
+        for selector_name in ("most_frequent", "least_frequent", "zero", "nonzero"):
+            for template_name in ("input", "selected_mask_other_color"):
+                hypothesis = Hypothesis(
+                    "self_mask_macro_stamp",
+                    _parameter_tuple(
+                        blank_color=blank_color,
+                        selector=selector_name,
+                        template=template_name,
+                    ),
+                    description_length=(
+                        5 if template_name == "input" else 6
+                    ),
+                )
+                if all(
+                    hypothesis.predict(input_grid) == _full(output_grid)
+                    for input_grid, output_grid in training_pairs
+                ):
+                    candidates.append(hypothesis)
+    return candidates
+
+
 def _dihedral_tile_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
     factors: set[tuple[int, int]] = set()
     possible_labels: list[set[str]] | None = None
@@ -455,7 +581,14 @@ def propose_base_hypotheses(
 
     if enabled_operator_families is None:
         enabled = frozenset(
-            {"identity", "recolor", "mirror", "dihedral_transform", "translate"}
+            {
+                "identity",
+                "recolor",
+                "mirror",
+                "dihedral_transform",
+                "translate",
+                "self_mask_macro_stamp",
+            }
         )
     else:
         enabled = frozenset(enabled_operator_families)
@@ -492,6 +625,8 @@ def propose_base_hypotheses(
         candidates.extend(_tile_repeat_candidates(training_pairs))
     if "dihedral_tile" in enabled:
         candidates.extend(_dihedral_tile_candidates(training_pairs))
+    if "self_mask_macro_stamp" in enabled:
+        candidates.extend(_self_mask_macro_stamp_candidates(training_pairs))
     return candidates
 
 

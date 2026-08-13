@@ -358,6 +358,7 @@ THEORY_OPERATOR_FAMILIES = (
     "translate",
     "repeat_tile",
     "dihedral_tile",
+    "self_mask_macro_stamp",
     "line_extend",
     "row_span_fill",
     "row_span_minimum",
@@ -427,13 +428,27 @@ class IterativeHypothesisLearner:
         preferred = [
             candidate
             for candidate in base_candidates
-            if candidate.kind in {"identity", "recolor", "tile_repeat", "dihedral_transform"}
+            if candidate.kind
+            in {
+                "identity",
+                "recolor",
+                "tile_repeat",
+                "dihedral_transform",
+                "self_mask_macro_stamp",
+            }
         ]
         remaining = [
             candidate
             for candidate in base_candidates
             if candidate.kind
-            not in {"identity", "recolor", "tile_repeat", "mirror", "dihedral_transform"}
+            not in {
+                "identity",
+                "recolor",
+                "tile_repeat",
+                "mirror",
+                "dihedral_transform",
+                "self_mask_macro_stamp",
+            }
         ]
         for candidate in [*preferred, *remaining][: self.candidate_limit]:
             rule = (
@@ -482,7 +497,12 @@ class IterativeHypothesisLearner:
             if rule.operation == "coordinate_transform":
                 return 1, theory.theory_id
             if rule.operation == "identity" or theory.name.startswith(
-                ("recolor(", "tile_repeat(", "dihedral_transform(")
+                (
+                    "recolor(",
+                    "tile_repeat(",
+                    "dihedral_transform(",
+                    "self_mask_macro_stamp(",
+                )
             ):
                 return 0, theory.theory_id
             return 2, theory.theory_id

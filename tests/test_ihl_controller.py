@@ -210,6 +210,101 @@ class IterativeHypothesisLearnerTests(unittest.TestCase):
         self.assertTrue(all("revision_count" in snapshot for snapshot in compare_snapshots))
         self.assertTrue(all("history" not in snapshot for snapshot in compare_snapshots))
 
+    def test_self_mask_macro_stamp_learns_most_frequent_relative_color_role(self) -> None:
+        environment = self._environment(
+            [
+                {
+                    "input": [[1, 1], [1, 2]],
+                    "output": [
+                        [1, 1, 1, 1],
+                        [1, 2, 1, 2],
+                        [1, 1, 0, 0],
+                        [1, 2, 0, 0],
+                    ],
+                },
+                {
+                    "input": [[3, 4], [3, 3]],
+                    "output": [
+                        [3, 4, 0, 0],
+                        [3, 3, 0, 0],
+                        [3, 4, 3, 4],
+                        [3, 3, 3, 3],
+                    ],
+                },
+            ],
+            [
+                {
+                    "input": [[7, 7], [8, 7]],
+                    "output": [
+                        [7, 7, 7, 7],
+                        [8, 7, 8, 7],
+                        [0, 0, 7, 7],
+                        [0, 0, 8, 7],
+                    ],
+                }
+            ],
+        )
+
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "self_mask_macro_stamp"),
+            candidate_limit=12,
+            beam_width=8,
+        ).solve(environment, "synthetic-self-mask-most-frequent")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertIn("self_mask_macro_stamp", result.selected_hypothesis)
+        self.assertIn("selector=most_frequent", result.selected_hypothesis)
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+
+    def test_self_mask_macro_stamp_learns_zero_mask_and_dynamic_other_color(self) -> None:
+        environment = self._environment(
+            [
+                {
+                    "input": [[9, 9], [9, 0]],
+                    "output": [
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 0],
+                        [0, 0, 0, 9],
+                    ],
+                },
+                {
+                    "input": [[0, 0], [5, 0]],
+                    "output": [
+                        [5, 5, 5, 5],
+                        [0, 5, 0, 5],
+                        [0, 0, 5, 5],
+                        [0, 0, 0, 5],
+                    ],
+                },
+            ],
+            [
+                {
+                    "input": [[1, 0], [0, 1]],
+                    "output": [
+                        [0, 0, 0, 1],
+                        [0, 0, 1, 0],
+                        [0, 1, 0, 0],
+                        [1, 0, 0, 0],
+                    ],
+                }
+            ],
+        )
+
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "self_mask_macro_stamp"),
+            candidate_limit=12,
+            beam_width=8,
+        ).solve(environment, "synthetic-self-mask-zero")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertIn("self_mask_macro_stamp", result.selected_hypothesis)
+        self.assertIn("selector=zero", result.selected_hypothesis)
+        self.assertIn("template=selected_mask_other_color", result.selected_hypothesis)
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+
     def test_explicit_empty_operator_vocabulary_does_not_restore_defaults(self) -> None:
         environment = self._environment(
             [{"input": [[1]], "output": [[2]]}],
