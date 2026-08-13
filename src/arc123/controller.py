@@ -7,6 +7,12 @@ import math
 from dataclasses import dataclass
 from typing import Optional, Protocol, Sequence
 
+from .arc3_mechanics import (
+    GoalDirectedAction,
+    choose_goal_directed_action,
+    learn_motion_model,
+    observed_controlled_delta,
+)
 from .compatibility import assess_hypothesis
 from .contracts import EnvironmentAction, HypothesisAction, ObservationWorld, TransitionFeedback
 from .hypotheses import Hypothesis, propose_base_hypotheses, propose_structural_hypotheses
@@ -1499,6 +1505,308 @@ class IterativeHypothesisLearner:
             key=lambda action: (action.action_type, str(action.parameters.get("key", ""))),
         )
 
+    @staticmethod
+    def _external_transition_summary(feedback: TransitionFeedback) -> dict[str, object]:
+        return {
+            "action": feedback.action.as_dict(),
+            "accepted": feedback.accepted,
+            "changed": feedback.changed,
+            "progress": feedback.progress,
+            "terminal": feedback.terminal,
+            "before_observation": feedback.before.observation_id,
+            "after_observation": feedback.after.observation_id,
+            "transition_source": feedback.metadata.get("transition_source"),
+        }
+
+    @staticmethod
+    def _observable_progress(observation: object) -> float | None:
+        payload = getattr(observation, "payload", None)
+        if not isinstance(payload, dict):
+            return None
+        value = payload.get("levels_completed")
+        return float(value) if isinstance(value, (int, float)) else None
+
+    def run_external_mechanics_episode(
+        self,
+        world: ObservationWorld,
+        public_history: Sequence[TransitionFeedback],
+        *,
+        max_actions: int,
+        episode_id: str = "arc3-public-mechanics",
+    ) -> "ExternalMechanicsResult":
+        """Learn a public action-motion relation, then act against a visible beacon.
+
+        `public_history` is a bounded sequence of already observed real transitions.
+        The learner only receives the current world observation/actions after that
+        history and can advance it through `world.act`; it has no access to replay
+        records, a simulator, future actions, or post-hoc game rules.
+        """
+
+        if max_actions <= 0:
+            raise ValueError("external mechanics episodes require a positive action limit")
+        self._theory_sequence = 0
+        trace = LearningTrace(episode_id)
+        initial_observation = world.observe()
+        initial_progress = self._observable_progress(initial_observation)
+        initial_rule = TheoryRule(
+            rule_id="environment-effect",
+            operation="environment_transition",
+            parameters=(("effect", "action_effects_unknown"),),
+            description_length=1,
+        )
+        initial_action = HypothesisAction(
+            ActionKind.ADD_RULE,
+            initial_rule.rule_id,
+            {
+                "effect": "action_effects_unknown",
+                "learned_store_initially_empty": True,
+                "unobserved_actions_remain_unknown": True,
+            },
+        )
+        theory = self._new_theory(PartialTheory.root(), initial_action, (initial_rule,))
+        trace.record(
+            ActionKind.ATTEND,
+            theory_id=theory.theory_id,
+            observation=initial_observation.as_dict(),
+            public_history_transition_count=len(public_history),
+            live_oracle_visible=False,
+            future_transition_visible=False,
+        )
+        trace.record(
+            ActionKind.PROPOSE,
+            theory_id=theory.theory_id,
+            theory=theory.as_dict(include_predictions=False),
+            mechanics_prediction="action effects remain UNKNOWN until observed",
+        )
+        try:
+            motion_model = learn_motion_model(public_history)
+        except ValueError as error:
+            trace.record(
+                ActionKind.REJECT_HYPOTHESIS,
+                theory_id=theory.theory_id,
+                reason=str(error),
+                status="insufficient_public_motion_evidence",
+            )
+            trace.record(
+                ActionKind.COMMIT,
+                theory_id=theory.theory_id,
+                mechanics_learning_confirmed=False,
+                completion_claim="no_external_action_taken_without_a_learned_motion_relation",
+            )
+            return ExternalMechanicsResult(
+                mechanics_learning_confirmed=False,
+                goal_directed_action_confirmed=False,
+                non_default_action_confirmed=False,
+                level_progress_observed=False,
+                trace=trace.as_dict(),
+                final_theory=theory.as_dict(include_predictions=False),
+                history_transition_count=len(public_history),
+                transitions=(),
+                action_choices=(),
+                initial_progress=initial_progress,
+                final_progress=initial_progress,
+            )
+        trace.record(
+            ActionKind.APPLY_LOCALLY,
+            theory_id=theory.theory_id,
+            phase="learn_from_bounded_public_history",
+            motion_model=motion_model.as_dict(),
+            accepted_history_transition_count=sum(item.accepted for item in public_history),
+            changed_history_transition_count=sum(item.changed is True for item in public_history),
+        )
+        trace.record(
+            ActionKind.FIND_COUNTEREXAMPLE,
+            theory_id=theory.theory_id,
+            counterexample={
+                "prior_effect": "action_effects_unknown",
+                "observation": "repeatable_action_conditioned_motion",
+                "distinct_observed_actions": len(motion_model.action_effects),
+            },
+            causal_next_operation="specialize_to_observed_action_motion_map",
+        )
+        motion_rule = initial_rule.with_parameter("effect", "action_motion_map")
+        revision_action = HypothesisAction(
+            ActionKind.SPECIALIZE,
+            motion_rule.rule_id,
+            {
+                "from_effect": "action_effects_unknown",
+                "to_effect": "action_motion_map",
+                "source": "bounded_public_history",
+            },
+        )
+        theory = self._new_theory(theory, revision_action, (motion_rule,))
+        trace.record(
+            ActionKind.SPECIALIZE,
+            theory_id=theory.theory_id,
+            parent_theory_id=theory.parent_theory_id,
+            revised_rule=motion_rule.as_dict(),
+        )
+        for effect in motion_model.action_effects:
+            trace.record(
+                ActionKind.BIND_PARAMETER,
+                theory_id=theory.theory_id,
+                parameter="observed_action_delta",
+                action_key=effect.key,
+                delta=list(effect.delta),
+                support_count=effect.support_count,
+            )
+        trace.record(
+            ActionKind.PROMOTE_CONSTRAINT,
+            theory_id=theory.theory_id,
+            status="public_action_motion_map_retained",
+            controlled_component=motion_model.controlled_component.as_dict(),
+            stable_beacon_count=len(motion_model.beacon_signatures),
+            unobserved_actions_remain_unknown=True,
+        )
+        action_choices: list[dict[str, object]] = []
+        transitions: list[dict[str, object]] = []
+        all_goal_predictions_confirmed = True
+        for action_index in range(max_actions):
+            current_observation = world.observe()
+            choice = choose_goal_directed_action(
+                motion_model, current_observation, world.available_actions()
+            )
+            if choice is None:
+                trace.record(
+                    ActionKind.REJECT_HYPOTHESIS,
+                    theory_id=theory.theory_id,
+                    phase="goal_directed_action_selection",
+                    reason="no_available_observed_effect_reduces_visible_beacon_relation",
+                    action_index=action_index,
+                )
+                all_goal_predictions_confirmed = False
+                break
+            trace.record(
+                ActionKind.PROPOSE,
+                theory_id=theory.theory_id,
+                phase="goal_directed_action_selection",
+                action_index=action_index,
+                choice=choice.as_dict(),
+            )
+            feedback = world.act(choice.action)
+            observed_delta = observed_controlled_delta(
+                motion_model, feedback.before, feedback.after
+            )
+            progress_transition = bool(
+                initial_progress is not None
+                and feedback.progress is not None
+                and feedback.progress > initial_progress
+            )
+            prediction_matched = feedback.accepted and (
+                observed_delta == choice.predicted_delta or progress_transition
+            )
+            transition_summary = self._external_transition_summary(feedback)
+            transition_summary["predicted_controlled_delta"] = list(choice.predicted_delta)
+            transition_summary["observed_controlled_delta"] = (
+                list(observed_delta) if observed_delta is not None else None
+            )
+            transition_summary["progress_transition_confirms_goal_contact"] = progress_transition
+            transition_summary["prediction_matched"] = prediction_matched
+            transitions.append(transition_summary)
+            choice_summary = choice.as_dict()
+            choice_summary["prediction_matched_observation"] = prediction_matched
+            choice_summary["progress_transition_confirms_goal_contact"] = progress_transition
+            action_choices.append(choice_summary)
+            trace.record(
+                ActionKind.APPLY_LOCALLY,
+                theory_id=theory.theory_id,
+                phase="goal_directed_external_action",
+                action_index=action_index,
+                choice=choice.as_dict(),
+                transition=transition_summary,
+            )
+            trace.record(
+                ActionKind.COMPARE,
+                theory_id=theory.theory_id,
+                action_index=action_index,
+                predicted_controlled_delta=list(choice.predicted_delta),
+                observed_controlled_delta=(
+                    list(observed_delta) if observed_delta is not None else None
+                ),
+                predicted_goal_distance_before=choice.goal_distance_before,
+                predicted_goal_distance_after=choice.goal_distance_after,
+                transition_accepted=feedback.accepted,
+                prediction_matched_observation=prediction_matched,
+                observed_progress=feedback.progress,
+                progress_transition_confirms_goal_contact=progress_transition,
+            )
+            if not prediction_matched:
+                all_goal_predictions_confirmed = False
+                trace.record(
+                    ActionKind.FIND_COUNTEREXAMPLE,
+                    theory_id=theory.theory_id,
+                    action_index=action_index,
+                    counterexample={
+                        "predicted_delta": list(choice.predicted_delta),
+                        "observed_delta": (
+                            list(observed_delta) if observed_delta is not None else None
+                        ),
+                        "transition_accepted": feedback.accepted,
+                    },
+                )
+                break
+            current_progress = self._observable_progress(feedback.after)
+            if (
+                initial_progress is not None
+                and current_progress is not None
+                and current_progress > initial_progress
+            ):
+                trace.record(
+                    ActionKind.PROMOTE_CONSTRAINT,
+                    theory_id=theory.theory_id,
+                    status="recorded_goal_directed_actions_contributed_to_level_progress",
+                    initial_progress=initial_progress,
+                    observed_progress=current_progress,
+                )
+                break
+        final_observation = world.observe()
+        final_progress = self._observable_progress(final_observation)
+        mechanics_learning_confirmed = len(motion_model.action_effects) >= 2
+        non_default_action_confirmed = any(
+            bool(choice.get("is_non_default")) for choice in action_choices
+        )
+        level_progress_observed = bool(
+            initial_progress is not None
+            and final_progress is not None
+            and final_progress > initial_progress
+        )
+        goal_directed_action_confirmed = bool(
+            action_choices
+            and all_goal_predictions_confirmed
+            and all(
+                choice["goal_distance_after"] < choice["goal_distance_before"]
+                for choice in action_choices
+            )
+        )
+        final_theory = theory.as_dict(include_predictions=False)
+        final_theory["learned_motion_model"] = motion_model.as_dict()
+        trace.record(
+            ActionKind.COMMIT,
+            theory_id=theory.theory_id,
+            selected_hypothesis=motion_rule.name,
+            mechanics_learning_confirmed=mechanics_learning_confirmed,
+            goal_directed_action_confirmed=goal_directed_action_confirmed,
+            non_default_action_confirmed=non_default_action_confirmed,
+            level_progress_observed=level_progress_observed,
+            completion_claim=(
+                "source_pinned_recorded_replay_mechanics_evidence_not_a_general_arc3_solver"
+            ),
+            final_theory=final_theory,
+        )
+        return ExternalMechanicsResult(
+            mechanics_learning_confirmed=mechanics_learning_confirmed,
+            goal_directed_action_confirmed=goal_directed_action_confirmed,
+            non_default_action_confirmed=non_default_action_confirmed,
+            level_progress_observed=level_progress_observed,
+            trace=trace.as_dict(),
+            final_theory=final_theory,
+            history_transition_count=len(public_history),
+            transitions=tuple(transitions),
+            action_choices=tuple(action_choices),
+            initial_progress=initial_progress,
+            final_progress=final_progress,
+        )
+
     def run_external_probe(
         self, world: ObservationWorld, episode_id: str = "arc3-public-transition-probe"
     ) -> "ExternalProbeResult":
@@ -1648,3 +1956,20 @@ class ExternalProbeResult:
     trace: dict[str, object]
     final_theory: dict[str, object]
     transitions: tuple[dict[str, object], ...]
+
+
+@dataclass(frozen=True)
+class ExternalMechanicsResult:
+    """Auditable bounded-history mechanics-learning result for an external replay."""
+
+    mechanics_learning_confirmed: bool
+    goal_directed_action_confirmed: bool
+    non_default_action_confirmed: bool
+    level_progress_observed: bool
+    trace: dict[str, object]
+    final_theory: dict[str, object]
+    history_transition_count: int
+    transitions: tuple[dict[str, object], ...]
+    action_choices: tuple[dict[str, object], ...]
+    initial_progress: float | None
+    final_progress: float | None

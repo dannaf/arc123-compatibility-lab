@@ -98,6 +98,26 @@ class SharedARC3ContractTests(unittest.TestCase):
         self.assertIn("no state was simulated", refused.metadata["reason"])
         self.assertEqual(world.observe().observation_id, "arc3-public-replay:step:0")
 
+    def test_arc3_replay_can_begin_after_bounded_public_history(self) -> None:
+        with patch(
+            "arc123.adapters.arc3._git_output",
+            side_effect=[SOURCE_COMMIT, _public_transition_jsonl()],
+        ):
+            world = SourcePinnedARC3ReplayWorld.from_git_source(
+                Path("/source"), SOURCE_COMMIT, SOURCE_PATH, initial_cursor=2
+            )
+
+        history = world.observed_history()
+        serialized_history = json.dumps([item.as_dict() for item in history], sort_keys=True)
+
+        self.assertEqual(world.observe().observation_id, "arc3-public-replay:step:2")
+        self.assertEqual(len(history), 2)
+        self.assertEqual(
+            [item.action.parameters["key"] for item in history], ["ACTION1", "ACTION1"]
+        )
+        self.assertNotIn(SOURCE_PATH, serialized_history)
+        self.assertNotIn(SOURCE_COMMIT, serialized_history)
+
     def test_shared_learner_revises_on_a_real_transition_contract(self) -> None:
         world = self._world()
         result = IterativeHypothesisLearner().run_external_probe(world, "shared-arc3")

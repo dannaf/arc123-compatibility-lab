@@ -58,6 +58,9 @@ _PALETTE = {
     7: "#fb923c",
     8: "#22d3ee",
     9: "#7c2d12",
+    10: "#ec4899",
+    11: "#64748b",
+    12: "#f97316",
 }
 
 
@@ -222,6 +225,95 @@ def render_arc3_transition_svg(
             '<rect x="44" y="560" width="1332" height="70" rx="12" fill="#e2e8f0"/>',
             '<text x="66" y="591" font-family="Arial, sans-serif" font-size="15" fill="#0f172a">Red outlines mark cells changed by the recorded probe. All displayed cells are source-pinned public frames; no oracle rule, future trajectory, or simulation is exposed.</text>',
             '<text x="66" y="615" font-family="Arial, sans-serif" font-size="15" fill="#0f172a">This validates a shared observation/action/revision contract, not an ARC3 level-solve claim.</text>',
+            '</svg>',
+        ]
+    )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(svg, encoding="utf-8")
+
+
+def render_arc3_mechanics_svg(
+    path: Path,
+    before: Grid,
+    after: Grid,
+    result: Mapping[str, Any],
+) -> None:
+    """Render a bounded public-history action-mechanics trace for ARC3 evidence."""
+
+    final_theory = result.get("final_theory", {})
+    motion_model = (
+        final_theory.get("learned_motion_model", {})
+        if isinstance(final_theory, Mapping)
+        else {}
+    )
+    effects = motion_model.get("action_effects", []) if isinstance(motion_model, Mapping) else []
+    effect_text = " · ".join(
+        f"{item.get('key')}: {item.get('delta')}"
+        for item in effects
+        if isinstance(item, Mapping)
+    )
+    choices = result.get("action_choices", [])
+    action_text = " → ".join(
+        str(item.get("action", {}).get("parameters", {}).get("key", "?"))
+        for item in choices
+        if isinstance(item, Mapping)
+    )
+    first_choice = choices[0] if isinstance(choices, Sequence) and choices else {}
+    beacon = first_choice.get("beacon", {}) if isinstance(first_choice, Mapping) else {}
+    bbox = beacon.get("bbox", []) if isinstance(beacon, Mapping) else []
+    highlighted_cells: list[tuple[int, int]] = []
+    if isinstance(bbox, Sequence) and len(bbox) == 4 and all(isinstance(value, int) for value in bbox):
+        top, left, bottom, right = bbox
+        highlighted_cells = [
+            (row, column)
+            for row in range(top, bottom + 1)
+            for column in range(left, right + 1)
+        ]
+    initial_progress = result.get("initial_progress")
+    final_progress = result.get("final_progress")
+    history_count = result.get("history_transition_count", 0)
+    first_key = (
+        first_choice.get("action", {}).get("parameters", {}).get("key", "?")
+        if isinstance(first_choice, Mapping)
+        else "?"
+    )
+    first_non_default = (
+        bool(first_choice.get("is_non_default")) if isinstance(first_choice, Mapping) else False
+    )
+    svg = "".join(
+        [
+            '<svg xmlns="http://www.w3.org/2000/svg" width="1420" height="700" viewBox="0 0 1420 700">',
+            '<defs><marker id="mechanics-arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker></defs>',
+            '<rect width="1420" height="700" fill="#f8fafc"/>',
+            '<text x="44" y="52" font-family="Arial, sans-serif" font-size="29" font-weight="700" fill="#0f172a">ARC123 Learned-Mechanics Corpus-Callosum Trace</text>',
+            '<text x="44" y="81" font-family="Arial, sans-serif" font-size="16" fill="#334155">Bounded public history → action-motion compatibility → non-default goal-directed action → recorded level progress</text>',
+            '<text x="76" y="138" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Current public state</text>',
+            _grid_svg(
+                before,
+                76,
+                160,
+                maximum_size=230,
+                minimum_cell=2,
+                highlighted_cells=highlighted_cells,
+            ),
+            '<line x1="336" y1="300" x2="500" y2="300" stroke="#2563eb" stroke-width="9" stroke-linecap="round" marker-end="url(#mechanics-arrow)"/>',
+            '<line x1="336" y1="350" x2="500" y2="350" stroke="#7c3aed" stroke-width="9" stroke-linecap="round" marker-end="url(#mechanics-arrow)"/>',
+            '<rect x="510" y="175" width="400" height="300" rx="24" fill="#ffffff" stroke="#334155" stroke-width="3"/>',
+            '<text x="540" y="218" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">Shared compatibility core</text>',
+            f'<text x="540" y="258" font-family="Arial, sans-serif" font-size="16" fill="#334155">Public history: {escape(str(history_count))} transitions</text>',
+            '<text x="540" y="292" font-family="Arial, sans-serif" font-size="14" fill="#475569">Observed action-motion map</text>',
+            f'<text x="540" y="318" font-family="Arial, sans-serif" font-size="13" fill="#0f172a">{escape(effect_text)}</text>',
+            f'<text x="540" y="354" font-family="Arial, sans-serif" font-size="16" fill="#334155">First selected action: {escape(str(first_key))}</text>',
+            f'<text x="540" y="384" font-family="Arial, sans-serif" font-size="15" fill="#475569">Non-default: {escape(str(first_non_default))}; red = visible beacon</text>',
+            '<text x="540" y="418" font-family="Arial, sans-serif" font-size="15" fill="#475569">Unknown action effects remain uncommitted</text>',
+            '<line x1="920" y1="300" x2="1070" y2="300" stroke="#16a34a" stroke-width="9" stroke-linecap="round" marker-end="url(#mechanics-arrow)"/>',
+            '<line x1="920" y1="350" x2="1070" y2="350" stroke="#ea580c" stroke-width="9" stroke-linecap="round" marker-end="url(#mechanics-arrow)"/>',
+            '<text x="1088" y="138" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Recorded state after progress</text>',
+            _grid_svg(after, 1088, 160, maximum_size=230, minimum_cell=2),
+            '<rect x="44" y="540" width="1332" height="112" rx="12" fill="#e2e8f0"/>',
+            f'<text x="66" y="574" font-family="Arial, sans-serif" font-size="16" fill="#0f172a">Chosen public actions: {escape(action_text)}</text>',
+            f'<text x="66" y="606" font-family="Arial, sans-serif" font-size="16" fill="#0f172a">Recorded levels completed: {escape(str(initial_progress))} → {escape(str(final_progress))}</text>',
+            '<text x="66" y="634" font-family="Arial, sans-serif" font-size="14" fill="#475569">The controller receives no future action sequence, simulator, oracle rule, or post-hoc reasoning annotation. This is source-pinned replay evidence, not a general ARC3 solver claim.</text>',
             '</svg>',
         ]
     )

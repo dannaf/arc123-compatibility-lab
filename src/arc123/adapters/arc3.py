@@ -95,6 +95,7 @@ class SourcePinnedARC3ReplayWorld:
         *,
         world_id: str = "arc3-public-replay",
         source_repository: str = "https://github.com/dannaf/SingularityML",
+        initial_cursor: int = 0,
     ) -> "SourcePinnedARC3ReplayWorld":
         normalized_path = require_public_arc3_transition_path(source_path)
         resolved_commit = _git_output(source_root, ["rev-parse", f"{source_commit}^{{commit}}"]).strip()
@@ -102,6 +103,8 @@ class SourcePinnedARC3ReplayWorld:
             raise OracleIsolationError("ARC3 source commit does not resolve to the requested pin")
         raw_jsonl = _git_output(source_root, ["show", f"{source_commit}:{normalized_path}"])
         records = _validated_records(raw_jsonl)
+        if not isinstance(initial_cursor, int) or not 0 <= initial_cursor < len(records):
+            raise OracleIsolationError("ARC3 replay initial cursor is outside the public trajectory")
         return cls(
             _world_id=world_id,
             _records=records,
@@ -109,6 +112,7 @@ class SourcePinnedARC3ReplayWorld:
             _source_commit=source_commit,
             _source_path=str(normalized_path),
             _source_sha256=hashlib.sha256(raw_jsonl.encode("utf-8")).hexdigest(),
+            _cursor=initial_cursor,
         )
 
     @property
@@ -146,6 +150,39 @@ class SourcePinnedARC3ReplayWorld:
     def available_actions(self) -> tuple[EnvironmentAction, ...]:
         record = self._records[self._cursor]
         return tuple(EnvironmentAction("external_key", {"key": key}) for key in record["available"])
+
+    def observed_history(self) -> tuple[TransitionFeedback, ...]:
+        """Expose only public transitions that precede the current replay cursor.
+
+        The returned history is suitable for a learner that has already observed those
+        external actions. It contains no source pin, no future record, and no simulated
+        alternative. Future records remain inaccessible except through `act`.
+        """
+
+        history: list[TransitionFeedback] = []
+        for after_cursor in range(1, self._cursor + 1):
+            record = self._records[after_cursor]
+            action = EnvironmentAction("external_key", {"key": record["action"]})
+            progress_value = record.get("levels_completed")
+            progress = float(progress_value) if isinstance(progress_value, (int, float)) else None
+            state = str(record.get("state", ""))
+            terminal = state.endswith("FINISHED") and not state.endswith("NOT_FINISHED")
+            history.append(
+                TransitionFeedback(
+                    action=action,
+                    before=self._observation_for(after_cursor - 1),
+                    after=self._observation_for(after_cursor),
+                    accepted=True,
+                    changed=(bool(record["changed"]) if "changed" in record else None),
+                    progress=progress,
+                    terminal=terminal,
+                    metadata={
+                        "transition_source": "recorded_public_history",
+                        "history_cursor": after_cursor,
+                    },
+                )
+            )
+        return tuple(history)
 
     def act(self, action: EnvironmentAction) -> TransitionFeedback:
         before = self.observe()
