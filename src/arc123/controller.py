@@ -57,6 +57,10 @@ DEFAULT_OPERATOR_FAMILIES = (
     "central_separator_cellwise_combine",
     "adjacent_bilateral_cellwise_combine",
     "distinct_nonbackground_scale",
+    "separated_panel_cellwise_combine",
+    "anti_diagonal_nonbackground_stream",
+    "symmetric_foreground_quadrant_crop",
+    "uniform_block_self_stamp_fractal",
     "line_extend",
     "row_span_fill",
     "partial-with-identity composition",
@@ -369,6 +373,10 @@ THEORY_OPERATOR_FAMILIES = (
     "central_separator_cellwise_combine",
     "adjacent_bilateral_cellwise_combine",
     "distinct_nonbackground_scale",
+    "separated_panel_cellwise_combine",
+    "anti_diagonal_nonbackground_stream",
+    "symmetric_foreground_quadrant_crop",
+    "uniform_block_self_stamp_fractal",
     "line_extend",
     "row_span_fill",
     "row_span_minimum",
@@ -451,6 +459,10 @@ class IterativeHypothesisLearner:
                 "central_separator_cellwise_combine",
                 "adjacent_bilateral_cellwise_combine",
                 "distinct_nonbackground_scale",
+                "separated_panel_cellwise_combine",
+                "anti_diagonal_nonbackground_stream",
+                "symmetric_foreground_quadrant_crop",
+                "uniform_block_self_stamp_fractal",
             }
         ]
         remaining = [
@@ -470,6 +482,10 @@ class IterativeHypothesisLearner:
                 "central_separator_cellwise_combine",
                 "adjacent_bilateral_cellwise_combine",
                 "distinct_nonbackground_scale",
+                "separated_panel_cellwise_combine",
+                "anti_diagonal_nonbackground_stream",
+                "symmetric_foreground_quadrant_crop",
+                "uniform_block_self_stamp_fractal",
             }
         ]
         for candidate in [*preferred, *remaining][: self.candidate_limit]:
@@ -530,6 +546,10 @@ class IterativeHypothesisLearner:
                     "central_separator_cellwise_combine",
                     "adjacent_bilateral_cellwise_combine",
                     "distinct_nonbackground_scale",
+                    "separated_panel_cellwise_combine",
+                    "anti_diagonal_nonbackground_stream",
+                    "symmetric_foreground_quadrant_crop",
+                    "uniform_block_self_stamp_fractal",
                 )
             ):
                 return 0, theory.theory_id

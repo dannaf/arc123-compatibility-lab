@@ -633,6 +633,209 @@ class IterativeHypothesisLearnerTests(unittest.TestCase):
             },
         )
 
+    def test_separated_panel_combine_learns_visible_tuple_table(self) -> None:
+        environment = self._environment(
+            [
+                {
+                    "input": [[1, 0, 9, 0, 2, 9, 0, 0], [0, 1, 9, 2, 0, 9, 3, 3]],
+                    "output": [[1, 2], [4, 5]],
+                },
+                {
+                    "input": [[0, 0, 9, 2, 2, 9, 3, 0], [1, 1, 9, 0, 0, 9, 0, 3]],
+                    "output": [[4, 2], [1, 5]],
+                },
+            ],
+            [
+                {
+                    "input": [[0, 1, 9, 2, 0, 9, 3, 0], [0, 1, 9, 2, 0, 9, 0, 3]],
+                    "output": [[4, 1], [2, 5]],
+                }
+            ],
+        )
+
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "separated_panel_cellwise_combine"),
+            candidate_limit=12,
+            beam_width=8,
+        ).solve(environment, "synthetic-separated-panel-combine")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertIn("separated_panel_cellwise_combine", result.selected_hypothesis)
+        self.assertEqual(result.predictions[0], ((4, 1), (2, 5)))
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+
+        candidate = next(
+            item
+            for item in propose_base_hypotheses(
+                environment.training_pairs, ("separated_panel_cellwise_combine",)
+            )
+            if item.kind == "separated_panel_cellwise_combine"
+        )
+        self.assertIsNone(candidate.predict(((2, 0, 9, 0, 0, 9, 0, 0),)))
+
+    def test_anti_diagonal_stream_rederives_dynamic_output_size(self) -> None:
+        def stream_output(source_row: list[int]) -> list[list[int]]:
+            nonbackground_count = sum(color != 0 for color in source_row)
+            side_length = len(source_row) * nonbackground_count
+            output = [[0 for _ in range(side_length)] for _ in range(side_length)]
+            for source_column, color in enumerate(source_row):
+                if color == 0:
+                    continue
+                for row_index in range(side_length):
+                    column_index = side_length - 1 + source_column - row_index
+                    if 0 <= column_index < side_length:
+                        output[row_index][column_index] = color
+            return output
+
+        first_input = [1, 0, 0, 2]
+        second_input = [0, 3, 0]
+        test_input = [0, 4, 0, 5]
+        environment = self._environment(
+            [
+                {"input": [first_input], "output": stream_output(first_input)},
+                {"input": [second_input], "output": stream_output(second_input)},
+            ],
+            [{"input": [test_input], "output": stream_output(test_input)}],
+        )
+
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "anti_diagonal_nonbackground_stream"),
+            candidate_limit=12,
+            beam_width=8,
+        ).solve(environment, "synthetic-anti-diagonal-stream")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertEqual(result.selected_hypothesis, "anti_diagonal_nonbackground_stream")
+        self.assertEqual(
+            result.predictions[0], tuple(tuple(row) for row in stream_output(test_input))
+        )
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+        self.assertIsNone(
+            Hypothesis("anti_diagonal_nonbackground_stream").predict(((1, 2, 3, 4),))
+        )
+
+    def test_symmetric_foreground_quadrant_crop_uses_canonical_equivalent_quadrant(
+        self,
+    ) -> None:
+        environment = self._environment(
+            [
+                {
+                    "input": [
+                        [0, 0, 0, 0, 0, 0],
+                        [0, 1, 2, 2, 1, 0],
+                        [0, 3, 4, 4, 3, 0],
+                        [0, 3, 4, 4, 3, 0],
+                        [0, 1, 2, 2, 1, 0],
+                        [0, 0, 0, 0, 0, 0],
+                    ],
+                    "output": [[1, 2], [3, 4]],
+                },
+                {
+                    "input": [
+                        [0, 0, 0, 0, 0, 0],
+                        [0, 5, 6, 6, 5, 0],
+                        [0, 7, 8, 8, 7, 0],
+                        [0, 7, 8, 8, 7, 0],
+                        [0, 5, 6, 6, 5, 0],
+                        [0, 0, 0, 0, 0, 0],
+                    ],
+                    "output": [[5, 6], [7, 8]],
+                },
+            ],
+            [
+                {
+                    "input": [
+                        [0, 0, 0, 0, 0, 0],
+                        [0, 9, 1, 1, 9, 0],
+                        [0, 2, 3, 3, 2, 0],
+                        [0, 2, 3, 3, 2, 0],
+                        [0, 9, 1, 1, 9, 0],
+                        [0, 0, 0, 0, 0, 0],
+                    ],
+                    "output": [[9, 1], [2, 3]],
+                }
+            ],
+        )
+
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "symmetric_foreground_quadrant_crop"),
+            candidate_limit=12,
+            beam_width=8,
+        ).solve(environment, "synthetic-symmetric-quadrant")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertIn("symmetric_foreground_quadrant_crop", result.selected_hypothesis)
+        self.assertEqual(result.predictions[0], ((9, 1), (2, 3)))
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+        self.assertIsNone(
+            Hypothesis(
+                "symmetric_foreground_quadrant_crop", (("quadrant", "top_left"),)
+            ).predict(((0, 0, 0, 0), (0, 1, 2, 0), (0, 3, 4, 0), (0, 0, 0, 0)))
+        )
+
+    def test_uniform_block_self_stamp_fractal_rederives_foreground_color(self) -> None:
+        environment = self._environment(
+            [
+                {
+                    "input": [
+                        [0, 0, 0, 0, 0, 0],
+                        [0, 5, 5, 0, 0, 0],
+                        [0, 5, 5, 0, 0, 0],
+                        [0, 5, 5, 5, 5, 0],
+                        [0, 5, 5, 5, 5, 0],
+                        [0, 0, 0, 0, 0, 0],
+                    ],
+                    "output": [[5, 0, 0, 0], [5, 5, 0, 0], [5, 0, 5, 0], [5, 5, 5, 5]],
+                },
+                {
+                    "input": [
+                        [0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 6, 6, 0],
+                        [0, 0, 0, 6, 6, 0],
+                        [0, 6, 6, 0, 0, 0],
+                        [0, 6, 6, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0],
+                    ],
+                    "output": [[0, 0, 0, 6], [0, 0, 6, 0], [0, 6, 0, 0], [6, 0, 0, 0]],
+                },
+            ],
+            [
+                {
+                    "input": [
+                        [0, 0, 0, 0, 0, 0],
+                        [0, 7, 7, 0, 0, 0],
+                        [0, 7, 7, 0, 0, 0],
+                        [0, 0, 0, 7, 7, 0],
+                        [0, 0, 0, 7, 7, 0],
+                        [0, 0, 0, 0, 0, 0],
+                    ],
+                    "output": [[7, 0, 0, 0], [0, 7, 0, 0], [0, 0, 7, 0], [0, 0, 0, 7]],
+                }
+            ],
+        )
+
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "uniform_block_self_stamp_fractal"),
+            candidate_limit=12,
+            beam_width=8,
+        ).solve(environment, "synthetic-uniform-block-fractal")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertEqual(result.selected_hypothesis, "uniform_block_self_stamp_fractal")
+        self.assertEqual(
+            result.predictions[0], ((7, 0, 0, 0), (0, 7, 0, 0), (0, 0, 7, 0), (0, 0, 0, 7))
+        )
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+        self.assertIsNone(
+            Hypothesis("uniform_block_self_stamp_fractal").predict(
+                ((0, 0, 0, 0), (0, 5, 0, 0), (0, 5, 5, 0), (0, 0, 0, 0))
+            )
+        )
+
     def test_explicit_empty_operator_vocabulary_does_not_restore_defaults(self) -> None:
         environment = self._environment(
             [{"input": [[1]], "output": [[2]]}],

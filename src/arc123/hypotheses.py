@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from math import isqrt
 from typing import Optional, Sequence
 
 from .model import Grid, PartialGrid, TrainingPair
@@ -69,6 +70,14 @@ class Hypothesis:
             return self._adjacent_bilateral_cellwise_combine(input_grid)
         if self.kind == "distinct_nonbackground_scale":
             return self._distinct_nonbackground_scale(input_grid)
+        if self.kind == "separated_panel_cellwise_combine":
+            return self._separated_panel_cellwise_combine(input_grid)
+        if self.kind == "anti_diagonal_nonbackground_stream":
+            return self._anti_diagonal_nonbackground_stream(input_grid)
+        if self.kind == "symmetric_foreground_quadrant_crop":
+            return self._symmetric_foreground_quadrant_crop(input_grid)
+        if self.kind == "uniform_block_self_stamp_fractal":
+            return self._uniform_block_self_stamp_fractal(input_grid)
         raise ValueError(f"unknown generic hypothesis kind: {self.kind}")
 
     def _recolor(self, input_grid: Grid) -> PartialGrid:
@@ -460,6 +469,151 @@ class Hypothesis:
         ]
         return tuple(row for row in expanded_rows for _ in range(factor))
 
+    def _separated_panel_cellwise_combine(
+        self, input_grid: Grid
+    ) -> Optional[PartialGrid]:
+        """Apply a visible tuple table across three or more evenly separated panels."""
+
+        parameters = self.parameter_map
+        axis = str(parameters["axis"])
+        panel_count = int(parameters["panel_count"])
+        table = _decode_multi_panel_table(str(parameters["table"]))
+        panels = _separated_equal_panels(input_grid, axis, panel_count)
+        if panels is None:
+            return None
+        output: list[tuple[int, ...]] = []
+        for panel_rows in zip(*panels):
+            output_row: list[int] = []
+            for panel_colors in zip(*panel_rows):
+                output_color = table.get(tuple(panel_colors))
+                if output_color is None:
+                    return None
+                output_row.append(output_color)
+            output.append(tuple(output_row))
+        return tuple(output)
+
+    def _anti_diagonal_nonbackground_stream(
+        self, input_grid: Grid
+    ) -> Optional[PartialGrid]:
+        """Expand a one-row signal into anti-diagonal streams of its visible values."""
+
+        if len(input_grid) != 1:
+            return None
+        background = _unique_background_color(input_grid)
+        if background is None:
+            return None
+        source_row = input_grid[0]
+        nonbackground_count = sum(color != background for color in source_row)
+        if not nonbackground_count:
+            return None
+        side_length = len(source_row) * nonbackground_count
+        if side_length > 30:
+            return None
+        output = [[background for _ in range(side_length)] for _ in range(side_length)]
+        for source_column, color in enumerate(source_row):
+            if color == background:
+                continue
+            for row_index in range(side_length):
+                column_index = side_length - 1 + source_column - row_index
+                if 0 <= column_index < side_length:
+                    output[row_index][column_index] = color
+        return tuple(tuple(row) for row in output)
+
+    def _symmetric_foreground_quadrant_crop(
+        self, input_grid: Grid
+    ) -> Optional[PartialGrid]:
+        """Extract one learned quadrant from a doubly reflective foreground box."""
+
+        parameters = self.parameter_map
+        quadrant = str(parameters["quadrant"])
+        foreground_bbox = _unique_foreground_bbox(input_grid)
+        if foreground_bbox is None:
+            return None
+        _, top, left, bottom, right = foreground_bbox
+        height = bottom - top + 1
+        width = right - left + 1
+        if height < 2 or width < 2 or height % 2 or width % 2:
+            return None
+        box = tuple(
+            tuple(input_grid[row_index][column_index] for column_index in range(left, right + 1))
+            for row_index in range(top, bottom + 1)
+        )
+        if box != tuple(tuple(reversed(row)) for row in box) or box != tuple(reversed(box)):
+            return None
+        half_height = height // 2
+        half_width = width // 2
+        offsets = {
+            "top_left": (0, 0),
+            "top_right": (0, half_width),
+            "bottom_left": (half_height, 0),
+            "bottom_right": (half_height, half_width),
+        }
+        if quadrant not in offsets:
+            raise ValueError(f"unknown symmetric foreground quadrant: {quadrant}")
+        top_offset, left_offset = offsets[quadrant]
+        return tuple(
+            tuple(
+                box[row_index][column_index]
+                for column_index in range(left_offset, left_offset + half_width)
+            )
+            for row_index in range(top_offset, top_offset + half_height)
+        )
+
+    def _uniform_block_self_stamp_fractal(
+        self, input_grid: Grid
+    ) -> Optional[PartialGrid]:
+        """Read a uniform block mask and stamp it into every occupied block."""
+
+        foreground_bbox = _unique_foreground_bbox(input_grid)
+        if foreground_bbox is None:
+            return None
+        background, top, left, bottom, right = foreground_bbox
+        crop_height = bottom - top + 1
+        crop_width = right - left + 1
+        if crop_height != crop_width:
+            return None
+        block_side = isqrt(crop_height)
+        if block_side < 2 or block_side * block_side != crop_height:
+            return None
+        crop = tuple(
+            tuple(input_grid[row_index][column_index] for column_index in range(left, right + 1))
+            for row_index in range(top, bottom + 1)
+        )
+        foreground_colors = {
+            color for row in crop for color in row if color != background
+        }
+        if len(foreground_colors) != 1:
+            return None
+        foreground = next(iter(foreground_colors))
+        meta_pattern: list[tuple[bool, ...]] = []
+        for block_row in range(block_side):
+            meta_row: list[bool] = []
+            for block_column in range(block_side):
+                block_colors = {
+                    crop[row_index][column_index]
+                    for row_index in range(block_row * block_side, (block_row + 1) * block_side)
+                    for column_index in range(
+                        block_column * block_side, (block_column + 1) * block_side
+                    )
+                }
+                if block_colors == {background}:
+                    meta_row.append(False)
+                elif block_colors == {foreground}:
+                    meta_row.append(True)
+                else:
+                    return None
+            meta_pattern.append(tuple(meta_row))
+        return tuple(
+            tuple(
+                foreground
+                if meta_pattern[row_index // block_side][column_index // block_side]
+                and meta_pattern[row_index % block_side][column_index % block_side]
+                else background
+                for column_index in range(crop_width)
+            )
+            for row_index in range(crop_height)
+        )
+
 
 def _same_shape_training_pairs(training_pairs: Sequence[TrainingPair]) -> bool:
     return all(
@@ -623,6 +777,57 @@ def _adjacent_bilateral_panels(
     raise ValueError(f"unknown adjacent bilateral axis: {axis}")
 
 
+def _separated_equal_panels(
+    input_grid: Grid, axis: str, panel_count: int
+) -> Optional[tuple[Grid, ...]]:
+    """Split three or more equal panels only at same-color uniform divider lines."""
+
+    if panel_count < 3:
+        return None
+    background = _unique_background_color(input_grid)
+    if background is None:
+        return None
+    height = len(input_grid)
+    width = len(input_grid[0])
+    length = width if axis == "vertical" else height
+    remaining_length = length - (panel_count - 1)
+    if remaining_length < panel_count or remaining_length % panel_count:
+        return None
+    panel_span = remaining_length // panel_count
+    divider_indices = [
+        panel_span + index * (panel_span + 1) for index in range(panel_count - 1)
+    ]
+    if axis == "vertical":
+        divider_colors = [
+            {input_grid[row_index][column_index] for row_index in range(height)}
+            for column_index in divider_indices
+        ]
+        if any(len(colors) != 1 for colors in divider_colors):
+            return None
+        divider_color = next(iter(divider_colors[0]))
+        if divider_color == background or any(colors != {divider_color} for colors in divider_colors):
+            return None
+        return tuple(
+            tuple(
+                tuple(row[start_column : start_column + panel_span])
+                for row in input_grid
+            )
+            for start_column in range(0, width, panel_span + 1)
+        )
+    if axis == "horizontal":
+        divider_colors = [set(input_grid[row_index]) for row_index in divider_indices]
+        if any(len(colors) != 1 for colors in divider_colors):
+            return None
+        divider_color = next(iter(divider_colors[0]))
+        if divider_color == background or any(colors != {divider_color} for colors in divider_colors):
+            return None
+        return tuple(
+            tuple(input_grid[start_row : start_row + panel_span])
+            for start_row in range(0, height, panel_span + 1)
+        )
+    raise ValueError(f"unknown separated panel axis: {axis}")
+
+
 def _encode_cellwise_table(table: dict[tuple[int, int], int]) -> str:
     return ";".join(
         f"{first_color}:{second_color}:{output_color}"
@@ -646,6 +851,32 @@ def _decode_cellwise_table(encoded: str) -> dict[tuple[int, int], int]:
     return table
 
 
+def _encode_multi_panel_table(table: dict[tuple[int, ...], int]) -> str:
+    return ";".join(
+        f"{','.join(str(color) for color in panel_colors)}:{output_color}"
+        for panel_colors, output_color in sorted(table.items())
+    )
+
+
+def _decode_multi_panel_table(encoded: str) -> dict[tuple[int, ...], int]:
+    table: dict[tuple[int, ...], int] = {}
+    if not encoded:
+        raise ValueError("multi-panel table must not be empty")
+    for entry in encoded.split(";"):
+        raw_inputs, separator, raw_output = entry.rpartition(":")
+        if not separator or not raw_inputs or not raw_output:
+            raise ValueError("multi-panel table entry is malformed")
+        panel_colors = tuple(int(color) for color in raw_inputs.split(","))
+        if not panel_colors:
+            raise ValueError("multi-panel table entry has no panel values")
+        output_color = int(raw_output)
+        prior = table.get(panel_colors)
+        if prior is not None and prior != output_color:
+            raise ValueError("multi-panel table assigns conflicting outputs")
+        table[panel_colors] = output_color
+    return table
+
+
 def _unique_background_color(input_grid: Grid) -> Optional[int]:
     """Return a unique modal color, retaining uncertainty when the mode ties."""
 
@@ -656,6 +887,31 @@ def _unique_background_color(input_grid: Grid) -> Optional[int]:
     maximum_count = max(counts.values())
     candidates = [color for color, count in counts.items() if count == maximum_count]
     return candidates[0] if len(candidates) == 1 else None
+
+
+def _unique_foreground_bbox(
+    input_grid: Grid,
+) -> Optional[tuple[int, int, int, int, int]]:
+    """Return the modal background and foreground bounding box when both are defined."""
+
+    background = _unique_background_color(input_grid)
+    if background is None:
+        return None
+    cells = [
+        (row_index, column_index)
+        for row_index, row in enumerate(input_grid)
+        for column_index, color in enumerate(row)
+        if color != background
+    ]
+    if not cells:
+        return None
+    return (
+        background,
+        min(row_index for row_index, _ in cells),
+        min(column_index for _, column_index in cells),
+        max(row_index for row_index, _ in cells),
+        max(column_index for _, column_index in cells),
+    )
 
 
 def _infer_recolor_mapping(
@@ -1008,6 +1264,135 @@ def _distinct_nonbackground_scale_candidates(
     return []
 
 
+def _separated_panel_cellwise_combine_candidates(
+    training_pairs: Sequence[TrainingPair],
+) -> list[Hypothesis]:
+    """Infer one unambiguous visible tuple table over regularly separated panels."""
+
+    if not training_pairs:
+        return []
+    candidates: list[Hypothesis] = []
+    for axis in ("vertical", "horizontal"):
+        minimum_length = min(
+            (len(input_grid[0]) if axis == "vertical" else len(input_grid))
+            for input_grid, _ in training_pairs
+        )
+        maximum_panel_count = (minimum_length + 1) // 2
+        for panel_count in range(3, maximum_panel_count + 1):
+            table: dict[tuple[int, ...], int] = {}
+            valid = bool(training_pairs)
+            for input_grid, output_grid in training_pairs:
+                panels = _separated_equal_panels(input_grid, axis, panel_count)
+                if panels is None:
+                    valid = False
+                    break
+                if (
+                    len(output_grid) != len(panels[0])
+                    or len(output_grid[0]) != len(panels[0][0])
+                ):
+                    valid = False
+                    break
+                for panel_rows, output_row in zip(zip(*panels), output_grid):
+                    for panel_colors, output_color in zip(zip(*panel_rows), output_row):
+                        key = tuple(panel_colors)
+                        prior = table.get(key)
+                        if prior is not None and prior != output_color:
+                            valid = False
+                            break
+                        table[key] = output_color
+                    if not valid:
+                        break
+                if not valid:
+                    break
+            if not valid or not table:
+                continue
+            hypothesis = Hypothesis(
+                "separated_panel_cellwise_combine",
+                _parameter_tuple(
+                    axis=axis,
+                    panel_count=panel_count,
+                    table=_encode_multi_panel_table(table),
+                ),
+                description_length=4 + panel_count + len(table),
+            )
+            if all(
+                hypothesis.predict(input_grid) == _full(output_grid)
+                for input_grid, output_grid in training_pairs
+            ):
+                candidates.append(hypothesis)
+    return candidates if len(candidates) == 1 else []
+
+
+def _anti_diagonal_nonbackground_stream_candidates(
+    training_pairs: Sequence[TrainingPair],
+) -> list[Hypothesis]:
+    """Keep dynamic anti-diagonal expansion only when every demonstration agrees."""
+
+    if not training_pairs:
+        return []
+    hypothesis = Hypothesis("anti_diagonal_nonbackground_stream", description_length=6)
+    if all(
+        hypothesis.predict(input_grid) == _full(output_grid)
+        for input_grid, output_grid in training_pairs
+    ):
+        return [hypothesis]
+    return []
+
+
+def _symmetric_foreground_quadrant_crop_candidates(
+    training_pairs: Sequence[TrainingPair],
+) -> list[Hypothesis]:
+    """Infer one quadrant only when a reflective foreground box fixes it uniquely."""
+
+    candidates = [
+        Hypothesis(
+            "symmetric_foreground_quadrant_crop",
+            _parameter_tuple(quadrant=quadrant),
+            description_length=6,
+        )
+        for quadrant in ("top_left", "top_right", "bottom_left", "bottom_right")
+    ]
+    exact_candidates = [
+        hypothesis
+        for hypothesis in candidates
+        if training_pairs
+        and all(
+            hypothesis.predict(input_grid) == _full(output_grid)
+            for input_grid, output_grid in training_pairs
+        )
+    ]
+    if not exact_candidates:
+        return []
+    canonical = next(
+        hypothesis
+        for hypothesis in exact_candidates
+        if hypothesis.parameter_map["quadrant"] == "top_left"
+    )
+    if all(
+        hypothesis.predict(input_grid) == canonical.predict(input_grid)
+        for hypothesis in exact_candidates
+        for input_grid, _ in training_pairs
+    ):
+        return [canonical]
+    return exact_candidates if len(exact_candidates) == 1 else []
+
+
+def _uniform_block_self_stamp_fractal_candidates(
+    training_pairs: Sequence[TrainingPair],
+) -> list[Hypothesis]:
+    """Keep the input-derived block fractal only when every demonstration agrees."""
+
+    if not training_pairs:
+        return []
+    hypothesis = Hypothesis("uniform_block_self_stamp_fractal", description_length=7)
+    if all(
+        hypothesis.predict(input_grid) == _full(output_grid)
+        for input_grid, output_grid in training_pairs
+    ):
+        return [hypothesis]
+    return []
+
+
 def _dihedral_tile_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
     factors: set[tuple[int, int]] = set()
     possible_labels: list[set[str]] | None = None
@@ -1102,6 +1487,10 @@ def propose_base_hypotheses(
                 "central_separator_cellwise_combine",
                 "adjacent_bilateral_cellwise_combine",
                 "distinct_nonbackground_scale",
+                "separated_panel_cellwise_combine",
+                "anti_diagonal_nonbackground_stream",
+                "symmetric_foreground_quadrant_crop",
+                "uniform_block_self_stamp_fractal",
             }
         )
     else:
@@ -1153,6 +1542,14 @@ def propose_base_hypotheses(
         candidates.extend(_adjacent_bilateral_cellwise_combine_candidates(training_pairs))
     if "distinct_nonbackground_scale" in enabled:
         candidates.extend(_distinct_nonbackground_scale_candidates(training_pairs))
+    if "separated_panel_cellwise_combine" in enabled:
+        candidates.extend(_separated_panel_cellwise_combine_candidates(training_pairs))
+    if "anti_diagonal_nonbackground_stream" in enabled:
+        candidates.extend(_anti_diagonal_nonbackground_stream_candidates(training_pairs))
+    if "symmetric_foreground_quadrant_crop" in enabled:
+        candidates.extend(_symmetric_foreground_quadrant_crop_candidates(training_pairs))
+    if "uniform_block_self_stamp_fractal" in enabled:
+        candidates.extend(_uniform_block_self_stamp_fractal_candidates(training_pairs))
     return candidates
 
 
