@@ -45,6 +45,29 @@ class FilenameDevelopmentFreezerTests(unittest.TestCase):
         self.assertTrue(p0014_ids.issubset(task_ids))
         self.assertGreaterEqual(len(task_ids), 200)
 
+    def test_p0023_development_cohort_is_disjoint_from_prior_transfer_and_development(self) -> None:
+        cohort_path = REPOSITORY_ROOT / "research" / "cohorts" / "ARC12_DEVELOPMENT_COHORT_005.json"
+        cohort = json.loads(cohort_path.read_text(encoding="utf-8"))
+        frozen = cohort["development_filename_only_40_p0023"]
+        import_paths = tuple(
+            REPOSITORY_ROOT / item["path"]
+            for item in frozen["selection_protocol"]["prior_roster_imports"]
+        )
+        prior_ids, imports = freezer._excluded_task_ids(import_paths)
+        selected_ids = {
+            record["task_id"]
+            for records in frozen["tasks"].values()
+            for record in records
+        }
+
+        self.assertEqual(frozen["task_count"], 40)
+        self.assertEqual({benchmark: len(records) for benchmark, records in frozen["tasks"].items()}, {"arc1": 20, "arc2": 20})
+        self.assertEqual(len(selected_ids), 40)
+        self.assertTrue(selected_ids.isdisjoint(prior_ids))
+        self.assertEqual(len(imports), 7)
+        self.assertGreaterEqual(len(prior_ids), 370)
+        self.assertTrue(all(value is False for value in cohort["live_controller_boundary"].values()))
+
 
 if __name__ == "__main__":
     unittest.main()
