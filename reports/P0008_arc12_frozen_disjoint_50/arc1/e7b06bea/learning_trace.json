@@ -1,0 +1,6702 @@
+{
+  "episode_id": "P0008-ARC12-FROZEN-DISJOINT-50:anonymous-frozen-measurement",
+  "events": [
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 1,
+          "name": "identity",
+          "operation": "identity",
+          "parameters": {},
+          "rule_id": "identity",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0001"
+      },
+      "step": 0
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 56,
+          "color_delta": 0,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 4,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 1
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 4,
+        "selected_region": {
+          "column": 2,
+          "row": 0
+        },
+        "theory_id": "T0001"
+      },
+      "step": 2
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 4,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 3
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 56,
+          "counterexample_count": 56,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            4
+          ],
+          "matching_cell_count": 28,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 4,
+        "explained_cell_count": 28,
+        "residual_cell_count": 56,
+        "support": {
+          "asserted_cell_count": 84,
+          "contradiction_count": 56,
+          "counterexamples": [
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 2,
+              "predicted": 0,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 28,
+          "observation_id": "arc12-demo:4",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0001"
+      },
+      "step": 4
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 36,
+          "color_delta": 0,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [
+          4
+        ],
+        "selected_demo": 2,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 5
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "column": 3,
+          "row": 0
+        },
+        "theory_id": "T0001"
+      },
+      "step": 6
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 7
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 92,
+          "counterexample_count": 92,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            2,
+            4
+          ],
+          "matching_cell_count": 55,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 2,
+        "explained_cell_count": 27,
+        "residual_cell_count": 36,
+        "support": {
+          "asserted_cell_count": 63,
+          "contradiction_count": 36,
+          "counterexamples": [
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 9,
+              "predicted": 0,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 27,
+          "observation_id": "arc12-demo:2",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0001"
+      },
+      "step": 8
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 36,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          2,
+          4
+        ],
+        "selected_demo": 3,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 9
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 3,
+        "selected_region": {
+          "column": 5,
+          "row": 0
+        },
+        "theory_id": "T0001"
+      },
+      "step": 10
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 3,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 11
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 128,
+          "counterexample_count": 128,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            2,
+            3,
+            4
+          ],
+          "matching_cell_count": 115,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 3,
+        "explained_cell_count": 60,
+        "residual_cell_count": 36,
+        "support": {
+          "asserted_cell_count": 96,
+          "contradiction_count": 36,
+          "counterexamples": [
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 0,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 60,
+          "observation_id": "arc12-demo:3",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0001"
+      },
+      "step": 12
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 21,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          2,
+          3,
+          4
+        ],
+        "selected_demo": 1,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 13
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "column": 4,
+          "row": 0
+        },
+        "theory_id": "T0001"
+      },
+      "step": 14
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 15
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 149,
+          "counterexample_count": 149,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "matching_cell_count": 143,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 5,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 1,
+        "explained_cell_count": 28,
+        "residual_cell_count": 21,
+        "support": {
+          "asserted_cell_count": 49,
+          "contradiction_count": 21,
+          "counterexamples": [
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 9,
+              "predicted": 0,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 28,
+          "observation_id": "arc12-demo:1",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0001"
+      },
+      "step": 16
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 15,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "selected_demo": 0,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 17
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "column": 2,
+          "row": 0
+        },
+        "theory_id": "T0001"
+      },
+      "step": 18
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 19
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 164,
+          "counterexample_count": 164,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "matching_cell_count": 153,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 6,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 10,
+        "residual_cell_count": 15,
+        "support": {
+          "asserted_cell_count": 25,
+          "contradiction_count": 15,
+          "counterexamples": [
+            {
+              "column": 2,
+              "demo_index": 0,
+              "observed": 3,
+              "predicted": 0,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 10,
+          "observation_id": "arc12-demo:0",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0001"
+      },
+      "step": 20
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "causal_next_operation": "scope_or_rule_revision",
+        "counterexample": {
+          "column": 2,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "responsible_rule": {
+          "description_length": 1,
+          "name": "identity",
+          "operation": "identity",
+          "parameters": {},
+          "rule_id": "identity",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "responsible_rule_id": "identity",
+        "theory_id": "T0001"
+      },
+      "step": 21
+    },
+    {
+      "action": "EXPLAIN_RESIDUAL",
+      "payload": {
+        "added_rule": {
+          "description_length": 2,
+          "name": "recolor(to=3,scope=color==0)",
+          "operation": "recolor_scoped",
+          "parameters": {
+            "to_color": 3
+          },
+          "rule_id": "recolor-color-0-to-3",
+          "scope": {
+            "kind": "color_equals",
+            "value": 0
+          }
+        },
+        "parent_theory_id": "T0001",
+        "residual_counterexample": {
+          "column": 2,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 22
+    },
+    {
+      "action": "COMPOSE_RULE",
+      "payload": {
+        "ordered_rule_ids": [
+          "identity",
+          "recolor-color-0-to-3"
+        ],
+        "theory_id": "T0002"
+      },
+      "step": 23
+    },
+    {
+      "action": "EXPLAIN_RESIDUAL",
+      "payload": {
+        "added_rule": {
+          "description_length": 7,
+          "name": "component_erase(property=shape,value_count=5)",
+          "operation": "component_property_erase",
+          "parameters": {
+            "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+            "property": "shape"
+          },
+          "rule_id": "component-erase-shape-0",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "parent_theory_id": "T0001",
+        "residual_kind": "contradiction",
+        "theory_id": "T0003"
+      },
+      "step": 24
+    },
+    {
+      "action": "COMPOSE_RULE",
+      "payload": {
+        "ordered_rule_ids": [
+          "identity",
+          "component-erase-shape-0"
+        ],
+        "theory_id": "T0003"
+      },
+      "step": 25
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 56,
+          "color_delta": 0,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 4,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0002"
+      },
+      "step": 26
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 4,
+        "selected_region": {
+          "column": 1,
+          "row": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 27
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 4,
+        "partial_prediction_known_cells": 41,
+        "rule_count": 2,
+        "theory_id": "T0002",
+        "theory_name": "compose(identity,recolor(to=3,scope=color==0))"
+      },
+      "step": 28
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 83,
+          "counterexample_count": 83,
+          "description_length": 3,
+          "evaluated_demo_indices": [
+            4
+          ],
+          "matching_cell_count": 1,
+          "name": "compose(identity,recolor(to=3,scope=color==0))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0001",
+          "revision_count": 8,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 4,
+        "explained_cell_count": 1,
+        "residual_cell_count": 83,
+        "support": {
+          "asserted_cell_count": 84,
+          "contradiction_count": 83,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 1,
+          "observation_id": "arc12-demo:4",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 29
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 56,
+          "color_delta": 0,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 4,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 30
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 4,
+        "selected_region": {
+          "column": 2,
+          "row": 0
+        },
+        "theory_id": "T0003"
+      },
+      "step": 31
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 4,
+        "partial_prediction_known_cells": 42,
+        "rule_count": 2,
+        "theory_id": "T0003",
+        "theory_name": "compose(identity,component_erase(property=shape,value_count=5))"
+      },
+      "step": 32
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 14,
+          "counterexample_count": 14,
+          "description_length": 8,
+          "evaluated_demo_indices": [
+            4
+          ],
+          "matching_cell_count": 70,
+          "name": "compose(identity,component_erase(property=shape,value_count=5))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0001",
+          "revision_count": 8,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 4,
+        "explained_cell_count": 70,
+        "residual_cell_count": 14,
+        "support": {
+          "asserted_cell_count": 84,
+          "contradiction_count": 14,
+          "counterexamples": [
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 2,
+              "predicted": 0,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 70,
+          "observation_id": "arc12-demo:4",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0003"
+      },
+      "step": 33
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 36,
+          "color_delta": 0,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [
+          4
+        ],
+        "selected_demo": 2,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 34
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "column": 3,
+          "row": 0
+        },
+        "theory_id": "T0003"
+      },
+      "step": 35
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 27,
+        "rule_count": 2,
+        "theory_id": "T0003",
+        "theory_name": "compose(identity,component_erase(property=shape,value_count=5))"
+      },
+      "step": 36
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 23,
+          "counterexample_count": 23,
+          "description_length": 8,
+          "evaluated_demo_indices": [
+            2,
+            4
+          ],
+          "matching_cell_count": 124,
+          "name": "compose(identity,component_erase(property=shape,value_count=5))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0001",
+          "revision_count": 9,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 2,
+        "explained_cell_count": 54,
+        "residual_cell_count": 9,
+        "support": {
+          "asserted_cell_count": 63,
+          "contradiction_count": 9,
+          "counterexamples": [
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 9,
+              "predicted": 0,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 54,
+          "observation_id": "arc12-demo:2",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0003"
+      },
+      "step": 37
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 36,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          2,
+          4
+        ],
+        "selected_demo": 3,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 38
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 3,
+        "selected_region": {
+          "column": 5,
+          "row": 0
+        },
+        "theory_id": "T0003"
+      },
+      "step": 39
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 3,
+        "partial_prediction_known_cells": 24,
+        "rule_count": 2,
+        "theory_id": "T0003",
+        "theory_name": "compose(identity,component_erase(property=shape,value_count=5))"
+      },
+      "step": 40
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 35,
+          "counterexample_count": 35,
+          "description_length": 8,
+          "evaluated_demo_indices": [
+            2,
+            3,
+            4
+          ],
+          "matching_cell_count": 208,
+          "name": "compose(identity,component_erase(property=shape,value_count=5))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0001",
+          "revision_count": 10,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 3,
+        "explained_cell_count": 84,
+        "residual_cell_count": 12,
+        "support": {
+          "asserted_cell_count": 96,
+          "contradiction_count": 12,
+          "counterexamples": [
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 0,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 84,
+          "observation_id": "arc12-demo:3",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0003"
+      },
+      "step": 41
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 21,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          2,
+          3,
+          4
+        ],
+        "selected_demo": 1,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 42
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "column": 4,
+          "row": 0
+        },
+        "theory_id": "T0003"
+      },
+      "step": 43
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 14,
+        "rule_count": 2,
+        "theory_id": "T0003",
+        "theory_name": "compose(identity,component_erase(property=shape,value_count=5))"
+      },
+      "step": 44
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 42,
+          "counterexample_count": 42,
+          "description_length": 8,
+          "evaluated_demo_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "matching_cell_count": 250,
+          "name": "compose(identity,component_erase(property=shape,value_count=5))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0001",
+          "revision_count": 11,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 1,
+        "explained_cell_count": 42,
+        "residual_cell_count": 7,
+        "support": {
+          "asserted_cell_count": 49,
+          "contradiction_count": 7,
+          "counterexamples": [
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 9,
+              "predicted": 0,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 42,
+          "observation_id": "arc12-demo:1",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0003"
+      },
+      "step": 45
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 15,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "selected_demo": 0,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 46
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "column": 2,
+          "row": 0
+        },
+        "theory_id": "T0003"
+      },
+      "step": 47
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 10,
+        "rule_count": 2,
+        "theory_id": "T0003",
+        "theory_name": "compose(identity,component_erase(property=shape,value_count=5))"
+      },
+      "step": 48
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 47,
+          "counterexample_count": 47,
+          "description_length": 8,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "matching_cell_count": 270,
+          "name": "compose(identity,component_erase(property=shape,value_count=5))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0001",
+          "revision_count": 12,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 20,
+        "residual_cell_count": 5,
+        "support": {
+          "asserted_cell_count": 25,
+          "contradiction_count": 5,
+          "counterexamples": [
+            {
+              "column": 2,
+              "demo_index": 0,
+              "observed": 3,
+              "predicted": 0,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 20,
+          "observation_id": "arc12-demo:0",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0003"
+      },
+      "step": 49
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "causal_next_operation": "scope_or_rule_revision",
+        "counterexample": {
+          "column": 2,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "responsible_rule": {
+          "description_length": 1,
+          "name": "identity",
+          "operation": "identity",
+          "parameters": {},
+          "rule_id": "identity",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "responsible_rule_id": "identity",
+        "theory_id": "T0003"
+      },
+      "step": 50
+    },
+    {
+      "action": "EXPLAIN_RESIDUAL",
+      "payload": {
+        "added_rule": {
+          "description_length": 2,
+          "name": "recolor(to=3,scope=color==0)",
+          "operation": "recolor_scoped",
+          "parameters": {
+            "to_color": 3
+          },
+          "rule_id": "recolor-color-0-to-3",
+          "scope": {
+            "kind": "color_equals",
+            "value": 0
+          }
+        },
+        "parent_theory_id": "T0003",
+        "residual_counterexample": {
+          "column": 2,
+          "demo_index": 0,
+          "observed": 3,
+          "predicted": 0,
+          "row": 0
+        },
+        "theory_id": "T0004"
+      },
+      "step": 51
+    },
+    {
+      "action": "COMPOSE_RULE",
+      "payload": {
+        "ordered_rule_ids": [
+          "identity",
+          "component-erase-shape-0",
+          "recolor-color-0-to-3"
+        ],
+        "theory_id": "T0004"
+      },
+      "step": 52
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 56,
+          "color_delta": 0,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 4,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 53
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 4,
+        "selected_region": {
+          "column": 1,
+          "row": 0
+        },
+        "theory_id": "T0004"
+      },
+      "step": 54
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 4,
+        "partial_prediction_known_cells": 83,
+        "rule_count": 3,
+        "theory_id": "T0004",
+        "theory_name": "compose(identity,component_erase(property=shape,value_count=5),recolor(to=3,scope=color==0))"
+      },
+      "step": 55
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 41,
+          "counterexample_count": 41,
+          "description_length": 10,
+          "evaluated_demo_indices": [
+            4
+          ],
+          "matching_cell_count": 43,
+          "name": "compose(identity,component_erase(property=shape,value_count=5),recolor(to=3,scope=color==0))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0003",
+          "revision_count": 14,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 4,
+        "explained_cell_count": 43,
+        "residual_cell_count": 41,
+        "support": {
+          "asserted_cell_count": 84,
+          "contradiction_count": 41,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 43,
+          "observation_id": "arc12-demo:4",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0004"
+      },
+      "step": 56
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 36,
+          "color_delta": 0,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [
+          4
+        ],
+        "selected_demo": 2,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 57
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "column": 1,
+          "row": 0
+        },
+        "theory_id": "T0004"
+      },
+      "step": 58
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 61,
+        "rule_count": 3,
+        "theory_id": "T0004",
+        "theory_name": "compose(identity,component_erase(property=shape,value_count=5),recolor(to=3,scope=color==0))"
+      },
+      "step": 59
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 75,
+          "counterexample_count": 75,
+          "description_length": 10,
+          "evaluated_demo_indices": [
+            2,
+            4
+          ],
+          "matching_cell_count": 72,
+          "name": "compose(identity,component_erase(property=shape,value_count=5),recolor(to=3,scope=color==0))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0003",
+          "revision_count": 15,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 2,
+        "explained_cell_count": 29,
+        "residual_cell_count": 34,
+        "support": {
+          "asserted_cell_count": 63,
+          "contradiction_count": 34,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 29,
+          "observation_id": "arc12-demo:2",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0004"
+      },
+      "step": 60
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 36,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          2,
+          4
+        ],
+        "selected_demo": 3,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 61
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 3,
+        "selected_region": {
+          "column": 1,
+          "row": 0
+        },
+        "theory_id": "T0004"
+      },
+      "step": 62
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 3,
+        "partial_prediction_known_cells": 92,
+        "rule_count": 3,
+        "theory_id": "T0004",
+        "theory_name": "compose(identity,component_erase(property=shape,value_count=5),recolor(to=3,scope=color==0))"
+      },
+      "step": 63
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 139,
+          "counterexample_count": 139,
+          "description_length": 10,
+          "evaluated_demo_indices": [
+            2,
+            3,
+            4
+          ],
+          "matching_cell_count": 104,
+          "name": "compose(identity,component_erase(property=shape,value_count=5),recolor(to=3,scope=color==0))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0003",
+          "revision_count": 16,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 3,
+        "explained_cell_count": 32,
+        "residual_cell_count": 64,
+        "support": {
+          "asserted_cell_count": 96,
+          "contradiction_count": 64,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 32,
+          "observation_id": "arc12-demo:3",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0004"
+      },
+      "step": 64
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 36,
+          "color_delta": 0,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [
+          4
+        ],
+        "selected_demo": 2,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0002"
+      },
+      "step": 65
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "column": 1,
+          "row": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 66
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 34,
+        "rule_count": 2,
+        "theory_id": "T0002",
+        "theory_name": "compose(identity,recolor(to=3,scope=color==0))"
+      },
+      "step": 67
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 144,
+          "counterexample_count": 144,
+          "description_length": 3,
+          "evaluated_demo_indices": [
+            2,
+            4
+          ],
+          "matching_cell_count": 3,
+          "name": "compose(identity,recolor(to=3,scope=color==0))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0001",
+          "revision_count": 9,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 2,
+        "explained_cell_count": 2,
+        "residual_cell_count": 61,
+        "support": {
+          "asserted_cell_count": 63,
+          "contradiction_count": 61,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 2,
+          "observation_id": "arc12-demo:2",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 68
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 21,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          2,
+          3,
+          4
+        ],
+        "selected_demo": 1,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 69
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "column": 1,
+          "row": 0
+        },
+        "theory_id": "T0004"
+      },
+      "step": 70
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 46,
+        "rule_count": 3,
+        "theory_id": "T0004",
+        "theory_name": "compose(identity,component_erase(property=shape,value_count=5),recolor(to=3,scope=color==0))"
+      },
+      "step": 71
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 171,
+          "counterexample_count": 171,
+          "description_length": 10,
+          "evaluated_demo_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "matching_cell_count": 121,
+          "name": "compose(identity,component_erase(property=shape,value_count=5),recolor(to=3,scope=color==0))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0003",
+          "revision_count": 17,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 1,
+        "explained_cell_count": 17,
+        "residual_cell_count": 32,
+        "support": {
+          "asserted_cell_count": 49,
+          "contradiction_count": 32,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 17,
+          "observation_id": "arc12-demo:1",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0004"
+      },
+      "step": 72
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 36,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          2,
+          4
+        ],
+        "selected_demo": 3,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0002"
+      },
+      "step": 73
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 3,
+        "selected_region": {
+          "column": 1,
+          "row": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 74
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 3,
+        "partial_prediction_known_cells": 68,
+        "rule_count": 2,
+        "theory_id": "T0002",
+        "theory_name": "compose(identity,recolor(to=3,scope=color==0))"
+      },
+      "step": 75
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 232,
+          "counterexample_count": 232,
+          "description_length": 3,
+          "evaluated_demo_indices": [
+            2,
+            3,
+            4
+          ],
+          "matching_cell_count": 11,
+          "name": "compose(identity,recolor(to=3,scope=color==0))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0001",
+          "revision_count": 10,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 3,
+        "explained_cell_count": 8,
+        "residual_cell_count": 88,
+        "support": {
+          "asserted_cell_count": 96,
+          "contradiction_count": 88,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 8,
+          "observation_id": "arc12-demo:3",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 76
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 15,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "selected_demo": 0,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 77
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "column": 1,
+          "row": 0
+        },
+        "theory_id": "T0004"
+      },
+      "step": 78
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 24,
+        "rule_count": 3,
+        "theory_id": "T0004",
+        "theory_name": "compose(identity,component_erase(property=shape,value_count=5),recolor(to=3,scope=color==0))"
+      },
+      "step": 79
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 182,
+          "counterexample_count": 182,
+          "description_length": 10,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "matching_cell_count": 135,
+          "name": "compose(identity,component_erase(property=shape,value_count=5),recolor(to=3,scope=color==0))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0003",
+          "revision_count": 18,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 14,
+        "residual_cell_count": 11,
+        "support": {
+          "asserted_cell_count": 25,
+          "contradiction_count": 11,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 14,
+          "observation_id": "arc12-demo:0",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0004"
+      },
+      "step": 80
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "causal_next_operation": "scope_or_rule_revision",
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "responsible_rule": {
+          "description_length": 2,
+          "name": "recolor(to=3,scope=color==0)",
+          "operation": "recolor_scoped",
+          "parameters": {
+            "to_color": 3
+          },
+          "rule_id": "recolor-color-0-to-3",
+          "scope": {
+            "kind": "color_equals",
+            "value": 0
+          }
+        },
+        "responsible_rule_id": "recolor-color-0-to-3",
+        "theory_id": "T0004"
+      },
+      "step": 81
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 182,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 2,
+              "demo_index": 0,
+              "observed": 1,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 2,
+              "demo_index": 0,
+              "observed": 1,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 9,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 9,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 9,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 0,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 8,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 0,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 8,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 0,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 8,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 0,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 9,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 9,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 9,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 6,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 6,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 7,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 7,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 9,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 9,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 6,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 0,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 0,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 0,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 0,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 0,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 0,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 0,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 0,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 2,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 8,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 4,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 2,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 8,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 4,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 2,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 8,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 4,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 2,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 8,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 4,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 12
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 12
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 2,
+              "predicted": 3,
+              "row": 12
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 13
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 13
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 8,
+              "predicted": 3,
+              "row": 13
+            }
+          ],
+          "description_length": 10,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "initial_proposal": true,
+                "operation": "identity"
+              },
+              "target": "identity"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  56,
+                  0,
+                  5
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:4"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  5
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:3"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  21,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  15,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "property": "shape",
+                "proposal_family": "component_property_erase_residual"
+              },
+              "target": "component-erase-shape-0"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  56,
+                  0,
+                  5
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:4"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  5
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:3"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  21,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  15,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "counterexample": {
+                  "column": 2,
+                  "demo_index": 0,
+                  "observed": 3,
+                  "predicted": 0,
+                  "row": 0
+                },
+                "source_color": 0,
+                "target_color": 3
+              },
+              "target": "recolor-color-0-to-3"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  56,
+                  0,
+                  5
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:4"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  5
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:3"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  21,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  15,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:0"
+            }
+          ],
+          "matching_cell_count": 135,
+          "name": "compose(identity,component_erase(property=shape,value_count=5),recolor(to=3,scope=color==0))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0003",
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 0,
+          "unresolved_unknown": []
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0004"
+      },
+      "step": 82
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 21,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          2,
+          3,
+          4
+        ],
+        "selected_demo": 1,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0002"
+      },
+      "step": 83
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "column": 1,
+          "row": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 84
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 32,
+        "rule_count": 2,
+        "theory_id": "T0002",
+        "theory_name": "compose(identity,recolor(to=3,scope=color==0))"
+      },
+      "step": 85
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 278,
+          "counterexample_count": 278,
+          "description_length": 3,
+          "evaluated_demo_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "matching_cell_count": 14,
+          "name": "compose(identity,recolor(to=3,scope=color==0))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0001",
+          "revision_count": 11,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 1,
+        "explained_cell_count": 3,
+        "residual_cell_count": 46,
+        "support": {
+          "asserted_cell_count": 49,
+          "contradiction_count": 46,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 3,
+          "observation_id": "arc12-demo:1",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 86
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 15,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "selected_demo": 0,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0002"
+      },
+      "step": 87
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "column": 1,
+          "row": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 88
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 14,
+        "rule_count": 2,
+        "theory_id": "T0002",
+        "theory_name": "compose(identity,recolor(to=3,scope=color==0))"
+      },
+      "step": 89
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 299,
+          "counterexample_count": 299,
+          "description_length": 3,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "matching_cell_count": 18,
+          "name": "compose(identity,recolor(to=3,scope=color==0))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0001",
+          "revision_count": 12,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 4,
+        "residual_cell_count": 21,
+        "support": {
+          "asserted_cell_count": 25,
+          "contradiction_count": 21,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 4,
+          "observation_id": "arc12-demo:0",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 90
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "causal_next_operation": "scope_or_rule_revision",
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "responsible_rule": {
+          "description_length": 2,
+          "name": "recolor(to=3,scope=color==0)",
+          "operation": "recolor_scoped",
+          "parameters": {
+            "to_color": 3
+          },
+          "rule_id": "recolor-color-0-to-3",
+          "scope": {
+            "kind": "color_equals",
+            "value": 0
+          }
+        },
+        "responsible_rule_id": "recolor-color-0-to-3",
+        "theory_id": "T0002"
+      },
+      "step": 91
+    },
+    {
+      "action": "EXPLAIN_RESIDUAL",
+      "payload": {
+        "added_rule": {
+          "description_length": 7,
+          "name": "component_erase(property=shape,value_count=5)",
+          "operation": "component_property_erase",
+          "parameters": {
+            "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+            "property": "shape"
+          },
+          "rule_id": "component-erase-shape-0",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "parent_theory_id": "T0002",
+        "residual_kind": "contradiction",
+        "theory_id": "T0005"
+      },
+      "step": 92
+    },
+    {
+      "action": "COMPOSE_RULE",
+      "payload": {
+        "ordered_rule_ids": [
+          "identity",
+          "recolor-color-0-to-3",
+          "component-erase-shape-0"
+        ],
+        "theory_id": "T0005"
+      },
+      "step": 93
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 56,
+          "color_delta": 0,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 4,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 94
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 4,
+        "selected_region": {
+          "column": 1,
+          "row": 0
+        },
+        "theory_id": "T0005"
+      },
+      "step": 95
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 4,
+        "partial_prediction_known_cells": 83,
+        "rule_count": 3,
+        "theory_id": "T0005",
+        "theory_name": "compose(identity,recolor(to=3,scope=color==0),component_erase(property=shape,value_count=5))"
+      },
+      "step": 96
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 41,
+          "counterexample_count": 41,
+          "description_length": 10,
+          "evaluated_demo_indices": [
+            4
+          ],
+          "matching_cell_count": 43,
+          "name": "compose(identity,recolor(to=3,scope=color==0),component_erase(property=shape,value_count=5))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0002",
+          "revision_count": 14,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 4,
+        "explained_cell_count": 43,
+        "residual_cell_count": 41,
+        "support": {
+          "asserted_cell_count": 84,
+          "contradiction_count": 41,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 43,
+          "observation_id": "arc12-demo:4",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0005"
+      },
+      "step": 97
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 36,
+          "color_delta": 0,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [
+          4
+        ],
+        "selected_demo": 2,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 98
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "column": 1,
+          "row": 0
+        },
+        "theory_id": "T0005"
+      },
+      "step": 99
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 61,
+        "rule_count": 3,
+        "theory_id": "T0005",
+        "theory_name": "compose(identity,recolor(to=3,scope=color==0),component_erase(property=shape,value_count=5))"
+      },
+      "step": 100
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 75,
+          "counterexample_count": 75,
+          "description_length": 10,
+          "evaluated_demo_indices": [
+            2,
+            4
+          ],
+          "matching_cell_count": 72,
+          "name": "compose(identity,recolor(to=3,scope=color==0),component_erase(property=shape,value_count=5))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0002",
+          "revision_count": 15,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 2,
+        "explained_cell_count": 29,
+        "residual_cell_count": 34,
+        "support": {
+          "asserted_cell_count": 63,
+          "contradiction_count": 34,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 29,
+          "observation_id": "arc12-demo:2",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0005"
+      },
+      "step": 101
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 36,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          2,
+          4
+        ],
+        "selected_demo": 3,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 102
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 3,
+        "selected_region": {
+          "column": 1,
+          "row": 0
+        },
+        "theory_id": "T0005"
+      },
+      "step": 103
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 3,
+        "partial_prediction_known_cells": 92,
+        "rule_count": 3,
+        "theory_id": "T0005",
+        "theory_name": "compose(identity,recolor(to=3,scope=color==0),component_erase(property=shape,value_count=5))"
+      },
+      "step": 104
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 139,
+          "counterexample_count": 139,
+          "description_length": 10,
+          "evaluated_demo_indices": [
+            2,
+            3,
+            4
+          ],
+          "matching_cell_count": 104,
+          "name": "compose(identity,recolor(to=3,scope=color==0),component_erase(property=shape,value_count=5))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0002",
+          "revision_count": 16,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 3,
+        "explained_cell_count": 32,
+        "residual_cell_count": 64,
+        "support": {
+          "asserted_cell_count": 96,
+          "contradiction_count": 64,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 32,
+          "observation_id": "arc12-demo:3",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0005"
+      },
+      "step": 105
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 21,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          2,
+          3,
+          4
+        ],
+        "selected_demo": 1,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 106
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "column": 1,
+          "row": 0
+        },
+        "theory_id": "T0005"
+      },
+      "step": 107
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 46,
+        "rule_count": 3,
+        "theory_id": "T0005",
+        "theory_name": "compose(identity,recolor(to=3,scope=color==0),component_erase(property=shape,value_count=5))"
+      },
+      "step": 108
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 171,
+          "counterexample_count": 171,
+          "description_length": 10,
+          "evaluated_demo_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "matching_cell_count": 121,
+          "name": "compose(identity,recolor(to=3,scope=color==0),component_erase(property=shape,value_count=5))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0002",
+          "revision_count": 17,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 1,
+        "explained_cell_count": 17,
+        "residual_cell_count": 32,
+        "support": {
+          "asserted_cell_count": 49,
+          "contradiction_count": 32,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 17,
+          "observation_id": "arc12-demo:1",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0005"
+      },
+      "step": 109
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 15,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "selected_demo": 0,
+        "selection_basis": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 110
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "column": 1,
+          "row": 0
+        },
+        "theory_id": "T0005"
+      },
+      "step": 111
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 24,
+        "rule_count": 3,
+        "theory_id": "T0005",
+        "theory_name": "compose(identity,recolor(to=3,scope=color==0),component_erase(property=shape,value_count=5))"
+      },
+      "step": 112
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 182,
+          "counterexample_count": 182,
+          "description_length": 10,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "matching_cell_count": 135,
+          "name": "compose(identity,recolor(to=3,scope=color==0),component_erase(property=shape,value_count=5))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0002",
+          "revision_count": 18,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 14,
+        "residual_cell_count": 11,
+        "support": {
+          "asserted_cell_count": 25,
+          "contradiction_count": 11,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 14,
+          "observation_id": "arc12-demo:0",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0005"
+      },
+      "step": 113
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "causal_next_operation": "scope_or_rule_revision",
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 0,
+          "predicted": 3,
+          "row": 0
+        },
+        "responsible_rule": {
+          "description_length": 2,
+          "name": "recolor(to=3,scope=color==0)",
+          "operation": "recolor_scoped",
+          "parameters": {
+            "to_color": 3
+          },
+          "rule_id": "recolor-color-0-to-3",
+          "scope": {
+            "kind": "color_equals",
+            "value": 0
+          }
+        },
+        "responsible_rule_id": "recolor-color-0-to-3",
+        "theory_id": "T0005"
+      },
+      "step": 114
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 182,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 2,
+              "demo_index": 0,
+              "observed": 1,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 2,
+              "demo_index": 0,
+              "observed": 1,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 9,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 9,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 9,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 0,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 8,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 0,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 8,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 0,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 8,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 0,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 1,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 2,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 3,
+              "demo_index": 1,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 4,
+              "demo_index": 1,
+              "observed": 9,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 9,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 9,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 6,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 6,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 7,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 7,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 9,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 9,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 0,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 1,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 2,
+              "demo_index": 2,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 3,
+              "demo_index": 2,
+              "observed": 6,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 0,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 0,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 0,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 0,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 0,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 0,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 0,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 0,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 1,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 2,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 3,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 4,
+              "demo_index": 3,
+              "observed": 0,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 5,
+              "demo_index": 3,
+              "observed": 2,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 2,
+              "predicted": 3,
+              "row": 0
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 8,
+              "predicted": 3,
+              "row": 1
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 4,
+              "predicted": 3,
+              "row": 2
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 2,
+              "predicted": 3,
+              "row": 3
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 8,
+              "predicted": 3,
+              "row": 4
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 4,
+              "predicted": 3,
+              "row": 5
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 2,
+              "predicted": 3,
+              "row": 6
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 8,
+              "predicted": 3,
+              "row": 7
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 4,
+              "predicted": 3,
+              "row": 8
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 2,
+              "predicted": 3,
+              "row": 9
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 8,
+              "predicted": 3,
+              "row": 10
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 4,
+              "predicted": 3,
+              "row": 11
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 12
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 12
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 2,
+              "predicted": 3,
+              "row": 12
+            },
+            {
+              "column": 0,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 13
+            },
+            {
+              "column": 1,
+              "demo_index": 4,
+              "observed": 0,
+              "predicted": 3,
+              "row": 13
+            },
+            {
+              "column": 2,
+              "demo_index": 4,
+              "observed": 8,
+              "predicted": 3,
+              "row": 13
+            }
+          ],
+          "description_length": 10,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "initial_proposal": true,
+                "operation": "identity"
+              },
+              "target": "identity"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  56,
+                  0,
+                  5
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:4"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  5
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:3"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  21,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  15,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "counterexample": {
+                  "column": 2,
+                  "demo_index": 0,
+                  "observed": 3,
+                  "predicted": 0,
+                  "row": 0
+                },
+                "source_color": 0,
+                "target_color": 3
+              },
+              "target": "recolor-color-0-to-3"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  56,
+                  0,
+                  5
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:4"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  5
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:3"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  21,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  15,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "property": "shape",
+                "proposal_family": "component_property_erase_residual"
+              },
+              "target": "component-erase-shape-0"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  56,
+                  0,
+                  5
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:4"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  5
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:3"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  21,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  15,
+                  0,
+                  4
+                ],
+                "reason": "counterexample_requires_visible_conditional_evidence:unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:0"
+            }
+          ],
+          "matching_cell_count": 135,
+          "name": "compose(identity,recolor(to=3,scope=color==0),component_erase(property=shape,value_count=5))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0002",
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=3,scope=color==0)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 3
+              },
+              "rule_id": "recolor-color-0-to-3",
+              "scope": {
+                "kind": "color_equals",
+                "value": 0
+              }
+            },
+            {
+              "description_length": 7,
+              "name": "component_erase(property=shape,value_count=5)",
+              "operation": "component_property_erase",
+              "parameters": {
+                "mapping": "[[\"0,0;1,0;2,0;3,0;4,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0\",0],[\"0,0;1,0;2,0;3,0;4,0;5,0;6,0;7,0;8,0;9,0;10,0;11,0;12,0;13,0\",0]]",
+                "property": "shape"
+              },
+              "rule_id": "component-erase-shape-0",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 0
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 0,
+          "unresolved_unknown": []
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0005"
+      },
+      "step": 115
+    },
+    {
+      "action": "COMMIT",
+      "payload": {
+        "best_partial_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 1,
+          "evaluated_demo_indices": [],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "initial_proposal": true,
+                "operation": "identity"
+              },
+              "target": "identity"
+            }
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 0,
+          "unresolved_unknown": []
+        },
+        "complete_prediction_group_count": 0,
+        "fallback_reason": "no_complete_training_compatible_partial_theory",
+        "posterior_mass": 0.0,
+        "selected_hypothesis": "fallback_identity_complete_grid",
+        "training_exact": false
+      },
+      "step": 116
+    }
+  ],
+  "reasoning_visibility": "explicit observable hypothesis/evidence/revision records only",
+  "schema_version": 1
+}

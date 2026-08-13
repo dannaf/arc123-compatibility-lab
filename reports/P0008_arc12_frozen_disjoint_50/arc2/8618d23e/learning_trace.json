@@ -1,0 +1,569 @@
+{
+  "episode_id": "P0008-ARC12-FROZEN-DISJOINT-50:anonymous-frozen-measurement",
+  "events": [
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 1,
+          "name": "identity",
+          "operation": "identity",
+          "parameters": {},
+          "rule_id": "identity",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0001"
+      },
+      "step": 0
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 28,
+          "color_delta": 1,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 2,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 1
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0001"
+      },
+      "step": 2
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 3
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 28,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 2,
+        "explained_cell_count": 11,
+        "residual_cell_count": 17,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 28
+        },
+        "theory_id": "T0001"
+      },
+      "step": 4
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 15,
+          "color_delta": 1,
+          "color_inventory": 5
+        },
+        "previously_observed_demos": [
+          2
+        ],
+        "selected_demo": 0,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 5
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0001"
+      },
+      "step": 6
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 7
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 43,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 0,
+        "explained_cell_count": 5,
+        "residual_cell_count": 10,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 15
+        },
+        "theory_id": "T0001"
+      },
+      "step": 8
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 6,
+          "color_delta": 1,
+          "color_inventory": 3
+        },
+        "previously_observed_demos": [
+          0,
+          2
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 9
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0001"
+      },
+      "step": 10
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 11
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 49,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 1,
+        "explained_cell_count": 1,
+        "residual_cell_count": 5,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 6
+        },
+        "theory_id": "T0001"
+      },
+      "step": 12
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "initial_proposal": true,
+                "operation": "identity"
+              },
+              "target": "identity"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  28,
+                  1,
+                  4
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  15,
+                  1,
+                  5
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  6,
+                  1,
+                  3
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            }
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 49,
+          "unresolved_unknown": [
+            {
+              "cell_count": 7,
+              "cells": [
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  2
+                ],
+                [
+                  2,
+                  2
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ]
+              ],
+              "observation_id": "arc12-demo:0",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 4,
+              "cells": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ]
+              ],
+              "observation_id": "arc12-demo:1",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 10,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ]
+              ],
+              "observation_id": "arc12-demo:2",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            }
+          ]
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0001"
+      },
+      "step": 13
+    },
+    {
+      "action": "COMMIT",
+      "payload": {
+        "best_partial_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 1,
+          "evaluated_demo_indices": [],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "initial_proposal": true,
+                "operation": "identity"
+              },
+              "target": "identity"
+            }
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 0,
+          "unresolved_unknown": []
+        },
+        "complete_prediction_group_count": 0,
+        "fallback_reason": "no_complete_training_compatible_partial_theory",
+        "posterior_mass": 0.0,
+        "selected_hypothesis": "fallback_identity_complete_grid",
+        "training_exact": false
+      },
+      "step": 14
+    }
+  ],
+  "reasoning_visibility": "explicit observable hypothesis/evidence/revision records only",
+  "schema_version": 1
+}
