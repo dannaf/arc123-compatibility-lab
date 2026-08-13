@@ -49,9 +49,19 @@ PACKETS = (
         / "P0011_ARC12_DIHEDRAL_COORDINATE_CURATED_60.json",
         REPOSITORY_ROOT / "reports" / "P0011_arc12_dihedral_coordinate_curated_60",
     ),
+    (
+        REPOSITORY_ROOT
+        / "research"
+        / "packets"
+        / "P0012_ARC12_SELF_MASK_MACRO_STAMP_CURATED_60.json",
+        REPOSITORY_ROOT / "reports" / "P0012_arc12_self_mask_macro_stamp_curated_60",
+    ),
 )
 COHORT_PATH = REPOSITORY_ROOT / "research" / "cohorts" / "ARC12_COHORT_IMPORT_001.json"
 P0011_PACKET = REPOSITORY_ROOT / "research" / "packets" / "P0011_ARC12_DIHEDRAL_COORDINATE_CURATED_60.json"
+P0011_REPORT_ROOT = REPOSITORY_ROOT / "reports" / "P0011_arc12_dihedral_coordinate_curated_60"
+P0012_PACKET = REPOSITORY_ROOT / "research" / "packets" / "P0012_ARC12_SELF_MASK_MACRO_STAMP_CURATED_60.json"
+P0012_REPORT_ROOT = REPOSITORY_ROOT / "reports" / "P0012_arc12_self_mask_macro_stamp_curated_60"
 
 
 class PacketEvidenceTests(unittest.TestCase):
@@ -153,7 +163,7 @@ class PacketEvidenceTests(unittest.TestCase):
 
     def test_p0011_pins_its_unfrozen_baseline_and_does_not_rewrite_p0008(self) -> None:
         packet = json.loads(P0011_PACKET.read_text(encoding="utf-8"))
-        report_root = PACKETS[-1][1]
+        report_root = P0011_REPORT_ROOT
         summary = json.loads((report_root / "receipt.json").read_text(encoding="utf-8"))
         tasks = packet_runner._packet_tasks(packet)
 
@@ -176,6 +186,48 @@ class PacketEvidenceTests(unittest.TestCase):
         readme = (report_root / "README.md").read_text(encoding="utf-8")
         self.assertIn("## Pre-Registered Baseline Comparison", readme)
         self.assertIn("Exact-solve delta: `0`", readme)
+
+    def test_p0012_retains_macro_stamp_gain_without_rewriting_p0008(self) -> None:
+        packet = json.loads(P0012_PACKET.read_text(encoding="utf-8"))
+        summary = json.loads((P0012_REPORT_ROOT / "receipt.json").read_text(encoding="utf-8"))
+        tasks = packet_runner._packet_tasks(packet)
+
+        self.assertEqual(len(tasks), 60)
+        self.assertIn("self_mask_macro_stamp", packet["controller"]["generic_operator_families"])
+        self.assertFalse(packet["external_mutation_allowed"])
+        self.assertFalse(packet["benchmark_submission_allowed"])
+        self.assertTrue(packet["acceptance"]["do_not_rewrite_p0008_frozen_measurement"])
+        packet_runner._verify_packet_boundary(packet)
+        packet_runner._verify_baseline_reference(packet)
+        self.assertEqual(summary["exact_solve_count"], 8)
+        self.assertEqual(summary["baseline_comparison"]["exact_solve_count"], 4)
+        self.assertEqual(summary["baseline_comparison"]["exact_solve_delta"], 4)
+        exact = {
+            (attempt["benchmark"], attempt["task_id"]): attempt["selected_hypothesis"]
+            for attempt in summary["attempts"]
+            if attempt["all_cells_match"]
+        }
+        macro_exact = {
+            task: hypothesis
+            for task, hypothesis in exact.items()
+            if "self_mask_macro_stamp" in hypothesis
+        }
+        self.assertEqual(
+            set(macro_exact),
+            {
+                ("arc1", "27f8ce4f"),
+                ("arc1", "48f8583b"),
+                ("arc2", "007bbfb7"),
+                ("arc2", "8e2edd66"),
+            },
+        )
+        self.assertIn("selector=most_frequent", macro_exact[("arc1", "27f8ce4f")])
+        self.assertIn("selector=least_frequent", macro_exact[("arc1", "48f8583b")])
+        self.assertIn("selector=nonzero", macro_exact[("arc2", "007bbfb7")])
+        self.assertIn("selector=zero", macro_exact[("arc2", "8e2edd66")])
+        readme = (P0012_REPORT_ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("## Pre-Registered Baseline Comparison", readme)
+        self.assertIn("Exact-solve delta: `4`", readme)
 
     def test_persistent_theory_packet_traces_do_not_receive_task_identifiers(self) -> None:
         for packet_path, report_root in PACKETS[3:]:
