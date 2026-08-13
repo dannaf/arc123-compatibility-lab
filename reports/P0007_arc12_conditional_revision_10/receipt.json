@@ -1,0 +1,258 @@
+{
+  "ablation_exact_counts": {
+    "no_new_residual_family": 0,
+    "no_revision": 0
+  },
+  "attempt_count": 10,
+  "attempts": [
+    {
+      "ablations": {
+        "no_new_residual_family": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 32,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        },
+        "no_revision": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 32,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        }
+      },
+      "all_cells_match": true,
+      "benchmark": "arc1",
+      "causal_trace_accepted": true,
+      "selected_hypothesis": "compose(identity,marker_shape_target_recolor(marker=1,target=8,mapping_count=3),erase(color=1,to=input_background))",
+      "task_id": "009d5c81"
+    },
+    {
+      "ablations": {
+        "no_new_residual_family": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 29,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        },
+        "no_revision": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 29,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        }
+      },
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "causal_trace_accepted": false,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "03560426"
+    },
+    {
+      "ablations": {
+        "no_new_residual_family": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 43,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        },
+        "no_revision": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 43,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        }
+      },
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "causal_trace_accepted": false,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "045e512c"
+    },
+    {
+      "ablations": {
+        "no_new_residual_family": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 30,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        },
+        "no_revision": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 30,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        }
+      },
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "causal_trace_accepted": false,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "23581191"
+    },
+    {
+      "ablations": {
+        "no_new_residual_family": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 9,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        },
+        "no_revision": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 9,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        }
+      },
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "causal_trace_accepted": false,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "a85d4709"
+    },
+    {
+      "ablations": {
+        "no_new_residual_family": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 30,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        },
+        "no_revision": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 30,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        }
+      },
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "causal_trace_accepted": false,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "1818057f"
+    },
+    {
+      "ablations": {
+        "no_new_residual_family": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 5,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        },
+        "no_revision": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 5,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        }
+      },
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "causal_trace_accepted": false,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "4a1cacc2"
+    },
+    {
+      "ablations": {
+        "no_new_residual_family": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 2,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        },
+        "no_revision": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 2,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        }
+      },
+      "all_cells_match": true,
+      "benchmark": "arc2",
+      "causal_trace_accepted": true,
+      "selected_hypothesis": "compose(identity,row_span_fill(fill_color=2,seed_color=2,selection=global_minimum))",
+      "task_id": "5ad8a7c0"
+    },
+    {
+      "ablations": {
+        "no_new_residual_family": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 258,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        },
+        "no_revision": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 258,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        }
+      },
+      "all_cells_match": true,
+      "benchmark": "arc2",
+      "causal_trace_accepted": true,
+      "selected_hypothesis": "compose(identity,component_recolor(property=symmetry,mapping_count=3),component_erase(property=shape,value_count=1))",
+      "task_id": "a09f6c25"
+    },
+    {
+      "ablations": {
+        "no_new_residual_family": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 40,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        },
+        "no_revision": {
+          "all_cells_match": false,
+          "mismatched_cell_count": 40,
+          "selected_hypothesis": "fallback_identity_complete_grid",
+          "training_exact": false,
+          "used_fallback": true
+        }
+      },
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "causal_trace_accepted": false,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "bae5c565"
+    }
+  ],
+  "causal_acceptance_count": 3,
+  "claim_boundary": "This source-pinned, failure-inclusive curated-development packet tests whether the persistent PartialTheory revision path causes real conditional and multi-rule ARC12 rediscoveries. The controller receives only visible demonstrations and test inputs; no task ID, offline audit category, historical decomposition, GT feature contract, GT solver, or held-out output is a live input. Every task emits a complete answer followed by post-answer all-cell V&V. This is evidence for a bounded architecture mechanism, not an ARC-AGI-1 or ARC-AGI-2 solver claim.",
+  "complete_wrong_count": 7,
+  "controller_oracle_boundary_scan": "pass",
+  "exact_solve_count": 3,
+  "frozen_generalization_gate": {
+    "minimum_ablation_advantage": 3,
+    "minimum_distinct_generic_families": 2,
+    "minimum_exact_count": 3,
+    "passed": true
+  },
+  "generic_families_in_exact_results": [
+    "component_property_erase",
+    "component_property_recolor",
+    "marker_shape_target_recolor",
+    "row_span_minimum"
+  ],
+  "packet_id": "P0007-ARC12-CONDITIONAL-REVISION-10",
+  "schema_version": 1
+}

@@ -1,0 +1,16 @@
+{
+  "no_new_residual_family": {
+    "all_cells_match": false,
+    "mismatched_cell_count": 2,
+    "selected_hypothesis": "fallback_identity_complete_grid",
+    "training_exact": false,
+    "used_fallback": true
+  },
+  "no_revision": {
+    "all_cells_match": false,
+    "mismatched_cell_count": 2,
+    "selected_hypothesis": "fallback_identity_complete_grid",
+    "training_exact": false,
+    "used_fallback": true
+  }
+}
