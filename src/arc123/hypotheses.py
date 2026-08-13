@@ -57,6 +57,8 @@ class Hypothesis:
             return self._dihedral_tile(input_grid)
         if self.kind == "self_mask_macro_stamp":
             return self._self_mask_macro_stamp(input_grid)
+        if self.kind == "axis_mode_denoise":
+            return self._axis_mode_denoise(input_grid)
         raise ValueError(f"unknown generic hypothesis kind: {self.kind}")
 
     def _recolor(self, input_grid: Grid) -> PartialGrid:
@@ -305,6 +307,26 @@ class Hypothesis:
             for row_index in range(height * height)
         )
 
+    def _axis_mode_denoise(self, input_grid: Grid) -> Optional[PartialGrid]:
+        """Fill each row or column with its input-derived unique modal color.
+
+        The dominant axis is inferred independently for every input grid.  Its score
+        is the total number of modal cells across its lines; row and column scores
+        have the same ``height * width`` denominator.  Tied line modes or tied axis
+        support leave the theory incomplete instead of silently choosing a color or
+        orientation.
+        """
+
+        row_projection = _axis_mode_projection(input_grid, "row")
+        column_projection = _axis_mode_projection(input_grid, "column")
+        if row_projection is None or column_projection is None:
+            return None
+        row_grid, row_support = row_projection
+        column_grid, column_support = column_projection
+        if row_support == column_support:
+            return None
+        return row_grid if row_support > column_support else column_grid
+
 
 def _same_shape_training_pairs(training_pairs: Sequence[TrainingPair]) -> bool:
     return all(
@@ -312,6 +334,61 @@ def _same_shape_training_pairs(training_pairs: Sequence[TrainingPair]) -> bool:
         and len(input_grid[0]) == len(output_grid[0])
         for input_grid, output_grid in training_pairs
     )
+
+
+def _unique_mode(values: Sequence[int]) -> Optional[tuple[int, int]]:
+    """Return a unique modal color and its support, or ``None`` for a tie."""
+
+    if not values:
+        return None
+    counts: dict[int, int] = {}
+    for value in values:
+        counts[value] = counts.get(value, 0) + 1
+    support = max(counts.values())
+    modal_colors = [color for color, count in counts.items() if count == support]
+    if len(modal_colors) != 1:
+        return None
+    return modal_colors[0], support
+
+
+def _axis_mode_projection(
+    input_grid: Grid, axis: str
+) -> Optional[tuple[PartialGrid, int]]:
+    """Project a grid by per-line unique modes and return summed modal support."""
+
+    height = len(input_grid)
+    width = len(input_grid[0])
+    if axis == "row":
+        line_modes: list[tuple[int, int]] = []
+        for row in input_grid:
+            mode = _unique_mode(row)
+            if mode is None:
+                return None
+            line_modes.append(mode)
+        return (
+            tuple(
+                tuple(line_modes[row_index][0] for _ in range(width))
+                for row_index in range(height)
+            ),
+            sum(support for _, support in line_modes),
+        )
+    if axis == "column":
+        line_modes = []
+        for column_index in range(width):
+            mode = _unique_mode(
+                tuple(input_grid[row_index][column_index] for row_index in range(height))
+            )
+            if mode is None:
+                return None
+            line_modes.append(mode)
+        return (
+            tuple(
+                tuple(line_modes[column_index][0] for column_index in range(width))
+                for _ in range(height)
+            ),
+            sum(support for _, support in line_modes),
+        )
+    raise ValueError(f"unknown mode-denoise axis: {axis}")
 
 
 def _infer_recolor_mapping(
@@ -500,6 +577,20 @@ def _self_mask_macro_stamp_candidates(training_pairs: Sequence[TrainingPair]) ->
     return candidates
 
 
+def _axis_mode_denoise_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
+    """Retain the dynamic line-mode projection only when all demonstrations fit."""
+
+    if not training_pairs or not _same_shape_training_pairs(training_pairs):
+        return []
+    hypothesis = Hypothesis("axis_mode_denoise", description_length=4)
+    if all(
+        hypothesis.predict(input_grid) == _full(output_grid)
+        for input_grid, output_grid in training_pairs
+    ):
+        return [hypothesis]
+    return []
+
+
 def _dihedral_tile_candidates(training_pairs: Sequence[TrainingPair]) -> list[Hypothesis]:
     factors: set[tuple[int, int]] = set()
     possible_labels: list[set[str]] | None = None
@@ -588,6 +679,7 @@ def propose_base_hypotheses(
                 "dihedral_transform",
                 "translate",
                 "self_mask_macro_stamp",
+                "axis_mode_denoise",
             }
         )
     else:
@@ -627,6 +719,8 @@ def propose_base_hypotheses(
         candidates.extend(_dihedral_tile_candidates(training_pairs))
     if "self_mask_macro_stamp" in enabled:
         candidates.extend(_self_mask_macro_stamp_candidates(training_pairs))
+    if "axis_mode_denoise" in enabled:
+        candidates.extend(_axis_mode_denoise_candidates(training_pairs))
     return candidates
 
 

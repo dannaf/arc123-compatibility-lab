@@ -11,6 +11,7 @@ sys.path.insert(0, str(REPOSITORY_ROOT / "src"))
 
 from arc123.adapters.arc12 import ARC12InteractiveEnv
 from arc123.controller import IterativeHypothesisLearner
+from arc123.hypotheses import Hypothesis, propose_base_hypotheses
 from arc123.model import ActionKind, SupportState
 from arc123.traces import render_corpus_callosum_svg
 
@@ -304,6 +305,84 @@ class IterativeHypothesisLearnerTests(unittest.TestCase):
         self.assertIn("selector=zero", result.selected_hypothesis)
         self.assertIn("template=selected_mask_other_color", result.selected_hypothesis)
         self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+
+    def test_axis_mode_denoise_rederives_dominant_axis_for_each_grid(self) -> None:
+        environment = self._environment(
+            [
+                {
+                    "input": [
+                        [1, 1, 1, 2],
+                        [1, 1, 2, 1],
+                        [1, 1, 1, 2],
+                        [2, 2, 3, 2],
+                    ],
+                    "output": [
+                        [1, 1, 1, 1],
+                        [1, 1, 1, 1],
+                        [1, 1, 1, 1],
+                        [2, 2, 2, 2],
+                    ],
+                },
+                {
+                    "input": [
+                        [1, 1, 1, 2],
+                        [1, 1, 1, 2],
+                        [1, 2, 1, 3],
+                        [2, 1, 2, 2],
+                    ],
+                    "output": [
+                        [1, 1, 1, 2],
+                        [1, 1, 1, 2],
+                        [1, 1, 1, 2],
+                        [1, 1, 1, 2],
+                    ],
+                },
+            ],
+            [
+                {
+                    "input": [
+                        [4, 4, 4, 5],
+                        [4, 4, 6, 4],
+                        [4, 4, 4, 5],
+                        [5, 5, 7, 5],
+                    ],
+                    "output": [
+                        [4, 4, 4, 4],
+                        [4, 4, 4, 4],
+                        [4, 4, 4, 4],
+                        [5, 5, 5, 5],
+                    ],
+                }
+            ],
+        )
+
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "axis_mode_denoise"),
+            candidate_limit=12,
+            beam_width=8,
+        ).solve(environment, "synthetic-axis-mode-denoise")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertEqual(result.selected_hypothesis, "axis_mode_denoise")
+        self.assertEqual(
+            result.predictions[0],
+            ((4, 4, 4, 4), (4, 4, 4, 4), (4, 4, 4, 4), (5, 5, 5, 5)),
+        )
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+
+    def test_axis_mode_denoise_refuses_ambiguous_modes_and_axis_ties(self) -> None:
+        ambiguous = ((1, 2), (3, 4))
+        self.assertIsNone(Hypothesis("axis_mode_denoise").predict(ambiguous))
+        self.assertNotIn(
+            "axis_mode_denoise",
+            {
+                candidate.kind
+                for candidate in propose_base_hypotheses(
+                    ((ambiguous, ambiguous),), ("axis_mode_denoise",)
+                )
+            },
+        )
 
     def test_explicit_empty_operator_vocabulary_does_not_restore_defaults(self) -> None:
         environment = self._environment(
