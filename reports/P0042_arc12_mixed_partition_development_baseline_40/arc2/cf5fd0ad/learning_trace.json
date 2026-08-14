@@ -1,0 +1,5703 @@
+{
+  "episode_id": "P0042-ARC12-MIXED-PARTITION-DEVELOPMENT-BASELINE-40:anonymous-frozen-measurement",
+  "events": [
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 1,
+          "name": "identity",
+          "operation": "identity",
+          "parameters": {},
+          "rule_id": "identity",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0001"
+      },
+      "step": 0
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 3,
+          "name": "tile_repeat(column_factor=4,row_factor=4)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "tile_repeat",
+            "row_factor": 4
+          },
+          "rule_id": "rule-tile_repeat",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0002"
+      },
+      "step": 1
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 2,
+          "name": "left_right(scope=all)",
+          "operation": "coordinate_transform",
+          "parameters": {
+            "axis": "left_right"
+          },
+          "rule_id": "coordinate-left_right",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0003"
+      },
+      "step": 2
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 2,
+          "name": "top_bottom(scope=all)",
+          "operation": "coordinate_transform",
+          "parameters": {
+            "axis": "top_bottom"
+          },
+          "rule_id": "coordinate-top_bottom",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0004"
+      },
+      "step": 3
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 2,
+          "name": "rotate_180(scope=all)",
+          "operation": "coordinate_transform",
+          "parameters": {
+            "axis": "rotate_180"
+          },
+          "rule_id": "coordinate-rotate_180",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0005"
+      },
+      "step": 4
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 0,
+        "description_length": 1,
+        "feedback": [
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 0,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 144
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 1,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 144
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 2,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 144
+          }
+        ],
+        "hypothesis": "identity",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 0,
+        "stage": "initial_candidate_pre_beam_compatibility",
+        "theory_id": "T0001",
+        "unknown_cell_count": 432
+      },
+      "step": 5
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 112,
+        "description_length": 3,
+        "feedback": [
+          {
+            "asserted_cell_count": 144,
+            "contradiction_count": 64,
+            "counterexamples": [
+              {
+                "column": 0,
+                "demo_index": 0,
+                "observed": 1,
+                "predicted": 8,
+                "row": 0
+              }
+            ],
+            "demo_index": 0,
+            "exact_support_zero": true,
+            "matching_cell_count": 80,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 144,
+            "contradiction_count": 24,
+            "counterexamples": [
+              {
+                "column": 0,
+                "demo_index": 1,
+                "observed": 8,
+                "predicted": 6,
+                "row": 0
+              }
+            ],
+            "demo_index": 1,
+            "exact_support_zero": true,
+            "matching_cell_count": 120,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 144,
+            "contradiction_count": 24,
+            "counterexamples": [
+              {
+                "column": 0,
+                "demo_index": 2,
+                "observed": 8,
+                "predicted": 1,
+                "row": 0
+              }
+            ],
+            "demo_index": 2,
+            "exact_support_zero": true,
+            "matching_cell_count": 120,
+            "support_state": "IMPOSSIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "tile_repeat(column_factor=4,row_factor=4)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 320,
+        "stage": "initial_candidate_pre_beam_compatibility",
+        "theory_id": "T0002",
+        "unknown_cell_count": 0
+      },
+      "step": 6
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 0,
+        "description_length": 2,
+        "feedback": [
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 0,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 144
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 1,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 144
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 2,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 144
+          }
+        ],
+        "hypothesis": "left_right(scope=all)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 0,
+        "stage": "initial_candidate_pre_beam_compatibility",
+        "theory_id": "T0003",
+        "unknown_cell_count": 432
+      },
+      "step": 7
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 0,
+        "description_length": 2,
+        "feedback": [
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 0,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 144
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 1,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 144
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 2,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 144
+          }
+        ],
+        "hypothesis": "top_bottom(scope=all)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 0,
+        "stage": "initial_candidate_pre_beam_compatibility",
+        "theory_id": "T0004",
+        "unknown_cell_count": 432
+      },
+      "step": 8
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 0,
+        "description_length": 2,
+        "feedback": [
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 0,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 144
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 1,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 144
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 2,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 144
+          }
+        ],
+        "hypothesis": "rotate_180(scope=all)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 0,
+        "stage": "initial_candidate_pre_beam_compatibility",
+        "theory_id": "T0005",
+        "unknown_cell_count": 432
+      },
+      "step": 9
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 10
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0001"
+      },
+      "step": 11
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 12
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 144,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 0,
+        "explained_cell_count": 3,
+        "residual_cell_count": 141,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 144
+        },
+        "theory_id": "T0001"
+      },
+      "step": 13
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 14
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0003"
+      },
+      "step": 15
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0003",
+        "theory_name": "left_right(scope=all)"
+      },
+      "step": 16
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 0,
+          "name": "left_right(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 144,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 0,
+        "explained_cell_count": 5,
+        "residual_cell_count": 139,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 144
+        },
+        "theory_id": "T0003"
+      },
+      "step": 17
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 18
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0004"
+      },
+      "step": 19
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0004",
+        "theory_name": "top_bottom(scope=all)"
+      },
+      "step": 20
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 0,
+          "name": "top_bottom(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 144,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 0,
+        "explained_cell_count": 5,
+        "residual_cell_count": 139,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 144
+        },
+        "theory_id": "T0004"
+      },
+      "step": 21
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 22
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0005"
+      },
+      "step": 23
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0005",
+        "theory_name": "rotate_180(scope=all)"
+      },
+      "step": 24
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 0,
+          "name": "rotate_180(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 144,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 0,
+        "explained_cell_count": 9,
+        "residual_cell_count": 135,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 144
+        },
+        "theory_id": "T0005"
+      },
+      "step": 25
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0002"
+      },
+      "step": 26
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "column": 0,
+          "row": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 27
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 1,
+        "theory_id": "T0002",
+        "theory_name": "tile_repeat(column_factor=4,row_factor=4)"
+      },
+      "step": 28
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 64,
+          "counterexample_count": 64,
+          "description_length": 3,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 80,
+          "name": "tile_repeat(column_factor=4,row_factor=4)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=4,row_factor=4)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "tile_repeat",
+                "row_factor": 4
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 80,
+        "residual_cell_count": 64,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 64,
+          "counterexamples": [
+            {
+              "column": 0,
+              "demo_index": 0,
+              "observed": 1,
+              "predicted": 8,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 80,
+          "observation_id": "arc12-demo:0",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 29
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 30
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0001"
+      },
+      "step": 31
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 32
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0,
+            1
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 288,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 1,
+        "explained_cell_count": 7,
+        "residual_cell_count": 137,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 144
+        },
+        "theory_id": "T0001"
+      },
+      "step": 33
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 34
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0003"
+      },
+      "step": 35
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0003",
+        "theory_name": "left_right(scope=all)"
+      },
+      "step": 36
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1
+          ],
+          "matching_cell_count": 0,
+          "name": "left_right(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 288,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 1,
+        "explained_cell_count": 7,
+        "residual_cell_count": 137,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 144
+        },
+        "theory_id": "T0003"
+      },
+      "step": 37
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 38
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0004"
+      },
+      "step": 39
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0004",
+        "theory_name": "top_bottom(scope=all)"
+      },
+      "step": 40
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1
+          ],
+          "matching_cell_count": 0,
+          "name": "top_bottom(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 288,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 1,
+        "explained_cell_count": 7,
+        "residual_cell_count": 137,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 144
+        },
+        "theory_id": "T0004"
+      },
+      "step": 41
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 42
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0005"
+      },
+      "step": 43
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0005",
+        "theory_name": "rotate_180(scope=all)"
+      },
+      "step": 44
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1
+          ],
+          "matching_cell_count": 0,
+          "name": "rotate_180(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 288,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 1,
+        "explained_cell_count": 9,
+        "residual_cell_count": 135,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 144
+        },
+        "theory_id": "T0005"
+      },
+      "step": 45
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0,
+          1
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 46
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0001"
+      },
+      "step": 47
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 48
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 432,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 2,
+        "explained_cell_count": 7,
+        "residual_cell_count": 137,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 144
+        },
+        "theory_id": "T0001"
+      },
+      "step": 49
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0,
+          1
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 50
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0003"
+      },
+      "step": 51
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0003",
+        "theory_name": "left_right(scope=all)"
+      },
+      "step": 52
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "left_right(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 432,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 2,
+        "explained_cell_count": 7,
+        "residual_cell_count": 137,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 144
+        },
+        "theory_id": "T0003"
+      },
+      "step": 53
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0,
+          1
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 54
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0004"
+      },
+      "step": 55
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0004",
+        "theory_name": "top_bottom(scope=all)"
+      },
+      "step": 56
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "top_bottom(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 432,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 2,
+        "explained_cell_count": 7,
+        "residual_cell_count": 137,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 144
+        },
+        "theory_id": "T0004"
+      },
+      "step": 57
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0,
+          1
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 58
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0005"
+      },
+      "step": 59
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0005",
+        "theory_name": "rotate_180(scope=all)"
+      },
+      "step": 60
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "rotate_180(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 432,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 2,
+        "explained_cell_count": 9,
+        "residual_cell_count": 135,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 144
+        },
+        "theory_id": "T0005"
+      },
+      "step": 61
+    },
+    {
+      "action": "SPECIALIZE",
+      "payload": {
+        "added_rule": {
+          "description_length": 17,
+          "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "dihedral_tile",
+            "row_factor": 4,
+            "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+          },
+          "rule_id": "structural-dihedral_tile",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "parent_theory_id": "T0001",
+        "reason": "unexplained_residual_proposed_generic_structural_rule",
+        "theory_id": "T0006"
+      },
+      "step": 62
+    },
+    {
+      "action": "EXPLAIN_RESIDUAL",
+      "payload": {
+        "added_rule": {
+          "description_length": 17,
+          "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "dihedral_tile",
+            "row_factor": 4,
+            "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+          },
+          "rule_id": "structural-dihedral_tile",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "parent_theory_id": "T0001",
+        "residual_kind": "unknown",
+        "theory_id": "T0006"
+      },
+      "step": 63
+    },
+    {
+      "action": "COMPOSE_RULE",
+      "payload": {
+        "ordered_rule_ids": [
+          "identity",
+          "structural-dihedral_tile"
+        ],
+        "theory_id": "T0006"
+      },
+      "step": 64
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0006"
+      },
+      "step": 65
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0006"
+      },
+      "step": 66
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 2,
+        "theory_id": "T0006",
+        "theory_name": "compose(identity,dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 67
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 18,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 144,
+          "name": "compose(identity,dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0001",
+          "revision_count": 6,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0006",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:0",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0006"
+      },
+      "step": 68
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0006"
+      },
+      "step": 69
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0006"
+      },
+      "step": 70
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 2,
+        "theory_id": "T0006",
+        "theory_name": "compose(identity,dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 71
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 18,
+          "evaluated_demo_indices": [
+            0,
+            1
+          ],
+          "matching_cell_count": 288,
+          "name": "compose(identity,dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0001",
+          "revision_count": 7,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0006",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 1,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:1",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0006"
+      },
+      "step": 72
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0,
+          1
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0006"
+      },
+      "step": 73
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0006"
+      },
+      "step": 74
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 2,
+        "theory_id": "T0006",
+        "theory_name": "compose(identity,dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 75
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 18,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 432,
+          "name": "compose(identity,dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0001",
+          "revision_count": 8,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0006",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 2,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:2",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0006"
+      },
+      "step": 76
+    },
+    {
+      "action": "PROMOTE_CONSTRAINT",
+      "payload": {
+        "evaluated_demo_count": 3,
+        "rule_count": 2,
+        "status": "complete_training_compatibility_after_revision",
+        "theory_id": "T0006"
+      },
+      "step": 77
+    },
+    {
+      "action": "SPECIALIZE",
+      "payload": {
+        "added_rule": {
+          "description_length": 17,
+          "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "dihedral_tile",
+            "row_factor": 4,
+            "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+          },
+          "rule_id": "structural-dihedral_tile",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "parent_theory_id": "T0003",
+        "reason": "unexplained_residual_proposed_generic_structural_rule",
+        "theory_id": "T0007"
+      },
+      "step": 78
+    },
+    {
+      "action": "EXPLAIN_RESIDUAL",
+      "payload": {
+        "added_rule": {
+          "description_length": 17,
+          "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "dihedral_tile",
+            "row_factor": 4,
+            "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+          },
+          "rule_id": "structural-dihedral_tile",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "parent_theory_id": "T0003",
+        "residual_kind": "unknown",
+        "theory_id": "T0007"
+      },
+      "step": 79
+    },
+    {
+      "action": "COMPOSE_RULE",
+      "payload": {
+        "ordered_rule_ids": [
+          "identity",
+          "coordinate-left_right",
+          "structural-dihedral_tile"
+        ],
+        "theory_id": "T0007"
+      },
+      "step": 80
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0007"
+      },
+      "step": 81
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0007"
+      },
+      "step": 82
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 3,
+        "theory_id": "T0007",
+        "theory_name": "compose(identity,left_right(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 83
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 20,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 144,
+          "name": "compose(identity,left_right(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0003",
+          "revision_count": 6,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0007",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:0",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0007"
+      },
+      "step": 84
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0007"
+      },
+      "step": 85
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0007"
+      },
+      "step": 86
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 3,
+        "theory_id": "T0007",
+        "theory_name": "compose(identity,left_right(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 87
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 20,
+          "evaluated_demo_indices": [
+            0,
+            1
+          ],
+          "matching_cell_count": 288,
+          "name": "compose(identity,left_right(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0003",
+          "revision_count": 7,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0007",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 1,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:1",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0007"
+      },
+      "step": 88
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0,
+          1
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0007"
+      },
+      "step": 89
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0007"
+      },
+      "step": 90
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 3,
+        "theory_id": "T0007",
+        "theory_name": "compose(identity,left_right(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 91
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 20,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 432,
+          "name": "compose(identity,left_right(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0003",
+          "revision_count": 8,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0007",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 2,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:2",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0007"
+      },
+      "step": 92
+    },
+    {
+      "action": "PROMOTE_CONSTRAINT",
+      "payload": {
+        "evaluated_demo_count": 3,
+        "rule_count": 3,
+        "status": "complete_training_compatibility_after_revision",
+        "theory_id": "T0007"
+      },
+      "step": 93
+    },
+    {
+      "action": "SPECIALIZE",
+      "payload": {
+        "added_rule": {
+          "description_length": 17,
+          "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "dihedral_tile",
+            "row_factor": 4,
+            "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+          },
+          "rule_id": "structural-dihedral_tile",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "parent_theory_id": "T0004",
+        "reason": "unexplained_residual_proposed_generic_structural_rule",
+        "theory_id": "T0008"
+      },
+      "step": 94
+    },
+    {
+      "action": "EXPLAIN_RESIDUAL",
+      "payload": {
+        "added_rule": {
+          "description_length": 17,
+          "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "dihedral_tile",
+            "row_factor": 4,
+            "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+          },
+          "rule_id": "structural-dihedral_tile",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "parent_theory_id": "T0004",
+        "residual_kind": "unknown",
+        "theory_id": "T0008"
+      },
+      "step": 95
+    },
+    {
+      "action": "COMPOSE_RULE",
+      "payload": {
+        "ordered_rule_ids": [
+          "identity",
+          "coordinate-top_bottom",
+          "structural-dihedral_tile"
+        ],
+        "theory_id": "T0008"
+      },
+      "step": 96
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0008"
+      },
+      "step": 97
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0008"
+      },
+      "step": 98
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 3,
+        "theory_id": "T0008",
+        "theory_name": "compose(identity,top_bottom(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 99
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 20,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 144,
+          "name": "compose(identity,top_bottom(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0004",
+          "revision_count": 6,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0008",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:0",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0008"
+      },
+      "step": 100
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0008"
+      },
+      "step": 101
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0008"
+      },
+      "step": 102
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 3,
+        "theory_id": "T0008",
+        "theory_name": "compose(identity,top_bottom(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 103
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 20,
+          "evaluated_demo_indices": [
+            0,
+            1
+          ],
+          "matching_cell_count": 288,
+          "name": "compose(identity,top_bottom(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0004",
+          "revision_count": 7,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0008",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 1,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:1",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0008"
+      },
+      "step": 104
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0,
+          1
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0008"
+      },
+      "step": 105
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0008"
+      },
+      "step": 106
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 3,
+        "theory_id": "T0008",
+        "theory_name": "compose(identity,top_bottom(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 107
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 20,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 432,
+          "name": "compose(identity,top_bottom(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0004",
+          "revision_count": 8,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0008",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 2,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:2",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0008"
+      },
+      "step": 108
+    },
+    {
+      "action": "PROMOTE_CONSTRAINT",
+      "payload": {
+        "evaluated_demo_count": 3,
+        "rule_count": 3,
+        "status": "complete_training_compatibility_after_revision",
+        "theory_id": "T0008"
+      },
+      "step": 109
+    },
+    {
+      "action": "SPECIALIZE",
+      "payload": {
+        "added_rule": {
+          "description_length": 17,
+          "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "dihedral_tile",
+            "row_factor": 4,
+            "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+          },
+          "rule_id": "structural-dihedral_tile",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "parent_theory_id": "T0005",
+        "reason": "unexplained_residual_proposed_generic_structural_rule",
+        "theory_id": "T0009"
+      },
+      "step": 110
+    },
+    {
+      "action": "EXPLAIN_RESIDUAL",
+      "payload": {
+        "added_rule": {
+          "description_length": 17,
+          "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "dihedral_tile",
+            "row_factor": 4,
+            "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+          },
+          "rule_id": "structural-dihedral_tile",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "parent_theory_id": "T0005",
+        "residual_kind": "unknown",
+        "theory_id": "T0009"
+      },
+      "step": 111
+    },
+    {
+      "action": "COMPOSE_RULE",
+      "payload": {
+        "ordered_rule_ids": [
+          "identity",
+          "coordinate-rotate_180",
+          "structural-dihedral_tile"
+        ],
+        "theory_id": "T0009"
+      },
+      "step": 112
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0009"
+      },
+      "step": 113
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0009"
+      },
+      "step": 114
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 3,
+        "theory_id": "T0009",
+        "theory_name": "compose(identity,rotate_180(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 115
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 20,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 144,
+          "name": "compose(identity,rotate_180(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0005",
+          "revision_count": 6,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0009",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:0",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0009"
+      },
+      "step": 116
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0009"
+      },
+      "step": 117
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0009"
+      },
+      "step": 118
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 3,
+        "theory_id": "T0009",
+        "theory_name": "compose(identity,rotate_180(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 119
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 20,
+          "evaluated_demo_indices": [
+            0,
+            1
+          ],
+          "matching_cell_count": 288,
+          "name": "compose(identity,rotate_180(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0005",
+          "revision_count": 7,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0009",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 1,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:1",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0009"
+      },
+      "step": 120
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0,
+          1
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0009"
+      },
+      "step": 121
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0009"
+      },
+      "step": 122
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 3,
+        "theory_id": "T0009",
+        "theory_name": "compose(identity,rotate_180(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 123
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 20,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 432,
+          "name": "compose(identity,rotate_180(scope=all),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0005",
+          "revision_count": 8,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0009",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 2,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:2",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0009"
+      },
+      "step": 124
+    },
+    {
+      "action": "PROMOTE_CONSTRAINT",
+      "payload": {
+        "evaluated_demo_count": 3,
+        "rule_count": 3,
+        "status": "complete_training_compatibility_after_revision",
+        "theory_id": "T0009"
+      },
+      "step": 125
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "causal_next_operation": "scope_or_rule_revision",
+        "counterexample": {
+          "column": 0,
+          "demo_index": 0,
+          "observed": 1,
+          "predicted": 8,
+          "row": 0
+        },
+        "responsible_rule": {
+          "description_length": 3,
+          "name": "tile_repeat(column_factor=4,row_factor=4)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "tile_repeat",
+            "row_factor": 4
+          },
+          "rule_id": "rule-tile_repeat",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "responsible_rule_id": "rule-tile_repeat",
+        "theory_id": "T0002"
+      },
+      "step": 126
+    },
+    {
+      "action": "EXPLAIN_RESIDUAL",
+      "payload": {
+        "added_rule": {
+          "description_length": 2,
+          "name": "recolor(to=1,scope=color==8)",
+          "operation": "recolor_scoped",
+          "parameters": {
+            "to_color": 1
+          },
+          "rule_id": "recolor-color-8-to-1",
+          "scope": {
+            "kind": "color_equals",
+            "value": 8
+          }
+        },
+        "parent_theory_id": "T0002",
+        "residual_counterexample": {
+          "column": 0,
+          "demo_index": 0,
+          "observed": 1,
+          "predicted": 8,
+          "row": 0
+        },
+        "theory_id": "T0010"
+      },
+      "step": 127
+    },
+    {
+      "action": "COMPOSE_RULE",
+      "payload": {
+        "ordered_rule_ids": [
+          "identity",
+          "rule-tile_repeat",
+          "recolor-color-8-to-1"
+        ],
+        "theory_id": "T0010"
+      },
+      "step": 128
+    },
+    {
+      "action": "SPECIALIZE",
+      "payload": {
+        "added_rule": {
+          "description_length": 17,
+          "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "dihedral_tile",
+            "row_factor": 4,
+            "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+          },
+          "rule_id": "structural-dihedral_tile",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "parent_theory_id": "T0002",
+        "reason": "unexplained_residual_proposed_generic_structural_rule",
+        "theory_id": "T0011"
+      },
+      "step": 129
+    },
+    {
+      "action": "EXPLAIN_RESIDUAL",
+      "payload": {
+        "added_rule": {
+          "description_length": 17,
+          "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "dihedral_tile",
+            "row_factor": 4,
+            "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+          },
+          "rule_id": "structural-dihedral_tile",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "parent_theory_id": "T0002",
+        "residual_kind": "contradiction",
+        "theory_id": "T0011"
+      },
+      "step": 130
+    },
+    {
+      "action": "COMPOSE_RULE",
+      "payload": {
+        "ordered_rule_ids": [
+          "identity",
+          "rule-tile_repeat",
+          "structural-dihedral_tile"
+        ],
+        "theory_id": "T0011"
+      },
+      "step": 131
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0010"
+      },
+      "step": 132
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "column": 1,
+          "row": 0
+        },
+        "theory_id": "T0010"
+      },
+      "step": 133
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 3,
+        "theory_id": "T0010",
+        "theory_name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),recolor(to=1,scope=color==8))"
+      },
+      "step": 134
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 66,
+          "counterexample_count": 66,
+          "description_length": 6,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 78,
+          "name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),recolor(to=1,scope=color==8))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0002",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=4,row_factor=4)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "tile_repeat",
+                "row_factor": 4
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=1,scope=color==8)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 1
+              },
+              "rule_id": "recolor-color-8-to-1",
+              "scope": {
+                "kind": "color_equals",
+                "value": 8
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 8
+            }
+          ],
+          "theory_id": "T0010",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 78,
+        "residual_cell_count": 66,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 66,
+          "counterexamples": [
+            {
+              "column": 1,
+              "demo_index": 0,
+              "observed": 5,
+              "predicted": 7,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 78,
+          "observation_id": "arc12-demo:0",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0010"
+      },
+      "step": 135
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0011"
+      },
+      "step": 136
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0011"
+      },
+      "step": 137
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 3,
+        "theory_id": "T0011",
+        "theory_name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 138
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 21,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 144,
+          "name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0002",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=4,row_factor=4)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "tile_repeat",
+                "row_factor": 4
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0011",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:0",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0011"
+      },
+      "step": 139
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0011"
+      },
+      "step": 140
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0011"
+      },
+      "step": 141
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 3,
+        "theory_id": "T0011",
+        "theory_name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 142
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 21,
+          "evaluated_demo_indices": [
+            0,
+            1
+          ],
+          "matching_cell_count": 288,
+          "name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0002",
+          "revision_count": 5,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=4,row_factor=4)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "tile_repeat",
+                "row_factor": 4
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0011",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 1,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:1",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0011"
+      },
+      "step": 143
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0,
+          1
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0011"
+      },
+      "step": 144
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0011"
+      },
+      "step": 145
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 3,
+        "theory_id": "T0011",
+        "theory_name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 146
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 21,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 432,
+          "name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0002",
+          "revision_count": 6,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=4,row_factor=4)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "tile_repeat",
+                "row_factor": 4
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0011",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 2,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:2",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0011"
+      },
+      "step": 147
+    },
+    {
+      "action": "PROMOTE_CONSTRAINT",
+      "payload": {
+        "evaluated_demo_count": 3,
+        "rule_count": 3,
+        "status": "complete_training_compatibility_after_revision",
+        "theory_id": "T0011"
+      },
+      "step": 148
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "causal_next_operation": "scope_or_rule_revision",
+        "counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 5,
+          "predicted": 7,
+          "row": 0
+        },
+        "responsible_rule": {
+          "description_length": 3,
+          "name": "tile_repeat(column_factor=4,row_factor=4)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "tile_repeat",
+            "row_factor": 4
+          },
+          "rule_id": "rule-tile_repeat",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "responsible_rule_id": "rule-tile_repeat",
+        "theory_id": "T0010"
+      },
+      "step": 149
+    },
+    {
+      "action": "EXPLAIN_RESIDUAL",
+      "payload": {
+        "added_rule": {
+          "description_length": 2,
+          "name": "recolor(to=5,scope=color==7)",
+          "operation": "recolor_scoped",
+          "parameters": {
+            "to_color": 5
+          },
+          "rule_id": "recolor-color-7-to-5",
+          "scope": {
+            "kind": "color_equals",
+            "value": 7
+          }
+        },
+        "parent_theory_id": "T0010",
+        "residual_counterexample": {
+          "column": 1,
+          "demo_index": 0,
+          "observed": 5,
+          "predicted": 7,
+          "row": 0
+        },
+        "theory_id": "T0012"
+      },
+      "step": 150
+    },
+    {
+      "action": "COMPOSE_RULE",
+      "payload": {
+        "ordered_rule_ids": [
+          "identity",
+          "rule-tile_repeat",
+          "recolor-color-8-to-1",
+          "recolor-color-7-to-5"
+        ],
+        "theory_id": "T0012"
+      },
+      "step": 151
+    },
+    {
+      "action": "SPECIALIZE",
+      "payload": {
+        "added_rule": {
+          "description_length": 17,
+          "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "dihedral_tile",
+            "row_factor": 4,
+            "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+          },
+          "rule_id": "structural-dihedral_tile",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "parent_theory_id": "T0010",
+        "reason": "unexplained_residual_proposed_generic_structural_rule",
+        "theory_id": "T0013"
+      },
+      "step": 152
+    },
+    {
+      "action": "EXPLAIN_RESIDUAL",
+      "payload": {
+        "added_rule": {
+          "description_length": 17,
+          "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "dihedral_tile",
+            "row_factor": 4,
+            "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+          },
+          "rule_id": "structural-dihedral_tile",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "parent_theory_id": "T0010",
+        "residual_kind": "contradiction",
+        "theory_id": "T0013"
+      },
+      "step": 153
+    },
+    {
+      "action": "COMPOSE_RULE",
+      "payload": {
+        "ordered_rule_ids": [
+          "identity",
+          "rule-tile_repeat",
+          "recolor-color-8-to-1",
+          "structural-dihedral_tile"
+        ],
+        "theory_id": "T0013"
+      },
+      "step": 154
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0012"
+      },
+      "step": 155
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "column": 2,
+          "row": 0
+        },
+        "theory_id": "T0012"
+      },
+      "step": 156
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 4,
+        "theory_id": "T0012",
+        "theory_name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),recolor(to=1,scope=color==8),recolor(to=5,scope=color==7))"
+      },
+      "step": 157
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 65,
+          "counterexample_count": 65,
+          "description_length": 8,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 79,
+          "name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),recolor(to=1,scope=color==8),recolor(to=5,scope=color==7))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0010",
+          "revision_count": 6,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=4,row_factor=4)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "tile_repeat",
+                "row_factor": 4
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=1,scope=color==8)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 1
+              },
+              "rule_id": "recolor-color-8-to-1",
+              "scope": {
+                "kind": "color_equals",
+                "value": 8
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=5,scope=color==7)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 5
+              },
+              "rule_id": "recolor-color-7-to-5",
+              "scope": {
+                "kind": "color_equals",
+                "value": 7
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 8
+            },
+            {
+              "kind": "color_equals",
+              "value": 7
+            }
+          ],
+          "theory_id": "T0012",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 79,
+        "residual_cell_count": 65,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 65,
+          "counterexamples": [
+            {
+              "column": 2,
+              "demo_index": 0,
+              "observed": 8,
+              "predicted": 1,
+              "row": 0
+            }
+          ],
+          "exact_support_zero": true,
+          "matching_cell_count": 79,
+          "observation_id": "arc12-demo:0",
+          "support_state": "IMPOSSIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0012"
+      },
+      "step": 158
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0013"
+      },
+      "step": 159
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0013"
+      },
+      "step": 160
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 4,
+        "theory_id": "T0013",
+        "theory_name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),recolor(to=1,scope=color==8),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 161
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 23,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 144,
+          "name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),recolor(to=1,scope=color==8),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0010",
+          "revision_count": 6,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=4,row_factor=4)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "tile_repeat",
+                "row_factor": 4
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=1,scope=color==8)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 1
+              },
+              "rule_id": "recolor-color-8-to-1",
+              "scope": {
+                "kind": "color_equals",
+                "value": 8
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 8
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0013",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:0",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0013"
+      },
+      "step": 162
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0013"
+      },
+      "step": 163
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0013"
+      },
+      "step": 164
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 4,
+        "theory_id": "T0013",
+        "theory_name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),recolor(to=1,scope=color==8),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 165
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 23,
+          "evaluated_demo_indices": [
+            0,
+            1
+          ],
+          "matching_cell_count": 288,
+          "name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),recolor(to=1,scope=color==8),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0010",
+          "revision_count": 7,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=4,row_factor=4)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "tile_repeat",
+                "row_factor": 4
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=1,scope=color==8)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 1
+              },
+              "rule_id": "recolor-color-8-to-1",
+              "scope": {
+                "kind": "color_equals",
+                "value": 8
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 8
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0013",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 1,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:1",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0013"
+      },
+      "step": 166
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0,
+          1
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0013"
+      },
+      "step": 167
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0013"
+      },
+      "step": 168
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 4,
+        "theory_id": "T0013",
+        "theory_name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),recolor(to=1,scope=color==8),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 169
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 23,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 432,
+          "name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),recolor(to=1,scope=color==8),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0010",
+          "revision_count": 8,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=4,row_factor=4)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "tile_repeat",
+                "row_factor": 4
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=1,scope=color==8)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 1
+              },
+              "rule_id": "recolor-color-8-to-1",
+              "scope": {
+                "kind": "color_equals",
+                "value": 8
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 8
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0013",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 2,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:2",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0013"
+      },
+      "step": 170
+    },
+    {
+      "action": "PROMOTE_CONSTRAINT",
+      "payload": {
+        "evaluated_demo_count": 3,
+        "rule_count": 4,
+        "status": "complete_training_compatibility_after_revision",
+        "theory_id": "T0013"
+      },
+      "step": 171
+    },
+    {
+      "action": "FIND_COUNTEREXAMPLE",
+      "payload": {
+        "causal_next_operation": "scope_or_rule_revision",
+        "counterexample": {
+          "column": 2,
+          "demo_index": 0,
+          "observed": 8,
+          "predicted": 1,
+          "row": 0
+        },
+        "responsible_rule": {
+          "description_length": 2,
+          "name": "recolor(to=1,scope=color==8)",
+          "operation": "recolor_scoped",
+          "parameters": {
+            "to_color": 1
+          },
+          "rule_id": "recolor-color-8-to-1",
+          "scope": {
+            "kind": "color_equals",
+            "value": 8
+          }
+        },
+        "responsible_rule_id": "recolor-color-8-to-1",
+        "theory_id": "T0012"
+      },
+      "step": 172
+    },
+    {
+      "action": "SPECIALIZE",
+      "payload": {
+        "added_rule": {
+          "description_length": 17,
+          "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "dihedral_tile",
+            "row_factor": 4,
+            "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+          },
+          "rule_id": "structural-dihedral_tile",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "parent_theory_id": "T0012",
+        "reason": "unexplained_residual_proposed_generic_structural_rule",
+        "theory_id": "T0014"
+      },
+      "step": 173
+    },
+    {
+      "action": "EXPLAIN_RESIDUAL",
+      "payload": {
+        "added_rule": {
+          "description_length": 17,
+          "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+          "operation": "full_operator",
+          "parameters": {
+            "column_factor": 4,
+            "operator": "dihedral_tile",
+            "row_factor": 4,
+            "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+          },
+          "rule_id": "structural-dihedral_tile",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "parent_theory_id": "T0012",
+        "residual_kind": "contradiction",
+        "theory_id": "T0014"
+      },
+      "step": 174
+    },
+    {
+      "action": "COMPOSE_RULE",
+      "payload": {
+        "ordered_rule_ids": [
+          "identity",
+          "rule-tile_repeat",
+          "recolor-color-8-to-1",
+          "recolor-color-7-to-5",
+          "structural-dihedral_tile"
+        ],
+        "theory_id": "T0014"
+      },
+      "step": 175
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 0,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0014"
+      },
+      "step": 176
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0014"
+      },
+      "step": 177
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 5,
+        "theory_id": "T0014",
+        "theory_name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),recolor(to=1,scope=color==8),recolor(to=5,scope=color==7),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 178
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 25,
+          "evaluated_demo_indices": [
+            0
+          ],
+          "matching_cell_count": 144,
+          "name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),recolor(to=1,scope=color==8),recolor(to=5,scope=color==7),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0012",
+          "revision_count": 8,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=4,row_factor=4)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "tile_repeat",
+                "row_factor": 4
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=1,scope=color==8)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 1
+              },
+              "rule_id": "recolor-color-8-to-1",
+              "scope": {
+                "kind": "color_equals",
+                "value": 8
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=5,scope=color==7)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 5
+              },
+              "rule_id": "recolor-color-7-to-5",
+              "scope": {
+                "kind": "color_equals",
+                "value": 7
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 8
+            },
+            {
+              "kind": "color_equals",
+              "value": 7
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0014",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:0",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0014"
+      },
+      "step": 179
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0014"
+      },
+      "step": 180
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0014"
+      },
+      "step": 181
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 5,
+        "theory_id": "T0014",
+        "theory_name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),recolor(to=1,scope=color==8),recolor(to=5,scope=color==7),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 182
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 25,
+          "evaluated_demo_indices": [
+            0,
+            1
+          ],
+          "matching_cell_count": 288,
+          "name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),recolor(to=1,scope=color==8),recolor(to=5,scope=color==7),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0012",
+          "revision_count": 9,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=4,row_factor=4)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "tile_repeat",
+                "row_factor": 4
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=1,scope=color==8)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 1
+              },
+              "rule_id": "recolor-color-8-to-1",
+              "scope": {
+                "kind": "color_equals",
+                "value": 8
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=5,scope=color==7)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 5
+              },
+              "rule_id": "recolor-color-7-to-5",
+              "scope": {
+                "kind": "color_equals",
+                "value": 7
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 8
+            },
+            {
+              "kind": "color_equals",
+              "value": 7
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0014",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 1,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:1",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0014"
+      },
+      "step": 183
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 144,
+          "color_delta": 0,
+          "color_inventory": 2
+        },
+        "previously_observed_demos": [
+          0,
+          1
+        ],
+        "selected_demo": 2,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0014"
+      },
+      "step": 184
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0014"
+      },
+      "step": 185
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 144,
+        "rule_count": 5,
+        "theory_id": "T0014",
+        "theory_name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),recolor(to=1,scope=color==8),recolor(to=5,scope=color==7),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))"
+      },
+      "step": 186
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 25,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 432,
+          "name": "compose(identity,tile_repeat(column_factor=4,row_factor=4),recolor(to=1,scope=color==8),recolor(to=5,scope=color==7),dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0012",
+          "revision_count": 10,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 3,
+              "name": "tile_repeat(column_factor=4,row_factor=4)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "tile_repeat",
+                "row_factor": 4
+              },
+              "rule_id": "rule-tile_repeat",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=1,scope=color==8)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 1
+              },
+              "rule_id": "recolor-color-8-to-1",
+              "scope": {
+                "kind": "color_equals",
+                "value": 8
+              }
+            },
+            {
+              "description_length": 2,
+              "name": "recolor(to=5,scope=color==7)",
+              "operation": "recolor_scoped",
+              "parameters": {
+                "to_color": 5
+              },
+              "rule_id": "recolor-color-7-to-5",
+              "scope": {
+                "kind": "color_equals",
+                "value": 7
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "color_equals",
+              "value": 8
+            },
+            {
+              "kind": "color_equals",
+              "value": 7
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0014",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 2,
+        "explained_cell_count": 144,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 144,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 144,
+          "observation_id": "arc12-demo:2",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0014"
+      },
+      "step": 187
+    },
+    {
+      "action": "PROMOTE_CONSTRAINT",
+      "payload": {
+        "evaluated_demo_count": 3,
+        "rule_count": 5,
+        "status": "complete_training_compatibility_after_revision",
+        "theory_id": "T0014"
+      },
+      "step": 188
+    },
+    {
+      "action": "MERGE_RULES",
+      "payload": {
+        "compatible_theory_ids": [
+          "T0006",
+          "T0007",
+          "T0008",
+          "T0009",
+          "T0011",
+          "T0013",
+          "T0014"
+        ],
+        "complete_prediction_group_size": 7
+      },
+      "step": 189
+    },
+    {
+      "action": "COMMIT",
+      "payload": {
+        "complete_prediction_group_count": 1,
+        "final_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 18,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "initial_proposal": true,
+                "operation": "identity"
+              },
+              "target": "identity"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  144,
+                  0,
+                  4
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  144,
+                  0,
+                  2
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  144,
+                  0,
+                  2
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "observed_residual_ranking": {
+                  "contradiction_count": 0,
+                  "matching_cell_count": 432,
+                  "unknown_cell_count": 0
+                },
+                "operator": "dihedral_tile",
+                "proposal_family": "structural_residual"
+              },
+              "target": "structural-dihedral_tile"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  144,
+                  0,
+                  4
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:0"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  144,
+                  0,
+                  2
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  144,
+                  0,
+                  2
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:2"
+            }
+          ],
+          "matching_cell_count": 432,
+          "name": "compose(identity,dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0001",
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            },
+            {
+              "description_length": 17,
+              "name": "dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity)",
+              "operation": "full_operator",
+              "parameters": {
+                "column_factor": 4,
+                "operator": "dihedral_tile",
+                "row_factor": 4,
+                "template": "rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity"
+              },
+              "rule_id": "structural-dihedral_tile",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            },
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0006",
+          "unknown_cell_count": 0,
+          "unresolved_unknown": []
+        },
+        "posterior_mass": 1.0,
+        "selected_hypothesis": "compose(identity,dihedral_tile(column_factor=4,row_factor=4,template=rotate_180;rotate_180;rotate_90;rotate_90;rotate_180;rotate_180;rotate_90;rotate_90;rotate_270;rotate_270;identity;identity;rotate_270;rotate_270;identity;identity))",
+        "theory_id": "T0006",
+        "training_exact": true
+      },
+      "step": 190
+    }
+  ],
+  "reasoning_visibility": "explicit observable hypothesis/evidence/revision records only",
+  "schema_version": 1
+}
