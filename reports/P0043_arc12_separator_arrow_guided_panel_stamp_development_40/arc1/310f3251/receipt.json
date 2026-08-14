@@ -1,0 +1,264 @@
+{
+  "agent_input_contract": {
+    "cohort_metadata_passed_to_agent": false,
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "all_cells_match": false,
+  "benchmark": "arc1",
+  "compared_position_count": 144,
+  "controller_oracle_boundary_scan": "pass",
+  "frozen_controller": {
+    "commit": "feff068b8e1e1116427f87f59af4e54b922a1dd1",
+    "source_files": {
+      "scripts/freeze_arc12_filename_holdout.py": "a361fea0022bb047ab244d5a0fa1644cbba3c929d22b41051c344656e9cc8291",
+      "scripts/freeze_arc12_mixed_partition_development.py": "55433553e232a6f536afe43ea1bcbaeefbf700b15c06c9063413c39cc9814514",
+      "scripts/run_arc12_filename_holdout.py": "df34d80ba4e2f5cef70c0b7a24db2ad462130d1a0f37161ce267742a4ed00a3e",
+      "src/arc123/adapters/arc12.py": "db3acb45c794dcc3a1f7cdde2c52a58a2315e11e882c554e4901f876493ffd88",
+      "src/arc123/compatibility.py": "679e3efa3e71aaf9f8b3ca48cfcd517b9b87a3525cdb8db56cd4a3ba509ab8df",
+      "src/arc123/contracts.py": "3acd65973085eca77093dfeaf39adbe4176770e66993d147404d1b184d2001e3",
+      "src/arc123/controller.py": "be91ca1050125ac517f71592595c02ed2e141097067ff0788037673ddc5e0b61",
+      "src/arc123/hypotheses.py": "2400e3550ba029306ce19566a1177e0cbfd736cccd3ba2cd333e3d10a72c4dc4",
+      "src/arc123/model.py": "ba4fc4177414ecea6bced1b0f3866b0c72a1ce09c681c19737dd875a6f55a3ab",
+      "src/arc123/perceptions.py": "a916b0d3961f5b85c853abba67b55bf0dfa8e6a1b24d1b139768a3836218b82a",
+      "src/arc123/relational.py": "230c2f4c8321d3465b7680db3fa9678fbee1a34183b4665765b64ac382e2dfc2",
+      "src/arc123/theory.py": "552e089498773809005849fb39e88b18bd633bd0e8d3e0b5653d54ce14045f01",
+      "src/arc123/traces.py": "bf36d40aedeac158f7030640eb5646891387e4e8c7b6625cf4d8dad4e4c5c53b",
+      "tests/test_corpus_callosum_palette.py": "e044a05702cf70c38473e2c49d8d71bc19eb2e9353edbdee62af63ca3a69381f",
+      "tests/test_filename_mixed_partition_development_freezer.py": "7bf757334d4cce379ec94c51345ac0d2ade751fa77d04c5af95b2dc553930631",
+      "tests/test_p0042_mixed_partition_cohort.py": "71918a626c7e9a0733a011995d7dcd9e1192ceec9c36880afcc8e72a661d9abe",
+      "tests/test_separator_arrow_guided_panel_stamp.py": "5c96a015351bcd46d669c23fdb7c15c20154f367922e03e43fcaf995ddab659f"
+    }
+  },
+  "mismatched_cell_count": 144,
+  "packet_id": "P0043-ARC12-SEPARATOR-ARROW-GUIDED-PANEL-STAMP-DEVELOPMENT-40",
+  "posterior_mass": 0.0,
+  "schema_version": 1,
+  "selected_hypothesis": "fallback_identity_complete_grid",
+  "source_commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+  "source_task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/arc_data/arc1/evaluation/310f3251.json",
+  "task_id": "310f3251",
+  "task_split": "evaluation",
+  "test_cases": [
+    {
+      "all_cells_match": false,
+      "compared_position_count": 144,
+      "expected_output": [
+        [
+          0,
+          2,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          4,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          4,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          4,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0
+        ]
+      ],
+      "mismatched_cell_count": 144,
+      "prediction": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          0
+        ]
+      ],
+      "test_index": 0
+    }
+  ],
+  "trace_artifacts": {
+    "corpus_callosum": {
+      "path": "corpus_callosum.svg",
+      "sha256": "fd01a3ae987fcb135d53ddecaa1b0aca22064197d6997f30a6fe5fa92f59035c"
+    },
+    "learning_trace": {
+      "path": "learning_trace.json",
+      "sha256": "e559e09d44c58fc6522a1463498fa07dd6a8792d49399592564421c5426e820b"
+    },
+    "report": {
+      "path": "REPORT.md",
+      "sha256": "56f786ced00ba02156296a8a70a68bdb68c13355d627166a8b8bb48c6331a913"
+    }
+  },
+  "training_exact": false,
+  "used_fallback": true
+}
