@@ -80,6 +80,10 @@ class Hypothesis:
             return self._distinct_color_count_line(input_grid)
         if self.kind == "separated_panel_cellwise_combine":
             return self._separated_panel_cellwise_combine(input_grid)
+        if self.kind == "contiguous_panel_cellwise_combine":
+            return self._contiguous_panel_cellwise_combine(input_grid)
+        if self.kind == "unique_component_crop":
+            return self._unique_component_crop(input_grid)
         if self.kind == "anti_diagonal_nonbackground_stream":
             return self._anti_diagonal_nonbackground_stream(input_grid)
         if self.kind == "symmetric_foreground_quadrant_crop":
@@ -574,6 +578,34 @@ class Hypothesis:
             output.append(tuple(output_row))
         return tuple(output)
 
+    def _contiguous_panel_cellwise_combine(
+        self, input_grid: Grid
+    ) -> Optional[PartialGrid]:
+        """Apply a visible tuple table across three or more contiguous panels."""
+
+        parameters = self.parameter_map
+        axis = str(parameters["axis"])
+        panel_count = int(parameters["panel_count"])
+        table = _decode_multi_panel_table(str(parameters["table"]))
+        panels = _contiguous_equal_panels(input_grid, axis, panel_count)
+        if panels is None:
+            return None
+        output: list[tuple[int, ...]] = []
+        for panel_rows in zip(*panels):
+            output_row: list[int] = []
+            for panel_colors in zip(*panel_rows):
+                output_color = table.get(tuple(panel_colors))
+                if output_color is None:
+                    return None
+                output_row.append(output_color)
+            output.append(tuple(output_row))
+        return tuple(output)
+
+    def _unique_component_crop(self, input_grid: Grid) -> Optional[PartialGrid]:
+        """Return the sole non-background 4-connected crop without a duplicate."""
+
+        return _unique_duplicate_component_crop(input_grid)
+
     def _anti_diagonal_nonbackground_stream(
         self, input_grid: Grid
     ) -> Optional[PartialGrid]:
@@ -917,6 +949,35 @@ def _separated_equal_panels(
     raise ValueError(f"unknown separated panel axis: {axis}")
 
 
+def _contiguous_equal_panels(
+    input_grid: Grid, axis: str, panel_count: int
+) -> Optional[tuple[Grid, ...]]:
+    """Split three or more equal panels without inferring divider semantics."""
+
+    if panel_count < 3:
+        return None
+    height = len(input_grid)
+    width = len(input_grid[0])
+    length = width if axis == "vertical" else height
+    if length < panel_count or length % panel_count:
+        return None
+    panel_span = length // panel_count
+    if axis == "vertical":
+        return tuple(
+            tuple(
+                tuple(row[start_column : start_column + panel_span])
+                for row in input_grid
+            )
+            for start_column in range(0, width, panel_span)
+        )
+    if axis == "horizontal":
+        return tuple(
+            tuple(input_grid[start_row : start_row + panel_span])
+            for start_row in range(0, height, panel_span)
+        )
+    raise ValueError(f"unknown contiguous panel axis: {axis}")
+
+
 def _encode_cellwise_table(table: dict[tuple[int, int], int]) -> str:
     return ";".join(
         f"{first_color}:{second_color}:{output_color}"
@@ -976,6 +1037,61 @@ def _unique_background_color(input_grid: Grid) -> Optional[int]:
     maximum_count = max(counts.values())
     candidates = [color for color, count in counts.items() if count == maximum_count]
     return candidates[0] if len(candidates) == 1 else None
+
+
+def _unique_duplicate_component_crop(input_grid: Grid) -> Optional[Grid]:
+    """Extract the sole color-sensitive 4-connected foreground crop without a peer."""
+
+    background = _unique_background_color(input_grid)
+    if background is None:
+        return None
+    height = len(input_grid)
+    width = len(input_grid[0])
+    visited: set[tuple[int, int]] = set()
+    crops: list[Grid] = []
+    for row_index in range(height):
+        for column_index in range(width):
+            start = (row_index, column_index)
+            if start in visited or input_grid[row_index][column_index] == background:
+                continue
+            pending = [start]
+            visited.add(start)
+            cells: list[tuple[int, int]] = []
+            while pending:
+                row, column = pending.pop()
+                cells.append((row, column))
+                for row_offset, column_offset in ((-1, 0), (0, -1), (0, 1), (1, 0)):
+                    neighbor = (row + row_offset, column + column_offset)
+                    if (
+                        neighbor[0] < 0
+                        or neighbor[0] >= height
+                        or neighbor[1] < 0
+                        or neighbor[1] >= width
+                        or neighbor in visited
+                        or input_grid[neighbor[0]][neighbor[1]] == background
+                    ):
+                        continue
+                    visited.add(neighbor)
+                    pending.append(neighbor)
+            rows = [row for row, _ in cells]
+            columns = [column for _, column in cells]
+            top, bottom = min(rows), max(rows)
+            left, right = min(columns), max(columns)
+            crops.append(
+                tuple(
+                    tuple(input_grid[row][column] for column in range(left, right + 1))
+                    for row in range(top, bottom + 1)
+                )
+            )
+    if len(crops) < 3:
+        return None
+    counts: dict[Grid, int] = {}
+    for crop in crops:
+        counts[crop] = counts.get(crop, 0) + 1
+    unique_crops = [crop for crop, count in counts.items() if count == 1]
+    if len(unique_crops) != 1 or any(count not in {1, 2} for count in counts.values()):
+        return None
+    return unique_crops[0]
 
 
 def _unique_foreground_bbox(
@@ -1600,6 +1716,90 @@ def _separated_panel_cellwise_combine_candidates(
     return candidates if len(candidates) == 1 else []
 
 
+def _contiguous_panel_cellwise_combine_candidates(
+    training_pairs: Sequence[TrainingPair],
+) -> list[Hypothesis]:
+    """Infer one visible tuple table over equally sized contiguous panels."""
+
+    if not training_pairs:
+        return []
+    candidates: list[Hypothesis] = []
+    for axis in ("vertical", "horizontal"):
+        panel_counts: set[int] = set()
+        valid = True
+        for input_grid, output_grid in training_pairs:
+            input_length = len(input_grid[0]) if axis == "vertical" else len(input_grid)
+            output_length = len(output_grid[0]) if axis == "vertical" else len(output_grid)
+            input_cross_length = len(input_grid) if axis == "vertical" else len(input_grid[0])
+            output_cross_length = len(output_grid) if axis == "vertical" else len(output_grid[0])
+            if (
+                input_cross_length != output_cross_length
+                or output_length < 1
+                or input_length % output_length
+            ):
+                valid = False
+                break
+            panel_count = input_length // output_length
+            if panel_count < 3:
+                valid = False
+                break
+            panel_counts.add(panel_count)
+        if not valid or len(panel_counts) != 1:
+            continue
+        panel_count = next(iter(panel_counts))
+        table: dict[tuple[int, ...], int] = {}
+        for input_grid, output_grid in training_pairs:
+            panels = _contiguous_equal_panels(input_grid, axis, panel_count)
+            if panels is None:
+                valid = False
+                break
+            for panel_rows, output_row in zip(zip(*panels), output_grid):
+                for panel_colors, output_color in zip(zip(*panel_rows), output_row):
+                    key = tuple(panel_colors)
+                    prior = table.get(key)
+                    if prior is not None and prior != output_color:
+                        valid = False
+                        break
+                    table[key] = output_color
+                if not valid:
+                    break
+            if not valid:
+                break
+        if not valid or not table:
+            continue
+        hypothesis = Hypothesis(
+            "contiguous_panel_cellwise_combine",
+            _parameter_tuple(
+                axis=axis,
+                panel_count=panel_count,
+                table=_encode_multi_panel_table(table),
+            ),
+            description_length=4 + panel_count + len(table),
+        )
+        if all(
+            hypothesis.predict(input_grid) == _full(output_grid)
+            for input_grid, output_grid in training_pairs
+        ):
+            candidates.append(hypothesis)
+    return candidates if len(candidates) == 1 else []
+
+
+def _unique_component_crop_candidates(
+    training_pairs: Sequence[TrainingPair],
+) -> list[Hypothesis]:
+    """Retain duplicate-aware 4-connected crop selection only under full agreement."""
+
+    if not training_pairs:
+        return []
+    hypothesis = Hypothesis("unique_component_crop", description_length=6)
+    if all(
+        hypothesis.predict(input_grid) == _full(output_grid)
+        for input_grid, output_grid in training_pairs
+    ):
+        return [hypothesis]
+    return []
+
+
 def _anti_diagonal_nonbackground_stream_candidates(
     training_pairs: Sequence[TrainingPair],
 ) -> list[Hypothesis]:
@@ -1787,6 +1987,8 @@ def propose_base_hypotheses(
                 "singleton_foreground_border",
                 "distinct_color_count_line",
                 "separated_panel_cellwise_combine",
+                "contiguous_panel_cellwise_combine",
+                "unique_component_crop",
                 "anti_diagonal_nonbackground_stream",
                 "symmetric_foreground_quadrant_crop",
                 "uniform_block_self_stamp_fractal",
@@ -1851,6 +2053,10 @@ def propose_base_hypotheses(
         candidates.extend(_distinct_color_count_line_candidates(training_pairs))
     if "separated_panel_cellwise_combine" in enabled:
         candidates.extend(_separated_panel_cellwise_combine_candidates(training_pairs))
+    if "contiguous_panel_cellwise_combine" in enabled:
+        candidates.extend(_contiguous_panel_cellwise_combine_candidates(training_pairs))
+    if "unique_component_crop" in enabled:
+        candidates.extend(_unique_component_crop_candidates(training_pairs))
     if "anti_diagonal_nonbackground_stream" in enabled:
         candidates.extend(_anti_diagonal_nonbackground_stream_candidates(training_pairs))
     if "symmetric_foreground_quadrant_crop" in enabled:

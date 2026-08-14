@@ -674,6 +674,134 @@ class IterativeHypothesisLearnerTests(unittest.TestCase):
         )
         self.assertIsNone(candidate.predict(((2, 0, 9, 0, 0, 9, 0, 0),)))
 
+    def test_contiguous_panel_combine_learns_visible_tuple_table(self) -> None:
+        environment = self._environment(
+            [
+                {
+                    "input": [
+                        [0, 1], [2, 3], [1, 2], [3, 0],
+                        [2, 3], [0, 1], [3, 0], [1, 2],
+                    ],
+                    "output": [[4, 5], [6, 7]],
+                },
+                {
+                    "input": [
+                        [2, 3], [0, 1], [3, 0], [1, 2],
+                        [0, 1], [2, 3], [1, 2], [3, 0],
+                    ],
+                    "output": [[6, 7], [4, 5]],
+                },
+            ],
+            [
+                {
+                    "input": [
+                        [3, 2], [1, 0], [0, 3], [2, 1],
+                        [1, 0], [3, 2], [2, 1], [0, 3],
+                    ],
+                    "output": [[7, 6], [5, 4]],
+                }
+            ],
+        )
+
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "contiguous_panel_cellwise_combine"),
+            candidate_limit=12,
+            beam_width=8,
+        ).solve(environment, "synthetic-contiguous-panel-combine")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertIn("contiguous_panel_cellwise_combine", result.selected_hypothesis)
+        self.assertEqual(result.predictions[0], ((7, 6), (5, 4)))
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+
+        candidate = next(
+            item
+            for item in propose_base_hypotheses(
+                environment.training_pairs, ("contiguous_panel_cellwise_combine",)
+            )
+            if item.kind == "contiguous_panel_cellwise_combine"
+        )
+        self.assertIsNone(
+            candidate.predict(
+                (
+                    (3, 2), (1, 0), (0, 3), (2, 1),
+                    (1, 0), (3, 2), (4, 1), (0, 3),
+                )
+            )
+        )
+        conflicting_output = ((7, 5), (6, 7))
+        self.assertEqual(
+            propose_base_hypotheses(
+                (
+                    environment.training_pairs[0],
+                    (environment.training_pairs[0][0], conflicting_output),
+                ),
+                ("contiguous_panel_cellwise_combine",),
+            ),
+            [],
+        )
+
+    def test_unique_component_crop_uses_duplicate_aware_four_connectivity(self) -> None:
+        environment = self._environment(
+            [
+                {
+                    "input": [
+                        [1, 1, 0, 0, 0, 1, 1, 0, 0, 0],
+                        [1, 1, 0, 0, 0, 1, 1, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 2, 3, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 3, 3, 0, 0, 0, 0, 0],
+                    ],
+                    "output": [[2, 3], [3, 3]],
+                },
+                {
+                    "input": [
+                        [6, 7, 0, 0, 0, 6, 7, 0, 0, 0],
+                        [7, 6, 0, 0, 0, 7, 6, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 8, 9, 8, 0, 0, 0, 0],
+                        [0, 0, 0, 9, 9, 9, 0, 0, 0, 0],
+                    ],
+                    "output": [[8, 9, 8], [9, 9, 9]],
+                },
+            ],
+            [
+                {
+                    "input": [
+                        [4, 4, 4, 0, 0, 0, 0, 4, 4, 4],
+                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 1, 2, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 2, 2, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 2, 1, 0, 0, 0, 0, 0],
+                    ],
+                    "output": [[1, 2], [2, 2], [2, 1]],
+                }
+            ],
+        )
+
+        result = IterativeHypothesisLearner(
+            operator_families=("identity", "unique_component_crop"),
+            candidate_limit=12,
+            beam_width=8,
+        ).solve(environment, "synthetic-unique-component-crop")
+
+        self.assertTrue(result.training_exact)
+        self.assertFalse(result.used_fallback)
+        self.assertEqual(result.selected_hypothesis, "unique_component_crop")
+        self.assertEqual(result.predictions[0], ((1, 2), (2, 2), (2, 1)))
+        self.assertTrue(environment.post_answer_validate(result.predictions)[0]["all_cells_match"])
+
+        diagonal_only = (
+            (1, 0, 0, 0, 1),
+            (0, 0, 0, 0, 0),
+            (0, 2, 0, 0, 0),
+            (0, 0, 3, 0, 0),
+        )
+        self.assertIsNone(Hypothesis("unique_component_crop").predict(diagonal_only))
+        self.assertIsNone(Hypothesis("unique_component_crop").predict(((0, 1), (1, 0))))
+
     def test_anti_diagonal_stream_rederives_dynamic_output_size(self) -> None:
         def stream_output(source_row: list[int]) -> list[list[int]]:
             nonbackground_count = sum(color != 0 for color in source_row)
