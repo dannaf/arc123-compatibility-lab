@@ -74,6 +74,8 @@ class Hypothesis:
             return self._distinct_color_scale(input_grid)
         if self.kind == "quadrant_odd_one_out":
             return self._quadrant_odd_one_out(input_grid)
+        if self.kind == "cross_separator_quadrant_reflection_stamp":
+            return self._cross_separator_quadrant_reflection_stamp(input_grid)
         if self.kind == "repeated_panel_odd_one_out_crop":
             return self._repeated_panel_odd_one_out_crop(input_grid)
         if self.kind == "singleton_foreground_border":
@@ -505,6 +507,13 @@ class Hypothesis:
             if sum(quadrant == other for other in quadrants) == 1
         ]
         return unique[0] if len(unique) == 1 else None
+
+    def _cross_separator_quadrant_reflection_stamp(
+        self, input_grid: Grid
+    ) -> Optional[PartialGrid]:
+        """Reflect one cross-separated payload quadrant into a full colored stamp."""
+
+        return _cross_separator_quadrant_reflection_stamp(input_grid)
 
     def _repeated_panel_odd_one_out_crop(
         self, input_grid: Grid
@@ -1239,6 +1248,66 @@ def _central_equal_quadrants(input_grid: Grid) -> Optional[tuple[Grid, Grid, Gri
     return top_left, top_right, bottom_left, bottom_right
 
 
+def _cross_separator_quadrant_reflection_stamp(input_grid: Grid) -> Optional[Grid]:
+    """Expand one colored quadrant through a uniform structural cross.
+
+    Three equal quadrants must be the same uniform background. The remaining
+    quadrant has exactly one payload color, which is reflected into all four
+    output quadrants and recolored to the cross color. Any competing payload,
+    background, or separator interpretation is refused.
+    """
+
+    quadrants = _central_equal_quadrants(input_grid)
+    if quadrants is None:
+        return None
+    height = len(input_grid)
+    width = len(input_grid[0])
+    separator = input_grid[height // 2][width // 2]
+    panel_colors = [
+        {color for row in quadrant for color in row}
+        for quadrant in quadrants
+    ]
+    active_indices = [index for index, colors in enumerate(panel_colors) if len(colors) > 1]
+    if len(active_indices) != 1:
+        return None
+    active_index = active_indices[0]
+    blank_colors = [
+        next(iter(colors))
+        for index, colors in enumerate(panel_colors)
+        if index != active_index and len(colors) == 1
+    ]
+    if len(blank_colors) != 3 or len(set(blank_colors)) != 1:
+        return None
+    background = blank_colors[0]
+    if separator == background:
+        return None
+    active_quadrant = quadrants[active_index]
+    payload_colors = {
+        color for row in active_quadrant for color in row if color != background
+    }
+    if len(payload_colors) != 1 or separator in payload_colors:
+        return None
+    payload = next(iter(payload_colors))
+    stamp = tuple(
+        tuple(separator if color == payload else background for color in row)
+        for row in active_quadrant
+    )
+    flip_left_right = tuple(tuple(reversed(row)) for row in stamp)
+    flip_top_bottom = tuple(reversed(stamp))
+    rotate_180 = tuple(tuple(reversed(row)) for row in reversed(stamp))
+    quadrant_outputs = {
+        0: (stamp, flip_left_right, flip_top_bottom, rotate_180),
+        1: (flip_left_right, stamp, rotate_180, flip_top_bottom),
+        2: (flip_top_bottom, rotate_180, stamp, flip_left_right),
+        3: (rotate_180, flip_top_bottom, flip_left_right, stamp),
+    }[active_index]
+    top_left, top_right, bottom_left, bottom_right = quadrant_outputs
+    return tuple(
+        tuple(left_row + right_row for left_row, right_row in zip(top_left, top_right))
+        + tuple(left_row + right_row for left_row, right_row in zip(bottom_left, bottom_right))
+    )
+
+
 _COUNT_LINE_NAMES = (
     "top_row",
     "bottom_row",
@@ -1688,6 +1757,25 @@ def _quadrant_odd_one_out_candidates(training_pairs: Sequence[TrainingPair]) -> 
     return []
 
 
+def _cross_separator_quadrant_reflection_stamp_candidates(
+    training_pairs: Sequence[TrainingPair],
+) -> list[Hypothesis]:
+    """Retain one structurally unambiguous cross-reflection rule only on full fit."""
+
+    if not training_pairs:
+        return []
+    hypothesis = Hypothesis(
+        "cross_separator_quadrant_reflection_stamp",
+        description_length=7,
+    )
+    if all(
+        hypothesis.predict(input_grid) == _full(output_grid)
+        for input_grid, output_grid in training_pairs
+    ):
+        return [hypothesis]
+    return []
+
+
 def _repeated_panel_odd_one_out_crop_candidates(
     training_pairs: Sequence[TrainingPair],
 ) -> list[Hypothesis]:
@@ -2102,6 +2190,7 @@ def propose_base_hypotheses(
                 "distinct_nonbackground_scale",
                 "distinct_color_scale",
                 "quadrant_odd_one_out",
+                "cross_separator_quadrant_reflection_stamp",
                 "repeated_panel_odd_one_out_crop",
                 "singleton_foreground_border",
                 "distinct_color_count_line",
@@ -2166,6 +2255,10 @@ def propose_base_hypotheses(
         candidates.extend(_distinct_color_scale_candidates(training_pairs))
     if "quadrant_odd_one_out" in enabled:
         candidates.extend(_quadrant_odd_one_out_candidates(training_pairs))
+    if "cross_separator_quadrant_reflection_stamp" in enabled:
+        candidates.extend(
+            _cross_separator_quadrant_reflection_stamp_candidates(training_pairs)
+        )
     if "repeated_panel_odd_one_out_crop" in enabled:
         candidates.extend(_repeated_panel_odd_one_out_crop_candidates(training_pairs))
     if "singleton_foreground_border" in enabled:

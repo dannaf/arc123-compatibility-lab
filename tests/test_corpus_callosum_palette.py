@@ -9,7 +9,7 @@ from pathlib import Path
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPOSITORY_ROOT / "src"))
 
-from arc123.traces import render_corpus_callosum_svg
+from arc123.traces import _operator_label, render_corpus_callosum_svg
 
 
 class CorpusCallosumPaletteTests(unittest.TestCase):
@@ -27,6 +27,16 @@ class CorpusCallosumPaletteTests(unittest.TestCase):
 
         self.assertIn('fill="#111827"', svg)
         self.assertIn('fill="#d946ef"', svg)
+
+    def test_long_structural_operator_labels_remain_readable(self) -> None:
+        self.assertEqual(
+            _operator_label("central_separator_cellwise_combine(axis=vertical,table=0:0:0)"),
+            "central-separator merge",
+        )
+        self.assertEqual(
+            _operator_label("cross_separator_quadrant_reflection_stamp"),
+            "cross-quadrant reflection",
+        )
 
 
 if __name__ == "__main__":

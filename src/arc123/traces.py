@@ -69,6 +69,10 @@ def _operator_label(selected_hypothesis: str) -> str:
         return "identity fallback"
     if "dihedral_tile" in selected_hypothesis:
         return "dihedral macro-tile"
+    if "central_separator_cellwise_combine" in selected_hypothesis:
+        return "central-separator merge"
+    if "cross_separator_quadrant_reflection_stamp" in selected_hypothesis:
+        return "cross-quadrant reflection"
     if "repeated_panel_odd_one_out_crop" in selected_hypothesis:
         return "odd repeated-panel crop"
     operator = selected_hypothesis.split("(", 1)[0]
