@@ -81,6 +81,8 @@ def _operator_label(selected_hypothesis: str) -> str:
         return "cross-quadrant reflection"
     if "repeated_panel_odd_one_out_crop" in selected_hypothesis:
         return "odd repeated-panel crop"
+    if "uniform_frame_size_fill" in selected_hypothesis:
+        return "frame-size interior fill"
     if "symmetric_foreground_quadrant_crop" in selected_hypothesis:
         return "symmetric quadrant crop"
     if "uniform_block_self_stamp_fractal" in selected_hypothesis:

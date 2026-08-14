@@ -7,7 +7,7 @@ from math import isqrt
 from typing import Optional, Sequence
 
 from .model import Grid, PartialGrid, TrainingPair
-from .perceptions import background_color, color_inventory
+from .perceptions import background_color, color_inventory, connected_components
 
 
 def _full(grid: Grid) -> PartialGrid:
@@ -64,6 +64,8 @@ class Hypothesis:
             return self._self_contained_subset_crop(input_grid)
         if self.kind == "frame_interior_crop":
             return self._frame_interior_crop(input_grid)
+        if self.kind == "uniform_frame_size_fill":
+            return self._uniform_frame_size_fill(input_grid)
         if self.kind == "central_separator_cellwise_combine":
             return self._central_separator_cellwise_combine(input_grid)
         if self.kind == "adjacent_bilateral_cellwise_combine":
@@ -421,6 +423,26 @@ class Hypothesis:
             tuple(input_grid[row_index][column_index] for column_index in range(left + 1, right))
             for row_index in range(top + 1, bottom)
         )
+
+    def _uniform_frame_size_fill(self, input_grid: Grid) -> Optional[PartialGrid]:
+        """Fill each unambiguous hollow frame from its learned interior-size role."""
+
+        fill_map = _decode_frame_size_fill_map(str(self.parameter_map["fill_map"]))
+        if len(fill_map) < 2:
+            return None
+        frames = _uniform_hollow_frame_components(input_grid)
+        if frames is None or len(frames) < 2:
+            return None
+        output = [list(row) for row in input_grid]
+        for top, left, bottom, right in frames:
+            interior_shape = (bottom - top - 1, right - left - 1)
+            fill_color = fill_map.get(interior_shape)
+            if fill_color is None:
+                return None
+            for row_index in range(top + 1, bottom):
+                for column_index in range(left + 1, right):
+                    output[row_index][column_index] = fill_color
+        return tuple(tuple(row) for row in output)
 
     def _central_separator_cellwise_combine(
         self, input_grid: Grid
@@ -898,6 +920,37 @@ def _unique_largest_uniform_frame(
     return maximum_frames[0] if len(maximum_frames) == 1 else None
 
 
+def _uniform_hollow_frame_components(
+    input_grid: Grid,
+) -> Optional[tuple[tuple[int, int, int, int], ...]]:
+    """Find disjoint monochrome rectangular perimeters around modal-background slots."""
+
+    background = _unique_background_color(input_grid)
+    if background is None:
+        return None
+    frames: list[tuple[int, int, int, int]] = []
+    for component in connected_components(input_grid):
+        top, left, bottom, right = component.bbox
+        if bottom - top < 2 or right - left < 2:
+            continue
+        perimeter = {
+            (row_index, column_index)
+            for row_index in range(top, bottom + 1)
+            for column_index in range(left, right + 1)
+            if row_index in {top, bottom} or column_index in {left, right}
+        }
+        if set(component.cells) != perimeter:
+            continue
+        if any(
+            input_grid[row_index][column_index] != background
+            for row_index in range(top + 1, bottom)
+            for column_index in range(left + 1, right)
+        ):
+            return None
+        frames.append((top, left, bottom, right))
+    return tuple(frames)
+
+
 def _central_separator_panels(
     input_grid: Grid, axis: str
 ) -> Optional[tuple[Grid, Grid]]:
@@ -1096,6 +1149,39 @@ def _decode_cellwise_table(encoded: str) -> dict[tuple[int, int], int]:
             raise ValueError("cellwise table assigns conflicting outputs")
         table[pair] = output_color
     return table
+
+
+def _encode_frame_size_fill_map(mapping: dict[tuple[int, int], int]) -> str:
+    return ";".join(
+        f"{height}x{width}:{color}"
+        for (height, width), color in sorted(mapping.items())
+    )
+
+
+def _decode_frame_size_fill_map(encoded: str) -> dict[tuple[int, int], int]:
+    if not encoded:
+        raise ValueError("frame size fill map must not be empty")
+    mapping: dict[tuple[int, int], int] = {}
+    for entry in encoded.split(";"):
+        raw_shape, separator, raw_color = entry.partition(":")
+        raw_height, shape_separator, raw_width = raw_shape.partition("x")
+        if (
+            not separator
+            or not shape_separator
+            or not raw_height
+            or not raw_width
+            or not raw_color
+        ):
+            raise ValueError("frame size fill map entry is malformed")
+        interior_shape = (int(raw_height), int(raw_width))
+        if interior_shape[0] < 1 or interior_shape[1] < 1:
+            raise ValueError("frame interior dimensions must be positive")
+        fill_color = int(raw_color)
+        prior = mapping.get(interior_shape)
+        if prior is not None and prior != fill_color:
+            raise ValueError("frame size fill map assigns conflicting colors")
+        mapping[interior_shape] = fill_color
+    return mapping
 
 
 def _encode_multi_panel_table(table: dict[tuple[int, ...], int]) -> str:
@@ -1601,6 +1687,50 @@ def _frame_interior_crop_candidates(training_pairs: Sequence[TrainingPair]) -> l
     if not training_pairs:
         return []
     hypothesis = Hypothesis("frame_interior_crop", description_length=5)
+    if all(
+        hypothesis.predict(input_grid) == _full(output_grid)
+        for input_grid, output_grid in training_pairs
+    ):
+        return [hypothesis]
+    return []
+
+
+def _uniform_frame_size_fill_candidates(
+    training_pairs: Sequence[TrainingPair],
+) -> list[Hypothesis]:
+    """Learn only conflict-free frame-interior colors from visible size roles."""
+
+    if not training_pairs or not _same_shape_training_pairs(training_pairs):
+        return []
+    fill_map: dict[tuple[int, int], int] = {}
+    for input_grid, output_grid in training_pairs:
+        background = _unique_background_color(input_grid)
+        frames = _uniform_hollow_frame_components(input_grid)
+        if background is None or frames is None or len(frames) < 2:
+            return []
+        for top, left, bottom, right in frames:
+            interior_colors = {
+                output_grid[row_index][column_index]
+                for row_index in range(top + 1, bottom)
+                for column_index in range(left + 1, right)
+            }
+            if len(interior_colors) != 1:
+                return []
+            fill_color = next(iter(interior_colors))
+            if fill_color == background:
+                return []
+            interior_shape = (bottom - top - 1, right - left - 1)
+            prior = fill_map.get(interior_shape)
+            if prior is not None and prior != fill_color:
+                return []
+            fill_map[interior_shape] = fill_color
+    if len(fill_map) < 2:
+        return []
+    hypothesis = Hypothesis(
+        "uniform_frame_size_fill",
+        _parameter_tuple(fill_map=_encode_frame_size_fill_map(fill_map)),
+        description_length=5 + len(fill_map),
+    )
     if all(
         hypothesis.predict(input_grid) == _full(output_grid)
         for input_grid, output_grid in training_pairs
@@ -2185,6 +2315,7 @@ def propose_base_hypotheses(
                 "axis_mode_denoise",
                 "self_contained_subset_crop",
                 "frame_interior_crop",
+                "uniform_frame_size_fill",
                 "central_separator_cellwise_combine",
                 "adjacent_bilateral_cellwise_combine",
                 "distinct_nonbackground_scale",
@@ -2245,6 +2376,8 @@ def propose_base_hypotheses(
         candidates.extend(_self_contained_subset_crop_candidates(training_pairs))
     if "frame_interior_crop" in enabled:
         candidates.extend(_frame_interior_crop_candidates(training_pairs))
+    if "uniform_frame_size_fill" in enabled:
+        candidates.extend(_uniform_frame_size_fill_candidates(training_pairs))
     if "central_separator_cellwise_combine" in enabled:
         candidates.extend(_central_separator_cellwise_combine_candidates(training_pairs))
     if "adjacent_bilateral_cellwise_combine" in enabled:

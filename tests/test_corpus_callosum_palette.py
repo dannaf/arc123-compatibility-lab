@@ -47,6 +47,10 @@ class CorpusCallosumPaletteTests(unittest.TestCase):
             _operator_label("distinct_nonbackground_scale"),
             "nonbackground scale",
         )
+        self.assertEqual(
+            _operator_label("uniform_frame_size_fill(fill_map=1x1:6;2x2:7)"),
+            "frame-size interior fill",
+        )
 
 
 if __name__ == "__main__":
