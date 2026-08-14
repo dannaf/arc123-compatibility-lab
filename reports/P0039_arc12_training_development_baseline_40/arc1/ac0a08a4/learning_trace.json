@@ -1,0 +1,7447 @@
+{
+  "episode_id": "P0039-ARC12-TRAINING-DEVELOPMENT-BASELINE-40:anonymous-frozen-measurement",
+  "events": [
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 1,
+          "name": "identity",
+          "operation": "identity",
+          "parameters": {},
+          "rule_id": "identity",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0001"
+      },
+      "step": 0
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 4,
+          "name": "distinct_nonbackground_scale",
+          "operation": "full_operator",
+          "parameters": {
+            "operator": "distinct_nonbackground_scale"
+          },
+          "rule_id": "rule-distinct_nonbackground_scale",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0002"
+      },
+      "step": 1
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 2,
+          "name": "left_right(scope=all)",
+          "operation": "coordinate_transform",
+          "parameters": {
+            "axis": "left_right"
+          },
+          "rule_id": "coordinate-left_right",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0003"
+      },
+      "step": 2
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 2,
+          "name": "top_bottom(scope=all)",
+          "operation": "coordinate_transform",
+          "parameters": {
+            "axis": "top_bottom"
+          },
+          "rule_id": "coordinate-top_bottom",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0004"
+      },
+      "step": 3
+    },
+    {
+      "action": "PROPOSE",
+      "payload": {
+        "parent_theory_id": "T0000",
+        "rule": {
+          "description_length": 2,
+          "name": "rotate_180(scope=all)",
+          "operation": "coordinate_transform",
+          "parameters": {
+            "axis": "rotate_180"
+          },
+          "rule_id": "coordinate-rotate_180",
+          "scope": {
+            "kind": "all",
+            "value": null
+          }
+        },
+        "stage": "initial_generic_theories",
+        "theory_id": "T0005"
+      },
+      "step": 4
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 0,
+        "description_length": 1,
+        "feedback": [
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 0,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 36
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 1,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 81
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 2,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 225
+          }
+        ],
+        "hypothesis": "identity",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 0,
+        "stage": "initial_candidate_pre_beam_compatibility",
+        "theory_id": "T0001",
+        "unknown_cell_count": 342
+      },
+      "step": 5
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 0,
+        "description_length": 4,
+        "feedback": [
+          {
+            "asserted_cell_count": 36,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 0,
+            "exact_support_zero": false,
+            "matching_cell_count": 36,
+            "support_state": "COMPATIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 81,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 1,
+            "exact_support_zero": false,
+            "matching_cell_count": 81,
+            "support_state": "COMPATIBLE",
+            "unknown_cell_count": 0
+          },
+          {
+            "asserted_cell_count": 225,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 2,
+            "exact_support_zero": false,
+            "matching_cell_count": 225,
+            "support_state": "COMPATIBLE",
+            "unknown_cell_count": 0
+          }
+        ],
+        "hypothesis": "distinct_nonbackground_scale",
+        "is_partial_compatible": false,
+        "is_training_exact": true,
+        "matching_cell_count": 342,
+        "stage": "initial_candidate_pre_beam_compatibility",
+        "theory_id": "T0002",
+        "unknown_cell_count": 0
+      },
+      "step": 6
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 0,
+        "description_length": 2,
+        "feedback": [
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 0,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 36
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 1,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 81
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 2,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 225
+          }
+        ],
+        "hypothesis": "left_right(scope=all)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 0,
+        "stage": "initial_candidate_pre_beam_compatibility",
+        "theory_id": "T0003",
+        "unknown_cell_count": 342
+      },
+      "step": 7
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 0,
+        "description_length": 2,
+        "feedback": [
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 0,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 36
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 1,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 81
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 2,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 225
+          }
+        ],
+        "hypothesis": "top_bottom(scope=all)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 0,
+        "stage": "initial_candidate_pre_beam_compatibility",
+        "theory_id": "T0004",
+        "unknown_cell_count": 342
+      },
+      "step": 8
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "contradiction_count": 0,
+        "description_length": 2,
+        "feedback": [
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 0,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 36
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 1,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 81
+          },
+          {
+            "asserted_cell_count": 0,
+            "contradiction_count": 0,
+            "counterexamples": [],
+            "demo_index": 2,
+            "exact_support_zero": false,
+            "matching_cell_count": 0,
+            "support_state": "UNKNOWN",
+            "unknown_cell_count": 225
+          }
+        ],
+        "hypothesis": "rotate_180(scope=all)",
+        "is_partial_compatible": false,
+        "is_training_exact": false,
+        "matching_cell_count": 0,
+        "stage": "initial_candidate_pre_beam_compatibility",
+        "theory_id": "T0005",
+        "unknown_cell_count": 342
+      },
+      "step": 9
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 225,
+          "color_delta": 0,
+          "color_inventory": 6
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 2,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0002"
+      },
+      "step": 10
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0002"
+      },
+      "step": 11
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 225,
+        "rule_count": 1,
+        "theory_id": "T0002",
+        "theory_name": "distinct_nonbackground_scale"
+      },
+      "step": 12
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 4,
+          "evaluated_demo_indices": [
+            2
+          ],
+          "matching_cell_count": 225,
+          "name": "distinct_nonbackground_scale",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 4,
+              "name": "distinct_nonbackground_scale",
+              "operation": "full_operator",
+              "parameters": {
+                "operator": "distinct_nonbackground_scale"
+              },
+              "rule_id": "rule-distinct_nonbackground_scale",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 2,
+        "explained_cell_count": 225,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 225,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 225,
+          "observation_id": "arc12-demo:2",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 13
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          2
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0002"
+      },
+      "step": 14
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0002"
+      },
+      "step": 15
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 81,
+        "rule_count": 1,
+        "theory_id": "T0002",
+        "theory_name": "distinct_nonbackground_scale"
+      },
+      "step": 16
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 4,
+          "evaluated_demo_indices": [
+            1,
+            2
+          ],
+          "matching_cell_count": 306,
+          "name": "distinct_nonbackground_scale",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 4,
+              "name": "distinct_nonbackground_scale",
+              "operation": "full_operator",
+              "parameters": {
+                "operator": "distinct_nonbackground_scale"
+              },
+              "rule_id": "rule-distinct_nonbackground_scale",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 1,
+        "explained_cell_count": 81,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 81,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 81,
+          "observation_id": "arc12-demo:1",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 17
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 36,
+          "color_delta": 0,
+          "color_inventory": 3
+        },
+        "previously_observed_demos": [
+          1,
+          2
+        ],
+        "selected_demo": 0,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0002"
+      },
+      "step": 18
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0002"
+      },
+      "step": 19
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 36,
+        "rule_count": 1,
+        "theory_id": "T0002",
+        "theory_name": "distinct_nonbackground_scale"
+      },
+      "step": 20
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 4,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 342,
+          "name": "distinct_nonbackground_scale",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 4,
+              "name": "distinct_nonbackground_scale",
+              "operation": "full_operator",
+              "parameters": {
+                "operator": "distinct_nonbackground_scale"
+              },
+              "rule_id": "rule-distinct_nonbackground_scale",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown_count": 0
+        },
+        "demo_index": 0,
+        "explained_cell_count": 36,
+        "residual_cell_count": 0,
+        "support": {
+          "asserted_cell_count": 36,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 36,
+          "observation_id": "arc12-demo:0",
+          "support_state": "COMPATIBLE",
+          "unknown_cell_count": 0
+        },
+        "theory_id": "T0002"
+      },
+      "step": 21
+    },
+    {
+      "action": "PROMOTE_CONSTRAINT",
+      "payload": {
+        "evaluated_demo_count": 3,
+        "rule_count": 1,
+        "status": "complete_training_compatibility_after_revision",
+        "theory_id": "T0002"
+      },
+      "step": 22
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 225,
+          "color_delta": 0,
+          "color_inventory": 6
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 2,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 23
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0001"
+      },
+      "step": 24
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 25
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 225,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 2,
+        "explained_cell_count": 4,
+        "residual_cell_count": 221,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 225
+        },
+        "theory_id": "T0001"
+      },
+      "step": 26
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 225,
+          "color_delta": 0,
+          "color_inventory": 6
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 2,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 27
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0003"
+      },
+      "step": 28
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0003",
+        "theory_name": "left_right(scope=all)"
+      },
+      "step": 29
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "left_right(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 225,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 2,
+        "explained_cell_count": 4,
+        "residual_cell_count": 221,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 225
+        },
+        "theory_id": "T0003"
+      },
+      "step": 30
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 225,
+          "color_delta": 0,
+          "color_inventory": 6
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 2,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 31
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0004"
+      },
+      "step": 32
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0004",
+        "theory_name": "top_bottom(scope=all)"
+      },
+      "step": 33
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "top_bottom(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 225,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 2,
+        "explained_cell_count": 4,
+        "residual_cell_count": 221,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 225
+        },
+        "theory_id": "T0004"
+      },
+      "step": 34
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 225,
+          "color_delta": 0,
+          "color_inventory": 6
+        },
+        "previously_observed_demos": [],
+        "selected_demo": 2,
+        "selection_basis": "initial_highest_observed_change_and_color_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 35
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "initial_highest_observed_change_and_color_discrimination",
+        "selected_demo": 2,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0005"
+      },
+      "step": 36
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 2,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0005",
+        "theory_name": "rotate_180(scope=all)"
+      },
+      "step": 37
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "rotate_180(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 2,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 225,
+          "unresolved_unknown_count": 1
+        },
+        "demo_index": 2,
+        "explained_cell_count": 4,
+        "residual_cell_count": 221,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:2",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 225
+        },
+        "theory_id": "T0005"
+      },
+      "step": 38
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          2
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 39
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0001"
+      },
+      "step": 40
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 41
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 306,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 1,
+        "explained_cell_count": 6,
+        "residual_cell_count": 75,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 81
+        },
+        "theory_id": "T0001"
+      },
+      "step": 42
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          2
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 43
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0003"
+      },
+      "step": 44
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0003",
+        "theory_name": "left_right(scope=all)"
+      },
+      "step": 45
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "left_right(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 306,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 1,
+        "explained_cell_count": 6,
+        "residual_cell_count": 75,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 81
+        },
+        "theory_id": "T0003"
+      },
+      "step": 46
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          2
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 47
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0004"
+      },
+      "step": 48
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0004",
+        "theory_name": "top_bottom(scope=all)"
+      },
+      "step": 49
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "top_bottom(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 306,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 1,
+        "explained_cell_count": 6,
+        "residual_cell_count": 75,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 81
+        },
+        "theory_id": "T0004"
+      },
+      "step": 50
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 81,
+          "color_delta": 0,
+          "color_inventory": 4
+        },
+        "previously_observed_demos": [
+          2
+        ],
+        "selected_demo": 1,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 51
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 1,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0005"
+      },
+      "step": 52
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 1,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0005",
+        "theory_name": "rotate_180(scope=all)"
+      },
+      "step": 53
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "rotate_180(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 3,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 306,
+          "unresolved_unknown_count": 2
+        },
+        "demo_index": 1,
+        "explained_cell_count": 6,
+        "residual_cell_count": 75,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:1",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 81
+        },
+        "theory_id": "T0005"
+      },
+      "step": 54
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 36,
+          "color_delta": 0,
+          "color_inventory": 3
+        },
+        "previously_observed_demos": [
+          1,
+          2
+        ],
+        "selected_demo": 0,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0001"
+      },
+      "step": 55
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0001"
+      },
+      "step": 56
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 0,
+        "rule_count": 1,
+        "theory_id": "T0001",
+        "theory_name": "identity"
+      },
+      "step": 57
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 342,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 0,
+        "explained_cell_count": 5,
+        "residual_cell_count": 31,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 36
+        },
+        "theory_id": "T0001"
+      },
+      "step": 58
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 36,
+          "color_delta": 0,
+          "color_inventory": 3
+        },
+        "previously_observed_demos": [
+          1,
+          2
+        ],
+        "selected_demo": 0,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0003"
+      },
+      "step": 59
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0003"
+      },
+      "step": 60
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0003",
+        "theory_name": "left_right(scope=all)"
+      },
+      "step": 61
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "left_right(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 342,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 0,
+        "explained_cell_count": 4,
+        "residual_cell_count": 32,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 36
+        },
+        "theory_id": "T0003"
+      },
+      "step": 62
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 36,
+          "color_delta": 0,
+          "color_inventory": 3
+        },
+        "previously_observed_demos": [
+          1,
+          2
+        ],
+        "selected_demo": 0,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0004"
+      },
+      "step": 63
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0004"
+      },
+      "step": 64
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0004",
+        "theory_name": "top_bottom(scope=all)"
+      },
+      "step": 65
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "top_bottom(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 342,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 0,
+        "explained_cell_count": 3,
+        "residual_cell_count": 33,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 36
+        },
+        "theory_id": "T0004"
+      },
+      "step": 66
+    },
+    {
+      "action": "CHOOSE_NEXT_DEMO",
+      "payload": {
+        "information_score": {
+          "changed_cells": 36,
+          "color_delta": 0,
+          "color_inventory": 3
+        },
+        "previously_observed_demos": [
+          1,
+          2
+        ],
+        "selected_demo": 0,
+        "selection_basis": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "theory_id": "T0005"
+      },
+      "step": 67
+    },
+    {
+      "action": "ATTEND",
+      "payload": {
+        "reason": "unseen_demo_selected_for_residual_version_space_discrimination",
+        "selected_demo": 0,
+        "selected_region": {
+          "region": "whole_demo"
+        },
+        "theory_id": "T0005"
+      },
+      "step": 68
+    },
+    {
+      "action": "APPLY_HYPOTHESIS",
+      "payload": {
+        "demo_index": 0,
+        "partial_prediction_known_cells": 9,
+        "rule_count": 1,
+        "theory_id": "T0005",
+        "theory_name": "rotate_180(scope=all)"
+      },
+      "step": 69
+    },
+    {
+      "action": "COMPARE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexample_count": 0,
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "matching_cell_count": 0,
+          "name": "rotate_180(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "revision_count": 4,
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 342,
+          "unresolved_unknown_count": 3
+        },
+        "demo_index": 0,
+        "explained_cell_count": 4,
+        "residual_cell_count": 32,
+        "support": {
+          "asserted_cell_count": 0,
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "exact_support_zero": false,
+          "matching_cell_count": 0,
+          "observation_id": "arc12-demo:0",
+          "support_state": "UNKNOWN",
+          "unknown_cell_count": 36
+        },
+        "theory_id": "T0005"
+      },
+      "step": 70
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 1,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "initial_proposal": true,
+                "operation": "identity"
+              },
+              "target": "identity"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  225,
+                  0,
+                  6
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  0,
+                  4
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  3
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:0"
+            }
+          ],
+          "matching_cell_count": 0,
+          "name": "identity",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 1,
+              "name": "identity",
+              "operation": "identity",
+              "parameters": {},
+              "rule_id": "identity",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0001",
+          "unknown_cell_count": 342,
+          "unresolved_unknown": [
+            {
+              "cell_count": 27,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ]
+              ],
+              "observation_id": "arc12-demo:0",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 72,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ]
+              ],
+              "observation_id": "arc12-demo:1",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 216,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  0,
+                  9
+                ],
+                [
+                  0,
+                  10
+                ],
+                [
+                  0,
+                  11
+                ],
+                [
+                  0,
+                  12
+                ],
+                [
+                  0,
+                  13
+                ],
+                [
+                  0,
+                  14
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  1,
+                  9
+                ],
+                [
+                  1,
+                  10
+                ],
+                [
+                  1,
+                  11
+                ],
+                [
+                  1,
+                  12
+                ],
+                [
+                  1,
+                  13
+                ],
+                [
+                  1,
+                  14
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  2,
+                  9
+                ],
+                [
+                  2,
+                  10
+                ],
+                [
+                  2,
+                  11
+                ],
+                [
+                  2,
+                  12
+                ],
+                [
+                  2,
+                  13
+                ],
+                [
+                  2,
+                  14
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  3,
+                  9
+                ],
+                [
+                  3,
+                  10
+                ],
+                [
+                  3,
+                  11
+                ],
+                [
+                  3,
+                  12
+                ],
+                [
+                  3,
+                  13
+                ],
+                [
+                  3,
+                  14
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  4,
+                  9
+                ],
+                [
+                  4,
+                  10
+                ],
+                [
+                  4,
+                  11
+                ],
+                [
+                  4,
+                  12
+                ],
+                [
+                  4,
+                  13
+                ],
+                [
+                  4,
+                  14
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  5,
+                  9
+                ],
+                [
+                  5,
+                  10
+                ],
+                [
+                  5,
+                  11
+                ],
+                [
+                  5,
+                  12
+                ],
+                [
+                  5,
+                  13
+                ],
+                [
+                  5,
+                  14
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  6,
+                  9
+                ],
+                [
+                  6,
+                  10
+                ],
+                [
+                  6,
+                  11
+                ],
+                [
+                  6,
+                  12
+                ],
+                [
+                  6,
+                  13
+                ],
+                [
+                  6,
+                  14
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  7,
+                  9
+                ],
+                [
+                  7,
+                  10
+                ],
+                [
+                  7,
+                  11
+                ],
+                [
+                  7,
+                  12
+                ],
+                [
+                  7,
+                  13
+                ],
+                [
+                  7,
+                  14
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ],
+                [
+                  8,
+                  9
+                ],
+                [
+                  8,
+                  10
+                ],
+                [
+                  8,
+                  11
+                ],
+                [
+                  8,
+                  12
+                ],
+                [
+                  8,
+                  13
+                ],
+                [
+                  8,
+                  14
+                ],
+                [
+                  9,
+                  0
+                ],
+                [
+                  9,
+                  1
+                ],
+                [
+                  9,
+                  2
+                ],
+                [
+                  9,
+                  3
+                ],
+                [
+                  9,
+                  4
+                ],
+                [
+                  9,
+                  5
+                ],
+                [
+                  9,
+                  6
+                ],
+                [
+                  9,
+                  7
+                ],
+                [
+                  9,
+                  8
+                ],
+                [
+                  9,
+                  9
+                ],
+                [
+                  9,
+                  10
+                ],
+                [
+                  9,
+                  11
+                ],
+                [
+                  9,
+                  12
+                ],
+                [
+                  9,
+                  13
+                ],
+                [
+                  9,
+                  14
+                ],
+                [
+                  10,
+                  0
+                ],
+                [
+                  10,
+                  1
+                ],
+                [
+                  10,
+                  2
+                ],
+                [
+                  10,
+                  3
+                ],
+                [
+                  10,
+                  4
+                ],
+                [
+                  10,
+                  5
+                ],
+                [
+                  10,
+                  6
+                ],
+                [
+                  10,
+                  7
+                ],
+                [
+                  10,
+                  8
+                ],
+                [
+                  10,
+                  9
+                ],
+                [
+                  10,
+                  10
+                ],
+                [
+                  10,
+                  11
+                ],
+                [
+                  10,
+                  12
+                ],
+                [
+                  10,
+                  13
+                ],
+                [
+                  10,
+                  14
+                ],
+                [
+                  11,
+                  0
+                ],
+                [
+                  11,
+                  1
+                ],
+                [
+                  11,
+                  2
+                ],
+                [
+                  11,
+                  3
+                ],
+                [
+                  11,
+                  4
+                ],
+                [
+                  11,
+                  5
+                ],
+                [
+                  11,
+                  6
+                ],
+                [
+                  11,
+                  7
+                ],
+                [
+                  11,
+                  8
+                ],
+                [
+                  11,
+                  9
+                ],
+                [
+                  11,
+                  10
+                ],
+                [
+                  11,
+                  11
+                ],
+                [
+                  11,
+                  12
+                ],
+                [
+                  11,
+                  13
+                ],
+                [
+                  11,
+                  14
+                ],
+                [
+                  12,
+                  0
+                ],
+                [
+                  12,
+                  1
+                ],
+                [
+                  12,
+                  2
+                ],
+                [
+                  12,
+                  3
+                ],
+                [
+                  12,
+                  4
+                ],
+                [
+                  12,
+                  5
+                ],
+                [
+                  12,
+                  6
+                ],
+                [
+                  12,
+                  7
+                ],
+                [
+                  12,
+                  8
+                ],
+                [
+                  12,
+                  9
+                ],
+                [
+                  12,
+                  10
+                ],
+                [
+                  12,
+                  11
+                ],
+                [
+                  12,
+                  12
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  12,
+                  14
+                ],
+                [
+                  13,
+                  0
+                ],
+                [
+                  13,
+                  1
+                ],
+                [
+                  13,
+                  2
+                ],
+                [
+                  13,
+                  3
+                ],
+                [
+                  13,
+                  4
+                ],
+                [
+                  13,
+                  5
+                ],
+                [
+                  13,
+                  6
+                ],
+                [
+                  13,
+                  7
+                ],
+                [
+                  13,
+                  8
+                ],
+                [
+                  13,
+                  9
+                ],
+                [
+                  13,
+                  10
+                ],
+                [
+                  13,
+                  11
+                ],
+                [
+                  13,
+                  12
+                ],
+                [
+                  13,
+                  13
+                ],
+                [
+                  13,
+                  14
+                ],
+                [
+                  14,
+                  0
+                ],
+                [
+                  14,
+                  1
+                ],
+                [
+                  14,
+                  2
+                ],
+                [
+                  14,
+                  3
+                ],
+                [
+                  14,
+                  4
+                ],
+                [
+                  14,
+                  5
+                ],
+                [
+                  14,
+                  6
+                ],
+                [
+                  14,
+                  7
+                ],
+                [
+                  14,
+                  8
+                ],
+                [
+                  14,
+                  9
+                ],
+                [
+                  14,
+                  10
+                ],
+                [
+                  14,
+                  11
+                ],
+                [
+                  14,
+                  12
+                ],
+                [
+                  14,
+                  13
+                ],
+                [
+                  14,
+                  14
+                ]
+              ],
+              "observation_id": "arc12-demo:2",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            }
+          ]
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0001"
+      },
+      "step": 71
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "axis": "left_right",
+                "initial_proposal": true,
+                "operation": "coordinate_transform",
+                "scope": {
+                  "kind": "all",
+                  "value": null
+                }
+              },
+              "target": "coordinate-left_right"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  225,
+                  0,
+                  6
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  0,
+                  4
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  3
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:0"
+            }
+          ],
+          "matching_cell_count": 0,
+          "name": "left_right(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "left_right(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "left_right"
+              },
+              "rule_id": "coordinate-left_right",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0003",
+          "unknown_cell_count": 342,
+          "unresolved_unknown": [
+            {
+              "cell_count": 27,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ]
+              ],
+              "observation_id": "arc12-demo:0",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 72,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ]
+              ],
+              "observation_id": "arc12-demo:1",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 216,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  0,
+                  9
+                ],
+                [
+                  0,
+                  10
+                ],
+                [
+                  0,
+                  11
+                ],
+                [
+                  0,
+                  12
+                ],
+                [
+                  0,
+                  13
+                ],
+                [
+                  0,
+                  14
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  1,
+                  9
+                ],
+                [
+                  1,
+                  10
+                ],
+                [
+                  1,
+                  11
+                ],
+                [
+                  1,
+                  12
+                ],
+                [
+                  1,
+                  13
+                ],
+                [
+                  1,
+                  14
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  2,
+                  9
+                ],
+                [
+                  2,
+                  10
+                ],
+                [
+                  2,
+                  11
+                ],
+                [
+                  2,
+                  12
+                ],
+                [
+                  2,
+                  13
+                ],
+                [
+                  2,
+                  14
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  3,
+                  9
+                ],
+                [
+                  3,
+                  10
+                ],
+                [
+                  3,
+                  11
+                ],
+                [
+                  3,
+                  12
+                ],
+                [
+                  3,
+                  13
+                ],
+                [
+                  3,
+                  14
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  4,
+                  9
+                ],
+                [
+                  4,
+                  10
+                ],
+                [
+                  4,
+                  11
+                ],
+                [
+                  4,
+                  12
+                ],
+                [
+                  4,
+                  13
+                ],
+                [
+                  4,
+                  14
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  5,
+                  9
+                ],
+                [
+                  5,
+                  10
+                ],
+                [
+                  5,
+                  11
+                ],
+                [
+                  5,
+                  12
+                ],
+                [
+                  5,
+                  13
+                ],
+                [
+                  5,
+                  14
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  6,
+                  9
+                ],
+                [
+                  6,
+                  10
+                ],
+                [
+                  6,
+                  11
+                ],
+                [
+                  6,
+                  12
+                ],
+                [
+                  6,
+                  13
+                ],
+                [
+                  6,
+                  14
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  7,
+                  9
+                ],
+                [
+                  7,
+                  10
+                ],
+                [
+                  7,
+                  11
+                ],
+                [
+                  7,
+                  12
+                ],
+                [
+                  7,
+                  13
+                ],
+                [
+                  7,
+                  14
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ],
+                [
+                  8,
+                  9
+                ],
+                [
+                  8,
+                  10
+                ],
+                [
+                  8,
+                  11
+                ],
+                [
+                  8,
+                  12
+                ],
+                [
+                  8,
+                  13
+                ],
+                [
+                  8,
+                  14
+                ],
+                [
+                  9,
+                  0
+                ],
+                [
+                  9,
+                  1
+                ],
+                [
+                  9,
+                  2
+                ],
+                [
+                  9,
+                  3
+                ],
+                [
+                  9,
+                  4
+                ],
+                [
+                  9,
+                  5
+                ],
+                [
+                  9,
+                  6
+                ],
+                [
+                  9,
+                  7
+                ],
+                [
+                  9,
+                  8
+                ],
+                [
+                  9,
+                  9
+                ],
+                [
+                  9,
+                  10
+                ],
+                [
+                  9,
+                  11
+                ],
+                [
+                  9,
+                  12
+                ],
+                [
+                  9,
+                  13
+                ],
+                [
+                  9,
+                  14
+                ],
+                [
+                  10,
+                  0
+                ],
+                [
+                  10,
+                  1
+                ],
+                [
+                  10,
+                  2
+                ],
+                [
+                  10,
+                  3
+                ],
+                [
+                  10,
+                  4
+                ],
+                [
+                  10,
+                  5
+                ],
+                [
+                  10,
+                  6
+                ],
+                [
+                  10,
+                  7
+                ],
+                [
+                  10,
+                  8
+                ],
+                [
+                  10,
+                  9
+                ],
+                [
+                  10,
+                  10
+                ],
+                [
+                  10,
+                  11
+                ],
+                [
+                  10,
+                  12
+                ],
+                [
+                  10,
+                  13
+                ],
+                [
+                  10,
+                  14
+                ],
+                [
+                  11,
+                  0
+                ],
+                [
+                  11,
+                  1
+                ],
+                [
+                  11,
+                  2
+                ],
+                [
+                  11,
+                  3
+                ],
+                [
+                  11,
+                  4
+                ],
+                [
+                  11,
+                  5
+                ],
+                [
+                  11,
+                  6
+                ],
+                [
+                  11,
+                  7
+                ],
+                [
+                  11,
+                  8
+                ],
+                [
+                  11,
+                  9
+                ],
+                [
+                  11,
+                  10
+                ],
+                [
+                  11,
+                  11
+                ],
+                [
+                  11,
+                  12
+                ],
+                [
+                  11,
+                  13
+                ],
+                [
+                  11,
+                  14
+                ],
+                [
+                  12,
+                  0
+                ],
+                [
+                  12,
+                  1
+                ],
+                [
+                  12,
+                  2
+                ],
+                [
+                  12,
+                  3
+                ],
+                [
+                  12,
+                  4
+                ],
+                [
+                  12,
+                  5
+                ],
+                [
+                  12,
+                  6
+                ],
+                [
+                  12,
+                  7
+                ],
+                [
+                  12,
+                  8
+                ],
+                [
+                  12,
+                  9
+                ],
+                [
+                  12,
+                  10
+                ],
+                [
+                  12,
+                  11
+                ],
+                [
+                  12,
+                  12
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  12,
+                  14
+                ],
+                [
+                  13,
+                  0
+                ],
+                [
+                  13,
+                  1
+                ],
+                [
+                  13,
+                  2
+                ],
+                [
+                  13,
+                  3
+                ],
+                [
+                  13,
+                  4
+                ],
+                [
+                  13,
+                  5
+                ],
+                [
+                  13,
+                  6
+                ],
+                [
+                  13,
+                  7
+                ],
+                [
+                  13,
+                  8
+                ],
+                [
+                  13,
+                  9
+                ],
+                [
+                  13,
+                  10
+                ],
+                [
+                  13,
+                  11
+                ],
+                [
+                  13,
+                  12
+                ],
+                [
+                  13,
+                  13
+                ],
+                [
+                  13,
+                  14
+                ],
+                [
+                  14,
+                  0
+                ],
+                [
+                  14,
+                  1
+                ],
+                [
+                  14,
+                  2
+                ],
+                [
+                  14,
+                  3
+                ],
+                [
+                  14,
+                  4
+                ],
+                [
+                  14,
+                  5
+                ],
+                [
+                  14,
+                  6
+                ],
+                [
+                  14,
+                  7
+                ],
+                [
+                  14,
+                  8
+                ],
+                [
+                  14,
+                  9
+                ],
+                [
+                  14,
+                  10
+                ],
+                [
+                  14,
+                  11
+                ],
+                [
+                  14,
+                  12
+                ],
+                [
+                  14,
+                  13
+                ],
+                [
+                  14,
+                  14
+                ]
+              ],
+              "observation_id": "arc12-demo:2",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            }
+          ]
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0003"
+      },
+      "step": 72
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "axis": "top_bottom",
+                "initial_proposal": true,
+                "operation": "coordinate_transform",
+                "scope": {
+                  "kind": "all",
+                  "value": null
+                }
+              },
+              "target": "coordinate-top_bottom"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  225,
+                  0,
+                  6
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  0,
+                  4
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  3
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:0"
+            }
+          ],
+          "matching_cell_count": 0,
+          "name": "top_bottom(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "top_bottom(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "top_bottom"
+              },
+              "rule_id": "coordinate-top_bottom",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0004",
+          "unknown_cell_count": 342,
+          "unresolved_unknown": [
+            {
+              "cell_count": 27,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ]
+              ],
+              "observation_id": "arc12-demo:0",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 72,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ]
+              ],
+              "observation_id": "arc12-demo:1",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 216,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  0,
+                  9
+                ],
+                [
+                  0,
+                  10
+                ],
+                [
+                  0,
+                  11
+                ],
+                [
+                  0,
+                  12
+                ],
+                [
+                  0,
+                  13
+                ],
+                [
+                  0,
+                  14
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  1,
+                  9
+                ],
+                [
+                  1,
+                  10
+                ],
+                [
+                  1,
+                  11
+                ],
+                [
+                  1,
+                  12
+                ],
+                [
+                  1,
+                  13
+                ],
+                [
+                  1,
+                  14
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  2,
+                  9
+                ],
+                [
+                  2,
+                  10
+                ],
+                [
+                  2,
+                  11
+                ],
+                [
+                  2,
+                  12
+                ],
+                [
+                  2,
+                  13
+                ],
+                [
+                  2,
+                  14
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  3,
+                  9
+                ],
+                [
+                  3,
+                  10
+                ],
+                [
+                  3,
+                  11
+                ],
+                [
+                  3,
+                  12
+                ],
+                [
+                  3,
+                  13
+                ],
+                [
+                  3,
+                  14
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  4,
+                  9
+                ],
+                [
+                  4,
+                  10
+                ],
+                [
+                  4,
+                  11
+                ],
+                [
+                  4,
+                  12
+                ],
+                [
+                  4,
+                  13
+                ],
+                [
+                  4,
+                  14
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  5,
+                  9
+                ],
+                [
+                  5,
+                  10
+                ],
+                [
+                  5,
+                  11
+                ],
+                [
+                  5,
+                  12
+                ],
+                [
+                  5,
+                  13
+                ],
+                [
+                  5,
+                  14
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  6,
+                  9
+                ],
+                [
+                  6,
+                  10
+                ],
+                [
+                  6,
+                  11
+                ],
+                [
+                  6,
+                  12
+                ],
+                [
+                  6,
+                  13
+                ],
+                [
+                  6,
+                  14
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  7,
+                  9
+                ],
+                [
+                  7,
+                  10
+                ],
+                [
+                  7,
+                  11
+                ],
+                [
+                  7,
+                  12
+                ],
+                [
+                  7,
+                  13
+                ],
+                [
+                  7,
+                  14
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ],
+                [
+                  8,
+                  9
+                ],
+                [
+                  8,
+                  10
+                ],
+                [
+                  8,
+                  11
+                ],
+                [
+                  8,
+                  12
+                ],
+                [
+                  8,
+                  13
+                ],
+                [
+                  8,
+                  14
+                ],
+                [
+                  9,
+                  0
+                ],
+                [
+                  9,
+                  1
+                ],
+                [
+                  9,
+                  2
+                ],
+                [
+                  9,
+                  3
+                ],
+                [
+                  9,
+                  4
+                ],
+                [
+                  9,
+                  5
+                ],
+                [
+                  9,
+                  6
+                ],
+                [
+                  9,
+                  7
+                ],
+                [
+                  9,
+                  8
+                ],
+                [
+                  9,
+                  9
+                ],
+                [
+                  9,
+                  10
+                ],
+                [
+                  9,
+                  11
+                ],
+                [
+                  9,
+                  12
+                ],
+                [
+                  9,
+                  13
+                ],
+                [
+                  9,
+                  14
+                ],
+                [
+                  10,
+                  0
+                ],
+                [
+                  10,
+                  1
+                ],
+                [
+                  10,
+                  2
+                ],
+                [
+                  10,
+                  3
+                ],
+                [
+                  10,
+                  4
+                ],
+                [
+                  10,
+                  5
+                ],
+                [
+                  10,
+                  6
+                ],
+                [
+                  10,
+                  7
+                ],
+                [
+                  10,
+                  8
+                ],
+                [
+                  10,
+                  9
+                ],
+                [
+                  10,
+                  10
+                ],
+                [
+                  10,
+                  11
+                ],
+                [
+                  10,
+                  12
+                ],
+                [
+                  10,
+                  13
+                ],
+                [
+                  10,
+                  14
+                ],
+                [
+                  11,
+                  0
+                ],
+                [
+                  11,
+                  1
+                ],
+                [
+                  11,
+                  2
+                ],
+                [
+                  11,
+                  3
+                ],
+                [
+                  11,
+                  4
+                ],
+                [
+                  11,
+                  5
+                ],
+                [
+                  11,
+                  6
+                ],
+                [
+                  11,
+                  7
+                ],
+                [
+                  11,
+                  8
+                ],
+                [
+                  11,
+                  9
+                ],
+                [
+                  11,
+                  10
+                ],
+                [
+                  11,
+                  11
+                ],
+                [
+                  11,
+                  12
+                ],
+                [
+                  11,
+                  13
+                ],
+                [
+                  11,
+                  14
+                ],
+                [
+                  12,
+                  0
+                ],
+                [
+                  12,
+                  1
+                ],
+                [
+                  12,
+                  2
+                ],
+                [
+                  12,
+                  3
+                ],
+                [
+                  12,
+                  4
+                ],
+                [
+                  12,
+                  5
+                ],
+                [
+                  12,
+                  6
+                ],
+                [
+                  12,
+                  7
+                ],
+                [
+                  12,
+                  8
+                ],
+                [
+                  12,
+                  9
+                ],
+                [
+                  12,
+                  10
+                ],
+                [
+                  12,
+                  11
+                ],
+                [
+                  12,
+                  12
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  12,
+                  14
+                ],
+                [
+                  13,
+                  0
+                ],
+                [
+                  13,
+                  1
+                ],
+                [
+                  13,
+                  2
+                ],
+                [
+                  13,
+                  3
+                ],
+                [
+                  13,
+                  4
+                ],
+                [
+                  13,
+                  5
+                ],
+                [
+                  13,
+                  6
+                ],
+                [
+                  13,
+                  7
+                ],
+                [
+                  13,
+                  8
+                ],
+                [
+                  13,
+                  9
+                ],
+                [
+                  13,
+                  10
+                ],
+                [
+                  13,
+                  11
+                ],
+                [
+                  13,
+                  12
+                ],
+                [
+                  13,
+                  13
+                ],
+                [
+                  13,
+                  14
+                ],
+                [
+                  14,
+                  0
+                ],
+                [
+                  14,
+                  1
+                ],
+                [
+                  14,
+                  2
+                ],
+                [
+                  14,
+                  3
+                ],
+                [
+                  14,
+                  4
+                ],
+                [
+                  14,
+                  5
+                ],
+                [
+                  14,
+                  6
+                ],
+                [
+                  14,
+                  7
+                ],
+                [
+                  14,
+                  8
+                ],
+                [
+                  14,
+                  9
+                ],
+                [
+                  14,
+                  10
+                ],
+                [
+                  14,
+                  11
+                ],
+                [
+                  14,
+                  12
+                ],
+                [
+                  14,
+                  13
+                ],
+                [
+                  14,
+                  14
+                ]
+              ],
+              "observation_id": "arc12-demo:2",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            }
+          ]
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0004"
+      },
+      "step": 73
+    },
+    {
+      "action": "REJECT_RULE",
+      "payload": {
+        "current_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 2,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "axis": "rotate_180",
+                "initial_proposal": true,
+                "operation": "coordinate_transform",
+                "scope": {
+                  "kind": "all",
+                  "value": null
+                }
+              },
+              "target": "coordinate-rotate_180"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  225,
+                  0,
+                  6
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  0,
+                  4
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  3
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:0"
+            }
+          ],
+          "matching_cell_count": 0,
+          "name": "rotate_180(scope=all)",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 2,
+              "name": "rotate_180(scope=all)",
+              "operation": "coordinate_transform",
+              "parameters": {
+                "axis": "rotate_180"
+              },
+              "rule_id": "coordinate-rotate_180",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0005",
+          "unknown_cell_count": 342,
+          "unresolved_unknown": [
+            {
+              "cell_count": 27,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ]
+              ],
+              "observation_id": "arc12-demo:0",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 72,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ]
+              ],
+              "observation_id": "arc12-demo:1",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            },
+            {
+              "cell_count": 216,
+              "cells": [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  0,
+                  9
+                ],
+                [
+                  0,
+                  10
+                ],
+                [
+                  0,
+                  11
+                ],
+                [
+                  0,
+                  12
+                ],
+                [
+                  0,
+                  13
+                ],
+                [
+                  0,
+                  14
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  1,
+                  8
+                ],
+                [
+                  1,
+                  9
+                ],
+                [
+                  1,
+                  10
+                ],
+                [
+                  1,
+                  11
+                ],
+                [
+                  1,
+                  12
+                ],
+                [
+                  1,
+                  13
+                ],
+                [
+                  1,
+                  14
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  2,
+                  5
+                ],
+                [
+                  2,
+                  6
+                ],
+                [
+                  2,
+                  7
+                ],
+                [
+                  2,
+                  8
+                ],
+                [
+                  2,
+                  9
+                ],
+                [
+                  2,
+                  10
+                ],
+                [
+                  2,
+                  11
+                ],
+                [
+                  2,
+                  12
+                ],
+                [
+                  2,
+                  13
+                ],
+                [
+                  2,
+                  14
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  3,
+                  4
+                ],
+                [
+                  3,
+                  5
+                ],
+                [
+                  3,
+                  6
+                ],
+                [
+                  3,
+                  7
+                ],
+                [
+                  3,
+                  8
+                ],
+                [
+                  3,
+                  9
+                ],
+                [
+                  3,
+                  10
+                ],
+                [
+                  3,
+                  11
+                ],
+                [
+                  3,
+                  12
+                ],
+                [
+                  3,
+                  13
+                ],
+                [
+                  3,
+                  14
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  4,
+                  5
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  4,
+                  7
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  4,
+                  9
+                ],
+                [
+                  4,
+                  10
+                ],
+                [
+                  4,
+                  11
+                ],
+                [
+                  4,
+                  12
+                ],
+                [
+                  4,
+                  13
+                ],
+                [
+                  4,
+                  14
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  5,
+                  4
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  6
+                ],
+                [
+                  5,
+                  7
+                ],
+                [
+                  5,
+                  8
+                ],
+                [
+                  5,
+                  9
+                ],
+                [
+                  5,
+                  10
+                ],
+                [
+                  5,
+                  11
+                ],
+                [
+                  5,
+                  12
+                ],
+                [
+                  5,
+                  13
+                ],
+                [
+                  5,
+                  14
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  6,
+                  4
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  6,
+                  6
+                ],
+                [
+                  6,
+                  7
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  6,
+                  9
+                ],
+                [
+                  6,
+                  10
+                ],
+                [
+                  6,
+                  11
+                ],
+                [
+                  6,
+                  12
+                ],
+                [
+                  6,
+                  13
+                ],
+                [
+                  6,
+                  14
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  7,
+                  3
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  5
+                ],
+                [
+                  7,
+                  6
+                ],
+                [
+                  7,
+                  7
+                ],
+                [
+                  7,
+                  8
+                ],
+                [
+                  7,
+                  9
+                ],
+                [
+                  7,
+                  10
+                ],
+                [
+                  7,
+                  11
+                ],
+                [
+                  7,
+                  12
+                ],
+                [
+                  7,
+                  13
+                ],
+                [
+                  7,
+                  14
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  8,
+                  3
+                ],
+                [
+                  8,
+                  4
+                ],
+                [
+                  8,
+                  5
+                ],
+                [
+                  8,
+                  6
+                ],
+                [
+                  8,
+                  7
+                ],
+                [
+                  8,
+                  8
+                ],
+                [
+                  8,
+                  9
+                ],
+                [
+                  8,
+                  10
+                ],
+                [
+                  8,
+                  11
+                ],
+                [
+                  8,
+                  12
+                ],
+                [
+                  8,
+                  13
+                ],
+                [
+                  8,
+                  14
+                ],
+                [
+                  9,
+                  0
+                ],
+                [
+                  9,
+                  1
+                ],
+                [
+                  9,
+                  2
+                ],
+                [
+                  9,
+                  3
+                ],
+                [
+                  9,
+                  4
+                ],
+                [
+                  9,
+                  5
+                ],
+                [
+                  9,
+                  6
+                ],
+                [
+                  9,
+                  7
+                ],
+                [
+                  9,
+                  8
+                ],
+                [
+                  9,
+                  9
+                ],
+                [
+                  9,
+                  10
+                ],
+                [
+                  9,
+                  11
+                ],
+                [
+                  9,
+                  12
+                ],
+                [
+                  9,
+                  13
+                ],
+                [
+                  9,
+                  14
+                ],
+                [
+                  10,
+                  0
+                ],
+                [
+                  10,
+                  1
+                ],
+                [
+                  10,
+                  2
+                ],
+                [
+                  10,
+                  3
+                ],
+                [
+                  10,
+                  4
+                ],
+                [
+                  10,
+                  5
+                ],
+                [
+                  10,
+                  6
+                ],
+                [
+                  10,
+                  7
+                ],
+                [
+                  10,
+                  8
+                ],
+                [
+                  10,
+                  9
+                ],
+                [
+                  10,
+                  10
+                ],
+                [
+                  10,
+                  11
+                ],
+                [
+                  10,
+                  12
+                ],
+                [
+                  10,
+                  13
+                ],
+                [
+                  10,
+                  14
+                ],
+                [
+                  11,
+                  0
+                ],
+                [
+                  11,
+                  1
+                ],
+                [
+                  11,
+                  2
+                ],
+                [
+                  11,
+                  3
+                ],
+                [
+                  11,
+                  4
+                ],
+                [
+                  11,
+                  5
+                ],
+                [
+                  11,
+                  6
+                ],
+                [
+                  11,
+                  7
+                ],
+                [
+                  11,
+                  8
+                ],
+                [
+                  11,
+                  9
+                ],
+                [
+                  11,
+                  10
+                ],
+                [
+                  11,
+                  11
+                ],
+                [
+                  11,
+                  12
+                ],
+                [
+                  11,
+                  13
+                ],
+                [
+                  11,
+                  14
+                ],
+                [
+                  12,
+                  0
+                ],
+                [
+                  12,
+                  1
+                ],
+                [
+                  12,
+                  2
+                ],
+                [
+                  12,
+                  3
+                ],
+                [
+                  12,
+                  4
+                ],
+                [
+                  12,
+                  5
+                ],
+                [
+                  12,
+                  6
+                ],
+                [
+                  12,
+                  7
+                ],
+                [
+                  12,
+                  8
+                ],
+                [
+                  12,
+                  9
+                ],
+                [
+                  12,
+                  10
+                ],
+                [
+                  12,
+                  11
+                ],
+                [
+                  12,
+                  12
+                ],
+                [
+                  12,
+                  13
+                ],
+                [
+                  12,
+                  14
+                ],
+                [
+                  13,
+                  0
+                ],
+                [
+                  13,
+                  1
+                ],
+                [
+                  13,
+                  2
+                ],
+                [
+                  13,
+                  3
+                ],
+                [
+                  13,
+                  4
+                ],
+                [
+                  13,
+                  5
+                ],
+                [
+                  13,
+                  6
+                ],
+                [
+                  13,
+                  7
+                ],
+                [
+                  13,
+                  8
+                ],
+                [
+                  13,
+                  9
+                ],
+                [
+                  13,
+                  10
+                ],
+                [
+                  13,
+                  11
+                ],
+                [
+                  13,
+                  12
+                ],
+                [
+                  13,
+                  13
+                ],
+                [
+                  13,
+                  14
+                ],
+                [
+                  14,
+                  0
+                ],
+                [
+                  14,
+                  1
+                ],
+                [
+                  14,
+                  2
+                ],
+                [
+                  14,
+                  3
+                ],
+                [
+                  14,
+                  4
+                ],
+                [
+                  14,
+                  5
+                ],
+                [
+                  14,
+                  6
+                ],
+                [
+                  14,
+                  7
+                ],
+                [
+                  14,
+                  8
+                ],
+                [
+                  14,
+                  9
+                ],
+                [
+                  14,
+                  10
+                ],
+                [
+                  14,
+                  11
+                ],
+                [
+                  14,
+                  12
+                ],
+                [
+                  14,
+                  13
+                ],
+                [
+                  14,
+                  14
+                ]
+              ],
+              "observation_id": "arc12-demo:2",
+              "observed_values": [],
+              "predicted_values": [],
+              "residual_kind": "unknown"
+            }
+          ]
+        },
+        "reason": "no_generic_revision_generated_from_current_observed_residual",
+        "theory_id": "T0005"
+      },
+      "step": 74
+    },
+    {
+      "action": "COMMIT",
+      "payload": {
+        "complete_prediction_group_count": 1,
+        "final_theory": {
+          "contradiction_count": 0,
+          "counterexamples": [],
+          "description_length": 4,
+          "evaluated_demo_indices": [
+            0,
+            1,
+            2
+          ],
+          "history": [
+            {
+              "kind": "ADD_RULE",
+              "parameters": {
+                "initial_proposal": true,
+                "operation": "full_operator"
+              },
+              "target": "rule-distinct_nonbackground_scale"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  225,
+                  0,
+                  6
+                ],
+                "reason": "initial_highest_observed_change_and_color_discrimination"
+              },
+              "target": "demo:2"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  81,
+                  0,
+                  4
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:1"
+            },
+            {
+              "kind": "ATTEND",
+              "parameters": {
+                "information_score": [
+                  36,
+                  0,
+                  3
+                ],
+                "reason": "unseen_demo_selected_for_residual_version_space_discrimination"
+              },
+              "target": "demo:0"
+            }
+          ],
+          "matching_cell_count": 342,
+          "name": "distinct_nonbackground_scale",
+          "parameter_bindings": {},
+          "parent_theory_id": "T0000",
+          "rules": [
+            {
+              "description_length": 4,
+              "name": "distinct_nonbackground_scale",
+              "operation": "full_operator",
+              "parameters": {
+                "operator": "distinct_nonbackground_scale"
+              },
+              "rule_id": "rule-distinct_nonbackground_scale",
+              "scope": {
+                "kind": "all",
+                "value": null
+              }
+            }
+          ],
+          "scope_predicates": [
+            {
+              "kind": "all",
+              "value": null
+            }
+          ],
+          "theory_id": "T0002",
+          "unknown_cell_count": 0,
+          "unresolved_unknown": []
+        },
+        "posterior_mass": 1.0,
+        "selected_hypothesis": "distinct_nonbackground_scale",
+        "theory_id": "T0002",
+        "training_exact": true
+      },
+      "step": 75
+    }
+  ],
+  "reasoning_visibility": "explicit observable hypothesis/evidence/revision records only",
+  "schema_version": 1
+}

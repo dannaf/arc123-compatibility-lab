@@ -1,0 +1,324 @@
+{
+  "ablations": {
+    "no_new_residual_family": {
+      "all_cells_match": false,
+      "mismatched_cell_count": 29,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    "no_revision": {
+      "all_cells_match": false,
+      "mismatched_cell_count": 29,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "training_exact": false,
+      "used_fallback": true
+    }
+  },
+  "agent_input_contract": {
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "offline_audit_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "all_cells_match": false,
+  "benchmark": "arc1",
+  "causal_trace": {
+    "accepted": false,
+    "all_cells_match": false,
+    "composition_seen": true,
+    "counterexample_seen": true,
+    "generic_families": [],
+    "multi_rule_residual": false,
+    "parameter_revision_seen": true,
+    "promotion_seen": false,
+    "selected_rule_operations": [
+      "identity"
+    ],
+    "visible_additional_demo_seen": true
+  },
+  "compared_position_count": 100,
+  "controller_oracle_boundary_scan": "pass",
+  "mismatched_cell_count": 29,
+  "packet_id": "P0007-ARC12-CONDITIONAL-REVISION-10",
+  "posterior_mass": 0.0,
+  "schema_version": 1,
+  "selected_hypothesis": "fallback_identity_complete_grid",
+  "source_commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+  "source_task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/arc_data/arc1/evaluation/03560426.json",
+  "task_id": "03560426",
+  "task_split": "evaluation",
+  "test_cases": [
+    {
+      "all_cells_match": false,
+      "compared_position_count": 100,
+      "expected_output": [
+        [
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "mismatched_cell_count": 29,
+      "prediction": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          8,
+          8,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          8,
+          8,
+          0,
+          6,
+          0,
+          3,
+          3,
+          0
+        ],
+        [
+          7,
+          0,
+          8,
+          8,
+          0,
+          6,
+          0,
+          3,
+          3,
+          0
+        ]
+      ],
+      "test_index": 0
+    }
+  ],
+  "trace_artifacts": {
+    "ablations": {
+      "path": "ablations.json",
+      "sha256": "627381b8ceda812c76cbc6a45b052639a2e0da0bd7aecbb9f2d3127e62902514"
+    },
+    "corpus_callosum": {
+      "path": "corpus_callosum.svg",
+      "sha256": "b883581daaf4add19b99c2aefeebb3dd3d7ed3ec5b293955c7966a86ebad4511"
+    },
+    "learning_trace": {
+      "path": "learning_trace.json",
+      "sha256": "62d4d8e055a86a2d25aac872600b22b02c7a16c38def4b91aaa87da1f8f996ff"
+    },
+    "report": {
+      "path": "REPORT.md",
+      "sha256": "c0945b1052a3f9f44edd76376c015b79ca68d6193af49185d1d3481c2717f9ce"
+    }
+  },
+  "training_exact": false,
+  "used_fallback": true
+}

@@ -18,4 +18,4 @@
 - a blind generalization score separated from curated development;
 - evidence that any promoted primitive transfers beyond its originating task/family.
 
-P0001 clears only the first two rungs with `1/4` exact. P0002 supplies the requested initial 10+10 reporting cohort at `0/20`, and P0003 supplies a non-overlapping post-operator transfer cohort at `0/20`. All 44 attempts have complete predictions, durable diagrams, and post-answer YES/NO evidence, but these results remain intentionally far below the evidence required to claim that ARC1 or ARC2 has been solved.
+P0001 clears only the first two rungs with `1/4` exact. P0002 supplies the requested initial 10+10 reporting cohort at `0/20`, and P0003 supplies a non-overlapping post-operator transfer cohort at `0/20`. P0005 then measures the persistent-theory controller across the full curated 60 at `1/60`; P0006 adds a pre-registered generic residual dihedral-tile family and records `4/60` exact. Both packets retain complete predictions, diagrams, and post-answer YES/NO receipts for every attempt. These results remain intentionally far below the evidence required to claim that ARC1 or ARC2 has been solved.

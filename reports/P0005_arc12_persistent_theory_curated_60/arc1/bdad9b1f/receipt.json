@@ -1,0 +1,147 @@
+{
+  "agent_input_contract": {
+    "decomposition_mapping_passed_to_agent": false,
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "historical_schema_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "all_cells_match": false,
+  "benchmark": "arc1",
+  "compared_position_count": 36,
+  "controller_oracle_boundary_scan": "pass",
+  "mismatched_cell_count": 7,
+  "packet_id": "P0005-ARC12-PERSISTENT-THEORY-CURATED-60",
+  "posterior_mass": 0.0,
+  "schema_version": 1,
+  "selected_hypothesis": "fallback_identity_complete_grid",
+  "source_commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+  "source_task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/arc_data/arc1/training/bdad9b1f.json",
+  "task_id": "bdad9b1f",
+  "task_split": "training",
+  "test_cases": [
+    {
+      "all_cells_match": false,
+      "compared_position_count": 36,
+      "expected_output": [
+        [
+          0,
+          0,
+          0,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          8,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          2,
+          4,
+          2,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          8,
+          0,
+          0
+        ]
+      ],
+      "mismatched_cell_count": 7,
+      "prediction": [
+        [
+          0,
+          0,
+          0,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "test_index": 0
+    }
+  ],
+  "trace_artifacts": {
+    "corpus_callosum": {
+      "path": "corpus_callosum.svg",
+      "sha256": "cc3acdb241101f0f18e90c816e61d4e627cb4867c2d9a964aed2c73ff16b7119"
+    },
+    "learning_trace": {
+      "path": "learning_trace.json",
+      "sha256": "78f4898093e4ea9d0ad98944156b480b8c49254c7f760fd241e5f1823da0d70d"
+    },
+    "report": {
+      "path": "REPORT.md",
+      "sha256": "011418ecf2afe16acd12a6ea64070b19dedf89427474b6b2888f5fe9d7621361"
+    }
+  },
+  "training_exact": false,
+  "used_fallback": true
+}

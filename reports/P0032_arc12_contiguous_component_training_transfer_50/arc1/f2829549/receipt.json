@@ -1,0 +1,107 @@
+{
+  "agent_input_contract": {
+    "cohort_metadata_passed_to_agent": false,
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "all_cells_match": true,
+  "benchmark": "arc1",
+  "compared_position_count": 12,
+  "controller_oracle_boundary_scan": "pass",
+  "frozen_controller": {
+    "commit": "fd3ac79b5415d0f7b42747c5bff19829802ccde3",
+    "source_files": {
+      "scripts/freeze_arc12_filename_holdout.py": "95ba0409d32b65a69bf53df9300f4636ab64b22def533f47d2c8fe72e29b8c85",
+      "scripts/run_arc12_filename_holdout.py": "df34d80ba4e2f5cef70c0b7a24db2ad462130d1a0f37161ce267742a4ed00a3e",
+      "src/arc123/adapters/arc12.py": "db3acb45c794dcc3a1f7cdde2c52a58a2315e11e882c554e4901f876493ffd88",
+      "src/arc123/compatibility.py": "679e3efa3e71aaf9f8b3ca48cfcd517b9b87a3525cdb8db56cd4a3ba509ab8df",
+      "src/arc123/contracts.py": "3acd65973085eca77093dfeaf39adbe4176770e66993d147404d1b184d2001e3",
+      "src/arc123/controller.py": "bc6bdebcf1cc9417eed2258fec749b4a4126851f5c05c7c306e328a70e062ec9",
+      "src/arc123/hypotheses.py": "8fccf499cc8ee46e07a3f21be80ab40729ed9fcb16b039ed4a003fede2fff53f",
+      "src/arc123/model.py": "ba4fc4177414ecea6bced1b0f3866b0c72a1ce09c681c19737dd875a6f55a3ab",
+      "src/arc123/perceptions.py": "a916b0d3961f5b85c853abba67b55bf0dfa8e6a1b24d1b139768a3836218b82a",
+      "src/arc123/relational.py": "230c2f4c8321d3465b7680db3fa9678fbee1a34183b4665765b64ac382e2dfc2",
+      "src/arc123/theory.py": "552e089498773809005849fb39e88b18bd633bd0e8d3e0b5653d54ce14045f01",
+      "src/arc123/traces.py": "edb79dfd8c781ae3df15046c83114694788163928dd4634296004f64d846b3c1"
+    }
+  },
+  "mismatched_cell_count": 0,
+  "packet_id": "P0032-ARC12-CONTIGUOUS-COMPONENT-TRAINING-TRANSFER-50",
+  "posterior_mass": 1.0,
+  "schema_version": 1,
+  "selected_hypothesis": "central_separator_cellwise_combine(axis=vertical,table=0:0:3;0:5:0;7:0:0;7:5:0)",
+  "source_commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+  "source_task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/arc_data/arc1/training/f2829549.json",
+  "task_id": "f2829549",
+  "task_split": "training",
+  "test_cases": [
+    {
+      "all_cells_match": true,
+      "compared_position_count": 12,
+      "expected_output": [
+        [
+          3,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          3
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "mismatched_cell_count": 0,
+      "prediction": [
+        [
+          3,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          3
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "test_index": 0
+    }
+  ],
+  "trace_artifacts": {
+    "corpus_callosum": {
+      "path": "corpus_callosum.svg",
+      "sha256": "0f3dc070d208dc2ee32802872cd0852d7b985046b2725cc4686bddcf84896d4c"
+    },
+    "learning_trace": {
+      "path": "learning_trace.json",
+      "sha256": "fe958af128882519590e072f0c1f499028796ed06d01c6e12baada411f8767c1"
+    },
+    "report": {
+      "path": "REPORT.md",
+      "sha256": "10c406d1e318ae2f1e185e6220b9cc6aacb65d7199a953144b19c8921a00276a"
+    }
+  },
+  "training_exact": true,
+  "used_fallback": false
+}

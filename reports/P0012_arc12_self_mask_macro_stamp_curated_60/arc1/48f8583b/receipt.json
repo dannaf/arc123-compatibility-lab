@@ -1,0 +1,249 @@
+{
+  "agent_input_contract": {
+    "decomposition_mapping_passed_to_agent": false,
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "historical_schema_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "all_cells_match": true,
+  "benchmark": "arc1",
+  "compared_position_count": 81,
+  "controller_oracle_boundary_scan": "pass",
+  "mismatched_cell_count": 0,
+  "packet_id": "P0012-ARC12-SELF-MASK-MACRO-STAMP-CURATED-60",
+  "posterior_mass": 1.0,
+  "schema_version": 1,
+  "selected_hypothesis": "self_mask_macro_stamp(blank_color=0,selector=least_frequent,template=input)",
+  "source_commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+  "source_task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/arc_data/arc1/evaluation/48f8583b.json",
+  "task_id": "48f8583b",
+  "task_split": "evaluation",
+  "test_cases": [
+    {
+      "all_cells_match": true,
+      "compared_position_count": 81,
+      "expected_output": [
+        [
+          0,
+          0,
+          0,
+          9,
+          7,
+          9,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          9,
+          9,
+          7,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          7,
+          9,
+          7,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          9,
+          7,
+          9
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          9,
+          9,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          7,
+          9,
+          7
+        ],
+        [
+          9,
+          7,
+          9,
+          0,
+          0,
+          0,
+          9,
+          7,
+          9
+        ],
+        [
+          9,
+          9,
+          7,
+          0,
+          0,
+          0,
+          9,
+          9,
+          7
+        ],
+        [
+          7,
+          9,
+          7,
+          0,
+          0,
+          0,
+          7,
+          9,
+          7
+        ]
+      ],
+      "mismatched_cell_count": 0,
+      "prediction": [
+        [
+          0,
+          0,
+          0,
+          9,
+          7,
+          9,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          9,
+          9,
+          7,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          7,
+          9,
+          7,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          9,
+          7,
+          9
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          9,
+          9,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          7,
+          9,
+          7
+        ],
+        [
+          9,
+          7,
+          9,
+          0,
+          0,
+          0,
+          9,
+          7,
+          9
+        ],
+        [
+          9,
+          9,
+          7,
+          0,
+          0,
+          0,
+          9,
+          9,
+          7
+        ],
+        [
+          7,
+          9,
+          7,
+          0,
+          0,
+          0,
+          7,
+          9,
+          7
+        ]
+      ],
+      "test_index": 0
+    }
+  ],
+  "trace_artifacts": {
+    "corpus_callosum": {
+      "path": "corpus_callosum.svg",
+      "sha256": "6844fa73584b8db3794cae2ca6eae52fcc239a8b8243156e5d298f8b165a83eb"
+    },
+    "learning_trace": {
+      "path": "learning_trace.json",
+      "sha256": "0ea57332912e776a947e3b847c5f1cbff5472d64d0d609a786df6bde74b3ee5d"
+    },
+    "report": {
+      "path": "REPORT.md",
+      "sha256": "d6b1d3787a81305370ac9fb989597d5bcc50b7df0bf27ef6696536af707467cb"
+    }
+  },
+  "training_exact": true,
+  "used_fallback": false
+}

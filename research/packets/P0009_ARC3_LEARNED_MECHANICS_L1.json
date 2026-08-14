@@ -1,0 +1,38 @@
+{
+  "packet_id": "P0009-ARC3-LEARNED-MECHANICS-L1",
+  "report_root": "reports/P0009_arc3_learned_mechanics/ls20_L1",
+  "report_title": "# P0009 ARC3 Learned Mechanics / Level-Progress Packet",
+  "claim_boundary": "This source-pinned replay experiment evaluates whether the shared compatibility core can infer a bounded public action-motion relation and select actions that contribute to one recorded ARC3 level transition. It does not claim a general ARC3 solver, ARC-AGI-1 solver, or ARC-AGI-2 solver. The controller receives only prior public transitions, a current public frame, and currently available actions; it receives no future action sequence, simulator, post-hoc rule, oracle diff, or reasoning annotation.",
+  "external_mutation_allowed": false,
+  "benchmark_submission_allowed": false,
+  "source_pin": {
+    "repository": "https://github.com/dannaf/SingularityML",
+    "commit": "c0f27916881071fe4c9f622383d5c47a3bcc05ab",
+    "path": "demos/human_play/segmented/ls20_L1_human.jsonl",
+    "sha256": "70f83f41eb54ec81cf8ac0ec9e4e0b1a4ec5ccf4ab9868f48513f0d08a00434d"
+  },
+  "public_history": {
+    "initial_cursor": 15,
+    "transition_count": 15,
+    "contract": "Only recorded transitions strictly before the initial live cursor are supplied as history. The initial cursor and all future records remain adapter-private."
+  },
+  "controller": {
+    "initial_learned_store": "empty",
+    "max_actions": 5,
+    "forbidden_live_inputs": [
+      "future recorded action sequence",
+      "future recorded state frame",
+      "game simulation",
+      "post-hoc oracle rule",
+      "oracle diff",
+      "reasoning annotation",
+      "source repository provenance"
+    ]
+  },
+  "acceptance": {
+    "minimum_learned_action_effects": 4,
+    "require_non_default_goal_action": true,
+    "require_strict_visible_goal_distance_reduction": true,
+    "require_recorded_level_progress": true
+  }
+}

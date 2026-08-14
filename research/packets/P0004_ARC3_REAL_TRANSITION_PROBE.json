@@ -1,0 +1,22 @@
+{
+  "packet_id": "P0004-ARC3-REAL-TRANSITION-PROBE",
+  "report_root": "reports/P0004_arc3_real_transition_probe/ls20_L1",
+  "report_title": "# P0004 ARC3 Real-Transition Shared-Core Probe",
+  "claim_boundary": "This source-pinned replay experiment validates one shared observation/action/hypothesis-revision loop against recorded public ARC3 state transitions. It does not claim to solve an ARC3 level, ARC-AGI-1, or ARC-AGI-2. The trajectory is an environment evidence stream only; no post-hoc oracle rule, future action sequence, or reasoning annotation enters the live theory state.",
+  "source_pin": {
+    "repository": "https://github.com/dannaf/SingularityML",
+    "commit": "c0f27916881071fe4c9f622383d5c47a3bcc05ab",
+    "path": "demos/human_play/segmented/ls20_L1_human.jsonl"
+  },
+  "controller": {
+    "initial_learned_store": "empty",
+    "external_probe_count": 2,
+    "forbidden_live_inputs": [
+      "post-hoc oracle rules",
+      "oracle diffs",
+      "reasoning annotations",
+      "future recorded action sequence",
+      "game simulation"
+    ]
+  }
+}

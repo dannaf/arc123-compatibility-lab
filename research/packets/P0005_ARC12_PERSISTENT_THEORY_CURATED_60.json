@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "packet_id": "P0005-ARC12-PERSISTENT-THEORY-CURATED-60",
+  "report_title": "# P0005 ARC12 Persistent-Partial-Theory Curated-60 Packet",
+  "report_root": "reports/P0005_arc12_persistent_theory_curated_60",
+  "claim_boundary": "This is a source-pinned, failure-inclusive architecture measurement of the persistent PartialTheory controller across the complete imported ARC12 curated-60 curriculum. The packet's task roster comes only from an immutable locally imported cohort index; no task-grid semantics, historical selected schemas, ARC12 decompositions, GT feature contracts, GT solver code, task IDs, or held-out test outputs are controller inputs. Every task produces a committed complete grid followed by post-answer all-cell V&V. This is curated development evidence, not an ARC-AGI-1 or ARC-AGI-2 solver completion claim.",
+  "cohort_import": {
+    "path": "research/cohorts/ARC12_COHORT_IMPORT_001.json",
+    "sha256": "f6c576ff90e6eb9b42d3af683d66f68fa157e3573998c8b89da8095c142175ab",
+    "task_count": 60,
+    "selection": "all curated_60.task_ids in immutable import order"
+  },
+  "controller": {
+    "implementation": "persistent_partial_theory",
+    "candidate_limit": 32,
+    "beam_width": 12,
+    "max_revisions": 96,
+    "forbidden_live_inputs": [
+      "task_id",
+      "historical selected schema",
+      "ARC12 decomposition mapping",
+      "GT feature contract",
+      "GT solver code",
+      "held-out test output before commit"
+    ],
+    "generic_operator_families": [
+      "identity",
+      "recolor",
+      "mirror",
+      "translate",
+      "repeat_tile",
+      "line_extend",
+      "row_span_fill",
+      "scoped_coordinate_transform"
+    ]
+  },
+  "source_pins": {
+    "arc1": {
+      "commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc1"
+    },
+    "arc2": {
+      "commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc2"
+    }
+  },
+  "upstream_evidence": {
+    "arc123_issue": "https://github.com/dannaf/arc123-compatibility-lab/issues/2",
+    "arc12_issue": "https://github.com/dannaf/arc12-compatibility-lab/issues/4",
+    "singularityml_issue": "https://github.com/dannaf/SingularityML/issues/3541",
+    "owner_guidance": "https://github.com/dannaf/SingularityML/issues/3542"
+  }
+}

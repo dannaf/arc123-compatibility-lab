@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from typing import Any, Mapping, Optional, Sequence
 
 from ..compatibility import evaluate_partial_prediction
+from ..contracts import EvidenceObservation, EnvironmentAction, TransitionFeedback
 from ..model import CompatibilityFeedback, Grid, PartialGrid, TrainingPair, grid_from, grid_to_lists
 from ..perceptions import connected_components
 
@@ -80,6 +81,71 @@ class ARC12InteractiveEnv:
             "test_targets_visible": False,
             "task_id_visible": False,
         }
+
+    def observe(self) -> EvidenceObservation:
+        """Expose static training-world metadata without a task ID or held-out answer."""
+
+        return EvidenceObservation(
+            observation_id="arc12:world",
+            world_id="arc12-static-evidence",
+            observation_kind="static_training_world",
+            payload={
+                "training_pair_count": len(self._training_pairs),
+                "test_input_count": len(self._test_inputs),
+                "test_targets_visible": False,
+            },
+            metadata={"task_id_visible": False, "oracle_visible": False},
+        )
+
+    def available_actions(self) -> tuple[EnvironmentAction, ...]:
+        return tuple(
+            EnvironmentAction("inspect_demo", {"demo_index": index})
+            for index in range(len(self._training_pairs))
+        )
+
+    def act(self, action: EnvironmentAction) -> TransitionFeedback:
+        before = self.observe()
+        demo_index = action.parameters.get("demo_index")
+        if action.action_type != "inspect_demo" or not isinstance(demo_index, int):
+            return TransitionFeedback(
+                action=action,
+                before=before,
+                after=before,
+                accepted=False,
+                changed=None,
+                progress=None,
+                terminal=False,
+                metadata={"reason": "only indexed static-demo inspection is permitted"},
+            )
+        if demo_index < 0 or demo_index >= len(self._training_pairs):
+            return TransitionFeedback(
+                action=action,
+                before=before,
+                after=before,
+                accepted=False,
+                changed=None,
+                progress=None,
+                terminal=False,
+                metadata={"reason": "demo index is outside the static evidence world"},
+            )
+        pair = self.inspect_demo(demo_index)
+        after = EvidenceObservation(
+            observation_id=f"arc12:demo:{demo_index}",
+            world_id="arc12-static-evidence",
+            observation_kind="training_pair",
+            payload=pair,
+            metadata={"held_out_test_target_visible": False, "oracle_visible": False},
+        )
+        return TransitionFeedback(
+            action=action,
+            before=before,
+            after=after,
+            accepted=True,
+            changed=None,
+            progress=None,
+            terminal=False,
+            metadata={"static_evidence_query": True},
+        )
 
     def inspect_demo(self, demo_index: int) -> dict[str, Any]:
         input_grid, output_grid = self._training_pairs[demo_index]

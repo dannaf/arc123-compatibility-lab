@@ -1,0 +1,151 @@
+{
+  "ablations": {
+    "no_new_residual_family": {
+      "all_cells_match": false,
+      "mismatched_cell_count": 2,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    "no_revision": {
+      "all_cells_match": false,
+      "mismatched_cell_count": 2,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "training_exact": false,
+      "used_fallback": true
+    }
+  },
+  "agent_input_contract": {
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "offline_audit_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "all_cells_match": true,
+  "benchmark": "arc2",
+  "causal_trace": {
+    "accepted": true,
+    "all_cells_match": true,
+    "composition_seen": true,
+    "counterexample_seen": true,
+    "generic_families": [
+      "row_span_minimum"
+    ],
+    "multi_rule_residual": false,
+    "parameter_revision_seen": true,
+    "promotion_seen": true,
+    "selected_rule_operations": [
+      "identity",
+      "full_operator"
+    ],
+    "visible_additional_demo_seen": true
+  },
+  "compared_position_count": 24,
+  "controller_oracle_boundary_scan": "pass",
+  "mismatched_cell_count": 0,
+  "packet_id": "P0007-ARC12-CONDITIONAL-REVISION-10",
+  "posterior_mass": 1.0,
+  "schema_version": 1,
+  "selected_hypothesis": "compose(identity,row_span_fill(fill_color=2,seed_color=2,selection=global_minimum))",
+  "source_commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+  "source_task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/71f86ff4c5304e452e0659131171f0519b50e21c/arc_data/arc2/training/5ad8a7c0.json",
+  "task_id": "5ad8a7c0",
+  "task_split": "training",
+  "test_cases": [
+    {
+      "all_cells_match": true,
+      "compared_position_count": 24,
+      "expected_output": [
+        [
+          2,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          2,
+          2,
+          2,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0,
+          0,
+          2
+        ]
+      ],
+      "mismatched_cell_count": 0,
+      "prediction": [
+        [
+          2,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          2,
+          2,
+          2,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0,
+          0,
+          2
+        ]
+      ],
+      "test_index": 0
+    }
+  ],
+  "trace_artifacts": {
+    "ablations": {
+      "path": "ablations.json",
+      "sha256": "df6e9af4411ce91363864ea12affb9be52ec2b482e186cf1d394fd5e4897b06c"
+    },
+    "corpus_callosum": {
+      "path": "corpus_callosum.svg",
+      "sha256": "d80c76ddbaf6fbb713ec8fda94d8b04b40ee582675dea633f28906576b88dcb2"
+    },
+    "learning_trace": {
+      "path": "learning_trace.json",
+      "sha256": "64b997e49213475f2813e198e34fa3c86504af70aa24cf8d30b3272351434d13"
+    },
+    "report": {
+      "path": "REPORT.md",
+      "sha256": "d5cb1755d848159e3f172243560ca126009564cf1ea2b2fb3420b252b8c549b9"
+    }
+  },
+  "training_exact": true,
+  "used_fallback": false
+}

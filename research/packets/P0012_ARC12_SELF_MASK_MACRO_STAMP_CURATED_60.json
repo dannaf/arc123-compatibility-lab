@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "packet_id": "P0012-ARC12-SELF-MASK-MACRO-STAMP-CURATED-60",
+  "report_title": "# P0012 ARC12 Self-Mask Macro-Stamp Curated-60 Packet",
+  "report_root": "reports/P0012_arc12_self_mask_macro_stamp_curated_60",
+  "implementation_commit": "fba246e526cba0859d2117577f684c9960b2caac",
+  "claim_boundary": "This source-pinned, failure-inclusive development packet measures one generic self-mask macro-stamp family: an input-derived relative selector chooses input-sized macro blocks; the block template is either the input or a selector-mask recolored from the unique other input color. The family was designed from visible training input/output relations in the already-public P0011 curated-60 development cohort and is therefore not a holdout generalization claim. The controller receives no task ID, historical schema, decomposition, GT feature contract, GT solver, or held-out output before committing a complete grid. The immutable P0008 frozen 25+25 measurement is neither rerun nor rewritten; any later generalization measurement must use a newly frozen, unseen cohort.",
+  "external_mutation_allowed": false,
+  "benchmark_submission_allowed": false,
+  "cohort_import": {
+    "path": "research/cohorts/ARC12_COHORT_IMPORT_001.json",
+    "sha256": "f6c576ff90e6eb9b42d3af683d66f68fa157e3573998c8b89da8095c142175ab",
+    "task_count": 60,
+    "selection": "all curated_60.task_ids in immutable import order; this roster is excluded from frozen_disjoint_50"
+  },
+  "baseline_reference": {
+    "packet_id": "P0011-ARC12-DIHEDRAL-COORDINATE-CURATED-60",
+    "receipt_path": "reports/P0011_arc12_dihedral_coordinate_curated_60/receipt.json",
+    "receipt_sha256": "48b357d2142e0510c999b6045a538a77c4ed37926374370fdddcdc87e486d63c",
+    "exact_solve_count": 4
+  },
+  "controller": {
+    "implementation": "persistent_partial_theory",
+    "candidate_limit": 32,
+    "beam_width": 12,
+    "max_revisions": 96,
+    "forbidden_live_inputs": [
+      "task_id",
+      "historical selected schema",
+      "ARC12 decomposition mapping",
+      "GT feature contract",
+      "GT solver code",
+      "held-out test output before commit"
+    ],
+    "generic_operator_families": [
+      "identity",
+      "recolor",
+      "mirror",
+      "dihedral_transform",
+      "translate",
+      "repeat_tile",
+      "dihedral_tile",
+      "self_mask_macro_stamp",
+      "line_extend",
+      "row_span_fill",
+      "scoped_coordinate_transform"
+    ]
+  },
+  "source_pins": {
+    "arc1": {
+      "commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc1"
+    },
+    "arc2": {
+      "commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc2"
+    }
+  },
+  "acceptance": {
+    "retain_complete_failure_inclusive_reports": true,
+    "require_post_answer_all_cell_vv": true,
+    "require_live_oracle_boundary": true,
+    "do_not_rewrite_p0008_frozen_measurement": true,
+    "record_pre_registered_p0011_baseline_delta": true
+  }
+}

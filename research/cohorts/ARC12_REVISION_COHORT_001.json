@@ -1,0 +1,36 @@
+{
+  "artifact_id": "ARC12-REVISION-COHORT-001",
+  "claim_boundary": "This is a pre-registered curated-development cohort for testing generic persistent-theory revision. Selection categories originate in offline-only audit material and are never live controller inputs. The cohort is not the frozen 25+25 generalization denominator and cannot support an ARC1 or ARC2 solver claim.",
+  "live_controller_boundary": {
+    "feature_audit_visible_to_controller": false,
+    "gt_solver_visible_to_controller": false,
+    "held_out_test_output_visible_before_commit": false,
+    "historical_schema_visible_to_controller": false,
+    "task_id_visible_to_controller": false
+  },
+  "selection_protocol": "Five ARC1 and five ARC2 tasks were selected before P0007 from the offline-only feature audit for conditional or multi-rule structure. The task list is immutable for P0007; no post-run substitutions are permitted.",
+  "source_pins": {
+    "arc1": {
+      "commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime"
+    },
+    "arc2": {
+      "commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime"
+    }
+  },
+  "task_count": 10,
+  "tasks": [
+    {"benchmark": "arc1", "split": "evaluation", "task_id": "009d5c81"},
+    {"benchmark": "arc1", "split": "evaluation", "task_id": "03560426"},
+    {"benchmark": "arc1", "split": "training", "task_id": "045e512c"},
+    {"benchmark": "arc1", "split": "training", "task_id": "23581191"},
+    {"benchmark": "arc1", "split": "training", "task_id": "a85d4709"},
+    {"benchmark": "arc2", "split": "evaluation", "task_id": "1818057f"},
+    {"benchmark": "arc2", "split": "training", "task_id": "4a1cacc2"},
+    {"benchmark": "arc2", "split": "training", "task_id": "5ad8a7c0"},
+    {"benchmark": "arc2", "split": "training", "task_id": "a09f6c25"},
+    {"benchmark": "arc2", "split": "training", "task_id": "bae5c565"}
+  ],
+  "title": "Pre-registered ARC12 conditional/multi-rule revision cohort"
+}

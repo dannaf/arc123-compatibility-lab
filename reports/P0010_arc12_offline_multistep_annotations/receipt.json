@@ -1,0 +1,67 @@
+{
+  "acceptance_passed": true,
+  "acceptance_requirements": {
+    "minimum_benchmark_count": 2,
+    "minimum_record_count": 3,
+    "require_no_live_agent_access": true,
+    "require_post_answer_yes_vv": true,
+    "require_propose_counterexample_revision_compose_commit_sequence": true
+  },
+  "agent_input_contract": {
+    "gt_solver_passed_to_live_agent": false,
+    "held_out_answer_grid_passed_to_live_agent": false,
+    "offline_annotations_passed_to_live_agent": false,
+    "source_receipt_passed_to_live_agent": false,
+    "source_trace_passed_to_live_agent": false
+  },
+  "annotation_summary": {
+    "benchmark_count": 2,
+    "record_count": 3,
+    "step_count": 27
+  },
+  "artifact_paths": {
+    "materialization": {
+      "path": "research/oracle_materializations/ARC12_IHL_GT_MULTISTEP_001.json",
+      "sha256": "be1693abcffff77745aa9f839aa23bfda1a0ddb10edd9783e45722874431a2a7"
+    },
+    "readme": {
+      "path": "README.md",
+      "sha256": "43d7d99363c1bc0affcf489b79d7be8b43ff200aff0b0a4477defaa2f6ed4344"
+    },
+    "receipt": {
+      "path": "receipt.json",
+      "sha256": "8abc26e476486a79846d71f1d5a92807e0775e4fc9ec18a108cc2cfbfbb6eda3"
+    },
+    "task_reports": {
+      "arc1/009d5c81": {
+        "path": "arc1/009d5c81/REPORT.md",
+        "sha256": "7077744bc07ce2cf077c36d0449fdf931452db8f5f9752bf7758275798204f65"
+      },
+      "arc2/5ad8a7c0": {
+        "path": "arc2/5ad8a7c0/REPORT.md",
+        "sha256": "a4d711cedbc00cd15c1475ed2daca71bc2a3bd052eb005d9a4e9413704c6e8e1"
+      },
+      "arc2/a09f6c25": {
+        "path": "arc2/a09f6c25/REPORT.md",
+        "sha256": "9951e5100cad9f9a7bd89dd76a403bda75e6151e64602a5870630576527c5205"
+      }
+    }
+  },
+  "claim_boundary": "This packet materializes deterministic, offline-only structural annotations from three previously published exact P0007 causal traces. The materialization is research/V&V evidence only. It is not passed to a live ARC1/ARC2 controller, contains no held-out answer grid, and does not establish a general ARC solver claim.",
+  "live_agent_boundary": {
+    "annotation_visible_to_live_agent": false,
+    "gt_solver_visible_to_live_agent": false,
+    "held_out_answer_grid_visible_before_commit": false,
+    "records_visible_to_live_agent": false,
+    "source_diagram_visible_to_live_agent": false,
+    "source_receipt_visible_to_live_agent": false,
+    "source_trace_visible_to_live_agent": false
+  },
+  "packet_id": "P0010-ARC12-OFFLINE-MULTISTEP-ANNOTATIONS",
+  "schema_version": 1,
+  "selection_protocol": "Materialize exactly all three P0007 records that were published as both exact and causal-trace accepted; do not select additional records after materialization.",
+  "source_pin": {
+    "commit": "64ce50d15c8e1bc687b21e293745a681546f5f67",
+    "repository": "https://github.com/dannaf/arc123-compatibility-lab"
+  }
+}

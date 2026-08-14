@@ -1,0 +1,81 @@
+{
+  "agent_input_contract": {
+    "decomposition_mapping_passed_to_agent": false,
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "historical_schema_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "all_cells_match": false,
+  "benchmark": "arc2",
+  "compared_position_count": 9,
+  "controller_oracle_boundary_scan": "pass",
+  "mismatched_cell_count": 4,
+  "packet_id": "P0012-ARC12-SELF-MASK-MACRO-STAMP-CURATED-60",
+  "posterior_mass": 0.0,
+  "schema_version": 1,
+  "selected_hypothesis": "fallback_identity_complete_grid",
+  "source_commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+  "source_task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/71f86ff4c5304e452e0659131171f0519b50e21c/arc_data/arc2/training/d037b0a7.json",
+  "task_id": "d037b0a7",
+  "task_split": "training",
+  "test_cases": [
+    {
+      "all_cells_match": false,
+      "compared_position_count": 9,
+      "expected_output": [
+        [
+          4,
+          0,
+          8
+        ],
+        [
+          4,
+          0,
+          8
+        ],
+        [
+          4,
+          7,
+          8
+        ]
+      ],
+      "mismatched_cell_count": 4,
+      "prediction": [
+        [
+          4,
+          0,
+          8
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          7,
+          0
+        ]
+      ],
+      "test_index": 0
+    }
+  ],
+  "trace_artifacts": {
+    "corpus_callosum": {
+      "path": "corpus_callosum.svg",
+      "sha256": "4cc91ace8789b4a2f4b2d97b5814214911a1e0703910dcf71defe52c639263d4"
+    },
+    "learning_trace": {
+      "path": "learning_trace.json",
+      "sha256": "cd20ba467bdbb0b4a2597b49d2760a6820c6f3d762b3c699f2cedd0ef7e27c4f"
+    },
+    "report": {
+      "path": "REPORT.md",
+      "sha256": "e3e29e4e681a46f007de05383502265c4985a58e69d8f13e98b0ddf8b3fb270d"
+    }
+  },
+  "training_exact": false,
+  "used_fallback": true
+}

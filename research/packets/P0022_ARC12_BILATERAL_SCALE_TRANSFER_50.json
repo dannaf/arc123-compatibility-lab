@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "packet_id": "P0022-ARC12-BILATERAL-SCALE-TRANSFER-50",
+  "report_title": "# P0022 ARC12 Bilateral-and-Scale Fresh Transfer-50 Packet",
+  "report_root": "reports/P0022_arc12_bilateral_scale_transfer_50",
+  "implementation_commit": "cf3ff72abc98d8c8654d50694ca18ce68700b3af",
+  "claim_boundary": "This source-pinned, failure-inclusive transfer packet measures the unchanged P0021 bilateral/scale controller vocabulary on a fresh filename-only 25 ARC-AGI-1 plus 25 ARC-AGI-2 cohort. The P0022 cohort was frozen after the P0021 implementation checkpoint and before any selected P0022 task grid was parsed, visualized, scored, or used for further operator design. It excludes every task ID declared by the historical import, P0013 frozen roster, and all four disjoint development rosters. `adjacent_bilateral_cellwise_combine` remains limited to exactly two equal adjacent panels with one conflict-free visible-pair table, and `distinct_nonbackground_scale` remains limited to a unique modal background and current-grid distinct non-background count; neither family branches on task ID or fixed colors. This is an independently selected transfer measurement, not a benchmark submission and not an ARC-AGI-1 or ARC-AGI-2 solver claim. The live controller receives only visible training input/output examples and test inputs. It receives no task ID, cohort metadata, GT feature contract, GT solver, historical decomposition, or held-out output before committing a complete grid. No P0022 outcome may retune this frozen controller or its operator vocabulary.",
+  "external_mutation_allowed": false,
+  "benchmark_submission_allowed": false,
+  "cohort_import": {
+    "path": "research/cohorts/ARC12_FILENAME_HOLDOUT_002.json",
+    "sha256": "0f7b42576b1b795d32ed9f69413baf7101981bcfd609a727f3fcf47df12d987a",
+    "cohort_key": "frozen_filename_only_50_p0022",
+    "task_count": 50,
+    "per_benchmark_task_count": 25,
+    "cohort_freeze_commit": "3a08aac084bbdb7d59c42ae7682faae90dbc5d98"
+  },
+  "implementation_reference": {
+    "packet_id": "P0021-ARC12-BILATERAL-SCALE-DEVELOPMENT-40",
+    "packet_path": "research/packets/P0021_ARC12_BILATERAL_SCALE_DEVELOPMENT_40.json",
+    "frozen_controller_commit": "15833b3826281b49f70da8b9c7b2060ca1f00b8b",
+    "exact_solve_count": 6,
+    "attempt_count": 40,
+    "role": "P0021 is the disclosed same-cohort development result that fixed this vocabulary. It is not a score denominator for P0022."
+  },
+  "offline_diagnostic_provenance": {
+    "lane": "offline_only",
+    "source_repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+    "source_refs": {
+      "arc1": "arc1-gt-solver-library",
+      "arc2": "arc2-gt-solver-library"
+    },
+    "source_commits": {
+      "arc1": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "arc2": "71f86ff4c5304e452e0659131171f0519b50e21c"
+    },
+    "role": "The P0021 family vocabulary was motivated by an offline-only feature/failure audit. The P0022 controller implementation imports, parses, calls, and receives none of the GT feature records or GT solver code.",
+    "live_controller_boundary": {
+      "gt_feature_contract_passed_to_agent": false,
+      "gt_solver_imported_or_called": false,
+      "p0021_development_score_rewritten": false,
+      "held_out_output_used_for_operator_selection": false
+    }
+  },
+  "frozen_controller": {
+    "commit": "cf3ff72abc98d8c8654d50694ca18ce68700b3af",
+    "implementation": "persistent_partial_theory",
+    "candidate_limit": 32,
+    "beam_width": 12,
+    "max_revisions": 96,
+    "revision_enabled": true,
+    "generic_operator_families": [
+      "identity",
+      "recolor",
+      "mirror",
+      "dihedral_transform",
+      "translate",
+      "repeat_tile",
+      "dihedral_tile",
+      "self_mask_macro_stamp",
+      "axis_mode_denoise",
+      "self_contained_subset_crop",
+      "frame_interior_crop",
+      "central_separator_cellwise_combine",
+      "adjacent_bilateral_cellwise_combine",
+      "distinct_nonbackground_scale",
+      "line_extend",
+      "row_span_fill",
+      "scoped_coordinate_transform"
+    ],
+    "source_files": {
+      "scripts/freeze_arc12_filename_holdout.py": "95ba0409d32b65a69bf53df9300f4636ab64b22def533f47d2c8fe72e29b8c85",
+      "scripts/run_arc12_filename_holdout.py": "df34d80ba4e2f5cef70c0b7a24db2ad462130d1a0f37161ce267742a4ed00a3e",
+      "src/arc123/adapters/arc12.py": "db3acb45c794dcc3a1f7cdde2c52a58a2315e11e882c554e4901f876493ffd88",
+      "src/arc123/compatibility.py": "679e3efa3e71aaf9f8b3ca48cfcd517b9b87a3525cdb8db56cd4a3ba509ab8df",
+      "src/arc123/contracts.py": "3acd65973085eca77093dfeaf39adbe4176770e66993d147404d1b184d2001e3",
+      "src/arc123/controller.py": "9ea567ac7721682d4b328d381c2e9c31bc805549f4b773b0aa22381a026d5168",
+      "src/arc123/hypotheses.py": "e882aafd16b9944567e43968f0231cdac2e0e0f63b4ea729eafabb9d79eaea2e",
+      "src/arc123/model.py": "ba4fc4177414ecea6bced1b0f3866b0c72a1ce09c681c19737dd875a6f55a3ab",
+      "src/arc123/perceptions.py": "a916b0d3961f5b85c853abba67b55bf0dfa8e6a1b24d1b139768a3836218b82a",
+      "src/arc123/relational.py": "230c2f4c8321d3465b7680db3fa9678fbee1a34183b4665765b64ac382e2dfc2",
+      "src/arc123/theory.py": "552e089498773809005849fb39e88b18bd633bd0e8d3e0b5653d54ce14045f01",
+      "src/arc123/traces.py": "edb79dfd8c781ae3df15046c83114694788163928dd4634296004f64d846b3c1"
+    }
+  },
+  "source_pins": {
+    "arc1": {
+      "commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc1"
+    },
+    "arc2": {
+      "commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc2"
+    }
+  },
+  "acceptance": {
+    "retain_complete_failure_inclusive_reports": true,
+    "require_post_answer_all_cell_vv": true,
+    "require_source_task_checksum_validation": true,
+    "require_frozen_controller_source_validation": true,
+    "forbid_post_result_controller_retuning": true
+  }
+}

@@ -1,0 +1,502 @@
+{
+  "artifact_id": "ARC12-FILENAME-ONLY-TRAINING-HOLDOUT-007",
+  "claim_boundary": "This P0038 all-training transfer cohort is frozen after the P0037 same-cohort development result and before any selected task grid is parsed, visualized, scored, or used for further operator design. Selection reads only benchmark labels, split names, and filenames. The all-training allocation is required because no new 25-task ARC-AGI-2 evaluation-split cohort remains after the prior disjoint measurements. Selected source JSON bytes are read only as opaque SHA-256 integrity commitments; their JSON content is not decoded by this freezer. The cohort excludes every task ID declared by the historical import and all prior frozen roster imports listed below, including P0035 transfer and P0036/P0037 development reuse. P0038 measures the frozen P0037 generic vocabulary only; its result cannot retune the controller or operator family.",
+  "frozen_filename_only_training_50_p0038": {
+    "per_benchmark_task_count": 25,
+    "selection_protocol": {
+      "allowed_metadata": [
+        "benchmark",
+        "split",
+        "task filename"
+      ],
+      "forbidden_inputs": [
+        "task grid semantics",
+        "held-out test output",
+        "GT feature manifest",
+        "GT solver code",
+        "historical decomposition"
+      ],
+      "method": "stratified sha256(salt:benchmark:split:task_id) rank over filenames",
+      "opaque_integrity_recording": "selected source JSON bytes are hashed without decoding or inspecting grid semantics",
+      "prior_roster_imports": [
+        {
+          "excluded_task_id_count": 110,
+          "path": "research/cohorts/ARC12_COHORT_IMPORT_001.json",
+          "sha256": "f6c576ff90e6eb9b42d3af683d66f68fa157e3573998c8b89da8095c142175ab"
+        },
+        {
+          "excluded_task_id_count": 50,
+          "path": "research/cohorts/ARC12_FILENAME_HOLDOUT_001.json",
+          "sha256": "20c8fee3548f1692dbab38232b3cae2201be4ec660ab5aa9660dc8c6e47e30b4"
+        },
+        {
+          "excluded_task_id_count": 50,
+          "path": "research/cohorts/ARC12_FILENAME_HOLDOUT_002.json",
+          "sha256": "0f7b42576b1b795d32ed9f69413baf7101981bcfd609a727f3fcf47df12d987a"
+        },
+        {
+          "excluded_task_id_count": 50,
+          "path": "research/cohorts/ARC12_FILENAME_HOLDOUT_003.json",
+          "sha256": "0299357d6ede9393b39c8653b6e4486389677c59875c2be4c1a16209a9c2a3d7"
+        },
+        {
+          "excluded_task_id_count": 50,
+          "path": "research/cohorts/ARC12_FILENAME_HOLDOUT_004.json",
+          "sha256": "5d42c0ef6069680bcd66d90a36f893df5719c11ecd1bf68931a37f300eb49ea5"
+        },
+        {
+          "excluded_task_id_count": 50,
+          "path": "research/cohorts/ARC12_FILENAME_HOLDOUT_005.json",
+          "sha256": "601816959c8e271669f7e73cbf3c108905a2a9bd6cf2f0a035477b3b40efb766"
+        },
+        {
+          "excluded_task_id_count": 50,
+          "path": "research/cohorts/ARC12_FILENAME_HOLDOUT_006.json",
+          "sha256": "f0b66f3612d7b5ccc1ac8344d8375a0d09d406f72f6614583c9ab51f1d237214"
+        },
+        {
+          "excluded_task_id_count": 40,
+          "path": "research/cohorts/ARC12_DEVELOPMENT_COHORT_001.json",
+          "sha256": "65906d73fc78a017f539f186c497bded0020a444b82b858af15f881f8a9cd90a"
+        },
+        {
+          "excluded_task_id_count": 40,
+          "path": "research/cohorts/ARC12_DEVELOPMENT_COHORT_002.json",
+          "sha256": "cbce9561173ac1dcc5bc83c8c8c98b404b5dd3470a42532b09e54e4e62f70199"
+        },
+        {
+          "excluded_task_id_count": 40,
+          "path": "research/cohorts/ARC12_DEVELOPMENT_COHORT_003.json",
+          "sha256": "6e2524465d118d2c21f9b6e0344f022671e0178401ad34e0e592164078e06f98"
+        },
+        {
+          "excluded_task_id_count": 40,
+          "path": "research/cohorts/ARC12_DEVELOPMENT_COHORT_004.json",
+          "sha256": "8d8c18b705126e2f3f3f5ce1346169dfce899bf1f6e6e2e8b8c3a63c06ef991d"
+        },
+        {
+          "excluded_task_id_count": 40,
+          "path": "research/cohorts/ARC12_DEVELOPMENT_COHORT_005.json",
+          "sha256": "1158f7c95a562481ca553477e5b0144df61079c2496e5b08b1217e8aa977c2ef"
+        },
+        {
+          "excluded_task_id_count": 40,
+          "path": "research/cohorts/ARC12_DEVELOPMENT_COHORT_006.json",
+          "sha256": "f0b25b289956321a3055f62e039ee49a02bae880a0f872ade939e8edcf49c2d9"
+        },
+        {
+          "excluded_task_id_count": 40,
+          "path": "research/cohorts/ARC12_DEVELOPMENT_COHORT_007.json",
+          "sha256": "5f1b301a7a3546b4827ac1d0e31d1a8a83a14215a09142f1cf40ea2ad68ee166"
+        },
+        {
+          "excluded_task_id_count": 40,
+          "path": "research/cohorts/ARC12_DEVELOPMENT_COHORT_008.json",
+          "sha256": "b690e86218654962b02946c2dc9feb1cf2d176ac71a0e050951cc7b4ebc70b87"
+        },
+        {
+          "excluded_task_id_count": 40,
+          "path": "research/cohorts/ARC12_DEVELOPMENT_COHORT_009.json",
+          "sha256": "5945fa9fbc95e5e5e7718727331bd0730a7a92fc3467745a8ff91d3774df1372"
+        }
+      ],
+      "selection_metadata": {
+        "arc1": {
+          "excluded_prior_or_earlier_selection_task_id_count": 770,
+          "inventory_count": 800,
+          "inventory_filename_sha256": "5a30e8b7147100fb023ee0b0923d74e1ca31061dd94d69b40c5e89b2a6b1077e",
+          "split_allocation": {
+            "training": 25
+          }
+        },
+        "arc2": {
+          "excluded_prior_or_earlier_selection_task_id_count": 795,
+          "inventory_count": 1120,
+          "inventory_filename_sha256": "8d2e59b53f583c11e7b90a5654a5b2799e07a6bc9b48d5a60c9d6046c8b58a44",
+          "split_allocation": {
+            "training": 25
+          }
+        }
+      },
+      "selection_salt": "arc123-issue-2-p0038-cross-reflection-training-transfer-v1"
+    },
+    "source_pins": {
+      "arc1": {
+        "commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+        "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+        "task_directory": "arc_data/arc1"
+      },
+      "arc2": {
+        "commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+        "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+        "task_directory": "arc_data/arc2"
+      }
+    },
+    "task_count": 50,
+    "tasks": {
+      "arc1": [
+        {
+          "benchmark": "arc1",
+          "selection_hash": "02352ca67b6a31434effc2e8158cb906e6917c530984fc30cde15ccf46af013b",
+          "source_sha256": "af590007ffaac4432298cb3021960f56db4c8e4a8025e8b211a06a92f1724ac5",
+          "split": "training",
+          "task_id": "0b148d64"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "026c2354cda49bd23e5306716fb1da58e7e740937f1f5ba56a1b8fe1efe78f3f",
+          "source_sha256": "47eab6441a83cc98126565c8b3efcd10c2f58e705c8a049e2ac05d3b35531a51",
+          "split": "training",
+          "task_id": "3631a71a"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "029c1240ffbb63ed198ea9355cc1d9192e31f4019cacfec7e2d3621bb27a3b62",
+          "source_sha256": "ff960f96bac8d7548a3445e753cb85a6d45bcdda23851627700a1dfe812a6dac",
+          "split": "training",
+          "task_id": "cdecee7f"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "0615df82f3f424236342abc59480b8b61b32dac0f0231aeff10a6ec7d51dd8b3",
+          "source_sha256": "5f024cb8cbfb348306d9264bcd602a7e55a923b43042fb214d8ce9eb715e7636",
+          "split": "training",
+          "task_id": "ba97ae07"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "0ce10018e7e26d6beb134b9960348ac4b5744acb7cea68ab51bbb1f4e3e523b0",
+          "source_sha256": "081371303db6833c43da59a24778bd22c7612618b670e50ce3b8273b38ccfdde",
+          "split": "training",
+          "task_id": "99fa7670"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "0f7442c44197d3912bf2f0a43ddfcda9ca71e7e8e8c396ad55735151e662f060",
+          "source_sha256": "57fcfb596dac84d9116605cd13985f1ea62e62822569ec4700ebfd11be07358b",
+          "split": "training",
+          "task_id": "6cf79266"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "1608a3b366fb0ba25637cb25c03a8e244996f7be7b5e050eeb6f592bac5136f7",
+          "source_sha256": "c236053a417250b66d7118a0004c599efca27818cc9d399db95fddfa8467e9f6",
+          "split": "training",
+          "task_id": "1f0c79e5"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "1b7e7b58cdd5db44b029af1515b33b8e8dccc0effb95174b50e04753fe53ccbd",
+          "source_sha256": "6df079ce3aa5332512120a028c89fd7a1534bf522360af4e5be1dd0d0deb69d3",
+          "split": "training",
+          "task_id": "c3f564a4"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "20c02234c556a6020d63977f9734a0c5c593f472ecae9755772ed511bb88c275",
+          "source_sha256": "f95955de86b7a6beaadeb9d5304b7cc0090798e4b1a978551ec86f7556ce2721",
+          "split": "training",
+          "task_id": "22168020"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "21439adc4c96aee4494fda75f5dd942d67f031394977f79c584a9016064e4d0e",
+          "source_sha256": "9f5132b8ec6bc04496f05f93ec1eb13af13c83f005991cff3042cb936fe661e3",
+          "split": "training",
+          "task_id": "db93a21d"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "25dd55b62c5088608758760cf3d41724ea243733a21aba2fb60d2718acd49423",
+          "source_sha256": "ff8a143b5522ee17b6046ad7fa87d68924265b0424ebe1d9884d93fe9744abc4",
+          "split": "training",
+          "task_id": "50cb2852"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "268aafa772f1462db71bc175fd5ba4e6416ab19bf08e25d2d7b0042478bab50b",
+          "source_sha256": "c683e40eb60521d6a822d954e2a1378d96cb327d710468bd0e1f2f10b5093223",
+          "split": "training",
+          "task_id": "7ddcd7ec"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "270e3405560296a0b2bdfb4c76fc109a9f9e0b0281525228d96ab2f7a38e6045",
+          "source_sha256": "86248476c03a625aad79ce2ba5e0f1bf174b2d46497368f2442756989ed533c9",
+          "split": "training",
+          "task_id": "4612dd53"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "2e1e43a386717b768f15b3b1a0ebf3d28a3a05b82fdeee0dfd7bff980ba5ea2b",
+          "source_sha256": "287637fc7200902788a8dcc230549a32a7fb1e94643f145711fa19d9103396e8",
+          "split": "training",
+          "task_id": "56dc2b01"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "2fa98901d7103d1c8ef8023c3c7e61b4309c5afe0a18879bddf442c7cc52d3e4",
+          "source_sha256": "a18e2d7aa271a8e96e6cac0460dfa4df7277254705b7afbc661e48e492c900f0",
+          "split": "training",
+          "task_id": "ddf7fa4f"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "341f16c3a0f947ad9b443060278c037a8e6ecc73af9fe487414b9aebbb881b4e",
+          "source_sha256": "256262c55d65d4b8906779ec3291684145df22b555feaba1382bf678f9c64813",
+          "split": "training",
+          "task_id": "de1cd16c"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "36b4da056b826c74dfaeb8a42c82292a88c97cfd22c8972801ffb42cbe389c95",
+          "source_sha256": "9986aa600b54fb31ff6c3a649299d2a6487e6d38afbbcdda40717b59763fe6f9",
+          "split": "training",
+          "task_id": "d511f180"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "3a930c9c045e1e5e1aa06beaa342fc83d38304362260b817aeb1fa8554284b23",
+          "source_sha256": "9b1d7f2c42b8a004f803c9120a5aa971f45fbe305af2ebda7edf9b95b98aa94e",
+          "split": "training",
+          "task_id": "36fdfd69"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "3ee6ac8d8fad1f1839ee96130b5ce0a599ddba4fadf246c679d85b7408b5f44a",
+          "source_sha256": "d4463446cb36c3345c220f7058090248a21310018481cc3d9ad0eca88f39d832",
+          "split": "training",
+          "task_id": "44d8ac46"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "410a1c782e9155e86899012f794e85e8cea928362f2927244f6ce1089fb83956",
+          "source_sha256": "4eb20c8b16d9ef5eb15ac7930d5f06c843dd80d09cdfa91d91f88c060600c7c3",
+          "split": "training",
+          "task_id": "b527c5c6"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "45dcc2c6c07064e8286432686e6bc5ef283d3772120f102a5552b25f85abacc8",
+          "source_sha256": "ce0a740161f99a889f5f8fa1a19747c02a97331a3eb7ade7b726a55b0dbba704",
+          "split": "training",
+          "task_id": "e76a88a6"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "4ab6567e49e2562e033a76d7d90f35f4fb928a5b4d76de1c96bc10818a82268c",
+          "source_sha256": "32fd55ef361e6fcb9d8e1d3f9c79929205a1a7c948aa3846fb047b85ae6c922d",
+          "split": "training",
+          "task_id": "a61f2674"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "546f2e424643c449820177ebb85fe02a435a5e7e2df655e70fff07d920d3308d",
+          "source_sha256": "ca887aaa0a592074e87eb7694a76a25a8d6d9cb45dbe04b905283889bc8208a6",
+          "split": "training",
+          "task_id": "aba27056"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "54db1e95a4a16073f13df5cfed918e918b250d4f7e0818a127b2931ccbed208d",
+          "source_sha256": "5ec42d931051394f5d30a586a4f245c3daa59b52411852096bfeb86d9b830f9c",
+          "split": "training",
+          "task_id": "1bfc4729"
+        },
+        {
+          "benchmark": "arc1",
+          "selection_hash": "56d40925db316b92d2e2fe3151b39a680f424aaa63a45adaf2258fdd96f46a6c",
+          "source_sha256": "c2a133a2b40ae39d8dba8b6abeadfa190d6b171ddc0da7726bb335f49d0a2ee6",
+          "split": "training",
+          "task_id": "239be575"
+        }
+      ],
+      "arc2": [
+        {
+          "benchmark": "arc2",
+          "selection_hash": "009c46c10ac5436168d63b47a9353dc784b2f91f592053201588640004cda1db",
+          "source_sha256": "035348ba39dbf17a4f0c7c76530cb584e5e52a35ad46486713b87113a6cb0ac3",
+          "split": "training",
+          "task_id": "4ff4c9da"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "01c2903b7520a95cab3b65e40a4f90bba4e1edcd74833bafee7faa280ea29036",
+          "source_sha256": "c87441bb4de89ee0ca5a7812a79e68d12b40b2ed275ac0fde481e3cdc80a1a6a",
+          "split": "training",
+          "task_id": "639f5a19"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "01cf769a8df4afe91a707741f67d0dd2cbda031e4f7d459a0a2e729c8852c1c3",
+          "source_sha256": "7b65f02b4c896d9a5220d6b3fe00ab49e658167cb0b9e4efbcd1fbda1a1fc63b",
+          "split": "training",
+          "task_id": "b7256dcd"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "0216b8f8b982211f48a9d58e9bb30d2c3caa4d81adc4d61cef02540e5d98718c",
+          "source_sha256": "1112e973e8caeafa684eb461c02629883e34e670b7647ea205206504a88e9d03",
+          "split": "training",
+          "task_id": "5792cb4d"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "02b58d9944670c4216b7377c5fad3a9ba66c8df6f11f1bc765a517308532f30f",
+          "source_sha256": "70a84d913424a821caa54dc8223fed3168e8a618fc458be962136b3794687ab0",
+          "split": "training",
+          "task_id": "52364a65"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "02d266d2bac7687f2d1c15f39d9f4c2fd8928281d69246c4f4806fdc5522ed29",
+          "source_sha256": "9887dba1a23e2917f5419821d94acfffc5e872efdcb114742d19c4c06185346a",
+          "split": "training",
+          "task_id": "2685904e"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "037d7e93935020e309cd97450a5b4f1ff9cf1a1bfcced227bad0471b2e261d8a",
+          "source_sha256": "0a4457b084195f49c87a0316005ae0bdb57e4de84371a50d6e6af1ef457ccecc",
+          "split": "training",
+          "task_id": "5783df64"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "03a6b4c4520d3c6cc007f73dc4bc01570d5dc7cebc68efe5101ec3a232d3998a",
+          "source_sha256": "842a0d1822d5342d05b1e14f49f267187ef39086cf5043c0110ded2f9e5606bb",
+          "split": "training",
+          "task_id": "9f669b64"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "0494372fb9caa5697691558172e8aecc9dfc48ef7aca7c982d7ce7d630eab9d8",
+          "source_sha256": "d0b70e2ede683a8be6861f0538442e2a3d57a51e36589fc02edfd6b6434cc1c7",
+          "split": "training",
+          "task_id": "ad7e01d0"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "04c727e95370ba02bf7e042aa511c1076b75f1533d7b19c66209ecbd7862ce05",
+          "source_sha256": "114887530b87ed00949f61e40baf085ebcea81a28f4b21c41acdb82eed2309c4",
+          "split": "training",
+          "task_id": "1efba499"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "059853776b8b13ced2fb2aaa4a00df66c8cc98632c1b88e207028c2b353233df",
+          "source_sha256": "f317632c728d20a0a71d1610574350660fd69bfa0b03be1f7d76c79205907e72",
+          "split": "training",
+          "task_id": "c920a713"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "05eb5232857e74aed649e4352e8f24c40d1fef3bad21fbfccd850ef257e29ccd",
+          "source_sha256": "afd0d124f3e0c47fe1126f605a80ed9bd3c8c26ff117960b7184db54880774ae",
+          "split": "training",
+          "task_id": "902510d5"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "069d62e1adab724c22aaf820f7964b0d01dd66e0d377ac2d4f9ead52a888cb8f",
+          "source_sha256": "5eb941a048278d50fb6be8e518c97470564bd6f4bb1a03b1cbd81a7764f3197a",
+          "split": "training",
+          "task_id": "6ecd11f4"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "0899f34d7acc68cf05fa787c224cfe7ceedd03946062907ec3e4907705098987",
+          "source_sha256": "37a94bf6d9d8d096b6c652d73c0ab7434edc085ee531e60f82a85c5c82256592",
+          "split": "training",
+          "task_id": "e3fe1151"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "09f800a2459c6a692b50d1f35b47b00736d7477b162651d1c2975b883590f3b3",
+          "source_sha256": "d8b79ff3e7726402f23d8c43398cd3ae5d962aa2cd9559366418ae91f38475c3",
+          "split": "training",
+          "task_id": "7e576d6e"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "0a0470db8ac32ec4be7b03b584244ccc9b6f5adf506db5f7da242f715557fd7d",
+          "source_sha256": "3a888dce8203f3539ce81e072f6c51988cacc998b5cee6915e83af5496c0d5b7",
+          "split": "training",
+          "task_id": "80214e03"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "0af9be3c19e2e2ab862b3ec4f99c2631030736d90273aad797d3dec58afe26cd",
+          "source_sha256": "892dcb975fb19feff40f58f2020cc5c1f76d4851a9b51840c61d4e5068477b8d",
+          "split": "training",
+          "task_id": "25d487eb"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "0c02bc2334641a05958750f867a2563ae63974e6372a3cac859ff5dde3016f27",
+          "source_sha256": "7ab348549246a1c9a61f4ef4c365afc375f04777705e175a50933055ba8f0776",
+          "split": "training",
+          "task_id": "fc10701f"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "0cf7a63d759a32e1793200fa83fe7d22f199184278ca9d9f6246a09d7350bed6",
+          "source_sha256": "914ce27be1046be75d71d7ae23523c5db74a90d265b4afecbf44550086b6b323",
+          "split": "training",
+          "task_id": "db615bd4"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "0f6975b9bd929bf80de67c5369185b2bac26a1ca7a7cd9746558571eb71669bb",
+          "source_sha256": "5876db2a88955e5e87c0857ea508dacb0227f502977109d5c00df98729d9d552",
+          "split": "training",
+          "task_id": "abbfd121"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "0f893a8bde2f350cde9e31f058bd676658b3c1135e1eaef425cdd7c003d50d77",
+          "source_sha256": "8a4b16645461af2ad1a5293a70371da69624837b5e3754019dcb1f32ba3bb8c9",
+          "split": "training",
+          "task_id": "2f0c5170"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "0ffb9a2acada5abcdf1d2fd30d8f17f46c2a8c961576ac68697439c2271abdb3",
+          "source_sha256": "21cccac7d9424b6c6ab7053f49e8dbeba7adab09dd1bf5dc83871fbdc4452c4f",
+          "split": "training",
+          "task_id": "bf32578f"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "12e1c470611a4f7e375d12a35bb70e0f8e8ce1d6632e0fa7e60ac47f2b78191b",
+          "source_sha256": "26e0021f2ca979d29666ac59b4016bc0c365c180291728f03d1288cd6909826d",
+          "split": "training",
+          "task_id": "85fa5666"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "1735988346d9fd3d22ca3b57d4b0f7e6c0a6f83495982c2e52f0585838f01315",
+          "source_sha256": "e0744419f3e21f45ffb2aadde18672eeaa207e0a014314759d49771a5787571f",
+          "split": "training",
+          "task_id": "19bb5feb"
+        },
+        {
+          "benchmark": "arc2",
+          "selection_hash": "17f696bce406d041192230cfe2e0f39611e6af52238af1b8bc8e90859ff86bda",
+          "source_sha256": "56d784fd60c8f0f2175b5f1785c19ba89240923c36c22a718e247f40a04c582e",
+          "split": "training",
+          "task_id": "b6afb2da"
+        }
+      ]
+    }
+  },
+  "live_controller_boundary": {
+    "cohort_metadata_passed_to_agent": false,
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "schema_version": 1,
+  "title": "ARC12 Seventh Filename-Only All-Training P0038 Transfer 25+25 Cohort"
+}

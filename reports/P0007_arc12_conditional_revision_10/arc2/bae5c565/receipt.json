@@ -1,0 +1,370 @@
+{
+  "ablations": {
+    "no_new_residual_family": {
+      "all_cells_match": false,
+      "mismatched_cell_count": 40,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    "no_revision": {
+      "all_cells_match": false,
+      "mismatched_cell_count": 40,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "training_exact": false,
+      "used_fallback": true
+    }
+  },
+  "agent_input_contract": {
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "offline_audit_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "all_cells_match": false,
+  "benchmark": "arc2",
+  "causal_trace": {
+    "accepted": false,
+    "all_cells_match": false,
+    "composition_seen": true,
+    "counterexample_seen": true,
+    "generic_families": [],
+    "multi_rule_residual": false,
+    "parameter_revision_seen": false,
+    "promotion_seen": false,
+    "selected_rule_operations": [
+      "identity"
+    ],
+    "visible_additional_demo_seen": true
+  },
+  "compared_position_count": 121,
+  "controller_oracle_boundary_scan": "pass",
+  "mismatched_cell_count": 40,
+  "packet_id": "P0007-ARC12-CONDITIONAL-REVISION-10",
+  "posterior_mass": 0.0,
+  "schema_version": 1,
+  "selected_hypothesis": "fallback_identity_complete_grid",
+  "source_commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+  "source_task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/71f86ff4c5304e452e0659131171f0519b50e21c/arc_data/arc2/training/bae5c565.json",
+  "task_id": "bae5c565",
+  "task_split": "training",
+  "test_cases": [
+    {
+      "all_cells_match": false,
+      "compared_position_count": 121,
+      "expected_output": [
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          8,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          9,
+          8,
+          3,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          2,
+          9,
+          8,
+          3,
+          3,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          7,
+          2,
+          9,
+          8,
+          3,
+          3,
+          4,
+          5,
+          5
+        ],
+        [
+          5,
+          6,
+          7,
+          2,
+          9,
+          8,
+          3,
+          3,
+          4,
+          3,
+          5
+        ],
+        [
+          4,
+          6,
+          7,
+          2,
+          9,
+          8,
+          3,
+          3,
+          4,
+          3,
+          3
+        ]
+      ],
+      "mismatched_cell_count": 40,
+      "prediction": [
+        [
+          4,
+          6,
+          7,
+          2,
+          9,
+          5,
+          3,
+          3,
+          4,
+          3,
+          3
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          8,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          8,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          8,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          8,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          8,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          5,
+          5,
+          5,
+          5,
+          5,
+          8,
+          5,
+          5,
+          5,
+          5,
+          5
+        ]
+      ],
+      "test_index": 0
+    }
+  ],
+  "trace_artifacts": {
+    "ablations": {
+      "path": "ablations.json",
+      "sha256": "9d7bf7029c3fbb410cf89f1aef1a96846ef3763aadae7eb4466168be162363ae"
+    },
+    "corpus_callosum": {
+      "path": "corpus_callosum.svg",
+      "sha256": "f5bdc008baa6d2c345bb0372ef372500a9a1fa1ed019b98f34db4c39248f01d7"
+    },
+    "learning_trace": {
+      "path": "learning_trace.json",
+      "sha256": "6ccaf72e2cec76afc58d1aae4e83bb77051e2b5e11c12b750b2db8c353b7480c"
+    },
+    "report": {
+      "path": "REPORT.md",
+      "sha256": "5d0671cb96e26be28bea9a976890221b6b4126f05795141a77ba97256c76d750"
+    }
+  },
+  "training_exact": false,
+  "used_fallback": true
+}

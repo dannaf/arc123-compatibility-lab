@@ -17,7 +17,7 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPOSITORY_ROOT / "src"))
 
 from arc123.adapters.arc12 import ARC12InteractiveEnv
-from arc123.controller import IterativeHypothesisLearner
+from arc123.controller import IterativeHypothesisLearner, StagedCandidateBaseline
 from arc123.traces import render_corpus_callosum_svg, render_trace_markdown
 
 
@@ -79,12 +79,148 @@ def _verify_clean_source(source_root: Path, expected_commit: str) -> None:
         raise ValueError(f"source must remain clean/read-only: {source_root}")
 
 
+def _repository_relative_path(raw_path: str) -> Path:
+    relative_path = Path(raw_path)
+    if relative_path.is_absolute() or ".." in relative_path.parts:
+        raise ValueError("packet path must remain inside this repository")
+    return relative_path
+
+
+def _verify_packet_boundary(packet: Mapping[str, Any]) -> None:
+    for field in ("external_mutation_allowed", "benchmark_submission_allowed"):
+        if field in packet and packet[field] is not False:
+            raise ValueError(f"packet must forbid {field.removesuffix('_allowed')}")
+
+
+def _verify_baseline_reference(packet: Mapping[str, Any]) -> None:
+    reference = packet.get("baseline_reference")
+    if reference is None:
+        return
+    if not isinstance(reference, Mapping):
+        raise ValueError("packet baseline_reference must be an object")
+    raw_path = reference.get("receipt_path")
+    expected_hash = reference.get("receipt_sha256")
+    packet_id = reference.get("packet_id")
+    exact_solve_count = reference.get("exact_solve_count")
+    if not isinstance(raw_path, str) or not isinstance(expected_hash, str):
+        raise ValueError("packet baseline reference lacks a receipt path/hash")
+    if not isinstance(packet_id, str) or not isinstance(exact_solve_count, int):
+        raise ValueError("packet baseline reference lacks its expected outcome")
+    receipt_path = REPOSITORY_ROOT / _repository_relative_path(raw_path)
+    if _sha256(receipt_path) != expected_hash:
+        raise ValueError("packet baseline receipt hash has changed")
+    receipt = _load_json(receipt_path)
+    if receipt.get("packet_id") != packet_id:
+        raise ValueError("packet baseline receipt has the wrong packet ID")
+    if receipt.get("exact_solve_count") != exact_solve_count:
+        raise ValueError("packet baseline receipt has the wrong exact count")
+
+
+def _baseline_comparison(packet: Mapping[str, Any], summary: Mapping[str, Any]) -> dict[str, Any] | None:
+    reference = packet.get("baseline_reference")
+    if not isinstance(reference, Mapping):
+        return None
+    receipt_path = REPOSITORY_ROOT / _repository_relative_path(str(reference["receipt_path"]))
+    baseline = _load_json(receipt_path)
+    baseline_exact = int(baseline["exact_solve_count"])
+    baseline_attempts = int(baseline["attempt_count"])
+    current_exact = int(summary["exact_solve_count"])
+    current_attempts = int(summary["attempt_count"])
+    return {
+        "packet_id": baseline["packet_id"],
+        "receipt_path": str(reference["receipt_path"]),
+        "receipt_sha256": str(reference["receipt_sha256"]),
+        "exact_solve_count": baseline_exact,
+        "attempt_count": baseline_attempts,
+        "current_exact_solve_count": current_exact,
+        "current_attempt_count": current_attempts,
+        "exact_solve_delta": current_exact - baseline_exact,
+    }
+
+
 def _controller_oracle_boundary_holds() -> bool:
     controller_source = (REPOSITORY_ROOT / "src" / "arc123" / "controller.py").read_text(
         encoding="utf-8"
     )
     forbidden_tokens = ("_test_targets", "post_answer_validate", "expected_output")
     return not any(token in controller_source for token in forbidden_tokens)
+
+
+def _controller_for_packet(packet: Mapping[str, Any]) -> object:
+    controller = packet.get("controller")
+    if not isinstance(controller, Mapping):
+        raise ValueError("packet must declare a controller configuration")
+    implementation = str(controller.get("implementation", "staged_candidate_baseline"))
+    candidate_limit = int(controller["candidate_limit"])
+    operator_families = tuple(controller["generic_operator_families"])
+    if implementation == "staged_candidate_baseline":
+        return StagedCandidateBaseline(
+            candidate_limit=candidate_limit,
+            operator_families=operator_families,
+        )
+    if implementation == "persistent_partial_theory":
+        raw_beam_width = controller.get("beam_width")
+        return IterativeHypothesisLearner(
+            candidate_limit=candidate_limit,
+            operator_families=operator_families,
+            beam_width=(int(raw_beam_width) if raw_beam_width is not None else None),
+            max_revisions=int(controller.get("max_revisions", 96)),
+        )
+    raise ValueError(f"unsupported packet controller implementation: {implementation}")
+
+
+def _packet_tasks(packet: Mapping[str, Any]) -> list[Mapping[str, Any]]:
+    raw_tasks = packet.get("tasks")
+    if isinstance(raw_tasks, list):
+        return raw_tasks
+    cohort_reference = packet.get("cohort_import")
+    if not isinstance(cohort_reference, Mapping):
+        raise ValueError("packet must declare tasks or a cohort_import reference")
+    raw_path = cohort_reference.get("path")
+    expected_hash = cohort_reference.get("sha256")
+    if not isinstance(raw_path, str) or not isinstance(expected_hash, str):
+        raise ValueError("cohort_import must declare a path and sha256")
+    relative_path = Path(raw_path)
+    if relative_path.is_absolute() or ".." in relative_path.parts:
+        raise ValueError("cohort_import path must remain inside this repository")
+    cohort_path = REPOSITORY_ROOT / relative_path
+    if _sha256(cohort_path) != expected_hash:
+        raise ValueError("cohort import does not match the packet's immutable sha256")
+    cohort = _load_json(cohort_path).get("curated_60")
+    if not isinstance(cohort, Mapping):
+        raise ValueError("cohort import lacks curated_60 metadata")
+    if int(cohort.get("task_count", 0)) != int(cohort_reference.get("task_count", 0)):
+        raise ValueError("cohort import task count does not match packet declaration")
+    source_pins = cohort.get("source_pins")
+    packet_pins = packet.get("source_pins")
+    if not isinstance(source_pins, Mapping) or not isinstance(packet_pins, Mapping):
+        raise ValueError("cohort import or packet lacks source pins")
+    task_ids = cohort.get("task_ids")
+    if not isinstance(task_ids, Mapping):
+        raise ValueError("cohort import lacks task IDs")
+    tasks: list[Mapping[str, Any]] = []
+    for benchmark in ("arc1", "arc2"):
+        cohort_pin = source_pins.get(benchmark)
+        packet_pin = packet_pins.get(benchmark)
+        benchmark_tasks = task_ids.get(benchmark)
+        if not isinstance(cohort_pin, Mapping) or not isinstance(packet_pin, Mapping):
+            raise ValueError(f"cohort import lacks {benchmark} source pin")
+        if cohort_pin.get("commit") != packet_pin.get("commit"):
+            raise ValueError(f"{benchmark} cohort/source packet commit mismatch")
+        if not isinstance(benchmark_tasks, list):
+            raise ValueError(f"cohort import lacks {benchmark} task IDs")
+        for task in benchmark_tasks:
+            if not isinstance(task, Mapping):
+                raise ValueError(f"cohort import has invalid {benchmark} task")
+            tasks.append({"benchmark": benchmark, **dict(task)})
+    return tasks
+
+
+def _episode_id(packet: Mapping[str, Any], benchmark: str, task_id: str) -> str:
+    controller = packet.get("controller")
+    if isinstance(controller, Mapping) and controller.get("implementation") == "persistent_partial_theory":
+        return f"{packet['packet_id']}:anonymous-live-evidence"
+    return f"{packet['packet_id']}:{benchmark}:{task_id}"
 
 
 def _render_report(receipt: Mapping[str, Any], trace: Mapping[str, Any]) -> str:
@@ -164,10 +300,9 @@ def _task_receipt(
             ),
         },
     )
-    result = IterativeHypothesisLearner(
-        candidate_limit=int(packet["controller"]["candidate_limit"]),
-        operator_families=tuple(packet["controller"]["generic_operator_families"]),
-    ).solve(environment, f"{packet['packet_id']}:{benchmark}:{task_id}")
+    result = _controller_for_packet(packet).solve(
+        environment, _episode_id(packet, benchmark, task_id)
+    )
     validation = environment.post_answer_validate(result.predictions)
     trace_path = report_directory / "learning_trace.json"
     diagram_path = report_directory / "corpus_callosum.svg"
@@ -232,6 +367,8 @@ def run_packet(
     packet_id = packet.get("packet_id")
     if not isinstance(packet_id, str) or not packet_id.startswith("P"):
         raise ValueError("packet must declare a P-series packet identifier")
+    _verify_packet_boundary(packet)
+    _verify_baseline_reference(packet)
     report_root = report_root or _default_report_root(packet)
     source_roots = {"arc1": arc1_source, "arc2": arc2_source}
     for benchmark, source_root in source_roots.items():
@@ -239,7 +376,7 @@ def run_packet(
     if not _controller_oracle_boundary_holds():
         raise ValueError("controller source violates the held-out-target boundary")
     task_receipts = []
-    for task in packet["tasks"]:
+    for task in _packet_tasks(packet):
         if not isinstance(task, Mapping):
             raise ValueError("packet task must be an object")
         benchmark = str(task["benchmark"])
@@ -270,6 +407,9 @@ def run_packet(
             for item in task_receipts
         ],
     }
+    baseline_comparison = _baseline_comparison(packet, summary)
+    if baseline_comparison is not None:
+        summary["baseline_comparison"] = baseline_comparison
     _write_json(report_root / "receipt.json", summary)
     lines = [
         str(packet.get("report_title", f"# {summary['packet_id']} ARC12 Rediscovery Packet")),
@@ -280,9 +420,27 @@ def run_packet(
         f"- Training-compatible theories: `{summary['training_exact_count']}`",
         f"- Complete-grid fallbacks: `{summary['fallback_count']}`",
         "",
-        "| Benchmark | Task | Outcome | Training exact | Selected hypothesis | Report |",
-        "| --- | --- | --- | --- | --- | --- |",
     ]
+    baseline_comparison = summary.get("baseline_comparison")
+    if isinstance(baseline_comparison, Mapping):
+        lines.extend(
+            [
+                "## Pre-Registered Baseline Comparison",
+                "",
+                f"- Baseline packet: `{baseline_comparison['packet_id']}`",
+                f"- Baseline exact solves: `{baseline_comparison['exact_solve_count']}/{baseline_comparison['attempt_count']}`",
+                f"- This packet exact solves: `{baseline_comparison['current_exact_solve_count']}/{baseline_comparison['current_attempt_count']}`",
+                f"- Exact-solve delta: `{baseline_comparison['exact_solve_delta']}`",
+                "- The immutable P0008 frozen 25+25 result is not rerun or rewritten by this development packet.",
+                "",
+            ]
+        )
+    lines.extend(
+        [
+            "| Benchmark | Task | Outcome | Training exact | Selected hypothesis | Report |",
+            "| --- | --- | --- | --- | --- | --- |",
+        ]
+    )
     for item in task_receipts:
         outcome = "YES" if item["all_cells_match"] else "NO"
         report = f"{item['benchmark']}/{item['task_id']}/REPORT.md"

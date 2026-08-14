@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "packet_id": "P0010-ARC12-OFFLINE-MULTISTEP-ANNOTATIONS",
+  "report_title": "# P0010 ARC12 Offline Multistep Annotation Packet",
+  "claim_boundary": "This packet materializes deterministic, offline-only structural annotations from three previously published exact P0007 causal traces. The materialization is research/V&V evidence only. It is not passed to a live ARC1/ARC2 controller, contains no held-out answer grid, and does not establish a general ARC solver claim.",
+  "external_mutation_allowed": false,
+  "benchmark_submission_allowed": false,
+  "source_pin": {
+    "repository": "https://github.com/dannaf/arc123-compatibility-lab",
+    "commit": "64ce50d15c8e1bc687b21e293745a681546f5f67"
+  },
+  "selection_protocol": "Materialize exactly all three P0007 records that were published as both exact and causal-trace accepted; do not select additional records after materialization.",
+  "source_records": [
+    {
+      "benchmark": "arc1",
+      "task_id": "009d5c81",
+      "trace_path": "reports/P0007_arc12_conditional_revision_10/arc1/009d5c81/learning_trace.json",
+      "trace_sha256": "d7de0cb59053161e5baa2accb897bc196847361bab19138bd3a3698fad7342e0",
+      "receipt_path": "reports/P0007_arc12_conditional_revision_10/arc1/009d5c81/receipt.json",
+      "receipt_sha256": "f0240f2ff741e2105b1fe3110a1e263328b8b4a7eb02a1c1ca2ab9aaaf7bf8d3",
+      "diagram_path": "reports/P0007_arc12_conditional_revision_10/arc1/009d5c81/corpus_callosum.svg",
+      "diagram_sha256": "b2a978377b26b0808c9aba192bb20fdfeb80370178d1e43e8a488fd01312d87b"
+    },
+    {
+      "benchmark": "arc2",
+      "task_id": "5ad8a7c0",
+      "trace_path": "reports/P0007_arc12_conditional_revision_10/arc2/5ad8a7c0/learning_trace.json",
+      "trace_sha256": "64b997e49213475f2813e198e34fa3c86504af70aa24cf8d30b3272351434d13",
+      "receipt_path": "reports/P0007_arc12_conditional_revision_10/arc2/5ad8a7c0/receipt.json",
+      "receipt_sha256": "7123f9beb961f558482dedfe54c8b7cd9835c65fe8231bfec520244a3693e4eb",
+      "diagram_path": "reports/P0007_arc12_conditional_revision_10/arc2/5ad8a7c0/corpus_callosum.svg",
+      "diagram_sha256": "d80c76ddbaf6fbb713ec8fda94d8b04b40ee582675dea633f28906576b88dcb2"
+    },
+    {
+      "benchmark": "arc2",
+      "task_id": "a09f6c25",
+      "trace_path": "reports/P0007_arc12_conditional_revision_10/arc2/a09f6c25/learning_trace.json",
+      "trace_sha256": "13f0c6c89d01f02ee9667641a747632340313cf24490ff8840298b949096ae84",
+      "receipt_path": "reports/P0007_arc12_conditional_revision_10/arc2/a09f6c25/receipt.json",
+      "receipt_sha256": "f0974b642e89a4f04c01b07118a6ce35777c4f43e7118f64880ad74178f69d18",
+      "diagram_path": "reports/P0007_arc12_conditional_revision_10/arc2/a09f6c25/corpus_callosum.svg",
+      "diagram_sha256": "dac5125336b64dfc9e97687e7c18e9a192b73f05670419a166155cbf9fa972be"
+    }
+  ],
+  "outputs": {
+    "materialization_path": "research/oracle_materializations/ARC12_IHL_GT_MULTISTEP_001.json",
+    "report_root": "reports/P0010_arc12_offline_multistep_annotations"
+  },
+  "acceptance": {
+    "minimum_record_count": 3,
+    "minimum_benchmark_count": 2,
+    "require_propose_counterexample_revision_compose_commit_sequence": true,
+    "require_post_answer_yes_vv": true,
+    "require_no_live_agent_access": true
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "packet_id": "P0006-ARC12-RESIDUAL-DIHEDRAL-TILE-CURATED-60",
+  "report_title": "# P0006 ARC12 Residual Dihedral-Tile Curated-60 Packet",
+  "report_root": "reports/P0006_arc12_residual_dihedral_tile_curated_60",
+  "claim_boundary": "This source-pinned, failure-inclusive curated-development packet evaluates one new generic residual-directed primitive: an orientation/blank macro-tile template inferred only by intersecting visible training-example block relations. The controller receives no task ID, historical selected schema, ARC12 decomposition, GT feature contract, GT solver code, or held-out test output before committing. Every task produces a complete output and post-answer all-cell V&V. This is an operator-transfer measurement, not an ARC-AGI-1 or ARC-AGI-2 solver completion claim.",
+  "cohort_import": {
+    "path": "research/cohorts/ARC12_COHORT_IMPORT_001.json",
+    "sha256": "f6c576ff90e6eb9b42d3af683d66f68fa157e3573998c8b89da8095c142175ab",
+    "task_count": 60,
+    "selection": "all curated_60.task_ids in immutable import order"
+  },
+  "controller": {
+    "implementation": "persistent_partial_theory",
+    "candidate_limit": 32,
+    "beam_width": 12,
+    "max_revisions": 96,
+    "forbidden_live_inputs": [
+      "task_id",
+      "historical selected schema",
+      "ARC12 decomposition mapping",
+      "GT feature contract",
+      "GT solver code",
+      "held-out test output before commit"
+    ],
+    "generic_operator_families": [
+      "identity",
+      "recolor",
+      "mirror",
+      "translate",
+      "repeat_tile",
+      "dihedral_tile",
+      "line_extend",
+      "row_span_fill",
+      "scoped_coordinate_transform"
+    ]
+  },
+  "source_pins": {
+    "arc1": {
+      "commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc1"
+    },
+    "arc2": {
+      "commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc2"
+    }
+  },
+  "upstream_evidence": {
+    "arc123_issue": "https://github.com/dannaf/arc123-compatibility-lab/issues/2",
+    "arc12_issue": "https://github.com/dannaf/arc12-compatibility-lab/issues/4",
+    "singularityml_issue": "https://github.com/dannaf/SingularityML/issues/3541",
+    "owner_guidance": "https://github.com/dannaf/SingularityML/issues/3542"
+  }
+}

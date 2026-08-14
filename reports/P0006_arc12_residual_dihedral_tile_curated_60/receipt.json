@@ -1,0 +1,553 @@
+{
+  "attempt_count": 60,
+  "attempts": [
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 32,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "009d5c81",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 33,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "00d62c1b",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 88,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "00dbd492",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 29,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "03560426",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 43,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "045e512c",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 12,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "0a1d4ef5",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 72,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "12997ef3",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 17,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "18419cfa",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 14,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "1f876c06",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 36,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "2072aba6",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 25,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "2281f1f4",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 30,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "23581191",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 14,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "253bf280",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 81,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "27f8ce4f",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 96,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "332efdb3",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 81,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "48f8583b",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 27,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "4c5c2cf0",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 0,
+      "selected_hypothesis": "compose(identity,dihedral_tile(column_factor=2,row_factor=2,template=rotate_180;flip_tb;flip_lr;identity))",
+      "task_id": "833dafe3",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 7,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "84f2aca1",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 27,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "88207623",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 0,
+      "selected_hypothesis": "compose(identity,dihedral_tile(column_factor=1,row_factor=2,template=identity;flip_tb))",
+      "task_id": "8be77c9e",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 154,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "8cb8642d",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 24,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "913fb3ed",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 9,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "9a4bb226",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 14,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "a5313dff",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 0,
+      "selected_hypothesis": "compose(identity,row_span_fill(fill_color=2,seed_color=1))",
+      "task_id": "a699fb00",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 9,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "a85d4709",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 7,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "bdad9b1f",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 91,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "d282b262",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "mismatched_cell_count": 32,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "f3e62deb",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 0,
+      "selected_hypothesis": "compose(identity,dihedral_tile(column_factor=3,row_factor=3,template=identity;identity;identity;flip_lr;flip_lr;flip_lr;identity;identity;identity))",
+      "task_id": "00576224",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 81,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "007bbfb7",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 12,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "05f2a901",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 36,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "06df4c85",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 56,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "09629e4f",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 2,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "0b17323b",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 32,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "0e206a2e",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 30,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "1818057f",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 20,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "2037f2c7",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 136,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "3cd86f4f",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 5,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "4a1cacc2",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 121,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "5587a8d0",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 2,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "5ad8a7c0",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 126,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "5d588b4d",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 41,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "5ffb2104",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 139,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "62593bfd",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 31,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "6ad5bdfd",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 5,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "760b3cac",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 177,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "878187ab",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 6,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "88a10436",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 81,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "8e2edd66",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 20,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "8f2ea7aa",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 881,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "973e499e",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 21,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "98cf29f8",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 3,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "9968a131",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 15,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "9b30e358",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 258,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "a09f6c25",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 40,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "bae5c565",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 4,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "d037b0a7",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "mismatched_cell_count": 20,
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "f83cb3f6",
+      "training_exact": false,
+      "used_fallback": true
+    }
+  ],
+  "claim_boundary": "This source-pinned, failure-inclusive curated-development packet evaluates one new generic residual-directed primitive: an orientation/blank macro-tile template inferred only by intersecting visible training-example block relations. The controller receives no task ID, historical selected schema, ARC12 decomposition, GT feature contract, GT solver code, or held-out test output before committing. Every task produces a complete output and post-answer all-cell V&V. This is an operator-transfer measurement, not an ARC-AGI-1 or ARC-AGI-2 solver completion claim.",
+  "complete_wrong_count": 56,
+  "controller_oracle_boundary_scan": "pass",
+  "exact_solve_count": 4,
+  "fallback_count": 56,
+  "packet_id": "P0006-ARC12-RESIDUAL-DIHEDRAL-TILE-CURATED-60",
+  "schema_version": 1,
+  "training_exact_count": 4
+}

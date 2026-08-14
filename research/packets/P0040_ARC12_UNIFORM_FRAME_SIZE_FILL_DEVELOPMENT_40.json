@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "packet_id": "P0040-ARC12-UNIFORM-FRAME-SIZE-FILL-DEVELOPMENT-40",
+  "report_title": "# P0040 ARC12 Uniform Frame-Size Fill Development-40 Packet",
+  "report_root": "reports/P0040_arc12_uniform_frame_size_fill_development_40",
+  "implementation_commit": "c3842b7d28fb2829b79ec815a99b1bc39912a189",
+  "claim_boundary": "This source-pinned, failure-inclusive P0040 packet compares one bounded uniform-frame size-to-color compatibility family against P0039's immutable 3/40 same-cohort development baseline. P0039's filename-only all-training 20 ARC-AGI-1 plus 20 ARC-AGI-2 roster was committed at f1e9f94b33f899b9e9ec94436ea1951bdf5b7050 before its selected task grids were parsed, visualized, scored, or used for further operator design. Its retained failure reports then exposed a structural family: multiple monochrome hollow frames retain modal-background interior slots whose fill colors are a conflict-free function of visible interior dimensions. The P0040 operator rederives the unique modal background and every 4-connected monochrome rectangular perimeter from each current grid; it learns only a visible, conflict-free interior-height/interior-width-to-color table; it refuses tied backgrounds, non-background frame interiors, fewer than two frames or learned sizes, conflicting tables, and unseen test sizes. It does not branch on task ID, fixed colors, GT labels, cohort metadata, historical decomposition, or held-out test output. The controller receives only each task's visible demonstrations and test input before committing a complete grid. The new relation and concise future diagram label are frozen at c3842b7d28fb2829b79ec815a99b1bc39912a189 before this packet runs. P0040 is intentionally same-cohort development evidence, not fresh transfer or an ARC-AGI-1/ARC-AGI-2 solver claim.",
+  "external_mutation_allowed": false,
+  "benchmark_submission_allowed": false,
+  "cohort_import": {
+    "path": "research/cohorts/ARC12_DEVELOPMENT_COHORT_010.json",
+    "sha256": "961330387b7d47e8d0cccebb96ef193d2da2df7d15131df5f50b8070835edae6",
+    "cohort_key": "development_filename_only_training_40_p0039",
+    "task_count": 40,
+    "per_benchmark_task_count": 20,
+    "cohort_freeze_commit": "f1e9f94b33f899b9e9ec94436ea1951bdf5b7050"
+  },
+  "baseline_reference": {
+    "packet_id": "P0039-ARC12-TRAINING-DEVELOPMENT-BASELINE-40",
+    "packet_path": "research/packets/P0039_ARC12_TRAINING_DEVELOPMENT_BASELINE_40.json",
+    "report_root": "reports/P0039_arc12_training_development_baseline_40",
+    "frozen_controller_commit": "5593527a16a57bcc0925ae3692b0888f141452e3",
+    "exact_solve_count": 3,
+    "attempt_count": 40,
+    "comparison_boundary": "P0039 is the immutable pre-change same-cohort denominator. P0040 may report only a within-cohort development difference; it cannot revise P0039 or serve as fresh transfer evidence."
+  },
+  "prior_transfer_reference": {
+    "packet_id": "P0038-ARC12-CROSS-SEPARATOR-REFLECTION-TRAINING-TRANSFER-50",
+    "packet_path": "research/packets/P0038_ARC12_CROSS_SEPARATOR_REFLECTION_TRAINING_TRANSFER_50.json",
+    "report_root": "reports/P0038_arc12_cross_separator_reflection_training_transfer_50",
+    "exact_solve_count": 1,
+    "attempt_count": 50,
+    "comparison_boundary": "P0038 is immutable fresh all-training-subset transfer evidence for the prior vocabulary. P0040 does not alter it and cannot be compared as a transfer delta."
+  },
+  "offline_diagnostic_provenance": {
+    "lane": "offline_only",
+    "source_repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+    "source_refs": {
+      "arc1": "arc1-gt-solver-library",
+      "arc2": "arc2-gt-solver-library"
+    },
+    "source_commits": {
+      "arc1": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "arc2": "71f86ff4c5304e452e0659131171f0519b50e21c"
+    },
+    "role": "P0039's exposed development evidence informed this one bounded generic frame-slot relation. The live controller implementation imports, parses, calls, and receives none of the GT feature records or GT solver code. The P0040 evaluation is deliberately same-cohort development and that provenance is explicit.",
+    "live_controller_boundary": {
+      "gt_feature_contract_passed_to_agent": false,
+      "gt_solver_imported_or_called": false,
+      "p0040_task_id_passed_to_agent": false,
+      "p0040_cohort_metadata_passed_to_agent": false,
+      "held_out_output_available_to_live_agent_before_commit": false
+    }
+  },
+  "synthetic_contract": {
+    "test_path": "tests/test_uniform_frame_size_fill.py",
+    "test_sha256": "1e3cae3442b21cec3bc5eaa065bf5feb4f9b59adba39998b0918dbbd02b72dd1",
+    "coverage": "The synthetic contract varies modal backgrounds, frame colors, frame positions, interior dimensions, fill colors, and unrelated components; it refuses unseen sizes, tied backgrounds, non-background interior slots, and conflicting visible size-to-color evidence."
+  },
+  "visual_contract": {
+    "test_path": "tests/test_corpus_callosum_palette.py",
+    "test_sha256": "be4ef0b2f49514edd0140476104527f0aa7d2a59817a279e114f45d883a0461a",
+    "coverage": "The future renderer keeps ARC black and magenta distinct and names the frame-size fill relation concisely; immutable earlier diagrams remain untouched."
+  },
+  "frozen_controller": {
+    "commit": "c3842b7d28fb2829b79ec815a99b1bc39912a189",
+    "implementation": "persistent_partial_theory",
+    "candidate_limit": 32,
+    "beam_width": 12,
+    "max_revisions": 96,
+    "revision_enabled": true,
+    "generic_operator_families": [
+      "identity",
+      "recolor",
+      "mirror",
+      "dihedral_transform",
+      "translate",
+      "repeat_tile",
+      "dihedral_tile",
+      "self_mask_macro_stamp",
+      "axis_mode_denoise",
+      "self_contained_subset_crop",
+      "frame_interior_crop",
+      "uniform_frame_size_fill",
+      "central_separator_cellwise_combine",
+      "adjacent_bilateral_cellwise_combine",
+      "distinct_nonbackground_scale",
+      "distinct_color_scale",
+      "quadrant_odd_one_out",
+      "cross_separator_quadrant_reflection_stamp",
+      "repeated_panel_odd_one_out_crop",
+      "singleton_foreground_border",
+      "distinct_color_count_line",
+      "separated_panel_cellwise_combine",
+      "contiguous_panel_cellwise_combine",
+      "unique_component_crop",
+      "anti_diagonal_nonbackground_stream",
+      "symmetric_foreground_quadrant_crop",
+      "uniform_block_self_stamp_fractal",
+      "line_extend",
+      "row_span_fill",
+      "scoped_coordinate_transform"
+    ],
+    "source_files": {
+      "scripts/freeze_arc12_filename_holdout.py": "a361fea0022bb047ab244d5a0fa1644cbba3c929d22b41051c344656e9cc8291",
+      "scripts/freeze_arc12_filename_training_development.py": "e445ac9e968b830aa2ef015facb9c79fa80be070787980cc4029961239230a12",
+      "scripts/run_arc12_filename_holdout.py": "df34d80ba4e2f5cef70c0b7a24db2ad462130d1a0f37161ce267742a4ed00a3e",
+      "src/arc123/adapters/arc12.py": "db3acb45c794dcc3a1f7cdde2c52a58a2315e11e882c554e4901f876493ffd88",
+      "src/arc123/compatibility.py": "679e3efa3e71aaf9f8b3ca48cfcd517b9b87a3525cdb8db56cd4a3ba509ab8df",
+      "src/arc123/contracts.py": "3acd65973085eca77093dfeaf39adbe4176770e66993d147404d1b184d2001e3",
+      "src/arc123/controller.py": "c808867d82f7c99598a6b4d7b99900265494196ca3df89cae6b9b8b044dd533f",
+      "src/arc123/hypotheses.py": "040c162c3b0ec644d5c26e013ff99bcd7e8e41821e9ebbd3bfe08bc3695cac32",
+      "src/arc123/model.py": "ba4fc4177414ecea6bced1b0f3866b0c72a1ce09c681c19737dd875a6f55a3ab",
+      "src/arc123/perceptions.py": "a916b0d3961f5b85c853abba67b55bf0dfa8e6a1b24d1b139768a3836218b82a",
+      "src/arc123/relational.py": "230c2f4c8321d3465b7680db3fa9678fbee1a34183b4665765b64ac382e2dfc2",
+      "src/arc123/theory.py": "552e089498773809005849fb39e88b18bd633bd0e8d3e0b5653d54ce14045f01",
+      "src/arc123/traces.py": "ca7fe0d2cb8a2c23971233cd21b748c1ea18165f74cc6f63bba36e8552c9f778",
+      "tests/test_cross_separator_quadrant_reflection_stamp.py": "b1fca3e3f466e15827bba39d55e0d042d76c4e5a3983fd07aa0a6b6b1cd27b19",
+      "tests/test_corpus_callosum_palette.py": "be4ef0b2f49514edd0140476104527f0aa7d2a59817a279e114f45d883a0461a",
+      "tests/test_uniform_frame_size_fill.py": "1e3cae3442b21cec3bc5eaa065bf5feb4f9b59adba39998b0918dbbd02b72dd1"
+    }
+  },
+  "source_pins": {
+    "arc1": {
+      "commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc1"
+    },
+    "arc2": {
+      "commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc2"
+    }
+  },
+  "acceptance": {
+    "retain_complete_failure_inclusive_reports": true,
+    "require_post_answer_all_cell_vv": true,
+    "require_source_task_checksum_validation": true,
+    "require_frozen_controller_source_validation": true,
+    "forbid_post_result_controller_retuning": true
+  }
+}

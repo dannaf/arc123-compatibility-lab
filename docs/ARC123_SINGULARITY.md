@@ -11,4 +11,6 @@ For ARC1/ARC2 the operations are internal and reversible. Each demonstration is 
 
 The corpus callosum is the compatibility interface between perceived evidence and candidate explanatory actions. It must preserve uncertainty: support not observed is unknown; only an explicit failed prediction is impossible. This lets an agent preserve a useful local theory while it explains only part of a grid, then compose it rather than discarding it as an all-or-nothing one-shot program.
 
-The initial implementation is deterministic planning/search. Policy learning may later improve which demo, region, or hypothesis action is selected, but a learned policy must be evaluated independently from oracle answer leakage.
+The current implementation is deterministic bounded search over persistent partial theories. ARC12 and ARC3 adapters both instantiate the same observation, hypothesis-action, environment-action, feedback, compatibility, residual, and trace contracts. `P0004` exercises the external-action form against a source-pinned real public transition stream, while the ARC12 form uses visible training pairs as evidence worlds.
+
+Policy learning may later improve which demo, region, or hypothesis action is selected, but a learned policy must be evaluated independently from oracle answer leakage. The current evidence does not claim an ARC1, ARC2, or ARC3 solver.

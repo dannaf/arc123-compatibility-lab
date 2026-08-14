@@ -1,0 +1,257 @@
+{
+  "agent_input_contract": {
+    "cohort_metadata_passed_to_agent": false,
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "all_cells_match": false,
+  "benchmark": "arc1",
+  "compared_position_count": 120,
+  "controller_oracle_boundary_scan": "pass",
+  "frozen_controller": {
+    "commit": "3524151a87db4852d8859502f8795d1209bedc35",
+    "source_files": {
+      "scripts/freeze_arc12_filename_holdout.py": "a361fea0022bb047ab244d5a0fa1644cbba3c929d22b41051c344656e9cc8291",
+      "scripts/freeze_arc12_filename_training_holdout.py": "084363222af19705c83f7d34da6757af2c457cc7551be192d875a3b7404938d9",
+      "scripts/run_arc12_filename_holdout.py": "df34d80ba4e2f5cef70c0b7a24db2ad462130d1a0f37161ce267742a4ed00a3e",
+      "src/arc123/adapters/arc12.py": "db3acb45c794dcc3a1f7cdde2c52a58a2315e11e882c554e4901f876493ffd88",
+      "src/arc123/compatibility.py": "679e3efa3e71aaf9f8b3ca48cfcd517b9b87a3525cdb8db56cd4a3ba509ab8df",
+      "src/arc123/contracts.py": "3acd65973085eca77093dfeaf39adbe4176770e66993d147404d1b184d2001e3",
+      "src/arc123/controller.py": "c808867d82f7c99598a6b4d7b99900265494196ca3df89cae6b9b8b044dd533f",
+      "src/arc123/hypotheses.py": "040c162c3b0ec644d5c26e013ff99bcd7e8e41821e9ebbd3bfe08bc3695cac32",
+      "src/arc123/model.py": "ba4fc4177414ecea6bced1b0f3866b0c72a1ce09c681c19737dd875a6f55a3ab",
+      "src/arc123/perceptions.py": "a916b0d3961f5b85c853abba67b55bf0dfa8e6a1b24d1b139768a3836218b82a",
+      "src/arc123/relational.py": "230c2f4c8321d3465b7680db3fa9678fbee1a34183b4665765b64ac382e2dfc2",
+      "src/arc123/theory.py": "552e089498773809005849fb39e88b18bd633bd0e8d3e0b5653d54ce14045f01",
+      "src/arc123/traces.py": "ca7fe0d2cb8a2c23971233cd21b748c1ea18165f74cc6f63bba36e8552c9f778",
+      "tests/test_corpus_callosum_palette.py": "be4ef0b2f49514edd0140476104527f0aa7d2a59817a279e114f45d883a0461a",
+      "tests/test_p0041_transfer_cohort.py": "38b9a195478d9b8fc334a3eea29cd6f6101216d1d2012ef8352e4bf463ccc172",
+      "tests/test_uniform_frame_size_fill.py": "1e3cae3442b21cec3bc5eaa065bf5feb4f9b59adba39998b0918dbbd02b72dd1"
+    }
+  },
+  "mismatched_cell_count": 120,
+  "packet_id": "P0041-ARC12-UNIFORM-FRAME-SIZE-FILL-FINAL-TRAINING-TRANSFER-38",
+  "posterior_mass": 0.0,
+  "schema_version": 1,
+  "selected_hypothesis": "fallback_identity_complete_grid",
+  "source_commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+  "source_task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/arc_data/arc1/training/10fcaaa3.json",
+  "task_id": "10fcaaa3",
+  "task_split": "training",
+  "test_cases": [
+    {
+      "all_cells_match": false,
+      "compared_position_count": 120,
+      "expected_output": [
+        [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          0,
+          8,
+          0,
+          0,
+          8,
+          0,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          8,
+          0,
+          8,
+          0,
+          0,
+          8,
+          0,
+          8
+        ],
+        [
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0
+        ],
+        [
+          8,
+          0,
+          8,
+          0,
+          8,
+          8,
+          0,
+          8,
+          0,
+          8
+        ],
+        [
+          8,
+          3,
+          8,
+          0,
+          0,
+          8,
+          3,
+          8,
+          0,
+          0
+        ],
+        [
+          8,
+          3,
+          8,
+          0,
+          0,
+          8,
+          3,
+          8,
+          0,
+          0
+        ],
+        [
+          8,
+          0,
+          8,
+          0,
+          0,
+          8,
+          0,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          8,
+          0,
+          8,
+          0,
+          0,
+          8,
+          0,
+          8
+        ],
+        [
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0
+        ],
+        [
+          8,
+          0,
+          8,
+          0,
+          8,
+          8,
+          0,
+          8,
+          0,
+          8
+        ],
+        [
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0
+        ]
+      ],
+      "mismatched_cell_count": 120,
+      "prediction": [
+        [
+          0,
+          3,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          0,
+          0,
+          0
+        ]
+      ],
+      "test_index": 0
+    }
+  ],
+  "trace_artifacts": {
+    "corpus_callosum": {
+      "path": "corpus_callosum.svg",
+      "sha256": "30e26354e4ab2b486229816021d9404bba763df5c68e822efa10fce0765e2b10"
+    },
+    "learning_trace": {
+      "path": "learning_trace.json",
+      "sha256": "bf5c67d16986cfce65b774cfbfceab926f2b4295497e60b425c90981bd799c1a"
+    },
+    "report": {
+      "path": "REPORT.md",
+      "sha256": "8cd76bcde4fe2e9a617cb765c3789e1e6cacd87d38929d5deb7b94ed715573ed"
+    }
+  },
+  "training_exact": false,
+  "used_fallback": true
+}

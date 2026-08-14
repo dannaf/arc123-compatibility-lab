@@ -1,0 +1,303 @@
+{
+  "agent_input_contract": {
+    "decomposition_mapping_passed_to_agent": false,
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "historical_schema_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "all_cells_match": false,
+  "benchmark": "arc2",
+  "compared_position_count": 136,
+  "controller_oracle_boundary_scan": "pass",
+  "mismatched_cell_count": 136,
+  "packet_id": "P0005-ARC12-PERSISTENT-THEORY-CURATED-60",
+  "posterior_mass": 0.0,
+  "schema_version": 1,
+  "selected_hypothesis": "fallback_identity_complete_grid",
+  "source_commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+  "source_task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/71f86ff4c5304e452e0659131171f0519b50e21c/arc_data/arc2/training/3cd86f4f.json",
+  "task_id": "3cd86f4f",
+  "task_split": "training",
+  "test_cases": [
+    {
+      "all_cells_match": false,
+      "compared_position_count": 16,
+      "expected_output": [
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          9,
+          0
+        ],
+        [
+          0,
+          5,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          0
+        ]
+      ],
+      "mismatched_cell_count": 16,
+      "prediction": [
+        [
+          1
+        ],
+        [
+          9
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ]
+      ],
+      "test_index": 0
+    },
+    {
+      "all_cells_match": false,
+      "compared_position_count": 110,
+      "expected_output": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          8,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          8,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          6,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          4,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          5,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          5,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "mismatched_cell_count": 110,
+      "prediction": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "test_index": 1
+    },
+    {
+      "all_cells_match": false,
+      "compared_position_count": 10,
+      "expected_output": [
+        [
+          0,
+          5,
+          4,
+          9,
+          8
+        ],
+        [
+          8,
+          5,
+          2,
+          9,
+          0
+        ]
+      ],
+      "mismatched_cell_count": 10,
+      "prediction": [
+        [
+          5,
+          4,
+          9,
+          8
+        ],
+        [
+          8,
+          5,
+          2,
+          9
+        ]
+      ],
+      "test_index": 2
+    }
+  ],
+  "trace_artifacts": {
+    "corpus_callosum": {
+      "path": "corpus_callosum.svg",
+      "sha256": "8e6f4eb9179d7731bc2b695382aa57f83f45a4c85a6aebc2690d12baf5ebe22b"
+    },
+    "learning_trace": {
+      "path": "learning_trace.json",
+      "sha256": "366b815dc873abd5ee8cccdcfea9fb156a3f6996368058a6ddd2270d5d320bbb"
+    },
+    "report": {
+      "path": "REPORT.md",
+      "sha256": "dbc50de9e44a9915c824bf34fae36e2b0c46b259b45b29db026e8e1a6b05a902"
+    }
+  },
+  "training_exact": false,
+  "used_fallback": true
+}
