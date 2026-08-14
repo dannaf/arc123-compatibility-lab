@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "packet_id": "P0031-ARC12-CONTIGUOUS-COMPONENT-DEVELOPMENT-40",
+  "report_title": "# P0031 ARC12 Contiguous-Panel and Duplicate-Component Development-40 Packet",
+  "report_root": "reports/P0031_arc12_contiguous_component_development_40",
+  "implementation_commit": "fd3ac79b5415d0f7b42747c5bff19829802ccde3",
+  "claim_boundary": "This source-pinned, failure-inclusive development packet measures two bounded generic compatibility relations on P0030's immutable seventh disjoint 20 ARC-AGI-1 plus 20 ARC-AGI-2 filename-only cohort. `contiguous_panel_cellwise_combine` derives one split axis and one panel count of at least three from every visible input/output geometry, requires unchanged cross-axis geometry, learns a conflict-free visible tuple-to-output table, and refuses unknown test tuples or ambiguous axes. `unique_component_crop` rederives a unique modal background and color-sensitive 4-connected non-background regions from each grid, then returns a crop only when exactly one crop occurs once and every other crop occurs exactly twice; it refuses background ties, fewer than three regions, duplicate-count ambiguity, and diagonal-only contact. P0030's immutable 2/40 source-pinned baseline is the same-cohort pre-change denominator. P0030 is exposed development evidence, so P0031 is development evidence only, not independent transfer evidence and not an ARC-AGI-1 or ARC-AGI-2 solver claim. The live controller receives only visible training input/output examples and test inputs. It receives no task ID, imported cohort metadata, GT feature contract, GT solver, historical decomposition, or held-out output before committing a complete grid. P0030 baseline bytes and reports remain immutable; P0031 results cannot retune this frozen controller or its operator vocabulary.",
+  "external_mutation_allowed": false,
+  "benchmark_submission_allowed": false,
+  "cohort_import": {
+    "path": "research/cohorts/ARC12_DEVELOPMENT_COHORT_007.json",
+    "sha256": "5f1b301a7a3546b4827ac1d0e31d1a8a83a14215a09142f1cf40ea2ad68ee166",
+    "cohort_key": "development_filename_only_40_p0030",
+    "task_count": 40,
+    "per_benchmark_task_count": 20,
+    "cohort_freeze_commit": "c8ef73ecf3ea4ccca2d99ddc804eb3637ca64cc1"
+  },
+  "baseline_reference": {
+    "packet_id": "P0030-ARC12-DEVELOPMENT-BASELINE-40",
+    "packet_path": "research/packets/P0030_ARC12_DEVELOPMENT_BASELINE_40.json",
+    "report_root": "reports/P0030_arc12_development_baseline_40",
+    "receipt_path": "reports/P0030_arc12_development_baseline_40/receipt.json",
+    "receipt_sha256": "32e27bd11e1496a38a841227a83ad506c7a361e7f3a9b9a30be68dcaa8f258ce",
+    "frozen_controller_commit": "a12e6344822d9e423bcc9267f3dbc3b34e4c3502",
+    "exact_solve_count": 2,
+    "attempt_count": 40
+  },
+  "offline_diagnostic_provenance": {
+    "lane": "offline_only",
+    "source_repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+    "source_refs": {
+      "arc1": "arc1-gt-solver-library",
+      "arc2": "arc2-gt-solver-library"
+    },
+    "source_commits": {
+      "arc1": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "arc2": "71f86ff4c5304e452e0659131171f0519b50e21c"
+    },
+    "role": "The immutable P0030 development baseline exposed an allowed post-answer failure taxonomy. The two relations in this packet are input-derived compatibility operators with independent synthetic positive and ambiguity-refusal contracts. The controller implementation imports, parses, calls, and receives none of the GT feature records or GT solver code.",
+    "live_controller_boundary": {
+      "gt_feature_contract_passed_to_agent": false,
+      "gt_solver_imported_or_called": false,
+      "p0030_frozen_score_rewritten": false,
+      "development_post_answer_target_inspected_during_rnd": true,
+      "held_out_output_available_to_live_agent_before_commit": false
+    }
+  },
+  "frozen_controller": {
+    "commit": "fd3ac79b5415d0f7b42747c5bff19829802ccde3",
+    "implementation": "persistent_partial_theory",
+    "candidate_limit": 32,
+    "beam_width": 12,
+    "max_revisions": 96,
+    "revision_enabled": true,
+    "generic_operator_families": [
+      "identity",
+      "recolor",
+      "mirror",
+      "dihedral_transform",
+      "translate",
+      "repeat_tile",
+      "dihedral_tile",
+      "self_mask_macro_stamp",
+      "axis_mode_denoise",
+      "self_contained_subset_crop",
+      "frame_interior_crop",
+      "central_separator_cellwise_combine",
+      "adjacent_bilateral_cellwise_combine",
+      "distinct_nonbackground_scale",
+      "distinct_color_scale",
+      "quadrant_odd_one_out",
+      "singleton_foreground_border",
+      "distinct_color_count_line",
+      "separated_panel_cellwise_combine",
+      "contiguous_panel_cellwise_combine",
+      "unique_component_crop",
+      "anti_diagonal_nonbackground_stream",
+      "symmetric_foreground_quadrant_crop",
+      "uniform_block_self_stamp_fractal",
+      "line_extend",
+      "row_span_fill",
+      "scoped_coordinate_transform"
+    ],
+    "source_files": {
+      "scripts/freeze_arc12_filename_holdout.py": "95ba0409d32b65a69bf53df9300f4636ab64b22def533f47d2c8fe72e29b8c85",
+      "scripts/run_arc12_filename_holdout.py": "df34d80ba4e2f5cef70c0b7a24db2ad462130d1a0f37161ce267742a4ed00a3e",
+      "src/arc123/adapters/arc12.py": "db3acb45c794dcc3a1f7cdde2c52a58a2315e11e882c554e4901f876493ffd88",
+      "src/arc123/compatibility.py": "679e3efa3e71aaf9f8b3ca48cfcd517b9b87a3525cdb8db56cd4a3ba509ab8df",
+      "src/arc123/contracts.py": "3acd65973085eca77093dfeaf39adbe4176770e66993d147404d1b184d2001e3",
+      "src/arc123/controller.py": "bc6bdebcf1cc9417eed2258fec749b4a4126851f5c05c7c306e328a70e062ec9",
+      "src/arc123/hypotheses.py": "8fccf499cc8ee46e07a3f21be80ab40729ed9fcb16b039ed4a003fede2fff53f",
+      "src/arc123/model.py": "ba4fc4177414ecea6bced1b0f3866b0c72a1ce09c681c19737dd875a6f55a3ab",
+      "src/arc123/perceptions.py": "a916b0d3961f5b85c853abba67b55bf0dfa8e6a1b24d1b139768a3836218b82a",
+      "src/arc123/relational.py": "230c2f4c8321d3465b7680db3fa9678fbee1a34183b4665765b64ac382e2dfc2",
+      "src/arc123/theory.py": "552e089498773809005849fb39e88b18bd633bd0e8d3e0b5653d54ce14045f01",
+      "src/arc123/traces.py": "edb79dfd8c781ae3df15046c83114694788163928dd4634296004f64d846b3c1"
+    }
+  },
+  "source_pins": {
+    "arc1": {
+      "commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc1"
+    },
+    "arc2": {
+      "commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc2"
+    }
+  },
+  "acceptance": {
+    "retain_complete_failure_inclusive_reports": true,
+    "require_post_answer_all_cell_vv": true,
+    "require_source_task_checksum_validation": true,
+    "require_frozen_controller_source_validation": true,
+    "forbid_post_result_controller_retuning": true
+  }
+}
