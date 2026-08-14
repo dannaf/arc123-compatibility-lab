@@ -1,0 +1,435 @@
+{
+  "attempt_count": 50,
+  "attempts": [
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "5168d44c",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc1",
+      "selected_hypothesis": "left_right(scope=all)",
+      "task_id": "67a3c6ac",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "6b9890af",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "0dfd9992",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "bbc9ae5d",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "3906de3d",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "d90796e8",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "6aa20dc0",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "9aec4887",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "8e1813be",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "53b68214",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc1",
+      "selected_hypothesis": "central_separator_cellwise_combine(axis=horizontal,table=0:0:0;0:2:3;1:0:3;1:2:3)",
+      "task_id": "ce4f8723",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "2013d3e2",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "a8d7556c",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "b782dc8a",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "662c240a",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "b230c067",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "d13f3404",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "95990924",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "a1570a43",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "e40b9e2f",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "5521c0d9",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "e179c5f4",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "f9012d9b",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc1",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "9f236235",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "46f33fce",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "68b67ca3",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "82819916",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "fcc82909",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "9356391f",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "d6e50e54",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "78e78cff",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "6c434453",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "64a7c07e",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "25e02866",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": true,
+      "benchmark": "arc2",
+      "selected_hypothesis": "compose(identity,dihedral_tile(column_factor=1,row_factor=2,template=identity;flip_tb))",
+      "task_id": "6fa7a44f",
+      "training_exact": true,
+      "used_fallback": false
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "5751f35e",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "db118e2a",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "e9614598",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "ea32f347",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "05a7bcf2",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "414297c0",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "f5c89df1",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "aa62e3f4",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "3aa6fb7a",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "712bf12e",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "54d9e175",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "3a301edc",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "db7260a4",
+      "training_exact": false,
+      "used_fallback": true
+    },
+    {
+      "all_cells_match": false,
+      "benchmark": "arc2",
+      "selected_hypothesis": "fallback_identity_complete_grid",
+      "task_id": "ad3b40cf",
+      "training_exact": false,
+      "used_fallback": true
+    }
+  ],
+  "claim_boundary": "This source-pinned, failure-inclusive fresh-transfer packet measures the P0034 shared-background odd-panel compatibility vocabulary on a newly frozen filename-only 25 ARC-AGI-1 plus 25 ARC-AGI-2 all-training cohort. The roster was committed at eed44c9300b15756e156632afaff0563f2e6f97f before any selected task grid was parsed, visualized, scored, or used for further operator design; selection used only benchmark labels, split names, filenames, and opaque source-byte checksums. It excludes every historical import, P0013/P0022/P0026/P0029/P0032 transfer roster, and P0014/P0016/P0018/P0020/P0023/P0027/P0030/P0033 development roster; P0031 reused P0030 and P0034 reused P0033 and are therefore excluded. No fresh 25-task ARC-AGI-2 evaluation-split roster remains after prior disjoint measurements, so this packet is explicitly all-training-split rather than falsely claiming the former mixed-split protocol. Relative to P0034's frozen controller, only the corpus-callosum color-6 SVG palette changed to correct visual contrast; all answer-selection source files and the generic operator vocabulary are byte-identical. The live controller receives only each task's visible demonstrations and test input. It receives no task ID, cohort metadata, GT feature contract, GT solver, historical decomposition, or test output before committing a complete grid. This fresh result cannot retune the frozen controller or its vocabulary. Any positive result is limited all-training-subset task-level transfer evidence, not an ARC-AGI-1 or ARC-AGI-2 solver claim.",
+  "complete_wrong_count": 47,
+  "controller_oracle_boundary_scan": "pass",
+  "exact_solve_count": 3,
+  "exact_solve_count_by_benchmark": {
+    "arc1": 2,
+    "arc2": 1
+  },
+  "fallback_count": 47,
+  "frozen_controller": {
+    "commit": "e869c4842817624925e6576a1be9bb1f27399977",
+    "source_files": {
+      "scripts/freeze_arc12_filename_holdout.py": "a361fea0022bb047ab244d5a0fa1644cbba3c929d22b41051c344656e9cc8291",
+      "scripts/freeze_arc12_filename_training_holdout.py": "eaa524e2047aa4af15e6acb0577e5827b89e5209226416392b7a284389aa6ed6",
+      "scripts/run_arc12_filename_holdout.py": "df34d80ba4e2f5cef70c0b7a24db2ad462130d1a0f37161ce267742a4ed00a3e",
+      "src/arc123/adapters/arc12.py": "db3acb45c794dcc3a1f7cdde2c52a58a2315e11e882c554e4901f876493ffd88",
+      "src/arc123/compatibility.py": "679e3efa3e71aaf9f8b3ca48cfcd517b9b87a3525cdb8db56cd4a3ba509ab8df",
+      "src/arc123/contracts.py": "3acd65973085eca77093dfeaf39adbe4176770e66993d147404d1b184d2001e3",
+      "src/arc123/controller.py": "964cc105a08e1088b26babbccfd3c737426c52aaf9484bed05463dc354d862ad",
+      "src/arc123/hypotheses.py": "8f9377b6bde496e25c24d6fedbaddbf9a772757e19339895ae9a3a8fbbb445b3",
+      "src/arc123/model.py": "ba4fc4177414ecea6bced1b0f3866b0c72a1ce09c681c19737dd875a6f55a3ab",
+      "src/arc123/perceptions.py": "a916b0d3961f5b85c853abba67b55bf0dfa8e6a1b24d1b139768a3836218b82a",
+      "src/arc123/relational.py": "230c2f4c8321d3465b7680db3fa9678fbee1a34183b4665765b64ac382e2dfc2",
+      "src/arc123/theory.py": "552e089498773809005849fb39e88b18bd633bd0e8d3e0b5653d54ce14045f01",
+      "src/arc123/traces.py": "c9574424c3e920cd040f8a4ecbace4cf4717d1eb2b3c69d03280a741e4c8f893"
+    }
+  },
+  "packet_id": "P0035-ARC12-SHARED-BACKGROUND-PANEL-TRAINING-TRANSFER-50",
+  "schema_version": 1,
+  "training_exact_count": 3
+}
