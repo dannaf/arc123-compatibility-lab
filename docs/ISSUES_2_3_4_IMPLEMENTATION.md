@@ -13,6 +13,8 @@ This record maps the implementation to the three architecture blockers without u
 
 The issue's final curated acceptance condition is **not claimed complete**. `P0005-ARC12-PERSISTENT-THEORY-CURATED-60` establishes the initial persistent-theory measurement at `1/60`; `P0006-ARC12-RESIDUAL-DIHEDRAL-TILE-CURATED-60` reaches `4/60`; and `P0012-ARC12-SELF-MASK-MACRO-STAMP-CURATED-60` reaches `8/60` on that same development roster. The P0012 additions are generic relative-selector macro relations, but they are not independent transfer evidence. The subsequently frozen, source-byte-pinned, filename-only `P0013-ARC12-FRESH-FILENAME-FROZEN-50` result is `0/50` exact. Later P0040 same-cohort development reaches `4/40` after adding a bounded frame-size relation, but the fresh final all-training `P0041` result is only `1/38`; its sole YES is an earlier adjacent-bilateral relation and the new frame-size relation selects zero times. All P0041 failures remain complete V&V-backed reports. The current vocabulary therefore does not meet the issue's generalization requirement, and this blocker must remain open.
 
+P0042 then freezes the unchanged live answer path on an explicitly non-comparable `20 ARC1 evaluation + 20 ARC2 training` development cohort and reaches only `2/40`, both via earlier dihedral macro-tile compositions. Its 38 failures remain full V&V-backed reports. It is a newly isolated baseline for bounded R&D, not an acceptance result for Issue #2.
+
 ## Issue 3 — benchmark-neutral shared core
 
 [Issue #3](https://github.com/dannaf/arc123-compatibility-lab/issues/3) is addressed by the neutral contracts in `src/arc123/contracts.py` and both ARC12/ARC3 adapters.

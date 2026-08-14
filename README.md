@@ -50,6 +50,7 @@ The live learner receives demonstrations and a test input, builds/revises explic
 - `P0039-ARC12-TRAINING-DEVELOPMENT-BASELINE-40` freezes P0037's byte-identical generic vocabulary on a tenth disjoint filename-only all-training `20 ARC1 + 20 ARC2` development cohort: `3/40` exact (`3` ARC1, `0` ARC2), with all `37` complete NO reports retained and reproduced byte-for-byte. Every YES uses a pre-existing dihedral, adjacent-bilateral, or scale relation; the P0037 cross-reflection primitive does not select. This is a later exposed development baseline, not transfer or an ARC1/ARC2 solver claim.
 - `P0040-ARC12-UNIFORM-FRAME-SIZE-FILL-DEVELOPMENT-40` compares a generic conflict-free hollow-frame interior-size→color relation against P0039's immutable same cohort: `4/40` exact (`+1`; `4` ARC1, `0` ARC2), retaining all `36` complete NO reports and reproducing 162 artifacts byte-for-byte. It adds only ARC1 `c0f76784`; tied backgrounds, occupied slots, conflicting evidence, and unseen interior sizes refuse. This is same-cohort development evidence only, not transfer or an ARC1/ARC2 solver claim.
 - `P0041-ARC12-UNIFORM-FRAME-SIZE-FILL-FINAL-TRAINING-TRANSFER-38` freezes P0040's live answer-selection bytes on the final disjoint all-training capacity—`19` ARC1 plus `19` ARC2 tasks—before any selected grid is parsed. It is `1/38` exact (`1/19` ARC1, `0/19` ARC2), with all `37` complete NO reports and 154 artifacts reproduced byte-for-byte. The sole YES is the pre-existing adjacent-bilateral relation; `uniform_frame_size_fill` selects zero times, so the P0040 gain has no fresh task-level transfer support. This is final limited all-training-subset negative evidence, not an ARC1/ARC2 solver claim.
+- `P0042-ARC12-MIXED-PARTITION-DEVELOPMENT-BASELINE-40` freezes the same live answer-selection bytes on a newly declared internal `20` ARC1-evaluation plus `20` ARC2-training filename-only cohort: `2/40` exact (`0/20` ARC1, `2/20` ARC2), with all `38` complete NO reports and 162 artifacts reproduced byte-for-byte. Both YES outcomes are pre-existing dihedral macro-tile compositions. This exposed baseline is deliberately non-comparable to all-training transfer and is not a benchmark score or ARC1/ARC2 solver claim.
 - Offline-only ARC12 pilot and ARC3 source-audit inventory manifests are materialized under `research/oracle_materializations/`; live adapters reject oracle/final-rule paths.
 - The result is a first architecture test, **not** an ARC1, ARC2, or ARC3 completion claim.
 - The 60-task curated curriculum and frozen disjoint 25+25 denominator are imported by immutable [ARC12 handoff pins](research/cohorts/ARC12_COHORT_IMPORT_001.json).
@@ -235,6 +236,11 @@ python3 scripts/run_arc12_filename_holdout.py --verify \
   --report-root reports/P0041_arc12_uniform_frame_size_fill_final_training_transfer_38 \
   --arc1-source /path/to/arc1-source \
   --arc2-source /path/to/arc2-source
+python3 scripts/run_arc12_filename_holdout.py --verify \
+  --packet research/packets/P0042_ARC12_MIXED_PARTITION_DEVELOPMENT_BASELINE_40.json \
+  --report-root reports/P0042_arc12_mixed_partition_development_baseline_40 \
+  --arc1-source /path/to/arc1-source \
+  --arc2-source /path/to/arc2-source
 python3 scripts/materialize_oracle_lane.py \
   --arc12-root /path/to/arc12-compatibility-lab \
   --arc12-commit 525000ab1f78fb1e66906149f72f6e8eac34ab71 \
@@ -253,5 +259,5 @@ P0031's contiguous-panel/component controller bytes are frozen at `fd3ac79b5415d
 - `src/arc123/` — generic perception, hypothesis, persistent theory, compatibility, controller, trace, and adapter code.
 - `research/cohorts/` — source-pinned ARC12 curriculum/generalization metadata.
 - `research/oracle_specs/` and `research/oracle_materializations/` — offline-only observable schemas and source-pinned pilot/audit outputs.
-- `reports/` — retained ARC12 reports through P0041, including complete development and frozen-holdout V&V evidence.
+- `reports/` — retained ARC12 reports through P0042, including complete development and frozen-holdout V&V evidence.
 - `docs/` — architecture, validation, oracle, and visualization protocol.
