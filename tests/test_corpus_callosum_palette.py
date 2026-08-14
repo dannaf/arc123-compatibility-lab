@@ -38,6 +38,10 @@ class CorpusCallosumPaletteTests(unittest.TestCase):
             "cross-quadrant reflection",
         )
         self.assertEqual(
+            _operator_label("separator_arrow_guided_panel_stamp"),
+            "arrow-guided panel stamp",
+        )
+        self.assertEqual(
             _operator_label(
                 "adjacent_bilateral_cellwise_combine(axis=vertical,table=0:0:0)"
             ),
