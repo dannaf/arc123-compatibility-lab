@@ -266,7 +266,7 @@ def _manifest(
             "held_out_outputs_passed_to_agent": False,
         },
         cohort_key: {
-            "task_count": 50,
+            "task_count": sum(len(records) for records in tasks.values()),
             "per_benchmark_task_count": sum(DEFAULT_ALLOCATION.values()),
             "source_pins": source_pins,
             "selection_protocol": {

@@ -51,6 +51,73 @@ class FilenameTrainingHoldoutFreezerTests(unittest.TestCase):
         self.assertEqual(observed["cohort_key"], development_freezer.DEFAULT_COHORT_KEY)
         self.assertEqual(standard_freezer.DEFAULT_ALLOCATION, original_allocation)
 
+    def test_manifest_uses_the_requested_allocation_for_task_count(self) -> None:
+        source_path = str(REPOSITORY_ROOT / "README.md")
+        inventories = {
+            "arc1": [
+                {
+                    "benchmark": "arc1",
+                    "split": "training",
+                    "task_id": "arc1-first",
+                    "source_path": source_path,
+                },
+                {
+                    "benchmark": "arc1",
+                    "split": "training",
+                    "task_id": "arc1-second",
+                    "source_path": source_path,
+                },
+            ],
+            "arc2": [
+                {
+                    "benchmark": "arc2",
+                    "split": "training",
+                    "task_id": "arc2-first",
+                    "source_path": source_path,
+                },
+                {
+                    "benchmark": "arc2",
+                    "split": "training",
+                    "task_id": "arc2-second",
+                    "source_path": source_path,
+                },
+            ],
+        }
+        original_allocation = standard_freezer.DEFAULT_ALLOCATION
+        try:
+            standard_freezer.DEFAULT_ALLOCATION = {"training": 2}
+            with mock.patch.object(
+                standard_freezer,
+                "_excluded_task_ids_from_imports",
+                return_value=(set(), []),
+            ), mock.patch.object(
+                standard_freezer,
+                "_filename_inventory",
+                side_effect=lambda _source_root, benchmark: inventories[benchmark],
+            ), mock.patch.object(
+                standard_freezer,
+                "_verify_clean_source",
+                return_value="source-pin",
+            ):
+                manifest = standard_freezer._manifest(
+                    REPOSITORY_ROOT / "arc1-source",
+                    REPOSITORY_ROOT / "arc2-source",
+                    "https://example.com/arc1",
+                    "https://example.com/arc2",
+                    (),
+                    "synthetic-salt",
+                    "SYNTHETIC",
+                    "Synthetic cohort",
+                    "synthetic_4",
+                    "synthetic boundary",
+                )
+        finally:
+            standard_freezer.DEFAULT_ALLOCATION = original_allocation
+
+        frozen = manifest["synthetic_4"]
+        self.assertEqual(frozen["task_count"], 4)
+        self.assertEqual(frozen["per_benchmark_task_count"], 2)
+
 
 if __name__ == "__main__":
     unittest.main()
