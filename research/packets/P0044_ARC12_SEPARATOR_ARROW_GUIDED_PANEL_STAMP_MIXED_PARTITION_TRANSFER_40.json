@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "packet_id": "P0044-ARC12-SEPARATOR-ARROW-GUIDED-PANEL-STAMP-MIXED-PARTITION-TRANSFER-40",
+  "report_title": "# P0044 ARC12 Separator-Arrow-Guided Panel-Stamp Mixed-Partition Transfer-40 Packet",
+  "report_root": "reports/P0044_arc12_separator_arrow_guided_panel_stamp_mixed_partition_transfer_40",
+  "implementation_commit": "feff068b8e1e1116427f87f59af4e54b922a1dd1",
+  "claim_boundary": "P0044 is a source-pinned, failure-inclusive fresh transfer measurement of P0043's unchanged generic vocabulary on a globally task-ID-disjoint filename-only mixed-partition cohort: 20 ARC-AGI-1 evaluation-split tasks plus 20 ARC-AGI-2 training-split tasks. The P0044 cohort was committed at e7ebc90561aadd4d06b1225c610ef7b48ec98678 before any selected task grid was parsed, visualized, scored, or used for operator design; its static disjointness test was then committed at fcf43614cae99c151e325da5f1c7461912636efe. The controller bytes are exactly P0043's feff068b8e1e1116427f87f59af4e54b922a1dd1 freeze, including `separator_arrow_guided_panel_stamp`; no post-P0043 operator, parameter, source, or policy change participates. This is fresh evidence only within the explicitly mixed-partition internal protocol, remains non-comparable to all-training transfer, and cannot support a benchmark-submission claim. The live controller receives only visible demonstrations and test input before committing a complete grid. It receives no task ID, cohort metadata, GT feature contract, GT solver, historical decomposition, or held-out output. Every NO remains in the denominator. P0044 cannot retune this frozen controller; any later R&D must use a separately frozen, globally disjoint cohort.",
+  "external_mutation_allowed": false,
+  "benchmark_submission_allowed": false,
+  "cohort_import": {
+    "path": "research/cohorts/ARC12_MIXED_PARTITION_TRANSFER_012.json",
+    "sha256": "28a3562f66495e2b8ba9e1c7de0d79a0706cc385588ff4f0fefc734fc791e9f6",
+    "cohort_key": "mixed_partition_transfer_40_p0044",
+    "task_count": 40,
+    "per_benchmark_task_count": 20,
+    "cohort_freeze_commit": "e7ebc90561aadd4d06b1225c610ef7b48ec98678"
+  },
+  "prior_protocol_reference": {
+    "packet_id": "P0043-ARC12-SEPARATOR-ARROW-GUIDED-PANEL-STAMP-DEVELOPMENT-40",
+    "packet_path": "research/packets/P0043_ARC12_SEPARATOR_ARROW_GUIDED_PANEL_STAMP_DEVELOPMENT_40.json",
+    "report_root": "reports/P0043_arc12_separator_arrow_guided_panel_stamp_development_40",
+    "frozen_controller_commit": "feff068b8e1e1116427f87f59af4e54b922a1dd1",
+    "exact_solve_count": 3,
+    "attempt_count": 40,
+    "comparison_boundary": "P0043 is an exposed same-cohort development result. P0044 has a globally disjoint roster and can supply fresh task-level transfer evidence for the frozen P0043 vocabulary only; it is neither a same-cohort numerical delta nor a benchmark score."
+  },
+  "operator_transfer_gate": {
+    "operator": "separator_arrow_guided_panel_stamp",
+    "required_for_task_level_reuse": "At least one P0044 exact post-answer solve must select separator_arrow_guided_panel_stamp with training compatibility true and no fallback.",
+    "negative_outcome_rule": "If no P0044 exact solve selects separator_arrow_guided_panel_stamp, retain the complete failure-inclusive record as negative transfer evidence and do not promote the relation.",
+    "architecture_boundary": "The relation dynamically derives all roles and accepts only the strict unique divider/template/arrow/payload/destination structure. It has no task-ID, fixed-color, GT, source-path, cohort-metadata, or held-out-output path."
+  },
+  "offline_diagnostic_provenance": {
+    "lane": "offline_only",
+    "source_repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+    "source_refs": {
+      "arc1": "arc1-gt-solver-library",
+      "arc2": "arc2-gt-solver-library"
+    },
+    "source_commits": {
+      "arc1": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "arc2": "71f86ff4c5304e452e0659131171f0519b50e21c"
+    },
+    "role": "P0044 measures the P0043 frozen generic vocabulary without importing, parsing, calling, or passing through GT feature records or GT solver code. The P0044 roster was selected by filename metadata only; its held-out outputs appear only after the live controller commits complete predictions.",
+    "live_controller_boundary": {
+      "gt_feature_contract_passed_to_agent": false,
+      "gt_solver_imported_or_called": false,
+      "p0044_task_id_passed_to_agent": false,
+      "p0044_cohort_metadata_passed_to_agent": false,
+      "held_out_output_available_to_live_agent_before_commit": false
+    }
+  },
+  "synthetic_contract": {
+    "test_path": "tests/test_separator_arrow_guided_panel_stamp.py",
+    "test_sha256": "5c96a015351bcd46d669c23fdb7c15c20154f367922e03e43fcaf995ddab659f",
+    "coverage": "The unchanged frozen contract derives dynamic backgrounds, separator colors, template/payload colors, role vertical positions, lower anchor positions, payload masks, and both arrow directions from visible demonstrations; it rejects duplicate arrows, mismatched templates, blocked destinations, multiple dividers, and contradictory visible outputs."
+  },
+  "visual_contract": {
+    "test_path": "tests/test_corpus_callosum_palette.py",
+    "test_sha256": "e044a05702cf70c38473e2c49d8d71bc19eb2e9353edbdee62af63ca3a69381f",
+    "coverage": "The frozen renderer keeps ARC black and magenta distinct, preserves compact labels for structural operators, and labels this relation as an arrow-guided panel stamp; each measured task emits a native SVG corpus-callosum trace."
+  },
+  "frozen_controller": {
+    "commit": "feff068b8e1e1116427f87f59af4e54b922a1dd1",
+    "implementation": "persistent_partial_theory",
+    "candidate_limit": 32,
+    "beam_width": 12,
+    "max_revisions": 96,
+    "revision_enabled": true,
+    "generic_operator_families": [
+      "identity",
+      "recolor",
+      "mirror",
+      "dihedral_transform",
+      "translate",
+      "repeat_tile",
+      "dihedral_tile",
+      "self_mask_macro_stamp",
+      "axis_mode_denoise",
+      "self_contained_subset_crop",
+      "frame_interior_crop",
+      "uniform_frame_size_fill",
+      "central_separator_cellwise_combine",
+      "adjacent_bilateral_cellwise_combine",
+      "distinct_nonbackground_scale",
+      "distinct_color_scale",
+      "quadrant_odd_one_out",
+      "cross_separator_quadrant_reflection_stamp",
+      "separator_arrow_guided_panel_stamp",
+      "repeated_panel_odd_one_out_crop",
+      "singleton_foreground_border",
+      "distinct_color_count_line",
+      "separated_panel_cellwise_combine",
+      "contiguous_panel_cellwise_combine",
+      "unique_component_crop",
+      "anti_diagonal_nonbackground_stream",
+      "symmetric_foreground_quadrant_crop",
+      "uniform_block_self_stamp_fractal",
+      "line_extend",
+      "row_span_fill",
+      "scoped_coordinate_transform"
+    ],
+    "source_files": {
+      "scripts/freeze_arc12_filename_holdout.py": "a361fea0022bb047ab244d5a0fa1644cbba3c929d22b41051c344656e9cc8291",
+      "scripts/freeze_arc12_mixed_partition_development.py": "55433553e232a6f536afe43ea1bcbaeefbf700b15c06c9063413c39cc9814514",
+      "scripts/run_arc12_filename_holdout.py": "df34d80ba4e2f5cef70c0b7a24db2ad462130d1a0f37161ce267742a4ed00a3e",
+      "src/arc123/adapters/arc12.py": "db3acb45c794dcc3a1f7cdde2c52a58a2315e11e882c554e4901f876493ffd88",
+      "src/arc123/compatibility.py": "679e3efa3e71aaf9f8b3ca48cfcd517b9b87a3525cdb8db56cd4a3ba509ab8df",
+      "src/arc123/contracts.py": "3acd65973085eca77093dfeaf39adbe4176770e66993d147404d1b184d2001e3",
+      "src/arc123/controller.py": "be91ca1050125ac517f71592595c02ed2e141097067ff0788037673ddc5e0b61",
+      "src/arc123/hypotheses.py": "2400e3550ba029306ce19566a1177e0cbfd736cccd3ba2cd333e3d10a72c4dc4",
+      "src/arc123/model.py": "ba4fc4177414ecea6bced1b0f3866b0c72a1ce09c681c19737dd875a6f55a3ab",
+      "src/arc123/perceptions.py": "a916b0d3961f5b85c853abba67b55bf0dfa8e6a1b24d1b139768a3836218b82a",
+      "src/arc123/relational.py": "230c2f4c8321d3465b7680db3fa9678fbee1a34183b4665765b64ac382e2dfc2",
+      "src/arc123/theory.py": "552e089498773809005849fb39e88b18bd633bd0e8d3e0b5653d54ce14045f01",
+      "src/arc123/traces.py": "bf36d40aedeac158f7030640eb5646891387e4e8c7b6625cf4d8dad4e4c5c53b",
+      "tests/test_corpus_callosum_palette.py": "e044a05702cf70c38473e2c49d8d71bc19eb2e9353edbdee62af63ca3a69381f",
+      "tests/test_filename_mixed_partition_development_freezer.py": "7bf757334d4cce379ec94c51345ac0d2ade751fa77d04c5af95b2dc553930631",
+      "tests/test_p0042_mixed_partition_cohort.py": "71918a626c7e9a0733a011995d7dcd9e1192ceec9c36880afcc8e72a661d9abe",
+      "tests/test_separator_arrow_guided_panel_stamp.py": "5c96a015351bcd46d669c23fdb7c15c20154f367922e03e43fcaf995ddab659f"
+    }
+  },
+  "source_pins": {
+    "arc1": {
+      "commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc1"
+    },
+    "arc2": {
+      "commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc2"
+    }
+  },
+  "acceptance": {
+    "retain_complete_failure_inclusive_reports": true,
+    "require_post_answer_all_cell_vv": true,
+    "require_source_task_checksum_validation": true,
+    "require_frozen_controller_source_validation": true,
+    "forbid_post_result_controller_retuning": true
+  }
+}
