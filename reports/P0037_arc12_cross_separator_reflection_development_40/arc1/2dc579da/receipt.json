@@ -1,0 +1,164 @@
+{
+  "agent_input_contract": {
+    "cohort_metadata_passed_to_agent": false,
+    "gt_feature_contract_passed_to_agent": false,
+    "gt_solver_imported_or_called": false,
+    "held_out_outputs_passed_to_agent": false,
+    "task_id_passed_to_agent": false
+  },
+  "all_cells_match": true,
+  "benchmark": "arc1",
+  "compared_position_count": 36,
+  "controller_oracle_boundary_scan": "pass",
+  "frozen_controller": {
+    "commit": "5593527a16a57bcc0925ae3692b0888f141452e3",
+    "source_files": {
+      "scripts/freeze_arc12_filename_holdout.py": "a361fea0022bb047ab244d5a0fa1644cbba3c929d22b41051c344656e9cc8291",
+      "scripts/freeze_arc12_filename_training_development.py": "e445ac9e968b830aa2ef015facb9c79fa80be070787980cc4029961239230a12",
+      "scripts/run_arc12_filename_holdout.py": "df34d80ba4e2f5cef70c0b7a24db2ad462130d1a0f37161ce267742a4ed00a3e",
+      "src/arc123/adapters/arc12.py": "db3acb45c794dcc3a1f7cdde2c52a58a2315e11e882c554e4901f876493ffd88",
+      "src/arc123/compatibility.py": "679e3efa3e71aaf9f8b3ca48cfcd517b9b87a3525cdb8db56cd4a3ba509ab8df",
+      "src/arc123/contracts.py": "3acd65973085eca77093dfeaf39adbe4176770e66993d147404d1b184d2001e3",
+      "src/arc123/controller.py": "c808867d82f7c99598a6b4d7b99900265494196ca3df89cae6b9b8b044dd533f",
+      "src/arc123/hypotheses.py": "b179e83681cb3b594f9bc811f597ced37deb52cc83841392da7afceb7ca4d45a",
+      "src/arc123/model.py": "ba4fc4177414ecea6bced1b0f3866b0c72a1ce09c681c19737dd875a6f55a3ab",
+      "src/arc123/perceptions.py": "a916b0d3961f5b85c853abba67b55bf0dfa8e6a1b24d1b139768a3836218b82a",
+      "src/arc123/relational.py": "230c2f4c8321d3465b7680db3fa9678fbee1a34183b4665765b64ac382e2dfc2",
+      "src/arc123/theory.py": "552e089498773809005849fb39e88b18bd633bd0e8d3e0b5653d54ce14045f01",
+      "src/arc123/traces.py": "0628ba0a5da88f38cc67e77719bd08a6a1f868132b86c1dfe5e0b2ee2a2f7bff"
+    }
+  },
+  "mismatched_cell_count": 0,
+  "packet_id": "P0037-ARC12-CROSS-SEPARATOR-REFLECTION-DEVELOPMENT-40",
+  "posterior_mass": 1.0,
+  "schema_version": 1,
+  "selected_hypothesis": "quadrant_odd_one_out",
+  "source_commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+  "source_task_url": "https://github.com/dannaf/arc3-compatibility-lab-prime/blob/085f6dbe39050afac3d1d743f840bac95b1a8d1c/arc_data/arc1/training/2dc579da.json",
+  "task_id": "2dc579da",
+  "task_split": "training",
+  "test_cases": [
+    {
+      "all_cells_match": true,
+      "compared_position_count": 36,
+      "expected_output": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "mismatched_cell_count": 0,
+      "prediction": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "test_index": 0
+    }
+  ],
+  "trace_artifacts": {
+    "corpus_callosum": {
+      "path": "corpus_callosum.svg",
+      "sha256": "cab6b64baa98890b9763fea18da55560051f12b0c7a88547c660afa6f046528a"
+    },
+    "learning_trace": {
+      "path": "learning_trace.json",
+      "sha256": "937da4781461e8809297f94a01179e35ee4b35660427ed5c8519fb0afb6539af"
+    },
+    "report": {
+      "path": "REPORT.md",
+      "sha256": "1f774d56cde46df12e7c5b803f677127e12a37bbb54382e1f7dc5ac90e978a2b"
+    }
+  },
+  "training_exact": true,
+  "used_fallback": false
+}
