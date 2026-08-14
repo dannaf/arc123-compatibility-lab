@@ -71,10 +71,22 @@ def _operator_label(selected_hypothesis: str) -> str:
         return "dihedral macro-tile"
     if "central_separator_cellwise_combine" in selected_hypothesis:
         return "central-separator merge"
+    if "adjacent_bilateral_cellwise_combine" in selected_hypothesis:
+        return "bilateral-panel merge"
+    if "contiguous_panel_cellwise_combine" in selected_hypothesis:
+        return "contiguous-panel merge"
+    if "separated_panel_cellwise_combine" in selected_hypothesis:
+        return "separated-panel merge"
     if "cross_separator_quadrant_reflection_stamp" in selected_hypothesis:
         return "cross-quadrant reflection"
     if "repeated_panel_odd_one_out_crop" in selected_hypothesis:
         return "odd repeated-panel crop"
+    if "symmetric_foreground_quadrant_crop" in selected_hypothesis:
+        return "symmetric quadrant crop"
+    if "uniform_block_self_stamp_fractal" in selected_hypothesis:
+        return "uniform-block self-stamp"
+    if "distinct_nonbackground_scale" in selected_hypothesis:
+        return "nonbackground scale"
     operator = selected_hypothesis.split("(", 1)[0]
     return operator if len(operator) <= 26 else f"{operator[:23]}..."
 

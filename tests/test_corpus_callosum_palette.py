@@ -37,6 +37,16 @@ class CorpusCallosumPaletteTests(unittest.TestCase):
             _operator_label("cross_separator_quadrant_reflection_stamp"),
             "cross-quadrant reflection",
         )
+        self.assertEqual(
+            _operator_label(
+                "adjacent_bilateral_cellwise_combine(axis=vertical,table=0:0:0)"
+            ),
+            "bilateral-panel merge",
+        )
+        self.assertEqual(
+            _operator_label("distinct_nonbackground_scale"),
+            "nonbackground scale",
+        )
 
 
 if __name__ == "__main__":
