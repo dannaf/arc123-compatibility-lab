@@ -47,6 +47,7 @@ The live learner receives demonstrations and a test input, builds/revises explic
 - `P0036-ARC12-TRAINING-DEVELOPMENT-BASELINE-40` freezes P0035's byte-identical generic vocabulary on a ninth disjoint filename-only all-training `20 ARC1 + 20 ARC2` development cohort: `2/40` exact (`1` ARC1, `1` ARC2), with all `38` complete NO reports retained and reproduced byte-for-byte. Both YES outcomes use pre-existing quadrant/central-separator relations; the P0034 odd-panel crop does not select. This is a later exposed development baseline, not transfer or an ARC1/ARC2 solver claim.
 - `P0037-ARC12-CROSS-SEPARATOR-REFLECTION-DEVELOPMENT-40` evaluates one dynamically rederived cross-separator quadrant-reflection stamp on P0036's exposed immutable cohort: `3/40` exact (`+1`; `2` ARC1, `1` ARC2), with all `37` complete NO reports retained and reproduced byte-for-byte. The new ARC1 selection requires a uniform structural cross, one payload quadrant, three uniform peer quadrants, a unique payload color, and a deterministic reflected/recolored full stamp; it refuses ambiguity. This is same-cohort development evidence only, not transfer or an ARC1/ARC2 solver claim.
 - `P0038-ARC12-CROSS-SEPARATOR-REFLECTION-TRAINING-TRANSFER-50` freezes P0037's byte-identical vocabulary on a fresh filename-only all-training `25 ARC1 + 25 ARC2` cohort: `1/50` exact (`1` ARC1, `0` ARC2), with all `49` complete NO reports retained and reproduced byte-for-byte. The sole YES is a pre-existing recolor relation; the P0037 cross-reflection primitive selects zero times. This is limited negative all-training-subset transfer evidence and does not promote that primitive or support an ARC1/ARC2 solver claim.
+- `P0039-ARC12-TRAINING-DEVELOPMENT-BASELINE-40` freezes P0037's byte-identical generic vocabulary on a tenth disjoint filename-only all-training `20 ARC1 + 20 ARC2` development cohort: `3/40` exact (`3` ARC1, `0` ARC2), with all `37` complete NO reports retained and reproduced byte-for-byte. Every YES uses a pre-existing dihedral, adjacent-bilateral, or scale relation; the P0037 cross-reflection primitive does not select. This is a later exposed development baseline, not transfer or an ARC1/ARC2 solver claim.
 - Offline-only ARC12 pilot and ARC3 source-audit inventory manifests are materialized under `research/oracle_materializations/`; live adapters reject oracle/final-rule paths.
 - The result is a first architecture test, **not** an ARC1, ARC2, or ARC3 completion claim.
 - The 60-task curated curriculum and frozen disjoint 25+25 denominator are imported by immutable [ARC12 handoff pins](research/cohorts/ARC12_COHORT_IMPORT_001.json).
@@ -217,6 +218,11 @@ python3 scripts/run_arc12_filename_holdout.py --verify \
   --report-root reports/P0038_arc12_cross_separator_reflection_training_transfer_50 \
   --arc1-source /path/to/arc1-source \
   --arc2-source /path/to/arc2-source
+python3 scripts/run_arc12_filename_holdout.py --verify \
+  --packet research/packets/P0039_ARC12_TRAINING_DEVELOPMENT_BASELINE_40.json \
+  --report-root reports/P0039_arc12_training_development_baseline_40 \
+  --arc1-source /path/to/arc1-source \
+  --arc2-source /path/to/arc2-source
 python3 scripts/materialize_oracle_lane.py \
   --arc12-root /path/to/arc12-compatibility-lab \
   --arc12-commit 525000ab1f78fb1e66906149f72f6e8eac34ab71 \
@@ -228,12 +234,12 @@ python3 scripts/run_arc3_real_transition_probe.py --verify \
 
 The source check requires clean detached revisions specified in the packet. P0013's controller bytes are intentionally historic, so verify it from a clean worktree at `df56d6b8c9a3da62e4f42c08e40d5ff6c31c6dc2`; P0018's baseline bytes are frozen at `260c212129445d1ba4bbda8cfa42f62b41a3446d`; P0019's geometry bytes are frozen at `f7246acf27dccc88a12b065ed6e2dbc1461f177c`; P0020's baseline bytes are frozen at `e7c5bac56acb1119fcb305c1596edaa6966b043f`; P0021's bilateral/scale bytes are frozen at `15833b3826281b49f70da8b9c7b2060ca1f00b8b`; P0022's fresh-transfer and P0023 baseline bytes are frozen at `cf3ff72abc98d8c8654d50694ca18ce68700b3af` and `4a4f70ae1735568ad87d3f46c085f59effb95fd8`; P0024's portfolio, P0025's hidden-zero correction, P0026's transfer controller, P0027's baseline controller, and P0028/P0029/P0030's compatibility-portfolio bytes are frozen at `a232432be2bc34e3e1beed732717a9936c6dda2f`, `eac3e7967acfbc7142b551a5c336f506d5df5440`, `eac3e7967acfbc7142b551a5c336f506d5df5440`, `eac3e7967acfbc7142b551a5c336f506d5df5440`, `a12e6344822d9e423bcc9267f3dbc3b34e4c3502`, `a12e6344822d9e423bcc9267f3dbc3b34e4c3502`, and `a12e6344822d9e423bcc9267f3dbc3b34e4c3502`, respectively. After a later controller-source change, verify any historic packet from its matching clean worktree; source-pinned regression tests retain the historic-byte audit in the evolving branch. `--run` writes a report, explicit JSON trace, native SVG corpus-callosum diagram, complete prediction, and post-answer verdict for every task.
 
-P0031's contiguous-panel/component controller bytes are frozen at `fd3ac79b5415d0f7b42747c5bff19829802ccde3`; P0033's all-training development-baseline bytes are frozen at `5de7928e61ab625be59abab70ce3570e018cbd2e`; P0034's shared-background panel bytes are frozen at `3e04e03086528da6a9a2107a08ebdb4f219bdae4`; P0035's transfer and P0036's development-baseline bytes are frozen at `e869c4842817624925e6576a1be9bb1f27399977`; P0037's development and P0038's transfer bytes are frozen at `5593527a16a57bcc0925ae3692b0888f141452e3`.
+P0031's contiguous-panel/component controller bytes are frozen at `fd3ac79b5415d0f7b42747c5bff19829802ccde3`; P0033's all-training development-baseline bytes are frozen at `5de7928e61ab625be59abab70ce3570e018cbd2e`; P0034's shared-background panel bytes are frozen at `3e04e03086528da6a9a2107a08ebdb4f219bdae4`; P0035's transfer and P0036's development-baseline bytes are frozen at `e869c4842817624925e6576a1be9bb1f27399977`; P0037's development, P0038's transfer, and P0039's development-baseline bytes are frozen at `5593527a16a57bcc0925ae3692b0888f141452e3`.
 
 ## Repository map
 
 - `src/arc123/` — generic perception, hypothesis, persistent theory, compatibility, controller, trace, and adapter code.
 - `research/cohorts/` — source-pinned ARC12 curriculum/generalization metadata.
 - `research/oracle_specs/` and `research/oracle_materializations/` — offline-only observable schemas and source-pinned pilot/audit outputs.
-- `reports/` — retained ARC12 reports through P0038, including complete development and frozen-holdout V&V evidence.
+- `reports/` — retained ARC12 reports through P0039, including complete development and frozen-holdout V&V evidence.
 - `docs/` — architecture, validation, oracle, and visualization protocol.
