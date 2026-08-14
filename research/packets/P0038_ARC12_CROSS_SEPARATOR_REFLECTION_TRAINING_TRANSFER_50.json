@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "packet_id": "P0038-ARC12-CROSS-SEPARATOR-REFLECTION-TRAINING-TRANSFER-50",
+  "report_title": "# P0038 ARC12 Cross-Separator Reflection All-Training Transfer-50 Packet",
+  "report_root": "reports/P0038_arc12_cross_separator_reflection_training_transfer_50",
+  "implementation_commit": "5593527a16a57bcc0925ae3692b0888f141452e3",
+  "claim_boundary": "This source-pinned, failure-inclusive fresh-transfer packet measures P0037's cross-separator quadrant-reflection compatibility vocabulary on a newly frozen filename-only 25 ARC-AGI-1 plus 25 ARC-AGI-2 all-training cohort. The roster was committed at ad8d861878cc13da8b3f5719332974ef281a3e22 before any selected task grid was parsed, visualized, scored, or used for further operator design; selection used only benchmark labels, split names, filenames, and opaque source-byte checksums. It excludes every historical import and all prior frozen roster imports through P0037, including P0035 transfer and P0036/P0037 development reuse. No new 25-task ARC-AGI-2 evaluation-split roster remains after prior disjoint measurements, so this packet is explicitly all-training-split rather than falsely claiming the former mixed-split protocol. The answer-selection controller, generic operator vocabulary, and diagram renderer are byte-identical to P0037. The live controller receives only each task's visible demonstrations and test input. It receives no task ID, cohort metadata, GT feature contract, GT solver, historical decomposition, or test output before committing a complete grid. This fresh result cannot retune the frozen controller or its vocabulary. A P0038 score gain or unrelated exact selection does not promote `cross_separator_quadrant_reflection_stamp`; promotion requires its selected exact all-cell result on this fresh cohort. Any positive result is limited all-training-subset task-level transfer evidence, not an ARC-AGI-1 or ARC-AGI-2 solver claim.",
+  "external_mutation_allowed": false,
+  "benchmark_submission_allowed": false,
+  "cohort_import": {
+    "path": "research/cohorts/ARC12_FILENAME_HOLDOUT_007.json",
+    "sha256": "15814008691a2b168a93933914322188a3e3f9c0042665e93aa3bec6f03c4113",
+    "cohort_key": "frozen_filename_only_training_50_p0038",
+    "task_count": 50,
+    "per_benchmark_task_count": 25,
+    "cohort_freeze_commit": "ad8d861878cc13da8b3f5719332974ef281a3e22"
+  },
+  "implementation_reference": {
+    "packet_id": "P0037-ARC12-CROSS-SEPARATOR-REFLECTION-DEVELOPMENT-40",
+    "packet_path": "research/packets/P0037_ARC12_CROSS_SEPARATOR_REFLECTION_DEVELOPMENT_40.json",
+    "report_root": "reports/P0037_arc12_cross_separator_reflection_development_40",
+    "frozen_controller_commit": "5593527a16a57bcc0925ae3692b0888f141452e3",
+    "exact_solve_count": 3,
+    "attempt_count": 40,
+    "comparison_boundary": "P0037 is exposed same-cohort development evidence on a disjoint cohort. Its 3/40 score and ARC1 cross-reflection witness are implementation provenance only, not a P0038 denominator or fresh-transfer claim."
+  },
+  "prior_transfer_reference": {
+    "packet_id": "P0035-ARC12-SHARED-BACKGROUND-PANEL-TRAINING-TRANSFER-50",
+    "packet_path": "research/packets/P0035_ARC12_SHARED_BACKGROUND_PANEL_TRAINING_TRANSFER_50.json",
+    "report_root": "reports/P0035_arc12_shared_background_panel_training_transfer_50",
+    "exact_solve_count": 3,
+    "attempt_count": 50,
+    "comparison_boundary": "P0035 is immutable fresh all-training-subset transfer evidence for the preceding vocabulary. P0038 has a different frozen implementation and newly disjoint cohort; the reports must not be represented as a direct score delta."
+  },
+  "offline_diagnostic_provenance": {
+    "lane": "offline_only",
+    "source_repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+    "source_refs": {
+      "arc1": "arc1-gt-solver-library",
+      "arc2": "arc2-gt-solver-library"
+    },
+    "source_commits": {
+      "arc1": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "arc2": "71f86ff4c5304e452e0659131171f0519b50e21c"
+    },
+    "role": "P0037's exposed development evidence informed the frozen generic vocabulary, but no selected P0038 task payload or target was available during that work. The controller implementation imports, parses, calls, and receives none of the GT feature records or GT solver code.",
+    "live_controller_boundary": {
+      "gt_feature_contract_passed_to_agent": false,
+      "gt_solver_imported_or_called": false,
+      "p0038_selected_task_payload_available_during_operator_design": false,
+      "held_out_output_available_to_live_agent_before_commit": false
+    }
+  },
+  "synthetic_contract": {
+    "test_path": "tests/test_cross_separator_quadrant_reflection_stamp.py",
+    "test_sha256": "b1fca3e3f466e15827bba39d55e0d042d76c4e5a3983fd07aa0a6b6b1cd27b19",
+    "coverage": "The synthetic contract varies background, separator, payload color, panel width, and active quadrant; it rejects competing payload quadrants and background-colored separators."
+  },
+  "visual_contract": {
+    "test_path": "tests/test_corpus_callosum_palette.py",
+    "test_sha256": "e20c2ce8b87261ad94b5d6a0329d5856041011488bf5f7d944c34659ac0ff500",
+    "coverage": "The renderer keeps ARC black and magenta distinct and uses readable labels for central-separator and cross-reflection operators."
+  },
+  "frozen_controller": {
+    "commit": "5593527a16a57bcc0925ae3692b0888f141452e3",
+    "implementation": "persistent_partial_theory",
+    "candidate_limit": 32,
+    "beam_width": 12,
+    "max_revisions": 96,
+    "revision_enabled": true,
+    "generic_operator_families": [
+      "identity",
+      "recolor",
+      "mirror",
+      "dihedral_transform",
+      "translate",
+      "repeat_tile",
+      "dihedral_tile",
+      "self_mask_macro_stamp",
+      "axis_mode_denoise",
+      "self_contained_subset_crop",
+      "frame_interior_crop",
+      "central_separator_cellwise_combine",
+      "adjacent_bilateral_cellwise_combine",
+      "distinct_nonbackground_scale",
+      "distinct_color_scale",
+      "quadrant_odd_one_out",
+      "cross_separator_quadrant_reflection_stamp",
+      "repeated_panel_odd_one_out_crop",
+      "singleton_foreground_border",
+      "distinct_color_count_line",
+      "separated_panel_cellwise_combine",
+      "contiguous_panel_cellwise_combine",
+      "unique_component_crop",
+      "anti_diagonal_nonbackground_stream",
+      "symmetric_foreground_quadrant_crop",
+      "uniform_block_self_stamp_fractal",
+      "line_extend",
+      "row_span_fill",
+      "scoped_coordinate_transform"
+    ],
+    "source_files": {
+      "scripts/freeze_arc12_filename_holdout.py": "a361fea0022bb047ab244d5a0fa1644cbba3c929d22b41051c344656e9cc8291",
+      "scripts/freeze_arc12_filename_training_holdout.py": "eaa524e2047aa4af15e6acb0577e5827b89e5209226416392b7a284389aa6ed6",
+      "scripts/run_arc12_filename_holdout.py": "df34d80ba4e2f5cef70c0b7a24db2ad462130d1a0f37161ce267742a4ed00a3e",
+      "src/arc123/adapters/arc12.py": "db3acb45c794dcc3a1f7cdde2c52a58a2315e11e882c554e4901f876493ffd88",
+      "src/arc123/compatibility.py": "679e3efa3e71aaf9f8b3ca48cfcd517b9b87a3525cdb8db56cd4a3ba509ab8df",
+      "src/arc123/contracts.py": "3acd65973085eca77093dfeaf39adbe4176770e66993d147404d1b184d2001e3",
+      "src/arc123/controller.py": "c808867d82f7c99598a6b4d7b99900265494196ca3df89cae6b9b8b044dd533f",
+      "src/arc123/hypotheses.py": "b179e83681cb3b594f9bc811f597ced37deb52cc83841392da7afceb7ca4d45a",
+      "src/arc123/model.py": "ba4fc4177414ecea6bced1b0f3866b0c72a1ce09c681c19737dd875a6f55a3ab",
+      "src/arc123/perceptions.py": "a916b0d3961f5b85c853abba67b55bf0dfa8e6a1b24d1b139768a3836218b82a",
+      "src/arc123/relational.py": "230c2f4c8321d3465b7680db3fa9678fbee1a34183b4665765b64ac382e2dfc2",
+      "src/arc123/theory.py": "552e089498773809005849fb39e88b18bd633bd0e8d3e0b5653d54ce14045f01",
+      "src/arc123/traces.py": "0628ba0a5da88f38cc67e77719bd08a6a1f868132b86c1dfe5e0b2ee2a2f7bff"
+    }
+  },
+  "source_pins": {
+    "arc1": {
+      "commit": "085f6dbe39050afac3d1d743f840bac95b1a8d1c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc1"
+    },
+    "arc2": {
+      "commit": "71f86ff4c5304e452e0659131171f0519b50e21c",
+      "repository": "https://github.com/dannaf/arc3-compatibility-lab-prime",
+      "task_directory": "arc_data/arc2"
+    }
+  },
+  "acceptance": {
+    "retain_complete_failure_inclusive_reports": true,
+    "require_post_answer_all_cell_vv": true,
+    "require_source_task_checksum_validation": true,
+    "require_frozen_controller_source_validation": true,
+    "forbid_post_result_controller_retuning": true
+  }
+}
