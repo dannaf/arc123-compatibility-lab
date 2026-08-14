@@ -10,6 +10,7 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPOSITORY_ROOT / "scripts"))
 
 import freeze_arc12_filename_holdout as standard_freezer
+import freeze_arc12_filename_training_development as development_freezer
 import freeze_arc12_filename_training_holdout as training_freezer
 
 
@@ -30,6 +31,24 @@ class FilenameTrainingHoldoutFreezerTests(unittest.TestCase):
         self.assertEqual(observed["allocation"], {"training": 25})
         self.assertEqual(observed["salt"], training_freezer.DEFAULT_SALT)
         self.assertEqual(observed["cohort_key"], training_freezer.DEFAULT_COHORT_KEY)
+        self.assertEqual(standard_freezer.DEFAULT_ALLOCATION, original_allocation)
+
+    def test_development_wrapper_scopes_training_only_configuration(self) -> None:
+        original_allocation = dict(standard_freezer.DEFAULT_ALLOCATION)
+        observed: dict[str, object] = {}
+
+        def inspect_configuration() -> int:
+            observed["allocation"] = dict(standard_freezer.DEFAULT_ALLOCATION)
+            observed["salt"] = standard_freezer.DEFAULT_SALT
+            observed["cohort_key"] = standard_freezer.DEFAULT_COHORT_KEY
+            return 23
+
+        with mock.patch.object(standard_freezer, "main", side_effect=inspect_configuration):
+            self.assertEqual(development_freezer.main(), 23)
+
+        self.assertEqual(observed["allocation"], {"training": 20})
+        self.assertEqual(observed["salt"], development_freezer.DEFAULT_SALT)
+        self.assertEqual(observed["cohort_key"], development_freezer.DEFAULT_COHORT_KEY)
         self.assertEqual(standard_freezer.DEFAULT_ALLOCATION, original_allocation)
 
 
