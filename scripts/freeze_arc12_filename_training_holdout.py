@@ -3,6 +3,9 @@
 
 from __future__ import annotations
 
+import argparse
+import sys
+
 import freeze_arc12_filename_holdout as freezer
 
 
@@ -22,8 +25,17 @@ DEFAULT_CLAIM_BOUNDARY = (
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(add_help=False)
+    parser.add_argument(
+        "--per-benchmark-task-count",
+        type=int,
+        default=DEFAULT_ALLOCATION["training"],
+    )
+    arguments, forwarded_arguments = parser.parse_known_args()
+    if arguments.per_benchmark_task_count < 1:
+        raise ValueError("per-benchmark task count must be positive")
     settings = {
-        "DEFAULT_ALLOCATION": DEFAULT_ALLOCATION,
+        "DEFAULT_ALLOCATION": {"training": arguments.per_benchmark_task_count},
         "DEFAULT_SALT": DEFAULT_SALT,
         "DEFAULT_ARTIFACT_ID": DEFAULT_ARTIFACT_ID,
         "DEFAULT_TITLE": DEFAULT_TITLE,
@@ -31,11 +43,14 @@ def main() -> int:
         "DEFAULT_CLAIM_BOUNDARY": DEFAULT_CLAIM_BOUNDARY,
     }
     originals = {name: getattr(freezer, name) for name in settings}
+    original_arguments = sys.argv
     try:
+        sys.argv = [sys.argv[0], *forwarded_arguments]
         for name, value in settings.items():
             setattr(freezer, name, value)
         return freezer.main()
     finally:
+        sys.argv = original_arguments
         for name, value in originals.items():
             setattr(freezer, name, value)
 
