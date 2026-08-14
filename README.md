@@ -40,6 +40,7 @@ The live learner receives demonstrations and a test input, builds/revises explic
 - `P0029-ARC12-COMPATIBILITY-PORTFOLIO-TRAINING-TRANSFER-50` freezes the unchanged P0028 controller on a fresh filename-only `25 ARC1 + 25 ARC2` all-training-split cohort because only ten unseen ARC2 evaluation filenames remain. It is `4/50` exact (`3` ARC1, `1` ARC2), with all `46` complete NO reports retained and reproduced byte-for-byte. Every YES is an existing rotation/dihedral-tile relation; none of P0028's new relations selects on this fresh cohort. This is limited all-training-subset transfer evidence, not an ARC1/ARC2 solver claim.
 - `P0030-ARC12-DEVELOPMENT-BASELINE-40` freezes the unchanged P0028 controller on a seventh disjoint filename-only 20+20 development roster: `2/40` exact (`0` ARC1, `2` ARC2), with all `38` complete NO reports retained and reproduced byte-for-byte. The two YES selections are existing dihedral-tile and central-separator relations. It is the immutable same-cohort pre-change denominator for the next bounded generic portfolio, not transfer or a solver claim.
 - `P0031-ARC12-CONTIGUOUS-COMPONENT-DEVELOPMENT-40` compares two bounded generic compatibility relations on P0030's immutable roster: `4/40` exact (`+2`; `1` ARC1, `3` ARC2), with all `36` complete NO reports retained and reproduced byte-for-byte. The new exact selections are a conflict-free four-panel visible tuple table and duplicate-aware 4-connected component crop; this same-cohort development result is not transfer or a solver claim.
+- `P0032-ARC12-CONTIGUOUS-COMPONENT-TRAINING-TRANSFER-50` freezes P0031's unchanged bytes on a fresh filename-only all-training `25 ARC1 + 25 ARC2` cohort: `4/50` exact (`2` ARC1, `2` ARC2), with all `46` complete NO reports retained and reproduced byte-for-byte. Every YES uses pre-existing central-separator or dihedral relations; neither P0031 relation selects. This is limited negative all-training-subset transfer evidence, not an ARC1/ARC2 solver claim.
 - Offline-only ARC12 pilot and ARC3 source-audit inventory manifests are materialized under `research/oracle_materializations/`; live adapters reject oracle/final-rule paths.
 - The result is a first architecture test, **not** an ARC1, ARC2, or ARC3 completion claim.
 - The 60-task curated curriculum and frozen disjoint 25+25 denominator are imported by immutable [ARC12 handoff pins](research/cohorts/ARC12_COHORT_IMPORT_001.json).
@@ -175,6 +176,11 @@ python3 scripts/run_arc12_filename_holdout.py --verify \
   --report-root reports/P0031_arc12_contiguous_component_development_40 \
   --arc1-source /path/to/arc1-source \
   --arc2-source /path/to/arc2-source
+python3 scripts/run_arc12_filename_holdout.py --verify \
+  --packet research/packets/P0032_ARC12_CONTIGUOUS_COMPONENT_TRAINING_TRANSFER_50.json \
+  --report-root reports/P0032_arc12_contiguous_component_training_transfer_50 \
+  --arc1-source /path/to/arc1-source \
+  --arc2-source /path/to/arc2-source
 python3 scripts/materialize_oracle_lane.py \
   --arc12-root /path/to/arc12-compatibility-lab \
   --arc12-commit 525000ab1f78fb1e66906149f72f6e8eac34ab71 \
@@ -193,5 +199,5 @@ P0031's contiguous-panel/component controller bytes are frozen at `fd3ac79b5415d
 - `src/arc123/` — generic perception, hypothesis, persistent theory, compatibility, controller, trace, and adapter code.
 - `research/cohorts/` — source-pinned ARC12 curriculum/generalization metadata.
 - `research/oracle_specs/` and `research/oracle_materializations/` — offline-only observable schemas and source-pinned pilot/audit outputs.
-- `reports/` — retained ARC12 reports through P0031, including complete development and frozen-holdout V&V evidence.
+- `reports/` — retained ARC12 reports through P0032, including complete development and frozen-holdout V&V evidence.
 - `docs/` — architecture, validation, oracle, and visualization protocol.
