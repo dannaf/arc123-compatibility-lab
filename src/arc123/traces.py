@@ -69,6 +69,8 @@ def _operator_label(selected_hypothesis: str) -> str:
         return "identity fallback"
     if "dihedral_tile" in selected_hypothesis:
         return "dihedral macro-tile"
+    if "repeated_panel_odd_one_out_crop" in selected_hypothesis:
+        return "odd repeated-panel crop"
     operator = selected_hypothesis.split("(", 1)[0]
     return operator if len(operator) <= 26 else f"{operator[:23]}..."
 

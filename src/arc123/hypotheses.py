@@ -74,6 +74,8 @@ class Hypothesis:
             return self._distinct_color_scale(input_grid)
         if self.kind == "quadrant_odd_one_out":
             return self._quadrant_odd_one_out(input_grid)
+        if self.kind == "repeated_panel_odd_one_out_crop":
+            return self._repeated_panel_odd_one_out_crop(input_grid)
         if self.kind == "singleton_foreground_border":
             return self._singleton_foreground_border(input_grid)
         if self.kind == "distinct_color_count_line":
@@ -503,6 +505,45 @@ class Hypothesis:
             if sum(quadrant == other for other in quadrants) == 1
         ]
         return unique[0] if len(unique) == 1 else None
+
+    def _repeated_panel_odd_one_out_crop(
+        self, input_grid: Grid
+    ) -> Optional[PartialGrid]:
+        """Crop the unique occupancy-mask panel beside repeated peer panels."""
+
+        parameters = self.parameter_map
+        output_height = int(parameters["output_height"])
+        output_width = int(parameters["output_width"])
+        candidates: list[Grid] = []
+        for axis in ("vertical", "horizontal"):
+            panels = _panels_for_output_shape(
+                input_grid,
+                axis,
+                output_height,
+                output_width,
+            )
+            if panels is None:
+                continue
+            background = _unique_shared_panel_color(panels)
+            if background is None:
+                continue
+            masks = [_panel_occupancy_mask(panel, background) for panel in panels]
+            mask_counts: dict[Grid, int] = {}
+            for mask in masks:
+                mask_counts[mask] = mask_counts.get(mask, 0) + 1
+            if (
+                len(mask_counts) != 2
+                or sorted(mask_counts.values()) != [1, len(panels) - 1]
+            ):
+                continue
+            unique_panels = [
+                panel
+                for panel, mask in zip(panels, masks)
+                if mask_counts[mask] == 1
+            ]
+            if len(unique_panels) == 1:
+                candidates.append(unique_panels[0])
+        return candidates[0] if len(candidates) == 1 else None
 
     def _singleton_foreground_border(self, input_grid: Grid) -> Optional[PartialGrid]:
         """Project a unique interior foreground seed onto its input-sized border."""
@@ -976,6 +1017,53 @@ def _contiguous_equal_panels(
             for start_row in range(0, height, panel_span)
         )
     raise ValueError(f"unknown contiguous panel axis: {axis}")
+
+
+def _panels_for_output_shape(
+    input_grid: Grid,
+    axis: str,
+    output_height: int,
+    output_width: int,
+) -> Optional[tuple[Grid, ...]]:
+    """Split a grid into at least three contiguous panels matching one output shape."""
+
+    if output_height < 1 or output_width < 1:
+        return None
+    height = len(input_grid)
+    width = len(input_grid[0])
+    if axis == "vertical":
+        if height != output_height or width % output_width:
+            return None
+        return _contiguous_equal_panels(input_grid, axis, width // output_width)
+    if axis == "horizontal":
+        if width != output_width or height % output_height:
+            return None
+        return _contiguous_equal_panels(input_grid, axis, height // output_height)
+    raise ValueError(f"unknown panel axis: {axis}")
+
+
+def _unique_shared_panel_color(panels: Sequence[Grid]) -> Optional[int]:
+    """Return the one color present in every panel, retaining background uncertainty."""
+
+    if not panels:
+        return None
+    shared_colors = {
+        color
+        for row in panels[0]
+        for color in row
+    }
+    for panel in panels[1:]:
+        shared_colors &= {color for row in panel for color in row}
+    return next(iter(shared_colors)) if len(shared_colors) == 1 else None
+
+
+def _panel_occupancy_mask(panel: Grid, background: int) -> Grid:
+    """Encode a panel's color-independent occupancy against its shared background."""
+
+    return tuple(
+        tuple(int(color != background) for color in row)
+        for row in panel
+    )
 
 
 def _encode_cellwise_table(table: dict[tuple[int, int], int]) -> str:
@@ -1600,6 +1688,36 @@ def _quadrant_odd_one_out_candidates(training_pairs: Sequence[TrainingPair]) -> 
     return []
 
 
+def _repeated_panel_odd_one_out_crop_candidates(
+    training_pairs: Sequence[TrainingPair],
+) -> list[Hypothesis]:
+    """Infer a dynamic-orientation crop of one odd occupancy-mask panel."""
+
+    if not training_pairs:
+        return []
+    output_shapes = {
+        (len(output_grid), len(output_grid[0]))
+        for _, output_grid in training_pairs
+    }
+    if len(output_shapes) != 1:
+        return []
+    output_height, output_width = next(iter(output_shapes))
+    hypothesis = Hypothesis(
+        "repeated_panel_odd_one_out_crop",
+        _parameter_tuple(
+            output_height=output_height,
+            output_width=output_width,
+        ),
+        description_length=6,
+    )
+    if all(
+        hypothesis.predict(input_grid) == _full(output_grid)
+        for input_grid, output_grid in training_pairs
+    ):
+        return [hypothesis]
+    return []
+
+
 def _singleton_foreground_border_candidates(
     training_pairs: Sequence[TrainingPair],
 ) -> list[Hypothesis]:
@@ -1984,6 +2102,7 @@ def propose_base_hypotheses(
                 "distinct_nonbackground_scale",
                 "distinct_color_scale",
                 "quadrant_odd_one_out",
+                "repeated_panel_odd_one_out_crop",
                 "singleton_foreground_border",
                 "distinct_color_count_line",
                 "separated_panel_cellwise_combine",
@@ -2047,6 +2166,8 @@ def propose_base_hypotheses(
         candidates.extend(_distinct_color_scale_candidates(training_pairs))
     if "quadrant_odd_one_out" in enabled:
         candidates.extend(_quadrant_odd_one_out_candidates(training_pairs))
+    if "repeated_panel_odd_one_out_crop" in enabled:
+        candidates.extend(_repeated_panel_odd_one_out_crop_candidates(training_pairs))
     if "singleton_foreground_border" in enabled:
         candidates.extend(_singleton_foreground_border_candidates(training_pairs))
     if "distinct_color_count_line" in enabled:
