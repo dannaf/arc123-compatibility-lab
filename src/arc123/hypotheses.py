@@ -78,6 +78,8 @@ class Hypothesis:
             return self._quadrant_odd_one_out(input_grid)
         if self.kind == "cross_separator_quadrant_reflection_stamp":
             return self._cross_separator_quadrant_reflection_stamp(input_grid)
+        if self.kind == "separator_arrow_guided_panel_stamp":
+            return self._separator_arrow_guided_panel_stamp(input_grid)
         if self.kind == "repeated_panel_odd_one_out_crop":
             return self._repeated_panel_odd_one_out_crop(input_grid)
         if self.kind == "singleton_foreground_border":
@@ -536,6 +538,13 @@ class Hypothesis:
         """Reflect one cross-separated payload quadrant into a full colored stamp."""
 
         return _cross_separator_quadrant_reflection_stamp(input_grid)
+
+    def _separator_arrow_guided_panel_stamp(
+        self, input_grid: Grid
+    ) -> Optional[PartialGrid]:
+        """Stamp the upper payload beside a lower template using an arrow control."""
+
+        return _separator_arrow_guided_panel_stamp(input_grid)
 
     def _repeated_panel_odd_one_out_crop(
         self, input_grid: Grid
@@ -1394,6 +1403,163 @@ def _cross_separator_quadrant_reflection_stamp(input_grid: Grid) -> Optional[Gri
     )
 
 
+_ARROW_DIRECTION_MASKS: dict[tuple[tuple[bool, ...], ...], str] = {
+    (
+        (True, True, True),
+        (False, True, False),
+        (False, True, False),
+    ): "down",
+    (
+        (False, True, False),
+        (False, True, False),
+        (True, True, True),
+    ): "up",
+}
+
+
+def _single_color_bbox_mask(
+    grid: Grid,
+    color: int,
+) -> Optional[tuple[int, int, tuple[tuple[bool, ...], ...]]]:
+    """Return one color's global occupancy mask, without component assumptions."""
+
+    cells = [
+        (row_index, column_index)
+        for row_index, row in enumerate(grid)
+        for column_index, observed_color in enumerate(row)
+        if observed_color == color
+    ]
+    if not cells:
+        return None
+    rows = [row_index for row_index, _ in cells]
+    columns = [column_index for _, column_index in cells]
+    top = min(rows)
+    left = min(columns)
+    bottom = max(rows)
+    right = max(columns)
+    return (
+        top,
+        left,
+        tuple(
+            tuple(grid[row_index][column_index] == color for column_index in range(left, right + 1))
+            for row_index in range(top, bottom + 1)
+        ),
+    )
+
+
+def _separator_arrow_guided_panel_stamp(input_grid: Grid) -> Optional[Grid]:
+    """Use an unambiguous upper template/control/payload panel to stamp below or above.
+
+    The grid must contain one full-width non-background divider.  Above it, three
+    distinct colors form non-overlapping 3x3 roles ordered template, arrow, and
+    payload.  Below it, the sole foreground color reproduces the template mask.
+    The arrow direction selects a background-only 3x3 destination immediately
+    above or below that lower template.  Any alternative parse is refused.
+    """
+
+    background = _unique_background_color(input_grid)
+    if background is None:
+        return None
+    height = len(input_grid)
+    width = len(input_grid[0])
+    if height < 7 or width < 9:
+        return None
+    dividers = [
+        (row_index, row[0])
+        for row_index, row in enumerate(input_grid)
+        if row[0] != background and all(color == row[0] for color in row)
+    ]
+    if len(dividers) != 1:
+        return None
+    divider_row, divider_color = dividers[0]
+    if divider_row == 0 or divider_row == height - 1:
+        return None
+    upper_panel = tuple(input_grid[:divider_row])
+    lower_panel = tuple(input_grid[divider_row + 1 :])
+    upper_colors = {
+        color for row in upper_panel for color in row if color != background
+    }
+    lower_colors = {
+        color for row in lower_panel for color in row if color != background
+    }
+    if (
+        divider_color in upper_colors
+        or divider_color in lower_colors
+        or len(upper_colors) != 3
+        or len(lower_colors) != 1
+    ):
+        return None
+    template_color = next(iter(lower_colors))
+    if template_color not in upper_colors:
+        return None
+    upper_roles = {
+        color: _single_color_bbox_mask(upper_panel, color)
+        for color in upper_colors
+    }
+    lower_template = _single_color_bbox_mask(lower_panel, template_color)
+    if lower_template is None or any(role is None for role in upper_roles.values()):
+        return None
+    template_role = upper_roles[template_color]
+    if template_role is None:
+        return None
+    arrow_roles = [
+        (color, role, _ARROW_DIRECTION_MASKS.get(role[2]))
+        for color, role in upper_roles.items()
+        if role is not None and role[2] in _ARROW_DIRECTION_MASKS
+    ]
+    if len(arrow_roles) != 1:
+        return None
+    arrow_color, arrow_role, direction = arrow_roles[0]
+    if arrow_color == template_color or direction is None:
+        return None
+    payload_colors = upper_colors - {template_color, arrow_color}
+    if len(payload_colors) != 1:
+        return None
+    payload_color = next(iter(payload_colors))
+    payload_role = upper_roles[payload_color]
+    if payload_role is None:
+        return None
+    roles = (template_role, arrow_role, payload_role, lower_template)
+    if any(len(role[2]) != 3 or any(len(row) != 3 for row in role[2]) for role in roles):
+        return None
+    template_left = template_role[1]
+    template_mask = template_role[2]
+    arrow_left = arrow_role[1]
+    payload_left = payload_role[1]
+    payload_mask = payload_role[2]
+    lower_top, lower_left, lower_mask = lower_template
+    if template_mask != lower_mask:
+        return None
+    if not (
+        template_left + 3 <= arrow_left
+        and arrow_left + 3 <= payload_left
+        and template_left < arrow_left < payload_left
+    ):
+        return None
+    destination_top = lower_top + 3 if direction == "down" else lower_top - 3
+    destination_left = lower_left
+    if (
+        destination_top < 0
+        or destination_left < 0
+        or destination_top + 3 > len(lower_panel)
+        or destination_left + 3 > width
+    ):
+        return None
+    destination_cells = [
+        lower_panel[destination_top + row_offset][destination_left + column_offset]
+        for row_offset in range(3)
+        for column_offset in range(3)
+    ]
+    if any(color != background for color in destination_cells):
+        return None
+    output = [list(row) for row in lower_panel]
+    for row_offset, row in enumerate(payload_mask):
+        for column_offset, occupied in enumerate(row):
+            if occupied:
+                output[destination_top + row_offset][destination_left + column_offset] = payload_color
+    return tuple(tuple(row) for row in output)
+
+
 _COUNT_LINE_NAMES = (
     "top_row",
     "bottom_row",
@@ -1906,6 +2072,22 @@ def _cross_separator_quadrant_reflection_stamp_candidates(
     return []
 
 
+def _separator_arrow_guided_panel_stamp_candidates(
+    training_pairs: Sequence[TrainingPair],
+) -> list[Hypothesis]:
+    """Retain the role-bound panel stamp only when every demonstration fits."""
+
+    if not training_pairs:
+        return []
+    hypothesis = Hypothesis("separator_arrow_guided_panel_stamp", description_length=8)
+    if all(
+        hypothesis.predict(input_grid) == _full(output_grid)
+        for input_grid, output_grid in training_pairs
+    ):
+        return [hypothesis]
+    return []
+
+
 def _repeated_panel_odd_one_out_crop_candidates(
     training_pairs: Sequence[TrainingPair],
 ) -> list[Hypothesis]:
@@ -2322,6 +2504,7 @@ def propose_base_hypotheses(
                 "distinct_color_scale",
                 "quadrant_odd_one_out",
                 "cross_separator_quadrant_reflection_stamp",
+                "separator_arrow_guided_panel_stamp",
                 "repeated_panel_odd_one_out_crop",
                 "singleton_foreground_border",
                 "distinct_color_count_line",
@@ -2392,6 +2575,8 @@ def propose_base_hypotheses(
         candidates.extend(
             _cross_separator_quadrant_reflection_stamp_candidates(training_pairs)
         )
+    if "separator_arrow_guided_panel_stamp" in enabled:
+        candidates.extend(_separator_arrow_guided_panel_stamp_candidates(training_pairs))
     if "repeated_panel_odd_one_out_crop" in enabled:
         candidates.extend(_repeated_panel_odd_one_out_crop_candidates(training_pairs))
     if "singleton_foreground_border" in enabled:

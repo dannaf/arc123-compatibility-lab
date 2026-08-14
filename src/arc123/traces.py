@@ -79,6 +79,8 @@ def _operator_label(selected_hypothesis: str) -> str:
         return "separated-panel merge"
     if "cross_separator_quadrant_reflection_stamp" in selected_hypothesis:
         return "cross-quadrant reflection"
+    if "separator_arrow_guided_panel_stamp" in selected_hypothesis:
+        return "arrow-guided panel stamp"
     if "repeated_panel_odd_one_out_crop" in selected_hypothesis:
         return "odd repeated-panel crop"
     if "uniform_frame_size_fill" in selected_hypothesis:
