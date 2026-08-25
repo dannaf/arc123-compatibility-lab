@@ -48,6 +48,7 @@ DEFAULT_OPERATOR_FAMILIES = (
     "alternating_mirror_tile",
     "cross_object_bridge",
     "partition_cell_semantic_label",
+    "partition_key_block_routing",
     "component_select_extract",
     "unique_neighbor_component_propagation",
     "partial-with-identity composition",
