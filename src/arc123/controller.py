@@ -19,6 +19,7 @@ from .partition_hypotheses import propose_partition_hypotheses
 from .perceptions import difference_summary
 from .ranked_container_hypotheses import propose_ranked_container_hypotheses
 from .rectangle_hypotheses import propose_rectangle_hypotheses
+from .relational_macro_hypotheses import propose_relational_macro_hypotheses
 from .relational_tiling_hypotheses import propose_relational_tiling_hypotheses
 from .segment_hypotheses import propose_segment_hypotheses
 from .semantic_hypotheses import propose_semantic_hypotheses
@@ -62,6 +63,7 @@ DEFAULT_OPERATOR_FAMILIES = (
     "bottom_anchored_left_shear",
     "component_count_plus_one_blank_column",
     "second_longest_segment_equalize",
+    "diagonal_closure_macro_render",
     "partial-with-identity composition",
 )
 
@@ -350,6 +352,7 @@ class IterativeHypothesisLearner:
                 *propose_geometric_relation_hypotheses(training_pairs, self.operator_families),
                 *propose_measurement_hypotheses(training_pairs, self.operator_families),
                 *propose_segment_hypotheses(training_pairs, self.operator_families),
+                *propose_relational_macro_hypotheses(training_pairs, self.operator_families),
             ]
             self._evaluate_stage(
                 "semantic_callosal_interfaces",
