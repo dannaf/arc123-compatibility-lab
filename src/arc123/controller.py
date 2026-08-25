@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import math
 from dataclasses import dataclass
 from typing import Optional, Protocol, Sequence
 
@@ -208,33 +207,54 @@ class IterativeHypothesisLearner:
         test_inputs: Sequence[Grid],
         trace: LearningTrace,
     ) -> Optional[tuple[tuple[Grid, ...], str, float]]:
-        groups: dict[str, list[tuple[Predictor, HypothesisAssessment, tuple[Grid, ...]]]] = {}
-        for candidate, assessment in exact:
-            predictions = tuple(
-                prediction
-                for input_grid in test_inputs
-                if (prediction := _complete_prediction(candidate, input_grid)) is not None
-            )
-            if len(predictions) != len(test_inputs):
-                trace.record(
-                    ActionKind.REJECT_HYPOTHESIS,
-                    hypothesis=candidate.name,
-                    reason="test_prediction_remains_unknown",
-                )
-                continue
-            key = json.dumps(predictions)
-            groups.setdefault(key, []).append((candidate, assessment, predictions))
-        if not groups:
+        """Commit only at literal prediction singularity.
+
+        Every training-exact surviving model must produce a complete test
+        prediction, and all such complete predictions must be identical.  A
+        model that remains UNKNOWN on the test is still a compatible member of
+        the fiber and therefore blocks singularity; it is not silently thrown
+        away.  Likewise, multiple complete prediction groups are preserved as
+        ambiguity rather than resolved by an MDL/posterior tie-break.
+        """
+
+        if not exact:
             return None
-        unnormalized = {
-            key: sum(math.exp(-assessment.description_length) for _, assessment, _ in entries)
-            for key, entries in groups.items()
-        }
-        total_mass = sum(unnormalized.values())
-        chosen_key, chosen_mass = max(
-            unnormalized.items(), key=lambda item: (item[1], item[0])
-        )
-        chosen_entries = groups[chosen_key]
+        groups: dict[str, list[tuple[Predictor, HypothesisAssessment, tuple[Grid, ...]]]] = {}
+        unresolved: list[str] = []
+        for candidate, assessment in exact:
+            predictions: list[Grid] = []
+            complete = True
+            for input_grid in test_inputs:
+                prediction = _complete_prediction(candidate, input_grid)
+                if prediction is None:
+                    complete = False
+                    break
+                predictions.append(prediction)
+            if not complete:
+                unresolved.append(candidate.name)
+                continue
+            prediction_tuple = tuple(predictions)
+            key = json.dumps(prediction_tuple)
+            groups.setdefault(key, []).append((candidate, assessment, prediction_tuple))
+
+        if unresolved:
+            trace.record(
+                ActionKind.SPECIALIZE,
+                reason="prediction_singularity_blocked_by_unknown_exact_models",
+                unresolved_exact_hypotheses=sorted(unresolved),
+                complete_prediction_group_count=len(groups),
+            )
+            return None
+        if len(groups) != 1:
+            trace.record(
+                ActionKind.SPECIALIZE,
+                reason="prediction_singularity_blocked_by_disagreeing_exact_models",
+                complete_prediction_group_count=len(groups),
+                compatible_hypothesis_count=len(exact),
+            )
+            return None
+
+        chosen_entries = next(iter(groups.values()))
         chosen_predictor, _, chosen_predictions = min(
             chosen_entries,
             key=lambda item: (item[1].description_length, item[0].name),
@@ -245,15 +265,15 @@ class IterativeHypothesisLearner:
                 compatible_hypotheses=[item[0].name for item in chosen_entries],
                 complete_prediction_group_size=len(chosen_entries),
             )
-        posterior_mass = chosen_mass / total_mass
         trace.record(
             ActionKind.COMMIT,
             selected_hypothesis=chosen_predictor.name,
-            complete_prediction_group_count=len(groups),
-            posterior_mass=posterior_mass,
+            complete_prediction_group_count=1,
+            posterior_mass=1.0,
             training_exact=True,
+            singularity="prediction",
         )
-        return chosen_predictions, chosen_predictor.name, posterior_mass
+        return chosen_predictions, chosen_predictor.name, 1.0
 
     def solve(self, environment: EvidenceEnvironment, episode_id: str = "arc12-task") -> SolveResult:
         """Return a complete answer using only training demonstrations and test inputs."""
@@ -366,7 +386,7 @@ class IterativeHypothesisLearner:
             complete_prediction_group_count=0,
             posterior_mass=0.0,
             training_exact=False,
-            fallback_reason="no_complete_training_compatible_generic_hypothesis",
+            fallback_reason="no_prediction_singularity_or_no_complete_training_compatible_hypothesis",
         )
         return SolveResult(
             predictions=predictions,
