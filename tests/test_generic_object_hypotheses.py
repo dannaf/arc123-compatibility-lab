@@ -40,8 +40,6 @@ def test_component_selector_preserves_min_vs_not_max_ambiguity():
         _two_component_training(), ("component_select_extract",)
     )
     fields = {candidate.separator.descriptor_names for candidate in candidates}
-    # With exactly two objects per demonstration, these two explanations are
-    # observationally equivalent.  The learner must not erase that ambiguity.
     assert ("is_min_area",) in fields
     assert ("is_max_area",) in fields
 
@@ -66,13 +64,11 @@ def test_ambiguous_exact_semantic_models_block_prediction_singularity():
     result = IterativeHypothesisLearner(
         operator_families=("identity", "component_select_extract")
     ).solve(env, "ambiguous-object-extract")
-    # is_min_area predicts the singleton 6.  "not is_max_area" selects both
-    # non-max objects and cannot make one crop. Both remain training-exact, so
-    # strict prediction singularity correctly refuses to commit.
     assert not result.training_exact
     assert result.used_fallback
     assert any(
-        event.get("reason") == "prediction_singularity_blocked_by_unknown_exact_models"
+        event.get("payload", {}).get("reason")
+        == "prediction_singularity_blocked_by_unknown_exact_models"
         for event in result.trace["events"]
     )
 
