@@ -1,8 +1,13 @@
 """Cross-object bridge hypotheses for relational ARC transformations.
 
 The first family learns when one object's small orientation descriptor controls
-where a transformed copy of another object is placed.  All colors, bridge
+where a transformed copy of another object is placed. All colors, bridge
 states, and mapping parameters are inferred from visible training evidence.
+
+Important representation guardrail: a semantic object need not be one
+4-neighbor connected component. For this family, all cells of a learned color
+inside their bounding box form the pattern object; this is required by ARC2
+`760b3cac`, where the controlled upper pattern can be disconnected.
 """
 
 from __future__ import annotations
@@ -11,23 +16,29 @@ from dataclasses import dataclass
 from typing import Optional, Sequence
 
 from .model import Grid, PartialGrid, TrainingPair
-from .perceptions import background_color, connected_components
+from .perceptions import background_color
 
 
-def _components_of_color(grid: Grid, color: int):
-    return [component for component in connected_components(grid) if component.color == color]
+def _color_cells(grid: Grid, color: int) -> set[tuple[int, int]]:
+    return {
+        (row, column)
+        for row, values in enumerate(grid)
+        for column, value in enumerate(values)
+        if value == color
+    }
 
 
-def _largest_component(grid: Grid, color: int):
-    components = _components_of_color(grid, color)
-    if not components:
+def _bbox(cells: set[tuple[int, int]]) -> tuple[int, int, int, int]:
+    rows = [row for row, _ in cells]
+    columns = [column for _, column in cells]
+    return min(rows), min(columns), max(rows), max(columns)
+
+
+def _top_asymmetry_side(cells: set[tuple[int, int]]) -> Optional[str]:
+    if not cells:
         return None
-    return max(components, key=lambda component: (component.size, component.bbox))
-
-
-def _top_asymmetry_side(component) -> Optional[str]:
-    row0, column0, _, column1 = component.bbox
-    top_columns = sorted(column for row, column in component.cells if row == row0)
+    row0, column0, _, column1 = _bbox(cells)
+    top_columns = sorted(column for row, column in cells if row == row0)
     if not top_columns:
         return None
     center = (column0 + column1) / 2.0
@@ -39,13 +50,13 @@ def _top_asymmetry_side(component) -> Optional[str]:
     return None
 
 
-def _mirrored_cells(component, placement_side: str) -> set[tuple[int, int]]:
-    row0, column0, row1, column1 = component.bbox
+def _mirrored_cells(cells: set[tuple[int, int]], placement_side: str) -> set[tuple[int, int]]:
+    row0, column0, _, column1 = _bbox(cells)
     width = column1 - column0 + 1
     offset = -width if placement_side == "left" else width
     return {
         (row, column0 + (column1 - column) + offset)
-        for row, column in component.cells
+        for row, column in cells
     }
 
 
@@ -62,18 +73,19 @@ class ControllerOrientationMirrorCopy:
     @property
     def callosal_summary(self) -> dict[str, object]:
         return {
-            "interface": "(source_object, controller_orientation)->mirrored_copy_placement",
+            "interface": "(source_color_pattern, controller_orientation)->mirrored_copy_placement",
             "source_color": self.source_color,
             "controller_color": self.controller_color,
             "bridge_mapping": self.bridge_mapping,
+            "source_objecthood": "all cells of source color in their bounding box; connectedness not required",
             "forward_deterministic": True,
             "backward_semantics": "observed placement eliminates incompatible controller orientations",
         }
 
     def predict(self, input_grid: Grid) -> PartialGrid:
-        source = _largest_component(input_grid, self.source_color)
-        controller = _largest_component(input_grid, self.controller_color)
-        if source is None or controller is None:
+        source = _color_cells(input_grid, self.source_color)
+        controller = _color_cells(input_grid, self.controller_color)
+        if not source or not controller:
             return tuple(tuple(None for _ in row) for row in input_grid)
         bridge_state = _top_asymmetry_side(controller)
         mapping = dict(self.bridge_mapping)
@@ -110,8 +122,8 @@ def _infer_one_pair(input_grid: Grid, output_grid: Grid):
     if len(changed_colors) != 1:
         return None
     source_color = next(iter(changed_colors))
-    source = _largest_component(input_grid, source_color)
-    if source is None:
+    source = _color_cells(input_grid, source_color)
+    if not source:
         return None
     nonbackground_colors = sorted(
         {color for row in input_grid for color in row if color != background}
@@ -120,8 +132,8 @@ def _infer_one_pair(input_grid: Grid, output_grid: Grid):
     if len(controller_colors) != 1:
         return None
     controller_color = controller_colors[0]
-    controller = _largest_component(input_grid, controller_color)
-    if controller is None:
+    controller = _color_cells(input_grid, controller_color)
+    if not controller:
         return None
     bridge_state = _top_asymmetry_side(controller)
     if bridge_state is None:
