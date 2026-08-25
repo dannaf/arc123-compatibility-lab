@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "cohort_id": "P0007-SEALED-REMAINDER-30",
+  "parent_cohort": "ARC12-COHORT-IMPORT-001:frozen_disjoint_50",
+  "sealed_after_opening": "P0005-ARC12-FROZEN-DISJOINT-20",
+  "claim_boundary": "These are the thirty entries of the pre-existing frozen_disjoint_50 cohort not used by P0005. Only benchmark/split/task filename/hash metadata was inspected while sealing this remainder. Grid contents, training semantics, and held-out outputs are intentionally not inspected before the final architecture evaluation. Any later runnable packet must preserve this exact task list and source pins; only the learner implementation/operator vocabulary may change.",
+  "source_pins": {
+    "arc1": {
+      "commit": "399030444e0ab0cc8b4e199870fb20b863846f34",
+      "repository": "https://github.com/fchollet/ARC-AGI",
+      "task_directory": "data"
+    },
+    "arc2": {
+      "commit": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "repository": "https://github.com/arcprize/ARC-AGI-2",
+      "task_directory": "data"
+    }
+  },
+  "tasks": [
+    {"benchmark":"arc1","selection_rank_sha256":"07509a11b4415ac002cfcd375603c83c9ea4aeb79d8fd3ab3b54030073c900b2","split":"evaluation","task_id":"ed74f2f2"},
+    {"benchmark":"arc1","selection_rank_sha256":"07c17fa7c828d0fc3f6dbd47245661787fa8dc270cab4488641771baaec12b78","split":"evaluation","task_id":"79369cc6"},
+    {"benchmark":"arc1","selection_rank_sha256":"0086af13f2739a2e3403e8d7476f768266a7bbe6b2cf3a6259db6c4ef9a4c1d3","split":"training","task_id":"25d8a9c8"},
+    {"benchmark":"arc1","selection_rank_sha256":"017e91da9e00dd150344f5067901708f48b15521279cc9322386dfe9bbf23cdd","split":"training","task_id":"4347f46a"},
+    {"benchmark":"arc1","selection_rank_sha256":"04252fbb618aaf6f3e4add2e8382398698faf7a72a32602a62217af19a4eb7c9","split":"training","task_id":"1caeab9d"},
+    {"benchmark":"arc1","selection_rank_sha256":"04dcdf299f8ec8907338f11ffdc5ca900e22379632669ba7ac14783fbfb4337d","split":"training","task_id":"681b3aeb"},
+    {"benchmark":"arc1","selection_rank_sha256":"05d0f60946b5b8310f2f9c7375698b363956860adcf62c63b3d30a78631c9f3f","split":"training","task_id":"4be741c5"},
+    {"benchmark":"arc1","selection_rank_sha256":"068a1d0f27e8e013130e16a1693bb3785853cc4f482d2b422ec5419e85e4720f","split":"training","task_id":"44f52bb0"},
+    {"benchmark":"arc1","selection_rank_sha256":"06a8ce00247cb2deb3f493b1b7825ebe380a7643a87b4fcbf316aa7c6712f8ca","split":"training","task_id":"3428a4f5"},
+    {"benchmark":"arc1","selection_rank_sha256":"06d8521526d028f665650a7287553ad52f9cff5bb2413fb16b2975ba79b6d5ec","split":"training","task_id":"49d1d64f"},
+    {"benchmark":"arc1","selection_rank_sha256":"096a5018ff2cb186500cb71b45f7562e0fc7fab82e97ba63162c90e8dd8be765","split":"training","task_id":"54d82841"},
+    {"benchmark":"arc1","selection_rank_sha256":"09a0f7361cedc672065140572a1579ddd7caecdafd6b3389c86f50e87ac0d3d8","split":"training","task_id":"5ad4f10b"},
+    {"benchmark":"arc1","selection_rank_sha256":"0a51343c219c2352d0d03ba9e4872228c9d9796a966e3ff3ef73f54c7c9f9c8d","split":"training","task_id":"a61ba2ce"},
+    {"benchmark":"arc1","selection_rank_sha256":"0a77f7d4b2246d0e5d95b7d683ca7f350b8a97a0de9bf39dbe739b7484109b50","split":"training","task_id":"6773b310"},
+    {"benchmark":"arc1","selection_rank_sha256":"0aab0b26f095bac38a55637d442c99d9d257261c4aea10128fc32c7c4d15a7cf","split":"training","task_id":"a9f96cdd"},
+    {"benchmark":"arc2","selection_rank_sha256":"1c1145327e32f9003103f41ff22bde6037a1debb931741569def48d4b7bcb103","split":"evaluation","task_id":"16b78196"},
+    {"benchmark":"arc2","selection_rank_sha256":"1c999521474b1bee782ed26f4f52868a9feef60c0c8ea066a3c312830238676f","split":"evaluation","task_id":"b6f77b65"},
+    {"benchmark":"arc2","selection_rank_sha256":"0018f5b975cdc46ce16a043a5e0d5e43f2194af939aa8f9124cf60078cb6e72d","split":"training","task_id":"bd283c4a"},
+    {"benchmark":"arc2","selection_rank_sha256":"007da343abb3d903790a007d6947478a7bf2edf1bb040d77b79738db26de192c","split":"training","task_id":"c3fa4749"},
+    {"benchmark":"arc2","selection_rank_sha256":"00d07c3454b6f247d02cae379759d0a00604a1443e8a6a79950dfecbbd495f54","split":"training","task_id":"d93c6891"},
+    {"benchmark":"arc2","selection_rank_sha256":"011e5fcec8aeaa9ba325a07d43f2d7c0438823f07a35812c76e2bb3c41395e1a","split":"training","task_id":"9dfd6313"},
+    {"benchmark":"arc2","selection_rank_sha256":"01902d560faf64909ec18c23ee9f1687f2cdb8d713f527c1789184a69ab66841","split":"training","task_id":"f9d67f8b"},
+    {"benchmark":"arc2","selection_rank_sha256":"021542e394fb2a763d2a9bf83f6933e7cd22f6482b78eb954ab16b20b2697154","split":"training","task_id":"5117e062"},
+    {"benchmark":"arc2","selection_rank_sha256":"021607657c9ef3687cd2fe098836801efee530990693a00298b2486b08596862","split":"training","task_id":"a78176bb"},
+    {"benchmark":"arc2","selection_rank_sha256":"025b852fb8b36638436cf1f782bc9fc7f347679d800e801e4cd8075c5fbbbb9b","split":"training","task_id":"8618d23e"},
+    {"benchmark":"arc2","selection_rank_sha256":"027943b70c578efe63f5bde1e232bad4d40ca83f32fbcdb9fd9e4b90d997eca6","split":"training","task_id":"da6e95e5"},
+    {"benchmark":"arc2","selection_rank_sha256":"02c60f6a952bd088fa999d3d50b93cfea43a306ca45b74fa4cfa400f202dd31a","split":"training","task_id":"543a7ed5"},
+    {"benchmark":"arc2","selection_rank_sha256":"02e272e96a9ca6dff97db06d65466f4afa7043bb3f90a9fec06344660a19a3cc","split":"training","task_id":"34cfa167"},
+    {"benchmark":"arc2","selection_rank_sha256":"0352d7f66700de518dcbda4163975f6daee259ed7ed26e805cab2f26f23e3157","split":"training","task_id":"fc4aaf52"},
+    {"benchmark":"arc2","selection_rank_sha256":"043fa30fbb972798f58b050020d6fd21ac6815d649274fbe17f855d14cb3f7c7","split":"training","task_id":"2faf500b"}
+  ]
+}
