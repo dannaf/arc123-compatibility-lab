@@ -1,0 +1,31 @@
+{
+  "a85d4709": {
+    "interface": "marker_column <-> constant_output_row_color",
+    "forward": {"0": 2, "1": 4, "2": 3},
+    "backward": {"2": 0, "3": 2, "4": 1},
+    "training_bidirectional_deterministic": true,
+    "committed_prediction": [[3,3,3],[2,2,2],[4,4,4]],
+    "test_exact_post_commit": true,
+    "previous_P0001_status": "NO/fallback_identity"
+  },
+  "0d3d703e": {
+    "interface": "input_color <-> output_color",
+    "forward": {"1":5,"2":6,"3":4,"4":3,"5":1,"6":2,"8":9,"9":8},
+    "backward": {"1":5,"2":6,"3":4,"4":3,"5":1,"6":2,"8":9,"9":8},
+    "bijective_on_observed_support": true,
+    "committed_prediction": [[9,5,4],[9,5,4],[9,5,4]],
+    "test_exact_post_commit": true
+  },
+  "f3e62deb_interface_negative_control": {
+    "interface": "object_color -> boundary_motion_direction",
+    "observed_training_support": {"8":"right","6":"up"},
+    "heldout_colors": [4,3],
+    "two_training_compatible_extensions": [
+      {"8":"right","6":"up","4":"down","3":"left"},
+      {"8":"right","6":"up","4":"left","3":"down"}
+    ],
+    "prediction_singularity_at_this_interface": false,
+    "correct_status_before_extra_semantics": "UNKNOWN",
+    "claim_boundary": "This proves only that color->direction is insufficient on the same-task observations; another generic semantic rule may still identify the held-out behavior."
+  }
+}
