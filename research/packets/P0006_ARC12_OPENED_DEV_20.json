@@ -4,7 +4,7 @@
   "parent_packets": ["P0005-ARC12-FROZEN-DISJOINT-20", "P0004-ARC12-SEMANTIC-RERUN-20"],
   "report_title": "# P0006 Opened ARC12 Development Counterexamples (21)",
   "report_root": "reports/P0006_arc12_opened_dev_21",
-  "claim_boundary": "This is not an unseen evaluation set. It contains the twenty P0005 tasks after their 0/20 transfer score was frozen, plus P0004 development failure 09629e4f. P0006 is architecture-development evidence only and must never be cited as held-out transfer evidence. Generic object selection, sparse partition-key routing, legend-count/ranked-container control, external-corner/frame routing, marker-count/palette sequencing, and bottom-anchored affine shear grammars were developed only after these tasks were opened. Held-out test outputs remain excluded from live inference and are used only after prediction commit.",
+  "claim_boundary": "This is not an unseen evaluation set. It contains the twenty P0005 tasks after their 0/20 transfer score was frozen, plus P0004 development failure 09629e4f. P0006 is architecture-development evidence only and must never be cited as held-out transfer evidence. Generic object selection, sparse partition-key routing, legend-count/ranked-container control, external-corner/frame routing, marker-count/palette sequencing, bottom-anchored affine shear, component-count/output-dimension measurement, second-longest segment equalization, and diagonal-closure/macro-render grammars were developed only after these tasks were opened. Held-out test outputs remain excluded from live inference and are used only after prediction commit.",
   "controller": {
     "candidate_limit": 128,
     "forbidden_live_inputs": ["task_id","historical selected schema","ARC12 decomposition mapping","GT feature contract","GT solver code","held_out test output before commit"],
@@ -16,6 +16,8 @@
       "partition_key_block_routing","component_select_extract","unique_neighbor_component_propagation",
       "legend_count_ranked_container_fill","corner_marker_diagonal_quadrant_fill",
       "marker_count_palette_cycle","bottom_anchored_left_shear",
+      "component_count_plus_one_blank_column","second_longest_segment_equalize",
+      "diagonal_closure_macro_render",
       "partial-with-identity composition"
     ]
   },
