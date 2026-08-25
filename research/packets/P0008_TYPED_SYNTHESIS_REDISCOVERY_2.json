@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "packet_id": "P0008-TYPED-SYNTHESIS-REDISCOVERY-2",
+  "parent_packets": ["P0006-ARC12-OPENED-DEV-21"],
+  "report_title": "# P0008 Typed Program Synthesis Rediscovery (2 opened tasks)",
+  "report_root": "reports/P0008_typed_synthesis_rediscovery_2",
+  "claim_boundary": "Architecture-development rediscovery only, not unseen-transfer evidence. Both tasks were already opened before this packet. The purpose is narrower and falsifiable: disable their hand-packaged semantic rule families and require the generic typed composition engine to reconstruct an exact rule from primitive operations. Held-out outputs remain excluded from live inference and are used only after prediction commit.",
+  "controller": {
+    "candidate_limit": 128,
+    "forbidden_live_inputs": ["task_id", "historical selected schema", "ARC12 decomposition mapping", "GT feature contract", "GT solver code", "held_out test output before commit"],
+    "generic_operator_families": [
+      "identity",
+      "recolor",
+      "mirror",
+      "translate",
+      "line_extend",
+      "row_span_fill",
+      "typed_program_synthesis"
+    ]
+  },
+  "source_pins": {
+    "arc1": {
+      "commit": "399030444e0ab0cc8b4e199870fb20b863846f34",
+      "repository": "https://github.com/fchollet/ARC-AGI",
+      "task_directory": "data"
+    }
+  },
+  "tasks": [
+    {"benchmark": "arc1", "split": "evaluation", "task_id": "e872b94a"},
+    {"benchmark": "arc1", "split": "evaluation", "task_id": "358ba94e"}
+  ]
+}
