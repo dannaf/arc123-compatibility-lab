@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from arc123.controller import IterativeHypothesisLearner
-from arc123.semantic_hypotheses import RectangularEnclosureAreaFill
+from arc123.rectangle_hypotheses import LearnedRectangularEnclosureAreaFill
 
 
 def g(rows):
@@ -65,10 +65,10 @@ def test_rectangular_geometry_family_handles_84f2aca1_test_layout():
         [0,0,0,0,0,0,0,0,0,3,3,3],
         [0,0,0,0,0,0,0,0,0,0,0,0],
     ])
-    assert RectangularEnclosureAreaFill(((1,5),(2,7))).predict(input_grid) == expected
+    assert LearnedRectangularEnclosureAreaFill(((1,5),(2,7)), 0).predict(input_grid) == expected
 
 
-def test_rectangular_geometry_family_preserves_embedded_marker():
+def test_rectangular_geometry_family_preserves_embedded_marker_when_frame_is_modal():
     input_grid = g([
         [2,2,2,2,2],
         [2,0,0,0,2],
@@ -83,4 +83,4 @@ def test_rectangular_geometry_family_preserves_embedded_marker():
         [2,8,8,8,2],
         [2,2,2,2,2],
     ])
-    assert RectangularEnclosureAreaFill(((9,8),)).predict(input_grid) == expected
+    assert LearnedRectangularEnclosureAreaFill(((9,8),), 0).predict(input_grid) == expected
