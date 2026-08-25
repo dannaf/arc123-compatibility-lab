@@ -37,6 +37,8 @@ DEFAULT_OPERATOR_FAMILIES = (
     "row_marker_column_to_constant_row",
     "column_downward_propagation",
     "enclosed_background_fill",
+    "macro_micro_gate",
+    "row_column_permutation_completion",
     "partial-with-identity composition",
 )
 
@@ -133,11 +135,16 @@ class IterativeHypothesisLearner:
         )
         for candidate in retained:
             assessment = assess_hypothesis(candidate, training_pairs)
+            metadata = {}
+            callosal_summary = getattr(candidate, "callosal_summary", None)
+            if callosal_summary is not None:
+                metadata["callosal_summary"] = callosal_summary
             trace.record(
                 ActionKind.APPLY_HYPOTHESIS,
                 stage=stage,
                 hypothesis=candidate.name,
                 description_length=candidate.description_length,
+                **metadata,
             )
             trace.record(ActionKind.COMPARE, stage=stage, **assessment.as_dict())
             if assessment.is_training_exact:
@@ -147,6 +154,7 @@ class IterativeHypothesisLearner:
                     stage=stage,
                     hypothesis=candidate.name,
                     status="full_training_compatibility",
+                    **metadata,
                 )
                 continue
             counterexample = assessment.first_counterexample
@@ -172,6 +180,7 @@ class IterativeHypothesisLearner:
                     hypothesis=candidate.name,
                     status="partial_compatible_unknown_cells_retained",
                     unknown_cell_count=assessment.unknown_cell_count,
+                    **metadata,
                 )
                 continue
             trace.record(
