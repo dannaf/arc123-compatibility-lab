@@ -4,7 +4,7 @@
   "parent_packets": ["P0005-ARC12-FROZEN-DISJOINT-20", "P0004-ARC12-SEMANTIC-RERUN-20"],
   "report_title": "# P0006 Opened ARC12 Development Counterexamples (21)",
   "report_root": "reports/P0006_arc12_opened_dev_21",
-  "claim_boundary": "This is not an unseen evaluation set. It contains the twenty P0005 tasks after their 0/20 transfer score was frozen, plus P0004 development failure 09629e4f used to develop the generic partition-cell unitizer. P0006 is architecture-development evidence only and must never be cited as held-out transfer evidence. Held-out test outputs remain excluded from live inference and are used only after prediction commit.",
+  "claim_boundary": "This is not an unseen evaluation set. It contains the twenty P0005 tasks after their 0/20 transfer score was frozen, plus P0004 development failure 09629e4f. P0006 is architecture-development evidence only and must never be cited as held-out transfer evidence. Generic object and partition-key grammar families were developed only after these tasks were opened. Held-out test outputs remain excluded from live inference and are used only after prediction commit.",
   "controller": {
     "candidate_limit": 128,
     "forbidden_live_inputs": ["task_id","historical selected schema","ARC12 decomposition mapping","GT feature contract","GT solver code","held_out test output before commit"],
@@ -13,6 +13,7 @@
       "row_marker_column_to_constant_row","column_downward_propagation","enclosed_background_fill",
       "rectangular_enclosure_area_fill","macro_micro_gate","row_column_permutation_completion",
       "alternating_mirror_tile","cross_object_bridge","partition_cell_semantic_label",
+      "partition_key_block_routing","component_select_extract","unique_neighbor_component_propagation",
       "partial-with-identity composition"
     ]
   },
