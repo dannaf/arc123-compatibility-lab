@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from typing import Optional, Protocol, Sequence
 
 from .compatibility import assess_hypothesis
+from .cross_object_bridge_hypotheses import propose_cross_object_bridge_hypotheses
 from .frequency_macro_hypotheses import propose_frequency_macro_hypotheses
 from .hypotheses import Hypothesis, propose_base_hypotheses, propose_structural_hypotheses
 from .model import ActionKind, Grid, HypothesisAssessment, PartialGrid, SolveResult, TrainingPair
@@ -42,6 +43,7 @@ DEFAULT_OPERATOR_FAMILIES = (
     "macro_micro_gate",
     "row_column_permutation_completion",
     "alternating_mirror_tile",
+    "cross_object_bridge",
     "partial-with-identity composition",
 )
 
@@ -70,9 +72,9 @@ class _CompletedPartialHypothesis:
         return tuple(
             tuple(
                 predicted if predicted is not None else input_color
-                for predicted, input_color in zip(predicted_row, input_row)
+                for predicted, input_color in zip(prediction_row, input_row)
             )
-            for predicted_row, input_row in zip(prediction, input_grid)
+            for prediction_row, input_row in zip(prediction, input_grid)
         )
 
 
@@ -300,6 +302,7 @@ class IterativeHypothesisLearner:
                 *propose_semantic_hypotheses(training_pairs, self.operator_families),
                 *propose_frequency_macro_hypotheses(training_pairs, self.operator_families),
                 *propose_relational_tiling_hypotheses(training_pairs, self.operator_families),
+                *propose_cross_object_bridge_hypotheses(training_pairs, self.operator_families),
             ]
             self._evaluate_stage(
                 "semantic_callosal_interfaces",
