@@ -20,7 +20,7 @@ such as
 
 and
 
-    components4 -> select_unique_min_area -> crop_bbox
+    components4 -> select_unique_area -> crop_bbox
 
 from independently reusable primitives.  Later milestones can generalize the
 IR from unary pipelines to typed DAGs/branching programs without changing the
@@ -132,23 +132,38 @@ def _add1(value: SemanticValue, _root: Grid) -> Optional[SemanticValue]:
     return value + 1 if isinstance(value, int) else None
 
 
-def _select_unique_min_area(value: SemanticValue, _root: Grid) -> Optional[SemanticValue]:
+def _component_tuple(value: SemanticValue) -> Optional[tuple[Component, ...]]:
     if not isinstance(value, tuple) or not value:
         return None
     if not all(isinstance(item, Component) for item in value):
         return None
-    components = tuple(value)  # type: ignore[assignment]
+    return tuple(value)  # type: ignore[return-value]
+
+
+def _select_unique_area(value: SemanticValue, _root: Grid) -> Optional[SemanticValue]:
+    components = _component_tuple(value)
+    if components is None:
+        return None
+    multiplicity: dict[int, int] = {}
+    for component in components:
+        multiplicity[component.area] = multiplicity.get(component.area, 0) + 1
+    selected = [component for component in components if multiplicity[component.area] == 1]
+    return selected[0] if len(selected) == 1 else None
+
+
+def _select_unique_min_area(value: SemanticValue, _root: Grid) -> Optional[SemanticValue]:
+    components = _component_tuple(value)
+    if components is None:
+        return None
     minimum = min(component.area for component in components)
     selected = [component for component in components if component.area == minimum]
     return selected[0] if len(selected) == 1 else None
 
 
 def _select_unique_max_area(value: SemanticValue, _root: Grid) -> Optional[SemanticValue]:
-    if not isinstance(value, tuple) or not value:
+    components = _component_tuple(value)
+    if components is None:
         return None
-    if not all(isinstance(item, Component) for item in value):
-        return None
-    components = tuple(value)  # type: ignore[assignment]
     maximum = max(component.area for component in components)
     selected = [component for component in components if component.area == maximum]
     return selected[0] if len(selected) == 1 else None
@@ -173,6 +188,13 @@ DEFAULT_SYNTHESIS_PRIMITIVES: tuple[Primitive, ...] = (
     Primitive("components8", SemanticType.GRID, SemanticType.COMPONENTS, 1, _components8),
     Primitive("count", SemanticType.COMPONENTS, SemanticType.INT, 1, _count),
     Primitive("add1", SemanticType.INT, SemanticType.INT, 1, _add1),
+    Primitive(
+        "select_unique_area",
+        SemanticType.COMPONENTS,
+        SemanticType.COMPONENT,
+        1,
+        _select_unique_area,
+    ),
     Primitive(
         "select_unique_min_area",
         SemanticType.COMPONENTS,
