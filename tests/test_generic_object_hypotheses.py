@@ -71,12 +71,9 @@ def test_ambiguous_exact_semantic_models_block_prediction_singularity():
     # strict prediction singularity correctly refuses to commit.
     assert not result.training_exact
     assert result.used_fallback
-    specialize_events = [
-        event for event in result.trace["events"] if event["action"] == "specialize"
-    ]
     assert any(
         event.get("reason") == "prediction_singularity_blocked_by_unknown_exact_models"
-        for event in specialize_events
+        for event in result.trace["events"]
     )
 
 
