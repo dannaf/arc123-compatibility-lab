@@ -1,10 +1,9 @@
 """Robust rectangular-enclosure semantic hypotheses.
 
-Unlike the first prototype in semantic_hypotheses.py, this implementation does
-not equate the grid's modal color with background.  ARC task 00dbd492 is a
-counterexample: the rectangular frame color can itself be the modal color.
-The fillable interior input value is therefore learned directly from changed
-training cells, and frame detection considers components of every color.
+The transform primitive is "fill selected cells inside a rectangular frame".
+Which frame descriptor controls the fill color is *not* hard-coded: visible
+training examples are converted to semantic observations and the generic
+callosal separator learner chooses a minimum deterministic descriptor subset.
 """
 
 from __future__ import annotations
@@ -12,6 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Sequence
 
+from .callosal_separator import SemanticObservation, SeparatorModel, learn_minimal_separator
 from .model import Grid, PartialGrid, TrainingPair
 from .perceptions import connected_components
 
@@ -30,9 +30,6 @@ def _is_rectangular_frame(component) -> bool:
 
 
 def _frames(grid: Grid):
-    # include_background=True means "consider every color", not "assume the
-    # modal color is semantic background".  This is essential when the frame
-    # itself is the global mode.
     return tuple(
         component
         for component in connected_components(grid, include_background=True)
@@ -40,28 +37,28 @@ def _frames(grid: Grid):
     )
 
 
+def _frame_descriptors(frame) -> dict[str, int]:
+    row0, column0, row1, column1 = frame.bbox
+    height = row1 - row0 + 1
+    width = column1 - column0 + 1
+    return {
+        "frame_color": frame.color,
+        "frame_height": height,
+        "frame_width": width,
+        "interior_area": (height - 2) * (width - 2),
+        "interior_height": height - 2,
+        "interior_width": width - 2,
+    }
+
+
 @dataclass(frozen=True)
 class LearnedRectangularEnclosureAreaFill:
-    """Map frame interior area to fill color for one learned fillable input value."""
+    """Compatibility shim for direct area->fill fixtures."""
 
     mapping: tuple[tuple[int, int], ...]
     fillable_input_value: Optional[int] = None
     name: str = "rectangular_enclosure_area_fill"
     description_length: int = 5
-
-    @property
-    def callosal_summary(self) -> dict[str, object]:
-        reverse: dict[int, list[int]] = {}
-        for area, color in self.mapping:
-            reverse.setdefault(color, []).append(area)
-        return {
-            "interface": "(frame_interior_area,fillable_input_value)<->fill_color",
-            "forward_rows": len(self.mapping),
-            "fillable_input_value": self.fillable_input_value,
-            "forward_deterministic": True,
-            "backward_deterministic": all(len(areas) == 1 for areas in reverse.values()),
-            "background_guardrail": "fillable value learned from training changes; global mode not assumed",
-        }
 
     def _infer_fillable_for_grid(self, input_grid: Grid) -> Optional[int]:
         if self.fillable_input_value is not None:
@@ -81,19 +78,58 @@ class LearnedRectangularEnclosureAreaFill:
         winners = [value for value, count in counts.items() if count == best]
         return winners[0] if len(winners) == 1 else None
 
+    @property
+    def callosal_summary(self) -> dict[str, object]:
+        return {
+            "interface": "frame_interior_area<->fill_color",
+            "descriptor_names": ("interior_area",),
+            "forward_rows": len(self.mapping),
+            "forward_deterministic": True,
+            "background_guardrail": "fillable value not inferred from global modal color",
+        }
+
     def predict(self, input_grid: Grid) -> PartialGrid:
-        learned = dict(self.mapping)
         fillable = self._infer_fillable_for_grid(input_grid)
         output: list[list[Optional[int]]] = [list(row) for row in input_grid]
         if fillable is None:
             return tuple(tuple(row) for row in output)
+        learned = dict(self.mapping)
         for frame in _frames(input_grid):
+            fill = learned.get(_frame_descriptors(frame)["interior_area"])
             row0, column0, row1, column1 = frame.bbox
-            area = (row1 - row0 - 1) * (column1 - column0 - 1)
-            fill = learned.get(area)
             for row in range(row0 + 1, row1):
                 for column in range(column0 + 1, column1):
-                    if input_grid[row][column] != fillable:
+                    if input_grid[row][column] == fillable:
+                        output[row][column] = fill if fill is not None else None
+        return tuple(tuple(row) for row in output)
+
+
+@dataclass(frozen=True)
+class DiscoveredRectangularEnclosureFill:
+    """Rectangular fill whose causal semantic key was discovered generically."""
+
+    separator: SeparatorModel
+    fillable_input_value: int
+    name: str = "rectangular_enclosure_area_fill"
+    description_length: int = 5
+
+    @property
+    def callosal_summary(self) -> dict[str, object]:
+        return {
+            "interface": "frame_descriptors<->fill_color",
+            "fillable_input_value": self.fillable_input_value,
+            "separator": self.separator.callosal_summary,
+            "background_guardrail": "fillable value learned from changed training cells",
+        }
+
+    def predict(self, input_grid: Grid) -> PartialGrid:
+        output: list[list[Optional[int]]] = [list(row) for row in input_grid]
+        for frame in _frames(input_grid):
+            fill = self.separator.predict(_frame_descriptors(frame))
+            row0, column0, row1, column1 = frame.bbox
+            for row in range(row0 + 1, row1):
+                for column in range(column0 + 1, column1):
+                    if input_grid[row][column] != self.fillable_input_value:
                         continue
                     output[row][column] = fill if fill is not None else None
         return tuple(tuple(row) for row in output)
@@ -102,7 +138,7 @@ class LearnedRectangularEnclosureAreaFill:
 def propose_rectangle_hypotheses(
     training_pairs: Sequence[TrainingPair],
     enabled_operator_families: Sequence[str] | None = None,
-) -> list[LearnedRectangularEnclosureAreaFill]:
+) -> list[DiscoveredRectangularEnclosureFill]:
     if enabled_operator_families is not None and (
         "rectangular_enclosure_area_fill" not in enabled_operator_families
         and "enclosed_background_fill" not in enabled_operator_families
@@ -111,8 +147,8 @@ def propose_rectangle_hypotheses(
     if not training_pairs:
         return []
 
-    mapping: dict[int, int] = {}
     learned_fillable: Optional[int] = None
+    observations: list[SemanticObservation] = []
     saw_explained_change = False
 
     for input_grid, output_grid in training_pairs:
@@ -125,7 +161,6 @@ def propose_rectangle_hypotheses(
 
         for frame in frame_list:
             row0, column0, row1, column1 = frame.bbox
-            area = (row1 - row0 - 1) * (column1 - column0 - 1)
             changes = []
             for row in range(row0 + 1, row1):
                 for column in range(column0 + 1, column1):
@@ -148,10 +183,7 @@ def propose_rectangle_hypotheses(
                 learned_fillable = fillable
             elif learned_fillable != fillable:
                 return []
-            prior = mapping.get(area)
-            if prior is not None and prior != fill:
-                return []
-            mapping[area] = fill
+            observations.append(SemanticObservation(_frame_descriptors(frame), fill))
             covered_changes.update((row, column) for row, column, _, _ in changes)
             saw_explained_change = True
 
@@ -164,12 +196,25 @@ def propose_rectangle_hypotheses(
         if all_changes != covered_changes:
             return []
 
-    if not saw_explained_change or learned_fillable is None or not mapping:
+    if not saw_explained_change or learned_fillable is None:
         return []
 
-    candidate = LearnedRectangularEnclosureAreaFill(
-        tuple(sorted(mapping.items())), learned_fillable
+    separator = learn_minimal_separator(
+        observations,
+        (
+            "frame_color",
+            "frame_height",
+            "frame_width",
+            "interior_area",
+            "interior_height",
+            "interior_width",
+        ),
+        max_arity=2,
     )
+    if separator is None:
+        return []
+
+    candidate = DiscoveredRectangularEnclosureFill(separator, learned_fillable)
     if all(candidate.predict(input_grid) == output_grid for input_grid, output_grid in training_pairs):
         return [candidate]
     return []
