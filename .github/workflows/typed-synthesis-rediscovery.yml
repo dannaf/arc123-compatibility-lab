@@ -31,10 +31,17 @@ jobs:
           git -C /tmp/arc1 checkout --quiet 399030444e0ab0cc8b4e199870fb20b863846f34
           test "$(git -C /tmp/arc1 rev-parse HEAD)" = "399030444e0ab0cc8b4e199870fb20b863846f34"
 
+      - name: Clone pinned ARC-AGI-2 source required by shared runner
+        run: |
+          git clone --quiet https://github.com/arcprize/ARC-AGI-2.git /tmp/arc2
+          git -C /tmp/arc2 checkout --quiet f3283f727488ad98fe575ea6a5ac981e4a188e49
+          test "$(git -C /tmp/arc2 rev-parse HEAD)" = "f3283f727488ad98fe575ea6a5ac981e4a188e49"
+
       - name: Run synthesis-only rediscovery packet
         run: |
           python scripts/run_arc12_declared_sources.py --run \
             --arc1-source /tmp/arc1 \
+            --arc2-source /tmp/arc2 \
             --packet research/packets/P0008_TYPED_SYNTHESIS_REDISCOVERY_2.json \
             --report-root reports/P0008_typed_synthesis_rediscovery_2
 
