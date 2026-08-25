@@ -52,6 +52,24 @@ ENCLOSURE_OUTPUT = g([
     [0,0,0,0,0,0],
 ])
 
+TASK_007_TRAIN = (
+    (g([[0,7,7],[7,7,7],[0,7,7]]), g([[0,0,0,0,7,7,0,7,7],[0,0,0,7,7,7,7,7,7],[0,0,0,0,7,7,0,7,7],[0,7,7,0,7,7,0,7,7],[7,7,7,7,7,7,7,7,7],[0,7,7,0,7,7,0,7,7],[0,0,0,0,7,7,0,7,7],[0,0,0,7,7,7,7,7,7],[0,0,0,0,7,7,0,7,7]])),
+    (g([[4,0,4],[0,0,0],[0,4,0]]), g([[4,0,4,0,0,0,4,0,4],[0,0,0,0,0,0,0,0,0],[0,4,0,0,0,0,0,4,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,4,0,4,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,4,0,0,0,0]])),
+    (g([[0,0,0],[0,0,2],[2,0,2]]), g([[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,2],[0,0,0,0,0,0,2,0,2],[0,0,0,0,0,0,0,0,0],[0,0,2,0,0,0,0,0,2],[2,0,2,0,0,0,2,0,2]])),
+    (g([[6,6,0],[6,0,0],[0,6,6]]), g([[6,6,0,6,6,0,0,0,0],[6,0,0,6,0,0,0,0,0],[0,6,6,0,6,6,0,0,0],[6,6,0,0,0,0,0,0,0],[6,0,0,0,0,0,0,0,0],[0,6,6,0,0,0,0,0,0],[0,0,0,6,6,0,6,6,0],[0,0,0,6,0,0,6,0,0],[0,0,0,0,6,6,0,6,6]])),
+    (g([[2,2,2],[0,0,0],[0,2,2]]), g([[2,2,2,2,2,2,2,2,2],[0,0,0,0,0,0,0,0,0],[0,2,2,0,2,2,0,2,2],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,2,2,2,2,2,2],[0,0,0,0,0,0,0,0,0],[0,0,0,0,2,2,0,2,2]])),
+)
+TASK_007_TEST_INPUT = g([[7,0,7],[7,0,7],[7,7,0]])
+TASK_007_TEST_OUTPUT = g([[7,0,7,0,0,0,7,0,7],[7,0,7,0,0,0,7,0,7],[7,7,0,0,0,0,7,7,0],[7,0,7,0,0,0,7,0,7],[7,0,7,0,0,0,7,0,7],[7,7,0,0,0,0,7,7,0],[7,0,7,7,0,7,0,0,0],[7,0,7,7,0,7,0,0,0],[7,7,0,7,7,0,0,0,0]])
+
+ARC2_LATIN_TRAIN = (
+    (g([[0,4,2,3],[4,1,0,2],[0,3,4,0],[3,0,1,4]]), g([[1,4,2,3],[4,1,3,2],[2,3,4,1],[3,2,1,4]])),
+    (g([[1,0,3,4],[0,0,2,1],[2,1,4,0],[0,3,1,2]]), g([[1,2,3,4],[3,4,2,1],[2,1,4,3],[4,3,1,2]])),
+    (g([[3,0,2,1],[1,0,0,0],[4,3,0,2],[0,1,4,3]]), g([[3,4,2,1],[1,2,3,4],[4,3,1,2],[2,1,4,3]])),
+)
+ARC2_LATIN_TEST_INPUT = g([[0,1,2,3],[0,3,1,0],[3,0,4,1],[0,4,0,2]])
+ARC2_LATIN_TEST_OUTPUT = g([[4,1,2,3],[2,3,1,4],[3,2,4,1],[1,4,3,2]])
+
 
 def test_live_learner_repairs_a85d4709_without_task_id():
     result = IterativeHypothesisLearner().solve(
@@ -85,3 +103,23 @@ def test_enclosure_semantic_interface_matches_real_00d62c1b_training_example():
     assert len(fills) == 1
     assert fills[0].fill_color == 4
     assert fills[0].predict(ENCLOSURE_INPUT) == ENCLOSURE_OUTPUT
+
+
+def test_live_learner_rediscovers_007_macro_micro_prediction_group():
+    result = IterativeHypothesisLearner().solve(
+        Env(TASK_007_TRAIN, (TASK_007_TEST_INPUT,)), episode_id="007bbfb7-regression"
+    )
+    assert result.training_exact
+    assert not result.used_fallback
+    assert result.predictions == (TASK_007_TEST_OUTPUT,)
+    assert result.selected_hypothesis == "macro_micro_gate"
+
+
+def test_live_learner_arc2_row_column_singularity_backdrive():
+    result = IterativeHypothesisLearner().solve(
+        Env(ARC2_LATIN_TRAIN, (ARC2_LATIN_TEST_INPUT,)), episode_id="4cd1b7b2-regression"
+    )
+    assert result.training_exact
+    assert not result.used_fallback
+    assert result.predictions == (ARC2_LATIN_TEST_OUTPUT,)
+    assert result.selected_hypothesis == "row_column_permutation_completion"
