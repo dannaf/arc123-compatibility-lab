@@ -1,13 +1,9 @@
 """Cross-object bridge hypotheses for relational ARC transformations.
 
-The first family learns when one object's small orientation descriptor controls
-where a transformed copy of another object is placed. All colors, bridge
-states, and mapping parameters are inferred from visible training evidence.
-
-Important representation guardrail: a semantic object need not be one
-4-neighbor connected component. For this family, all cells of a learned color
-inside their bounding box form the pattern object; this is required by ARC2
-`760b3cac`, where the controlled upper pattern can be disconnected.
+A typed mirror-copy transform is available, but the semantic descriptor that
+controls its placement is selected by the generic callosal-separator learner.
+Connectedness is not assumed: all cells of a learned color may form one
+pattern object inside their common bounding box.
 """
 
 from __future__ import annotations
@@ -15,6 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Sequence
 
+from .callosal_separator import SemanticObservation, SeparatorModel, learn_minimal_separator
 from .model import Grid, PartialGrid, TrainingPair
 from .perceptions import background_color
 
@@ -51,7 +48,7 @@ def _top_asymmetry_side(cells: set[tuple[int, int]]) -> Optional[str]:
 
 
 def _mirrored_cells(cells: set[tuple[int, int]], placement_side: str) -> set[tuple[int, int]]:
-    row0, column0, _, column1 = _bbox(cells)
+    _, column0, _, column1 = _bbox(cells)
     width = column1 - column0 + 1
     offset = -width if placement_side == "left" else width
     return {
@@ -60,26 +57,36 @@ def _mirrored_cells(cells: set[tuple[int, int]], placement_side: str) -> set[tup
     }
 
 
+def _bridge_descriptors(source_color: int, controller_color: int, controller_cells) -> dict[str, object]:
+    row0, column0, row1, column1 = _bbox(controller_cells)
+    return {
+        "source_color": source_color,
+        "controller_color": controller_color,
+        "controller_orientation": _top_asymmetry_side(controller_cells),
+        "controller_height": row1 - row0 + 1,
+        "controller_width": column1 - column0 + 1,
+        "controller_area": len(controller_cells),
+    }
+
+
 @dataclass(frozen=True)
 class ControllerOrientationMirrorCopy:
-    """A controller object's asymmetry chooses left/right placement of a mirrored source copy."""
+    """A discovered controller-object separator chooses mirror-copy placement."""
 
     source_color: int
     controller_color: int
-    bridge_mapping: tuple[tuple[str, str], ...]
+    separator: SeparatorModel
     name: str = "controller_orientation_mirror_copy"
     description_length: int = 6
 
     @property
     def callosal_summary(self) -> dict[str, object]:
         return {
-            "interface": "(source_color_pattern, controller_orientation)->mirrored_copy_placement",
+            "interface": "(source_object,controller_descriptors)<->mirror_copy_placement",
             "source_color": self.source_color,
             "controller_color": self.controller_color,
-            "bridge_mapping": self.bridge_mapping,
-            "source_objecthood": "all cells of source color in their bounding box; connectedness not required",
-            "forward_deterministic": True,
-            "backward_semantics": "observed placement eliminates incompatible controller orientations",
+            "separator": self.separator.callosal_summary,
+            "source_objecthood": "all source-color cells; connectedness not required",
         }
 
     def predict(self, input_grid: Grid) -> PartialGrid:
@@ -87,12 +94,12 @@ class ControllerOrientationMirrorCopy:
         controller = _color_cells(input_grid, self.controller_color)
         if not source or not controller:
             return tuple(tuple(None for _ in row) for row in input_grid)
-        bridge_state = _top_asymmetry_side(controller)
-        mapping = dict(self.bridge_mapping)
-        if bridge_state is None or bridge_state not in mapping:
+        placement_side = self.separator.predict(
+            _bridge_descriptors(self.source_color, self.controller_color, controller)
+        )
+        if placement_side not in {"left", "right"}:
             return tuple(tuple(None for _ in row) for row in input_grid)
-        placement_side = mapping[bridge_state]
-        added = _mirrored_cells(source, placement_side)
+        added = _mirrored_cells(source, str(placement_side))
         height = len(input_grid)
         width = len(input_grid[0])
         if any(not (0 <= row < height and 0 <= column < width) for row, column in added):
@@ -113,10 +120,7 @@ def _infer_one_pair(input_grid: Grid, output_grid: Grid):
         for column in range(len(input_grid[0]))
         if input_grid[row][column] != output_grid[row][column]
     ]
-    if not changes:
-        return None
-    # This family is additive: all changed cells were background and become one source color.
-    if any(before != background for _, _, before, _ in changes):
+    if not changes or any(before != background for _, _, before, _ in changes):
         return None
     changed_colors = {after for _, _, _, after in changes}
     if len(changed_colors) != 1:
@@ -133,22 +137,17 @@ def _infer_one_pair(input_grid: Grid, output_grid: Grid):
         return None
     controller_color = controller_colors[0]
     controller = _color_cells(input_grid, controller_color)
-    if not controller:
-        return None
-    bridge_state = _top_asymmetry_side(controller)
-    if bridge_state is None:
+    if not controller or _top_asymmetry_side(controller) is None:
         return None
 
     changed_cells = {(row, column) for row, column, _, _ in changes}
-    left_cells = _mirrored_cells(source, "left")
-    right_cells = _mirrored_cells(source, "right")
-    if changed_cells == left_cells:
+    if changed_cells == _mirrored_cells(source, "left"):
         placement = "left"
-    elif changed_cells == right_cells:
+    elif changed_cells == _mirrored_cells(source, "right"):
         placement = "right"
     else:
         return None
-    return source_color, controller_color, bridge_state, placement
+    return source_color, controller_color, controller, placement
 
 
 def propose_cross_object_bridge_hypotheses(
@@ -159,30 +158,44 @@ def propose_cross_object_bridge_hypotheses(
         return []
     if not training_pairs:
         return []
+
     source_color: Optional[int] = None
     controller_color: Optional[int] = None
-    mapping: dict[str, str] = {}
+    observations: list[SemanticObservation] = []
     for input_grid, output_grid in training_pairs:
         inferred = _infer_one_pair(input_grid, output_grid)
         if inferred is None:
             return []
-        source, controller, state, placement = inferred
+        source, controller, controller_cells, placement = inferred
         if source_color is None:
             source_color = source
             controller_color = controller
         elif source_color != source or controller_color != controller:
             return []
-        prior = mapping.get(state)
-        if prior is not None and prior != placement:
-            return []
-        mapping[state] = placement
-    if source_color is None or controller_color is None or not mapping:
+        observations.append(
+            SemanticObservation(
+                _bridge_descriptors(source, controller, controller_cells), placement
+            )
+        )
+
+    if source_color is None or controller_color is None:
         return []
-    candidate = ControllerOrientationMirrorCopy(
-        source_color=source_color,
-        controller_color=controller_color,
-        bridge_mapping=tuple(sorted(mapping.items())),
+    separator = learn_minimal_separator(
+        observations,
+        (
+            "source_color",
+            "controller_color",
+            "controller_orientation",
+            "controller_height",
+            "controller_width",
+            "controller_area",
+        ),
+        max_arity=2,
     )
+    if separator is None:
+        return []
+
+    candidate = ControllerOrientationMirrorCopy(source_color, controller_color, separator)
     if all(candidate.predict(input_grid) == output_grid for input_grid, output_grid in training_pairs):
         return [candidate]
     return []
