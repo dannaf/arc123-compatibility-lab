@@ -3,8 +3,9 @@
 The learner receives observations with a typed descriptor dictionary and an
 observed effect. It exhaustively searches descriptor subsets and chooses a
 minimum-description deterministic separator: first minimum arity, then the
-smallest induced semantic table (maximum reuse/compression), then deterministic
-lexical tie-breaking.
+smallest induced semantic table (maximum reuse/compression), then the smallest
+semantic value encoding/domain complexity, then deterministic lexical
+Tie-breaking.
 
 This is intentionally domain-independent: rows, objects, frames, transitions,
 and ARC3 state/action records can all feed the same core once perception has
@@ -122,6 +123,41 @@ def _support_score(
     return reused, minimum_support
 
 
+def _value_encoding_cost(value: SemanticValue) -> int:
+    """A small type-aware MDL proxy for semantic-domain complexity.
+
+    Booleans are privileged because their *known* domain is closed at two
+    values. Integer ranks/counts remain potentially unbounded even when only
+    0/1 happened to occur in training. Structured tuples cost recursively.
+    This is not a probabilistic prior over ARC concepts; it is a deterministic
+    representation-size tie-break after exact fit/table compression have tied.
+    """
+
+    if isinstance(value, bool):
+        return 1
+    if isinstance(value, int):
+        return 3 + abs(value).bit_length()
+    if isinstance(value, str):
+        return 2 + len(value)
+    if isinstance(value, tuple):
+        return 2 + sum(_value_encoding_cost(item) for item in value)
+    if value is None:
+        return 1
+    return 4 + len(repr(value))
+
+
+def _domain_encoding_cost(
+    observations: Sequence[SemanticObservation], descriptor_names: tuple[str, ...]
+) -> int:
+    """Encode each distinct observed descriptor value once per selected field."""
+
+    cost = 0
+    for name in descriptor_names:
+        values = {observation.descriptors[name] for observation in observations}
+        cost += sum(_value_encoding_cost(value) for value in values)
+    return cost
+
+
 def learn_minimal_separator(
     observations: Sequence[SemanticObservation],
     candidate_descriptors: Iterable[str] | None = None,
@@ -137,13 +173,15 @@ def learn_minimal_separator(
     1. fewer distinct semantic keys / forward-table rows;
     2. greater repeated support for those keys;
     3. greater minimum per-key support;
-    4. lexical descriptor order for reproducibility.
+    4. a smaller type-aware semantic value encoding/domain;
+    5. lexical descriptor order for reproducibility.
 
-    Thus accidental unique identifiers (for example one frame color per
-    demonstration) lose to a structural descriptor that reuses the same rule
-    across demonstrations. For a finite descriptor set D and arity cap k, if
-    any subset of D of size <= k deterministically realizes the observations,
-    one of minimum arity is guaranteed to be returned.
+    Thus accidental unique identifiers lose to structural descriptors that
+    reuse rules, and a closed Boolean predicate such as ``is_min_area`` beats
+    an observationally equivalent unbounded rank coordinate when both fit the
+    same demonstrations. For a finite descriptor set D and arity cap k, if any
+    subset of D of size <= k deterministically realizes the observations, one
+    of minimum arity is guaranteed to be returned.
 
     `require_effect_variation=True` prevents a vacuous constant explanation
     from being treated as a discovered semantic dependency.
@@ -173,6 +211,7 @@ def learn_minimal_separator(
                 int,
                 int,
                 int,
+                int,
                 tuple[str, ...],
                 dict[tuple[SemanticValue, ...], SemanticValue],
             ]
@@ -182,9 +221,12 @@ def learn_minimal_separator(
             if table is None:
                 continue
             reused, minimum_support = _support_score(observations, subset)
-            viable.append((len(table), -reused, -minimum_support, subset, table))
+            domain_cost = _domain_encoding_cost(observations, subset)
+            viable.append(
+                (len(table), -reused, -minimum_support, domain_cost, subset, table)
+            )
         if viable:
-            _, _, _, subset, table = min(viable, key=lambda item: item[:4])
+            _, _, _, _, subset, table = min(viable, key=lambda item: item[:5])
             rows = tuple(sorted(table.items(), key=lambda item: repr(item[0])))
             return SeparatorModel(subset, rows)
     return None
