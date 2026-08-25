@@ -11,6 +11,7 @@ from .compatibility import assess_hypothesis
 from .hypotheses import Hypothesis, propose_base_hypotheses, propose_structural_hypotheses
 from .model import ActionKind, Grid, HypothesisAssessment, PartialGrid, SolveResult, TrainingPair
 from .perceptions import difference_summary
+from .semantic_hypotheses import propose_semantic_hypotheses
 from .traces import LearningTrace
 
 
@@ -33,6 +34,9 @@ DEFAULT_OPERATOR_FAMILIES = (
     "translate",
     "line_extend",
     "row_span_fill",
+    "row_marker_column_to_constant_row",
+    "column_downward_propagation",
+    "enclosed_background_fill",
     "partial-with-identity composition",
 )
 
@@ -268,6 +272,21 @@ class IterativeHypothesisLearner:
             self._evaluate_stage(
                 "residual_directed_generic_relations",
                 propose_structural_hypotheses(training_pairs, self.operator_families),
+                training_pairs,
+                trace,
+                exact,
+                partial,
+            )
+        if not exact:
+            trace.record(
+                ActionKind.SPECIALIZE,
+                reason="no_low_level_training_complete_hypothesis",
+                retained_partial_hypothesis_count=len(partial),
+                next_operator_family="semantic_callosal_interfaces",
+            )
+            self._evaluate_stage(
+                "semantic_callosal_interfaces",
+                propose_semantic_hypotheses(training_pairs, self.operator_families),
                 training_pairs,
                 trace,
                 exact,
