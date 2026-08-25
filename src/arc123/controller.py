@@ -10,6 +10,7 @@ from typing import Optional, Protocol, Sequence
 from .compatibility import assess_hypothesis
 from .cross_object_bridge_hypotheses import propose_cross_object_bridge_hypotheses
 from .frequency_macro_hypotheses import propose_frequency_macro_hypotheses
+from .generic_object_hypotheses import propose_generic_object_hypotheses
 from .hypotheses import Hypothesis, propose_base_hypotheses, propose_structural_hypotheses
 from .model import ActionKind, Grid, HypothesisAssessment, PartialGrid, SolveResult, TrainingPair
 from .partition_hypotheses import propose_partition_hypotheses
@@ -48,6 +49,8 @@ DEFAULT_OPERATOR_FAMILIES = (
     "alternating_mirror_tile",
     "cross_object_bridge",
     "partition_cell_semantic_label",
+    "component_select_extract",
+    "unique_neighbor_component_propagation",
     "partial-with-identity composition",
 )
 
@@ -309,6 +312,7 @@ class IterativeHypothesisLearner:
                 *propose_relational_tiling_hypotheses(training_pairs, self.operator_families),
                 *propose_cross_object_bridge_hypotheses(training_pairs, self.operator_families),
                 *propose_partition_hypotheses(training_pairs, self.operator_families),
+                *propose_generic_object_hypotheses(training_pairs, self.operator_families),
             ]
             self._evaluate_stage(
                 "semantic_callosal_interfaces",
