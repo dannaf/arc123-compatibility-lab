@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from typing import Optional, Protocol, Sequence
 
 from .compatibility import assess_hypothesis
+from .frequency_macro_hypotheses import propose_frequency_macro_hypotheses
 from .hypotheses import Hypothesis, propose_base_hypotheses, propose_structural_hypotheses
 from .model import ActionKind, Grid, HypothesisAssessment, PartialGrid, SolveResult, TrainingPair
 from .perceptions import difference_summary
@@ -293,9 +294,13 @@ class IterativeHypothesisLearner:
                 retained_partial_hypothesis_count=len(partial),
                 next_operator_family="semantic_callosal_interfaces",
             )
+            semantic_candidates = [
+                *propose_semantic_hypotheses(training_pairs, self.operator_families),
+                *propose_frequency_macro_hypotheses(training_pairs, self.operator_families),
+            ]
             self._evaluate_stage(
                 "semantic_callosal_interfaces",
-                propose_semantic_hypotheses(training_pairs, self.operator_families),
+                semantic_candidates,
                 training_pairs,
                 trace,
                 exact,
