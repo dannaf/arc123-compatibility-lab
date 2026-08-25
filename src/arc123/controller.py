@@ -13,6 +13,7 @@ from .frequency_macro_hypotheses import propose_frequency_macro_hypotheses
 from .hypotheses import Hypothesis, propose_base_hypotheses, propose_structural_hypotheses
 from .model import ActionKind, Grid, HypothesisAssessment, PartialGrid, SolveResult, TrainingPair
 from .perceptions import difference_summary
+from .rectangle_hypotheses import propose_rectangle_hypotheses
 from .relational_tiling_hypotheses import propose_relational_tiling_hypotheses
 from .semantic_hypotheses import propose_semantic_hypotheses
 from .traces import LearningTrace
@@ -40,6 +41,7 @@ DEFAULT_OPERATOR_FAMILIES = (
     "row_marker_column_to_constant_row",
     "column_downward_propagation",
     "enclosed_background_fill",
+    "rectangular_enclosure_area_fill",
     "macro_micro_gate",
     "row_column_permutation_completion",
     "alternating_mirror_tile",
@@ -300,6 +302,7 @@ class IterativeHypothesisLearner:
             )
             semantic_candidates = [
                 *propose_semantic_hypotheses(training_pairs, self.operator_families),
+                *propose_rectangle_hypotheses(training_pairs, self.operator_families),
                 *propose_frequency_macro_hypotheses(training_pairs, self.operator_families),
                 *propose_relational_tiling_hypotheses(training_pairs, self.operator_families),
                 *propose_cross_object_bridge_hypotheses(training_pairs, self.operator_families),
