@@ -3,8 +3,8 @@
 These operators are deliberately task-ID agnostic. They are proposed only from
 visible training input/output structure and preserve UNKNOWN on unsupported
 semantic keys. They implement issue #10's semantic callosal refinement ladder:
-coordinate summaries, procedural runs, topology, and overlapping constraint
-interfaces.
+coordinate summaries, procedural runs, topology, object geometry, and
+overlapping constraint interfaces.
 """
 
 from __future__ import annotations
@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Optional, Sequence
 
 from .model import Grid, PartialGrid, TrainingPair
-from .perceptions import background_color
+from .perceptions import background_color, connected_components
 
 
 def _same_shape(training_pairs: Sequence[TrainingPair]) -> bool:
@@ -134,6 +134,61 @@ class EnclosedBackgroundFill:
             for column in range(width):
                 if input_grid[row][column] == background and (row, column) not in reachable:
                     output[row][column] = self.fill_color
+        return tuple(tuple(row) for row in output)
+
+
+def _is_rectangular_frame(component) -> bool:
+    row0, column0, row1, column1 = component.bbox
+    if row1 - row0 + 1 < 3 or column1 - column0 + 1 < 3:
+        return False
+    perimeter = {
+        (row, column)
+        for row in range(row0, row1 + 1)
+        for column in range(column0, column1 + 1)
+        if row in {row0, row1} or column in {column0, column1}
+    }
+    return set(component.cells) == perimeter
+
+
+@dataclass(frozen=True)
+class RectangularEnclosureAreaFill:
+    """Map a hollow rectangle's interior area to a fill color.
+
+    Only background cells in the rectangle interior are filled; any embedded
+    non-background marker is preserved. Unseen interior areas stay UNKNOWN.
+    """
+
+    mapping: tuple[tuple[int, int], ...]
+    name: str = "rectangular_enclosure_area_fill"
+    description_length: int = 5
+
+    @property
+    def callosal_summary(self) -> dict[str, object]:
+        reverse: dict[int, list[int]] = {}
+        for area, color in self.mapping:
+            reverse.setdefault(color, []).append(area)
+        return {
+            "interface": "rectangular_enclosure_interior_area<->fill_color",
+            "forward_rows": len(self.mapping),
+            "forward_deterministic": True,
+            "backward_deterministic": all(len(areas) == 1 for areas in reverse.values()),
+        }
+
+    def predict(self, input_grid: Grid) -> PartialGrid:
+        background = background_color(input_grid)
+        learned = dict(self.mapping)
+        output: list[list[Optional[int]]] = [list(row) for row in input_grid]
+        for component in connected_components(input_grid):
+            if not _is_rectangular_frame(component):
+                continue
+            row0, column0, row1, column1 = component.bbox
+            area = max(0, row1 - row0 - 1) * max(0, column1 - column0 - 1)
+            fill = learned.get(area)
+            for row in range(row0 + 1, row1):
+                for column in range(column0 + 1, column1):
+                    if input_grid[row][column] != background:
+                        continue
+                    output[row][column] = fill if fill is not None else None
         return tuple(tuple(row) for row in output)
 
 
@@ -312,6 +367,49 @@ def _propose_enclosed_fill(training_pairs: Sequence[TrainingPair]) -> Optional[E
     return EnclosedBackgroundFill(fill_color)
 
 
+def _propose_rectangular_area_fill(
+    training_pairs: Sequence[TrainingPair],
+) -> Optional[RectangularEnclosureAreaFill]:
+    if not training_pairs or not _same_shape(training_pairs):
+        return None
+    mapping: dict[int, int] = {}
+    saw_frame = False
+    for input_grid, output_grid in training_pairs:
+        background = background_color(input_grid)
+        for component in connected_components(input_grid):
+            if not _is_rectangular_frame(component):
+                continue
+            row0, column0, row1, column1 = component.bbox
+            area = (row1 - row0 - 1) * (column1 - column0 - 1)
+            fill_values: set[int] = set()
+            has_background_interior = False
+            for row in range(row0 + 1, row1):
+                for column in range(column0 + 1, column1):
+                    input_value = input_grid[row][column]
+                    output_value = output_grid[row][column]
+                    if input_value == background:
+                        has_background_interior = True
+                        fill_values.add(output_value)
+                    elif output_value != input_value:
+                        return None
+            if not has_background_interior or len(fill_values) != 1:
+                return None
+            fill = next(iter(fill_values))
+            if fill == background:
+                continue
+            prior = mapping.get(area)
+            if prior is not None and prior != fill:
+                return None
+            mapping[area] = fill
+            saw_frame = True
+    if not saw_frame or not mapping:
+        return None
+    candidate = RectangularEnclosureAreaFill(tuple(sorted(mapping.items())))
+    if any(candidate.predict(input_grid) != output_grid for input_grid, output_grid in training_pairs):
+        return None
+    return candidate
+
+
 def _macro_micro_shape(training_pairs: Sequence[TrainingPair]) -> bool:
     if not training_pairs:
         return False
@@ -435,6 +533,7 @@ def propose_semantic_hypotheses(
                 "row_marker_column_to_constant_row",
                 "column_downward_propagation",
                 "enclosed_background_fill",
+                "rectangular_enclosure_area_fill",
                 "macro_micro_gate",
                 "modal_macro_stamp",
                 "row_column_permutation_completion",
@@ -454,9 +553,19 @@ def propose_semantic_hypotheses(
         enclosed = _propose_enclosed_fill(training_pairs)
         if enclosed is not None:
             candidates.append(enclosed)
+        rectangular = _propose_rectangular_area_fill(training_pairs)
+        if rectangular is not None:
+            candidates.append(rectangular)
+    if "rectangular_enclosure_area_fill" in enabled and "enclosed_background_fill" not in enabled:
+        rectangular = _propose_rectangular_area_fill(training_pairs)
+        if rectangular is not None:
+            candidates.append(rectangular)
     if "macro_micro_gate" in enabled:
         candidates.extend(_propose_macro_micro(training_pairs))
-    if "modal_macro_stamp" in enabled:
+        modal_stamp = _propose_modal_macro_stamp(training_pairs)
+        if modal_stamp is not None:
+            candidates.append(modal_stamp)
+    elif "modal_macro_stamp" in enabled:
         modal_stamp = _propose_modal_macro_stamp(training_pairs)
         if modal_stamp is not None:
             candidates.append(modal_stamp)
