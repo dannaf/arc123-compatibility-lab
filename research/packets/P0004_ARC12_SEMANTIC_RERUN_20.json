@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "packet_id": "P0004-ARC12-SEMANTIC-RERUN-20",
+  "baseline_packet_id": "P0002-ARC12-INITIAL-20",
+  "report_title": "# P0004 ARC12 Semantic-Callosal Rerun of the P0002 10+10 Cohort",
+  "report_root": "reports/P0004_arc12_semantic_rerun_20",
+  "claim_boundary": "This is a fixed-cohort before/after rerun of the exact same twenty task IDs used by P0002, with a frozen upgraded semantic-callosal operator vocabulary. The controller receives training input/output evidence and test inputs only; task IDs, held-out test targets, historical ARC schemas/decompositions, GT feature contracts, and GT solvers are excluded from live inference. Held-out outputs are used only after a complete prediction is committed for exact all-cell verification. This packet measures transfer of the current semantic-interface learner; it is not an ARC1/ARC2 completion claim.",
+  "selection_protocol": {
+    "population": "exact task cohort inherited unchanged from P0002-ARC12-INITIAL-20",
+    "method": "same ordered 10 ARC1 + 10 ARC2 task IDs and splits as P0002; no reselection after semantic-operator development",
+    "forbidden_live_inputs": [
+      "task_id",
+      "held_out test output",
+      "historical selected schema",
+      "ARC12 decomposition mapping",
+      "GT feature contract",
+      "GT solver code"
+    ]
+  },
+  "controller": {
+    "candidate_limit": 64,
+    "forbidden_live_inputs": [
+      "task_id",
+      "historical selected schema",
+      "ARC12 decomposition mapping",
+      "GT feature contract",
+      "GT solver code",
+      "held_out test output before commit"
+    ],
+    "generic_operator_families": [
+      "identity",
+      "recolor",
+      "mirror",
+      "translate",
+      "line_extend",
+      "row_span_fill",
+      "row_marker_column_to_constant_row",
+      "column_downward_propagation",
+      "enclosed_background_fill",
+      "rectangular_enclosure_area_fill",
+      "macro_micro_gate",
+      "row_column_permutation_completion",
+      "alternating_mirror_tile",
+      "cross_object_bridge",
+      "partial-with-identity composition"
+    ]
+  },
+  "source_pins": {
+    "arc1": {
+      "commit": "399030444e0ab0cc8b4e199870fb20b863846f34",
+      "repository": "https://github.com/fchollet/ARC-AGI",
+      "task_directory": "data"
+    },
+    "arc2": {
+      "commit": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "repository": "https://github.com/arcprize/ARC-AGI-2",
+      "task_directory": "data"
+    }
+  },
+  "tasks": [
+    {"benchmark":"arc1","split":"evaluation","task_id":"27f8ce4f","selection_rank_sha256":"0c80b58ab02aaf990c4cb782012196eb88117c922c81caf19dde875dcecff515"},
+    {"benchmark":"arc1","split":"evaluation","task_id":"84f2aca1","selection_rank_sha256":"1d5158b8475b65359b73c514b60e919204131b45b8f641c25feed27a3c6c4ca9"},
+    {"benchmark":"arc1","split":"evaluation","task_id":"00dbd492","selection_rank_sha256":"1e162797e3541205ba2a86f8d25a26bab5390020b2884b70b74437e09260cdb1"},
+    {"benchmark":"arc1","split":"evaluation","task_id":"48f8583b","selection_rank_sha256":"203a6f51c4e23ab057a96dd2607e9e9fcae65f0e2d3d27f2ad26d6c422353a5b"},
+    {"benchmark":"arc1","split":"training","task_id":"045e512c","selection_rank_sha256":"2a2f3de02f71f40211bd016a711514aeb95ce86c683e1d186369947d2a1643c1"},
+    {"benchmark":"arc1","split":"evaluation","task_id":"0a1d4ef5","selection_rank_sha256":"319cb19f25effde3aa2ab8030eb3d294a02678a9628e85704542c8cb12a764fa"},
+    {"benchmark":"arc1","split":"training","task_id":"913fb3ed","selection_rank_sha256":"4ccf7dc36e4d12d634f11b9e7f29c8cf6c82c20da4cf8a72d66d3ac6ff0b33a7"},
+    {"benchmark":"arc1","split":"evaluation","task_id":"18419cfa","selection_rank_sha256":"4f46163cea9dca73e8c9492a656ad80135cfb3ec6baf29c3406795f2c3c047f8"},
+    {"benchmark":"arc1","split":"evaluation","task_id":"9a4bb226","selection_rank_sha256":"5420097f1ef45f0d6279ab1aba52a5e314007f31496c9f75759ac4acec14078a"},
+    {"benchmark":"arc1","split":"evaluation","task_id":"009d5c81","selection_rank_sha256":"5dad1664368aab672b749f9903305db030d0e4d674d588d0566df90381a37aaa"},
+    {"benchmark":"arc2","split":"training","task_id":"4a1cacc2","selection_rank_sha256":"0bcfb1d41b49b55e7b1f02dcb62412e75bc82b1d21b35d623499d3197335414a"},
+    {"benchmark":"arc2","split":"evaluation","task_id":"62593bfd","selection_rank_sha256":"1168ff463387704989ecdf663218a162730174735ba0b714990eb1864a6964be"},
+    {"benchmark":"arc2","split":"training","task_id":"760b3cac","selection_rank_sha256":"18b9ce041ed885991a54f498bdf9dcd9f9f97b2b5ddfab057f213e12de1b9a79"},
+    {"benchmark":"arc2","split":"training","task_id":"09629e4f","selection_rank_sha256":"1c52177ecc4eea842bbfe9d1b9234a20168ba8b87ddb1634d0146044d7ff3c93"},
+    {"benchmark":"arc2","split":"training","task_id":"9b30e358","selection_rank_sha256":"388b0e930b3862b1ca03bb1fd39fc65fcbfe37fed33574fe35d405b465c2ec3b"},
+    {"benchmark":"arc2","split":"training","task_id":"00576224","selection_rank_sha256":"394f1146bc1361f23ebc666ea02898c19c971f7d5bfc896ec244c262639ce133"},
+    {"benchmark":"arc2","split":"training","task_id":"8e2edd66","selection_rank_sha256":"3bc408dd26ad1c59033d172f92605de0fa25715f812891884425e25c62c887b1"},
+    {"benchmark":"arc2","split":"training","task_id":"06df4c85","selection_rank_sha256":"444389f8b73cf3879d657ec9eff1309d00c75eb84a0b55d3712b5c789106994a"},
+    {"benchmark":"arc2","split":"training","task_id":"3cd86f4f","selection_rank_sha256":"4c48db1b616413819659f9da25375130da8a6c8d29c00ab2cf2c84987a2390c1"},
+    {"benchmark":"arc2","split":"training","task_id":"2037f2c7","selection_rank_sha256":"4e8d8a868c7716fb8f63b7530778fb17d15ca695f0e9d0954c3ef76a49a1c17e"}
+  ]
+}
