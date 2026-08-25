@@ -1,0 +1,72 @@
+name: semantic-callosal-cohort
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - 'research/packets/P0004_ARC12_SEMANTIC_RERUN_20.json'
+      - '.github/workflows/semantic-callosal-cohort.yml'
+  workflow_dispatch:
+
+jobs:
+  test-and-rerun:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout learner
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install learner and tests
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e . pytest
+
+      - name: Run full test suite
+        run: python -m pytest -q
+
+      - name: Clone pinned ARC-AGI-1 source
+        run: |
+          git clone --quiet https://github.com/fchollet/ARC-AGI.git /tmp/arc1
+          git -C /tmp/arc1 checkout --quiet 399030444e0ab0cc8b4e199870fb20b863846f34
+          test "$(git -C /tmp/arc1 rev-parse HEAD)" = "399030444e0ab0cc8b4e199870fb20b863846f34"
+
+      - name: Clone pinned ARC-AGI-2 source
+        run: |
+          git clone --quiet https://github.com/arcprize/ARC-AGI-2.git /tmp/arc2
+          git -C /tmp/arc2 checkout --quiet f3283f727488ad98fe575ea6a5ac981e4a188e49
+          test "$(git -C /tmp/arc2 rev-parse HEAD)" = "f3283f727488ad98fe575ea6a5ac981e4a188e49"
+
+      - name: Run frozen P0004 semantic cohort
+        run: |
+          python scripts/run_arc12_declared_sources.py --run \
+            --arc1-source /tmp/arc1 \
+            --arc2-source /tmp/arc2 \
+            --packet research/packets/P0004_ARC12_SEMANTIC_RERUN_20.json \
+            --report-root reports/P0004_arc12_semantic_rerun_20
+
+      - name: Enforce current evidence floor
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          receipt = json.loads(Path('reports/P0004_arc12_semantic_rerun_20/receipt.json').read_text())
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          assert receipt['attempt_count'] == 20
+          assert receipt['exact_solve_count'] >= 6, receipt
+          assert receipt['controller_oracle_boundary_scan'] == 'pass'
+          PY
+
+      - name: Upload P0004 reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: P0004-arc12-semantic-rerun-20
+          path: reports/P0004_arc12_semantic_rerun_20
+          if-no-files-found: warn
