@@ -1,4 +1,4 @@
-"""Generic object-level ARC hypotheses built on semantic separators.
+"""Generic object-level ARC hypotheses built on semantic-separator fibers.
 
 These operators deliberately separate three concerns:
 1. unitization (connected same-color components),
@@ -6,7 +6,10 @@ These operators deliberately separate three concerns:
 3. a typed transformation (extract one object, or propagate a marker through a
    placeholder component).
 
-No task IDs or held-out targets participate in live inference.
+When demonstrations leave several equally compact semantic separators alive,
+all of them are proposed.  The controller must resolve them only through
+prediction singularity; this module does not choose a latent explanation by
+lexical accident. No task IDs or held-out targets participate in live inference.
 """
 
 from __future__ import annotations
@@ -14,7 +17,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Sequence
 
-from .callosal_separator import SemanticObservation, SeparatorModel, learn_minimal_separator
+from .callosal_separator import (
+    SemanticObservation,
+    SeparatorModel,
+    learn_minimal_separator_fiber,
+)
 from .model import Grid, PartialGrid, TrainingPair
 from .perceptions import background_color
 
@@ -50,7 +57,6 @@ class _Component:
 
     @property
     def density_key(self) -> tuple[int, int]:
-        # exact rational density represented without floating point
         return self.area, self.bbox_area
 
 
@@ -129,8 +135,12 @@ def _component_descriptors(components: Sequence[_Component], index: int) -> dict
 @dataclass(frozen=True)
 class ComponentSelectExtract:
     separator: SeparatorModel
-    name: str = "component_select_extract"
     description_length: int = 5
+
+    @property
+    def name(self) -> str:
+        fields = "+".join(self.separator.descriptor_names)
+        return f"component_select_extract[{fields}]"
 
     @property
     def callosal_summary(self) -> dict[str, object]:
@@ -148,7 +158,6 @@ class ComponentSelectExtract:
             if decision is True:
                 selected.append(component)
             elif decision is None:
-                # An unseen semantic key means selection is unresolved, not false.
                 return None
         if not selected:
             return None
@@ -182,7 +191,7 @@ def propose_component_extract_hypotheses(
                 )
             )
 
-    separator = learn_minimal_separator(
+    separators = learn_minimal_separator_fiber(
         observations,
         (
             "color",
@@ -204,12 +213,12 @@ def propose_component_extract_hypotheses(
         ),
         max_arity=2,
     )
-    if separator is None:
-        return []
-    candidate = ComponentSelectExtract(separator)
-    if all(candidate.predict(input_grid) == output_grid for input_grid, output_grid in training_pairs):
-        return [candidate]
-    return []
+    candidates = [ComponentSelectExtract(separator) for separator in separators]
+    return [
+        candidate
+        for candidate in candidates
+        if all(candidate.predict(input_grid) == output_grid for input_grid, output_grid in training_pairs)
+    ]
 
 
 def _component_neighbors(grid: Grid, component: _Component) -> set[int]:
