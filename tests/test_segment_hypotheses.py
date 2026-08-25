@@ -42,14 +42,17 @@ def _vertical_fixture(lengths):
 
 
 def _anti_fixture(lengths):
-    grid = _blank(12, 18, 0)
+    # Width 20 leaves room for the second-longest target to extend the
+    # rightmost synthetic segment without clipping; clipping is tested by the
+    # shear grammar separately, not conflated with segment equalization here.
+    grid = _blank(12, 20, 0)
     colors = (2, 5, 8, 4)
     anchors = ((9, 1), (10, 5), (9, 10), (10, 14))
     for color, length, (r, c) in zip(colors, lengths, anchors):
         for k in range(length):
             grid[r - k][c + k] = color
     target = sorted(lengths, reverse=True)[1]
-    out = _blank(12, 18, 0)
+    out = _blank(12, 20, 0)
     for color, (r, c) in zip(colors, anchors):
         for k in range(target):
             out[r - k][c + k] = color
