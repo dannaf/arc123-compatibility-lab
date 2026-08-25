@@ -24,6 +24,7 @@ from .relational_tiling_hypotheses import propose_relational_tiling_hypotheses
 from .segment_hypotheses import propose_segment_hypotheses
 from .semantic_hypotheses import propose_semantic_hypotheses
 from .traces import LearningTrace
+from .typed_program_synthesis import propose_typed_synthesized_hypotheses
 
 
 class EvidenceEnvironment(Protocol):
@@ -45,6 +46,7 @@ DEFAULT_OPERATOR_FAMILIES = (
     "translate",
     "line_extend",
     "row_span_fill",
+    "typed_program_synthesis",
     "row_marker_column_to_constant_row",
     "column_downward_propagation",
     "enclosed_background_fill",
@@ -134,9 +136,10 @@ class IterativeHypothesisLearner:
     def _rank_candidates(
         self, candidates: Sequence[Predictor], training_pairs: Sequence[TrainingPair]
     ) -> list[Predictor]:
-        attended_pair = (training_pairs[0],)
+        """Rank using all demonstrations; never prune from one attended world alone."""
+
         scored = [
-            (candidate, assess_hypothesis(candidate, attended_pair))
+            (candidate, assess_hypothesis(candidate, training_pairs))
             for candidate in candidates
         ]
         scored.sort(key=lambda item: _rank_key(item[1]), reverse=True)
@@ -332,10 +335,25 @@ class IterativeHypothesisLearner:
                 exact,
                 partial,
             )
-        if not exact:
+        if not exact and "typed_program_synthesis" in self.operator_families:
             trace.record(
                 ActionKind.SPECIALIZE,
                 reason="no_low_level_training_complete_hypothesis",
+                retained_partial_hypothesis_count=len(partial),
+                next_operator_family="typed_compositional_program_synthesis",
+            )
+            self._evaluate_stage(
+                "typed_compositional_program_synthesis",
+                propose_typed_synthesized_hypotheses(training_pairs, self.operator_families),
+                training_pairs,
+                trace,
+                exact,
+                partial,
+            )
+        if not exact:
+            trace.record(
+                ActionKind.SPECIALIZE,
+                reason="no_synthesized_training_complete_hypothesis",
                 retained_partial_hypothesis_count=len(partial),
                 next_operator_family="semantic_callosal_interfaces",
             )
