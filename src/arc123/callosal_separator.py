@@ -1,11 +1,12 @@
 """Generic finite semantic-separator learning for Forward–Backward Singularity Learning.
 
 The learner receives observations with a typed descriptor dictionary and an
-observed effect. It exhaustively searches descriptor subsets and chooses a
-minimum-description deterministic separator: first minimum arity, then the
-smallest induced semantic table (maximum reuse/compression), then the smallest
-semantic value encoding/domain complexity, then deterministic lexical
-Tie-breaking.
+observed effect. It exhaustively searches descriptor subsets.  Crucially, it
+can return the *fiber* of all equally minimum-description deterministic
+separators rather than silently choosing one lexical representative.  That is
+necessary when the demonstrations do not identify one semantic coordinate:
+ambiguity is retained until downstream prediction singularity, not erased by
+a tie-break.
 
 This is intentionally domain-independent: rows, objects, frames, transitions,
 and ARC3 state/action records can all feed the same core once perception has
@@ -112,8 +113,6 @@ def _deterministic_table(
 def _support_score(
     observations: Sequence[SemanticObservation], descriptor_names: tuple[str, ...]
 ) -> tuple[int, int]:
-    """Return (reused observations, minimum key support) for deterministic tie-breaking."""
-
     counts: dict[tuple[SemanticValue, ...], int] = {}
     for observation in observations:
         key = tuple(observation.descriptors[name] for name in descriptor_names)
@@ -124,14 +123,7 @@ def _support_score(
 
 
 def _value_encoding_cost(value: SemanticValue) -> int:
-    """A small type-aware MDL proxy for semantic-domain complexity.
-
-    Booleans are privileged because their *known* domain is closed at two
-    values. Integer ranks/counts remain potentially unbounded even when only
-    0/1 happened to occur in training. Structured tuples cost recursively.
-    This is not a probabilistic prior over ARC concepts; it is a deterministic
-    representation-size tie-break after exact fit/table compression have tied.
-    """
+    """A small type-aware MDL proxy for semantic-domain complexity."""
 
     if isinstance(value, bool):
         return 1
@@ -149,13 +141,88 @@ def _value_encoding_cost(value: SemanticValue) -> int:
 def _domain_encoding_cost(
     observations: Sequence[SemanticObservation], descriptor_names: tuple[str, ...]
 ) -> int:
-    """Encode each distinct observed descriptor value once per selected field."""
-
     cost = 0
     for name in descriptor_names:
         values = {observation.descriptors[name] for observation in observations}
         cost += sum(_value_encoding_cost(value) for value in values)
     return cost
+
+
+def _score_subset(
+    observations: Sequence[SemanticObservation],
+    subset: tuple[str, ...],
+    table: Mapping[tuple[SemanticValue, ...], SemanticValue],
+) -> tuple[int, int, int, int]:
+    reused, minimum_support = _support_score(observations, subset)
+    return (
+        len(table),
+        -reused,
+        -minimum_support,
+        _domain_encoding_cost(observations, subset),
+    )
+
+
+def learn_minimal_separator_fiber(
+    observations: Sequence[SemanticObservation],
+    candidate_descriptors: Iterable[str] | None = None,
+    *,
+    max_arity: int | None = None,
+    require_effect_variation: bool = True,
+) -> tuple[SeparatorModel, ...]:
+    """Return every equally minimum-description exact separator.
+
+    Search is exhaustive by arity. At the first arity having any deterministic
+    representation, all subsets are scored by table compression, repeated
+    support, minimum support and semantic-domain encoding. Every subset tied at
+    the optimal score is retained.  Lexical order makes the returned tuple
+    reproducible but does *not* erase the tie.
+
+    This is the correct object for singularity learning: if several semantic
+    explanations remain observationally indistinguishable, downstream code can
+    ask whether they nevertheless induce one prediction.  It must not invent a
+    unique latent program merely because one descriptor name sorts first.
+    """
+
+    if not observations:
+        return ()
+    effects = {observation.effect for observation in observations}
+    if require_effect_variation and len(effects) < 2:
+        return ()
+
+    if candidate_descriptors is None:
+        names = sorted(
+            set.intersection(*(set(observation.descriptors) for observation in observations))
+        )
+    else:
+        names = sorted(set(candidate_descriptors))
+        if any(not set(names).issubset(observation.descriptors) for observation in observations):
+            return ()
+
+    if not names:
+        return ()
+    limit = len(names) if max_arity is None else min(max_arity, len(names))
+    for arity in range(1, limit + 1):
+        viable: list[
+            tuple[
+                tuple[int, int, int, int],
+                tuple[str, ...],
+                dict[tuple[SemanticValue, ...], SemanticValue],
+            ]
+        ] = []
+        for subset in combinations(names, arity):
+            table = _deterministic_table(observations, subset)
+            if table is None:
+                continue
+            viable.append((_score_subset(observations, subset, table), subset, table))
+        if viable:
+            best_score = min(item[0] for item in viable)
+            tied = [item for item in viable if item[0] == best_score]
+            models = []
+            for _, subset, table in sorted(tied, key=lambda item: item[1]):
+                rows = tuple(sorted(table.items(), key=lambda item: repr(item[0])))
+                models.append(SeparatorModel(subset, rows))
+            return tuple(models)
+    return ()
 
 
 def learn_minimal_separator(
@@ -165,71 +232,20 @@ def learn_minimal_separator(
     max_arity: int | None = None,
     require_effect_variation: bool = True,
 ) -> Optional[SeparatorModel]:
-    """Find a minimum-description deterministic descriptor subset.
+    """Compatibility wrapper returning one reproducible member of the optimum fiber.
 
-    For each arity, all descriptor subsets are exhaustively checked. Among
-    deterministic subsets of the *minimum arity*, the learner prefers:
-
-    1. fewer distinct semantic keys / forward-table rows;
-    2. greater repeated support for those keys;
-    3. greater minimum per-key support;
-    4. a smaller type-aware semantic value encoding/domain;
-    5. lexical descriptor order for reproducibility.
-
-    Thus accidental unique identifiers lose to structural descriptors that
-    reuse rules, and a closed Boolean predicate such as ``is_min_area`` beats
-    an observationally equivalent unbounded rank coordinate when both fit the
-    same demonstrations. For a finite descriptor set D and arity cap k, if any
-    subset of D of size <= k deterministically realizes the observations, one
-    of minimum arity is guaranteed to be returned.
-
-    `require_effect_variation=True` prevents a vacuous constant explanation
-    from being treated as a discovered semantic dependency.
+    New code that can preserve semantic ambiguity should call
+    :func:`learn_minimal_separator_fiber`.  This wrapper exists for simple
+    consumers whose downstream behavior is invariant across an optimum tie.
     """
 
-    if not observations:
-        return None
-    effects = {observation.effect for observation in observations}
-    if require_effect_variation and len(effects) < 2:
-        return None
-
-    if candidate_descriptors is None:
-        names = sorted(
-            set.intersection(*(set(observation.descriptors) for observation in observations))
-        )
-    else:
-        names = sorted(set(candidate_descriptors))
-        if any(not set(names).issubset(observation.descriptors) for observation in observations):
-            return None
-
-    if not names:
-        return None
-    limit = len(names) if max_arity is None else min(max_arity, len(names))
-    for arity in range(1, limit + 1):
-        viable: list[
-            tuple[
-                int,
-                int,
-                int,
-                int,
-                tuple[str, ...],
-                dict[tuple[SemanticValue, ...], SemanticValue],
-            ]
-        ] = []
-        for subset in combinations(names, arity):
-            table = _deterministic_table(observations, subset)
-            if table is None:
-                continue
-            reused, minimum_support = _support_score(observations, subset)
-            domain_cost = _domain_encoding_cost(observations, subset)
-            viable.append(
-                (len(table), -reused, -minimum_support, domain_cost, subset, table)
-            )
-        if viable:
-            _, _, _, _, subset, table = min(viable, key=lambda item: item[:5])
-            rows = tuple(sorted(table.items(), key=lambda item: repr(item[0])))
-            return SeparatorModel(subset, rows)
-    return None
+    fiber = learn_minimal_separator_fiber(
+        observations,
+        candidate_descriptors,
+        max_arity=max_arity,
+        require_effect_variation=require_effect_variation,
+    )
+    return fiber[0] if fiber else None
 
 
 def separator_exists(
@@ -237,14 +253,11 @@ def separator_exists(
     candidate_descriptors: Iterable[str],
     max_arity: int,
 ) -> bool:
-    """Decision form used by relative-completeness regression tests."""
-
-    return (
-        learn_minimal_separator(
+    return bool(
+        learn_minimal_separator_fiber(
             observations,
             candidate_descriptors,
             max_arity=max_arity,
             require_effect_variation=False,
         )
-        is not None
     )
