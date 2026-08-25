@@ -142,6 +142,7 @@ class MacroMicroGate:
     """A self-Kronecker callosal interface using macro and micro input coordinates."""
 
     mode: str
+    background: int
     name: str = "macro_micro_gate"
     description_length: int = 4
 
@@ -152,10 +153,10 @@ class MacroMicroGate:
             "forward_deterministic": True,
             "backward_may_be_one_to_many": True,
             "mode": self.mode,
+            "learned_background": self.background,
         }
 
     def predict(self, input_grid: Grid) -> PartialGrid:
-        background = background_color(input_grid)
         height = len(input_grid)
         width = len(input_grid[0])
         output: list[list[int]] = []
@@ -165,9 +166,9 @@ class MacroMicroGate:
                 macro = input_grid[row // height][column // width]
                 micro = input_grid[row % height][column % width]
                 if self.mode == "micro_if_macro_nonbackground":
-                    out_row.append(micro if macro != background else background)
+                    out_row.append(micro if macro != self.background else self.background)
                 elif self.mode == "macro_if_micro_nonbackground":
-                    out_row.append(macro if micro != background else background)
+                    out_row.append(macro if micro != self.background else self.background)
                 else:
                     raise ValueError(f"unknown macro/micro gate mode: {self.mode}")
             output.append(out_row)
@@ -288,6 +289,26 @@ def _macro_micro_shape(training_pairs: Sequence[TrainingPair]) -> bool:
     )
 
 
+def _propose_macro_micro(training_pairs: Sequence[TrainingPair]) -> list[MacroMicroGate]:
+    if not _macro_micro_shape(training_pairs):
+        return []
+    candidate_backgrounds = sorted(
+        set.intersection(
+            *(
+                {color for row in input_grid for color in row}
+                for input_grid, _ in training_pairs
+            )
+        )
+    )
+    candidates: list[MacroMicroGate] = []
+    for background in candidate_backgrounds:
+        for mode in ("micro_if_macro_nonbackground", "macro_if_micro_nonbackground"):
+            candidate = MacroMicroGate(mode, background)
+            if all(candidate.predict(input_grid) == output_grid for input_grid, output_grid in training_pairs):
+                candidates.append(candidate)
+    return candidates
+
+
 def _propose_permutation_completion(
     training_pairs: Sequence[TrainingPair],
 ) -> Optional[RowColumnPermutationCompletion]:
@@ -361,13 +382,8 @@ def propose_semantic_hypotheses(
         enclosed = _propose_enclosed_fill(training_pairs)
         if enclosed is not None:
             candidates.append(enclosed)
-    if "macro_micro_gate" in enabled and _macro_micro_shape(training_pairs):
-        candidates.extend(
-            [
-                MacroMicroGate("micro_if_macro_nonbackground"),
-                MacroMicroGate("macro_if_micro_nonbackground"),
-            ]
-        )
+    if "macro_micro_gate" in enabled:
+        candidates.extend(_propose_macro_micro(training_pairs))
     if "row_column_permutation_completion" in enabled:
         permutation = _propose_permutation_completion(training_pairs)
         if permutation is not None:
