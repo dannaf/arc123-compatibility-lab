@@ -1,10 +1,19 @@
-"""Generic divider-partition semantic labeling.
+"""Generic hypotheses over grids partitioned by uniform divider lines.
 
-Detect a grid partitioned by full uniform divider rows/columns, treat each
-rectangular compartment as a semantic unit, derive generic descriptors, and
-learn a minimal descriptor->constant-output-label separator.  This supports
-ARC tasks where local colors are distractors but occupancy/shape is the true
-callosal state.
+Two distinct grammars are intentionally kept separate:
+
+1. ``PartitionCellLabeler`` tests the hypothesis that each compartment can be
+   labeled independently from its own descriptors.  ARC task 09629e4f is a
+   documented negative control for this hypothesis: identical local masks can
+   require different labels.
+2. ``PartitionKeyRouter`` selects one relationally distinguished compartment
+   and interprets its *local coordinates* as a macro-grid routing map.  This is
+   a generic control-object construction: partition -> key selection ->
+   local-to-macro projection.
+
+The second grammar was added only after the first was falsified and independent
+post-hoc analyses of the already-open development task agreed on the sparse-key
+structure. No task ID or held-out target is available to live inference.
 """
 
 from __future__ import annotations
@@ -129,7 +138,7 @@ class PartitionCellLabeler:
         parsed = _partition(input_grid)
         if parsed is None:
             return tuple(tuple(None for _ in row) for row in input_grid)
-        divider_color, row_dividers, column_dividers, row_segments, column_segments = parsed
+        divider_color, _, _, row_segments, column_segments = parsed
         if divider_color != self.divider_color:
             return tuple(tuple(None for _ in row) for row in input_grid)
         output: list[list[Optional[int]]] = [list(row) for row in input_grid]
@@ -145,15 +154,107 @@ class PartitionCellLabeler:
         return tuple(tuple(row) for row in output)
 
 
-def propose_partition_hypotheses(
-    training_pairs: Sequence[TrainingPair],
-    enabled_operator_families: Sequence[str] | None = None,
-) -> list[PartitionCellLabeler]:
-    if enabled_operator_families is not None and "partition_cell_semantic_label" not in enabled_operator_families:
-        return []
-    if not training_pairs:
-        return []
+def _uniform_partition_geometry(
+    row_segments: Sequence[tuple[int, int]],
+    column_segments: Sequence[tuple[int, int]],
+) -> Optional[tuple[int, int]]:
+    heights = {r1 - r0 for r0, r1 in row_segments}
+    widths = {c1 - c0 for c0, c1 in column_segments}
+    if len(heights) != 1 or len(widths) != 1:
+        return None
+    return next(iter(heights)), next(iter(widths))
 
+
+def _key_indices(
+    blocks: Sequence[tuple[tuple[int, ...], ...]],
+    background: int,
+    selector: str,
+) -> list[int]:
+    descriptors = [_block_descriptors(block, background) for block in blocks]
+    if selector == "unique_min_nonbackground_count":
+        values = [int(item["nonbackground_count"]) for item in descriptors]
+    elif selector == "unique_min_distinct_nonbackground_count":
+        values = [int(item["distinct_nonbackground_count"]) for item in descriptors]
+    else:
+        raise ValueError(f"unknown partition key selector: {selector}")
+    minimum = min(values)
+    indices = [index for index, value in enumerate(values) if value == minimum]
+    return indices if len(indices) == 1 else []
+
+
+@dataclass(frozen=True)
+class PartitionKeyRouter:
+    """Use one sparse control compartment as a local-to-macro routing map."""
+
+    divider_color: int
+    background_value: int
+    key_selector: str
+    name: str = "partition_key_block_routing"
+    description_length: int = 7
+
+    @property
+    def callosal_summary(self) -> dict[str, object]:
+        return {
+            "interface": "relational_key_block -> local_coordinate/color -> macro_block_effect",
+            "divider_color": self.divider_color,
+            "background_value": self.background_value,
+            "key_selector": self.key_selector,
+            "forward_deterministic": True,
+            "backward_semantics": "solid macro labels constrain the key block's local colored coordinates",
+        }
+
+    def predict(self, input_grid: Grid) -> PartialGrid:
+        parsed = _partition(input_grid)
+        if parsed is None:
+            return tuple(tuple(None for _ in row) for row in input_grid)
+        divider, row_dividers, column_dividers, row_segments, column_segments = parsed
+        if divider != self.divider_color:
+            return tuple(tuple(None for _ in row) for row in input_grid)
+        geometry = _uniform_partition_geometry(row_segments, column_segments)
+        if geometry is None:
+            return tuple(tuple(None for _ in row) for row in input_grid)
+        block_height, block_width = geometry
+        # Local key coordinates must address the macro grid exactly.
+        if block_height != len(row_segments) or block_width != len(column_segments):
+            return tuple(tuple(None for _ in row) for row in input_grid)
+
+        blocks = [
+            _block_values(input_grid, rows, columns)
+            for rows in row_segments
+            for columns in column_segments
+        ]
+        key_indices = _key_indices(blocks, self.background_value, self.key_selector)
+        if len(key_indices) != 1:
+            return tuple(tuple(None for _ in row) for row in input_grid)
+        key = blocks[key_indices[0]]
+
+        output: list[list[Optional[int]]] = [
+            [self.background_value for _ in row] for row in input_grid
+        ]
+        # Preserve divider rows/columns exactly.
+        for row in row_dividers:
+            output[row] = list(input_grid[row])
+        for column in column_dividers:
+            for row in range(len(input_grid)):
+                output[row][column] = input_grid[row][column]
+
+        for local_row, values in enumerate(key):
+            for local_column, color in enumerate(values):
+                if color == self.background_value:
+                    continue
+                rows = row_segments[local_row]
+                columns = column_segments[local_column]
+                r0, r1 = rows
+                c0, c1 = columns
+                for row in range(r0, r1):
+                    for column in range(c0, c1):
+                        output[row][column] = color
+        return tuple(tuple(row) for row in output)
+
+
+def _propose_independent_cell_labeler(
+    training_pairs: Sequence[TrainingPair],
+) -> list[PartitionCellLabeler]:
     divider_color: Optional[int] = None
     background_value: Optional[int] = None
     observations: list[SemanticObservation] = []
@@ -176,15 +277,12 @@ def propose_partition_hypotheses(
             background_value = background
         elif background_value != background:
             return []
-
-        # Divider structure must be preserved exactly.
         for row in row_dividers:
             if tuple(output_grid[row]) != tuple(input_grid[row]):
                 return []
         for column in column_dividers:
             if any(output_grid[row][column] != input_grid[row][column] for row in range(len(input_grid))):
                 return []
-
         for rows in row_segments:
             for columns in column_segments:
                 input_block = _block_values(input_grid, rows, columns)
@@ -209,7 +307,7 @@ def propose_partition_hypotheses(
             "distinct_nonbackground_count",
             "sorted_nonbackground_values",
         ),
-        max_arity=2,
+        max_arity=3,
     )
     if separator is None:
         return []
@@ -217,3 +315,40 @@ def propose_partition_hypotheses(
     if all(candidate.predict(input_grid) == output_grid for input_grid, output_grid in training_pairs):
         return [candidate]
     return []
+
+
+def _propose_key_routers(training_pairs: Sequence[TrainingPair]) -> list[PartitionKeyRouter]:
+    if not training_pairs:
+        return []
+    first = _partition(training_pairs[0][0])
+    if first is None:
+        return []
+    divider, row_dividers, column_dividers, _, _ = first
+    background = _nondivider_background(training_pairs[0][0], row_dividers, column_dividers, divider)
+    if background is None:
+        return []
+
+    candidates = [
+        PartitionKeyRouter(divider, background, "unique_min_nonbackground_count"),
+        PartitionKeyRouter(divider, background, "unique_min_distinct_nonbackground_count"),
+    ]
+    return [
+        candidate
+        for candidate in candidates
+        if all(candidate.predict(input_grid) == output_grid for input_grid, output_grid in training_pairs)
+    ]
+
+
+def propose_partition_hypotheses(
+    training_pairs: Sequence[TrainingPair],
+    enabled_operator_families: Sequence[str] | None = None,
+):
+    if not training_pairs:
+        return []
+    enabled = None if enabled_operator_families is None else set(enabled_operator_families)
+    candidates = []
+    if enabled is None or "partition_cell_semantic_label" in enabled:
+        candidates.extend(_propose_independent_cell_labeler(training_pairs))
+    if enabled is None or "partition_key_block_routing" in enabled:
+        candidates.extend(_propose_key_routers(training_pairs))
+    return candidates
