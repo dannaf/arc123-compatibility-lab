@@ -23,6 +23,11 @@
       "commit": "399030444e0ab0cc8b4e199870fb20b863846f34",
       "repository": "https://github.com/fchollet/ARC-AGI",
       "task_directory": "data"
+    },
+    "arc2": {
+      "commit": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "repository": "https://github.com/arcprize/ARC-AGI-2",
+      "task_directory": "data"
     }
   },
   "tasks": [
