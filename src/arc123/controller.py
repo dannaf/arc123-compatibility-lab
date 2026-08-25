@@ -13,12 +13,14 @@ from .frequency_macro_hypotheses import propose_frequency_macro_hypotheses
 from .generic_object_hypotheses import propose_generic_object_hypotheses
 from .geometric_relation_hypotheses import propose_geometric_relation_hypotheses
 from .hypotheses import Hypothesis, propose_base_hypotheses, propose_structural_hypotheses
+from .measurement_hypotheses import propose_measurement_hypotheses
 from .model import ActionKind, Grid, HypothesisAssessment, PartialGrid, SolveResult, TrainingPair
 from .partition_hypotheses import propose_partition_hypotheses
 from .perceptions import difference_summary
 from .ranked_container_hypotheses import propose_ranked_container_hypotheses
 from .rectangle_hypotheses import propose_rectangle_hypotheses
 from .relational_tiling_hypotheses import propose_relational_tiling_hypotheses
+from .segment_hypotheses import propose_segment_hypotheses
 from .semantic_hypotheses import propose_semantic_hypotheses
 from .traces import LearningTrace
 
@@ -58,6 +60,8 @@ DEFAULT_OPERATOR_FAMILIES = (
     "corner_marker_diagonal_quadrant_fill",
     "marker_count_palette_cycle",
     "bottom_anchored_left_shear",
+    "component_count_plus_one_blank_column",
+    "second_longest_segment_equalize",
     "partial-with-identity composition",
 )
 
@@ -344,6 +348,8 @@ class IterativeHypothesisLearner:
                 *propose_ranked_container_hypotheses(training_pairs, self.operator_families),
                 *propose_control_parameter_hypotheses(training_pairs, self.operator_families),
                 *propose_geometric_relation_hypotheses(training_pairs, self.operator_families),
+                *propose_measurement_hypotheses(training_pairs, self.operator_families),
+                *propose_segment_hypotheses(training_pairs, self.operator_families),
             ]
             self._evaluate_stage(
                 "semantic_callosal_interfaces",
