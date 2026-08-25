@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "packet_id": "P0006-ARC12-OPENED-DEV-20",
+  "parent_packet": "P0005-ARC12-FROZEN-DISJOINT-20",
+  "report_title": "# P0006 Opened P0005 Development Counterexamples",
+  "report_root": "reports/P0006_arc12_opened_dev_20",
+  "claim_boundary": "This is no longer an unseen evaluation set: P0005 was opened after its 0/20 score was frozen. P0006 reuses exactly those twenty tasks only for architecture development. It must never be cited as held-out transfer evidence. Held-out test outputs remain excluded from live inference and are used only after prediction commit.",
+  "controller": {
+    "candidate_limit": 128,
+    "forbidden_live_inputs": ["task_id","historical selected schema","ARC12 decomposition mapping","GT feature contract","GT solver code","held_out test output before commit"],
+    "generic_operator_families": [
+      "identity","recolor","mirror","translate","line_extend","row_span_fill",
+      "row_marker_column_to_constant_row","column_downward_propagation","enclosed_background_fill",
+      "rectangular_enclosure_area_fill","macro_micro_gate","row_column_permutation_completion",
+      "alternating_mirror_tile","cross_object_bridge","partition_cell_semantic_label",
+      "partial-with-identity composition"
+    ]
+  },
+  "source_pins": {
+    "arc1": {"commit":"399030444e0ab0cc8b4e199870fb20b863846f34","repository":"https://github.com/fchollet/ARC-AGI","task_directory":"data"},
+    "arc2": {"commit":"f3283f727488ad98fe575ea6a5ac981e4a188e49","repository":"https://github.com/arcprize/ARC-AGI-2","task_directory":"data"}
+  },
+  "tasks": [
+    {"benchmark":"arc1","split":"evaluation","task_id":"456873bc"},{"benchmark":"arc1","split":"evaluation","task_id":"94414823"},{"benchmark":"arc1","split":"evaluation","task_id":"f0afb749"},{"benchmark":"arc1","split":"evaluation","task_id":"1c02dbbe"},{"benchmark":"arc1","split":"evaluation","task_id":"e872b94a"},{"benchmark":"arc1","split":"evaluation","task_id":"896d5239"},{"benchmark":"arc1","split":"evaluation","task_id":"358ba94e"},{"benchmark":"arc1","split":"evaluation","task_id":"d37a1ef5"},{"benchmark":"arc1","split":"evaluation","task_id":"423a55dc"},{"benchmark":"arc1","split":"evaluation","task_id":"e7b06bea"},
+    {"benchmark":"arc2","split":"evaluation","task_id":"89565ca0"},{"benchmark":"arc2","split":"evaluation","task_id":"271d71e2"},{"benchmark":"arc2","split":"evaluation","task_id":"2b83f449"},{"benchmark":"arc2","split":"evaluation","task_id":"1ae2feb7"},{"benchmark":"arc2","split":"evaluation","task_id":"88bcf3b4"},{"benchmark":"arc2","split":"evaluation","task_id":"b5ca7ac4"},{"benchmark":"arc2","split":"evaluation","task_id":"a6f40cea"},{"benchmark":"arc2","split":"evaluation","task_id":"e376de54"},{"benchmark":"arc2","split":"evaluation","task_id":"97d7923e"},{"benchmark":"arc2","split":"evaluation","task_id":"9bbf930d"},
+    {"benchmark":"arc2","split":"training","task_id":"09629e4f"}
+  ]
+}
