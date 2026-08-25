@@ -11,6 +11,7 @@ from .control_parameter_hypotheses import propose_control_parameter_hypotheses
 from .cross_object_bridge_hypotheses import propose_cross_object_bridge_hypotheses
 from .frequency_macro_hypotheses import propose_frequency_macro_hypotheses
 from .generic_object_hypotheses import propose_generic_object_hypotheses
+from .geometric_relation_hypotheses import propose_geometric_relation_hypotheses
 from .hypotheses import Hypothesis, propose_base_hypotheses, propose_structural_hypotheses
 from .model import ActionKind, Grid, HypothesisAssessment, PartialGrid, SolveResult, TrainingPair
 from .partition_hypotheses import propose_partition_hypotheses
@@ -56,6 +57,7 @@ DEFAULT_OPERATOR_FAMILIES = (
     "legend_count_ranked_container_fill",
     "corner_marker_diagonal_quadrant_fill",
     "marker_count_palette_cycle",
+    "bottom_anchored_left_shear",
     "partial-with-identity composition",
 )
 
@@ -341,6 +343,7 @@ class IterativeHypothesisLearner:
                 *propose_generic_object_hypotheses(training_pairs, self.operator_families),
                 *propose_ranked_container_hypotheses(training_pairs, self.operator_families),
                 *propose_control_parameter_hypotheses(training_pairs, self.operator_families),
+                *propose_geometric_relation_hypotheses(training_pairs, self.operator_families),
             ]
             self._evaluate_stage(
                 "semantic_callosal_interfaces",
