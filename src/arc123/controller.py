@@ -14,6 +14,7 @@ from .hypotheses import Hypothesis, propose_base_hypotheses, propose_structural_
 from .model import ActionKind, Grid, HypothesisAssessment, PartialGrid, SolveResult, TrainingPair
 from .partition_hypotheses import propose_partition_hypotheses
 from .perceptions import difference_summary
+from .ranked_container_hypotheses import propose_ranked_container_hypotheses
 from .rectangle_hypotheses import propose_rectangle_hypotheses
 from .relational_tiling_hypotheses import propose_relational_tiling_hypotheses
 from .semantic_hypotheses import propose_semantic_hypotheses
@@ -51,6 +52,7 @@ DEFAULT_OPERATOR_FAMILIES = (
     "partition_key_block_routing",
     "component_select_extract",
     "unique_neighbor_component_propagation",
+    "legend_count_ranked_container_fill",
     "partial-with-identity composition",
 )
 
@@ -334,6 +336,7 @@ class IterativeHypothesisLearner:
                 *propose_cross_object_bridge_hypotheses(training_pairs, self.operator_families),
                 *propose_partition_hypotheses(training_pairs, self.operator_families),
                 *propose_generic_object_hypotheses(training_pairs, self.operator_families),
+                *propose_ranked_container_hypotheses(training_pairs, self.operator_families),
             ]
             self._evaluate_stage(
                 "semantic_callosal_interfaces",
