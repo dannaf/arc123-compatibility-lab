@@ -30,24 +30,49 @@ jobs:
         run: |
           git clone --quiet https://github.com/arcprize/ARC-AGI-2.git /tmp/arc2
           git -C /tmp/arc2 checkout --quiet f3283f727488ad98fe575ea6a5ac981e4a188e49
-      - name: Diagnose generic partition unitizer
+      - name: Diagnose generic partition semantics
         run: |
           python - <<'PY'
           import json
+          from collections import defaultdict
           from pathlib import Path
-          from arc123.partition_hypotheses import _partition, _nondivider_background, propose_partition_hypotheses
+          from arc123.callosal_separator import SemanticObservation, learn_minimal_separator
+          from arc123.partition_hypotheses import (
+              _partition, _nondivider_background, _block_values, _block_descriptors,
+              propose_partition_hypotheses,
+          )
           p = json.loads(Path('/tmp/arc2/data/training/09629e4f.json').read_text())
           pairs = tuple((tuple(map(tuple, x['input'])), tuple(map(tuple, x['output']))) for x in p['train'])
+          observations=[]
           for i, (inp, out) in enumerate(pairs):
               parsed = _partition(inp)
               print('demo', i, 'partition', parsed)
-              if parsed:
-                  dc, rd, cd, rs, cs = parsed
-                  print('background', _nondivider_background(inp, rd, cd, dc))
+              assert parsed is not None
+              dc, rd, cd, rs, cs = parsed
+              bg = _nondivider_background(inp, rd, cd, dc)
+              print('background', bg)
+              for ri, rows in enumerate(rs):
+                  for ci, cols in enumerate(cs):
+                      ib = _block_values(inp, rows, cols)
+                      ob = _block_values(out, rows, cols)
+                      labels={v for row in ob for v in row}
+                      assert len(labels)==1
+                      label=next(iter(labels))
+                      desc=_block_descriptors(ib,bg)
+                      observations.append(SemanticObservation(desc,label))
+                      print('block', i,ri,ci,'label',label,'flat',tuple(v for row in ib for v in row),'mask',desc['occupancy_mask'],'sorted',desc['sorted_nonbackground_values'])
+          names=('height','width','area','nonbackground_count','occupancy_mask','distinct_nonbackground_count','sorted_nonbackground_values')
+          for name in names:
+              table=defaultdict(set)
+              for obs in observations:
+                  table[obs.descriptors[name]].add(obs.effect)
+              conflicts=sum(1 for effects in table.values() if len(effects)>1)
+              print('descriptor',name,'keys',len(table),'conflicts',conflicts,'max_effects_per_key',max(map(len,table.values())))
+          for k in (1,2,3):
+              model=learn_minimal_separator(observations,names,max_arity=k)
+              print('minimal_separator_k',k, None if model is None else model.callosal_summary)
           cands = propose_partition_hypotheses(pairs, ('partition_cell_semantic_label',))
           print('candidate_count', len(cands))
-          for cand in cands:
-              print('candidate', cand.callosal_summary)
           PY
       - name: Run opened development counterexamples
         run: |
