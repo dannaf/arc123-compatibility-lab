@@ -7,11 +7,11 @@
     {"task_id":"d037b0a7","benchmark":"ARC1/ARC2 corpus","semantic_interface":"column_downward_propagation","held_out_exact":true,"status":"live-regression-committed"},
     {"task_id":"4cd1b7b2","benchmark":"ARC2","semantic_interface":"row_column_permutation_completion","held_out_exact":true,"status":"live-regression-committed"},
     {"task_id":"27f8ce4f","benchmark":"ARC1 P0002","semantic_interface":"modal_macro_stamp","held_out_exact":true,"status":"source-pinned-live-regression-committed"},
-    {"task_id":"48f8583b","benchmark":"ARC1 P0002","semantic_interface":"frequency_extremum_macro_stamp:least_frequent","held_out_exact":true,"status":"source-pinned-regression-committed"},
+    {"task_id":"48f8583b","benchmark":"ARC1 P0002","semantic_interface":"frequency_extremum_macro_stamp:least_frequent","held_out_exact":true,"status":"source-pinned-live-regression-committed"},
     {"task_id":"84f2aca1","benchmark":"ARC1 P0002","semantic_interface":"rectangular_enclosure_area_fill","held_out_exact":true,"status":"exact-replay-and-regression-fixture"},
     {"task_id":"00dbd492","benchmark":"ARC1 P0002","semantic_interface":"rectangular_enclosure_area_fill","held_out_exact":true,"status":"exact-replay-and-regression-fixture"},
     {"task_id":"00576224","benchmark":"ARC2 P0002","semantic_interface":"alternating_horizontal_mirror_tile","held_out_exact":true,"status":"source-pinned-live-regression-committed"},
-    {"task_id":"760b3cac","benchmark":"ARC2 P0002","semantic_interface":"cross_object_orientation_bridge","held_out_exact":null,"status":"diagnosed-not-yet-promoted"},
+    {"task_id":"760b3cac","benchmark":"ARC2 P0002","semantic_interface":"cross_object_orientation_bridge","held_out_exact":true,"status":"source-pinned-live-regression-committed"},
     {"task_id":"f3e62deb","benchmark":"ARC1","semantic_interface":"color_to_direction","held_out_exact":null,"status":"correctly-nonsingular-UNKNOWN-at-interface"}
   ]
 }
