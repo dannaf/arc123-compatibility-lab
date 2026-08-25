@@ -1,4 +1,10 @@
-"""Frequency-extremum macro stamping as a reusable semantic callosal family."""
+"""Frequency-extremum macro stamping as a reusable semantic callosal family.
+
+The existing `modal_macro_stamp` in `semantic_hypotheses` is the canonical
+most-frequent case.  This module supplies the complementary least-frequent
+case so the learner does not carry duplicate symbolic programs for the same
+prediction group.
+"""
 
 from __future__ import annotations
 
@@ -21,7 +27,7 @@ def _unique_frequency_extreme(grid: Grid, mode: str) -> int | None:
     counts = Counter(color for row in grid for color in row)
     if not counts:
         return None
-    target_count = (max if mode == "most_frequent" else min)(counts.values())
+    target_count = min(counts.values()) if mode == "least_frequent" else max(counts.values())
     winners = [color for color, count in counts.items() if count == target_count]
     return winners[0] if len(winners) == 1 else None
 
@@ -77,47 +83,48 @@ def propose_frequency_macro_hypotheses(
     if enabled_operator_families is not None and "macro_micro_gate" not in enabled_operator_families:
         return []
 
-    candidates: list[FrequencyExtremumMacroStamp] = []
-    for mode in ("most_frequent", "least_frequent"):
-        learned_blank: int | None = None
-        valid = True
-        for input_grid, output_grid in training_pairs:
-            trigger = _unique_frequency_extreme(input_grid, mode)
-            if trigger is None:
-                valid = False
-                break
-            height = len(input_grid)
-            width = len(input_grid[0])
-            for macro_row in range(height):
-                for macro_column in range(width):
-                    block = tuple(
-                        tuple(
-                            output_grid[macro_row * height + row][macro_column * width + column]
-                            for column in range(width)
-                        )
-                        for row in range(height)
+    # The most-frequent/modal case is already proposed canonically by
+    # `semantic_hypotheses.ModalMacroStamp`; only add the complementary case.
+    mode = "least_frequent"
+    learned_blank: int | None = None
+    valid = True
+    for input_grid, output_grid in training_pairs:
+        trigger = _unique_frequency_extreme(input_grid, mode)
+        if trigger is None:
+            valid = False
+            break
+        height = len(input_grid)
+        width = len(input_grid[0])
+        for macro_row in range(height):
+            for macro_column in range(width):
+                block = tuple(
+                    tuple(
+                        output_grid[macro_row * height + row][macro_column * width + column]
+                        for column in range(width)
                     )
-                    if input_grid[macro_row][macro_column] == trigger:
-                        if block != input_grid:
-                            valid = False
-                            break
-                    else:
-                        colors = {color for row in block for color in row}
-                        if len(colors) != 1:
-                            valid = False
-                            break
-                        blank = next(iter(colors))
-                        if learned_blank is None:
-                            learned_blank = blank
-                        elif learned_blank != blank:
-                            valid = False
-                            break
-                if not valid:
-                    break
+                    for row in range(height)
+                )
+                if input_grid[macro_row][macro_column] == trigger:
+                    if block != input_grid:
+                        valid = False
+                        break
+                else:
+                    colors = {color for row in block for color in row}
+                    if len(colors) != 1:
+                        valid = False
+                        break
+                    blank = next(iter(colors))
+                    if learned_blank is None:
+                        learned_blank = blank
+                    elif learned_blank != blank:
+                        valid = False
+                        break
             if not valid:
                 break
-        if valid and learned_blank is not None:
-            candidate = FrequencyExtremumMacroStamp(mode, learned_blank)
-            if all(candidate.predict(x) == y for x, y in training_pairs):
-                candidates.append(candidate)
-    return candidates
+        if not valid:
+            break
+    if valid and learned_blank is not None:
+        candidate = FrequencyExtremumMacroStamp(mode, learned_blank)
+        if all(candidate.predict(x) == y for x, y in training_pairs):
+            return [candidate]
+    return []
