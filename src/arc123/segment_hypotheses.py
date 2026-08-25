@@ -1,4 +1,10 @@
-"""Generic straight-segment relational grammars."""
+"""Generic straight-segment relational grammars.
+
+The structural operation (equalize directed straight segments) is separated
+from the integer expression that chooses the common length.  This prevents a
+single training-exact statistic from masquerading as semantic singularity when
+other equally simple parameterizations fit the demonstrations.
+"""
 
 from __future__ import annotations
 
@@ -6,6 +12,10 @@ from dataclasses import dataclass
 from typing import Optional, Sequence
 
 from .model import Grid, PartialGrid, TrainingPair
+from .parameter_expressions import (
+    IntegerSequenceExpression,
+    compatible_integer_sequence_expression_fiber,
+)
 from .perceptions import background_color
 
 
@@ -102,9 +112,68 @@ def _anchor_and_step(cells: tuple[Cell, ...], orientation: str) -> tuple[Cell, C
     raise ValueError(orientation)
 
 
+def _render_equalized(input_grid: Grid, target: int) -> Optional[PartialGrid]:
+    segments = _segments(input_grid)
+    if segments is None or target < 1:
+        return None
+    background = background_color(input_grid)
+    height, width = len(input_grid), len(input_grid[0])
+    output = [[background for _ in range(width)] for _ in range(height)]
+    claimed: dict[Cell, int] = {}
+    for color, cells, orientation in segments:
+        anchor, step = _anchor_and_step(cells, orientation)
+        for offset in range(target):
+            cell = (anchor[0] + step[0] * offset, anchor[1] + step[1] * offset)
+            if not (0 <= cell[0] < height and 0 <= cell[1] < width):
+                return None
+            prior = claimed.get(cell)
+            if prior is not None and prior != color:
+                return None
+            claimed[cell] = color
+    for (r, c), color in claimed.items():
+        output[r][c] = color
+    return tuple(tuple(row) for row in output)
+
+
+@dataclass(frozen=True)
+class SegmentStatisticEqualize:
+    statistic: IntegerSequenceExpression
+    description_length: int = 6
+
+    @property
+    def name(self) -> str:
+        return f"segment_statistic_equalize[{self.statistic.name}]"
+
+    @property
+    def callosal_summary(self) -> dict[str, object]:
+        return {
+            "interface": "segment_length_sequence -> target_extent -> each_segment_extent",
+            "parameter_expression": self.statistic.name,
+            "parameter_expression_cost": self.statistic.cost,
+            "orientations": ("horizontal", "vertical", "main_diagonal", "anti_diagonal"),
+            "canonical_anchors": {
+                "horizontal": "left",
+                "vertical": "top",
+                "main_diagonal": "top_left",
+                "anti_diagonal": "bottom_left",
+            },
+            "forward_deterministic_given_parameter": True,
+            "parameter_fiber_preserved": True,
+        }
+
+    def predict(self, input_grid: Grid) -> Optional[PartialGrid]:
+        segments = _segments(input_grid)
+        if segments is None:
+            return None
+        target = self.statistic.evaluate([len(cells) for _, cells, _ in segments])
+        if target is None:
+            return None
+        return _render_equalized(input_grid, target)
+
+
 @dataclass(frozen=True)
 class SecondLongestSegmentEqualize:
-    """Equalize directed straight segments to the second-longest input length."""
+    """Legacy explicit parameterization retained for historical packet replay."""
 
     name: str = "second_longest_segment_equalize"
     description_length: int = 6
@@ -114,14 +183,7 @@ class SecondLongestSegmentEqualize:
         return {
             "interface": "global_segment_length_order_statistic -> each_segment_extent",
             "target_length": "second_longest_input_segment_length",
-            "orientations": ("horizontal", "vertical", "main_diagonal", "anti_diagonal"),
-            "canonical_anchors": {
-                "horizontal": "left",
-                "vertical": "top",
-                "main_diagonal": "top_left",
-                "anti_diagonal": "bottom_left",
-            },
-            "forward_deterministic": True,
+            "legacy_fixed_parameterization": True,
         }
 
     def predict(self, input_grid: Grid) -> Optional[PartialGrid]:
@@ -131,38 +193,50 @@ class SecondLongestSegmentEqualize:
         lengths = sorted((len(cells) for _, cells, _ in segments), reverse=True)
         if len(lengths) < 2:
             return None
-        target = lengths[1]
-        background = background_color(input_grid)
-        height, width = len(input_grid), len(input_grid[0])
-        output = [[background for _ in range(width)] for _ in range(height)]
-        claimed: dict[Cell, int] = {}
-        for color, cells, orientation in segments:
-            anchor, step = _anchor_and_step(cells, orientation)
-            for offset in range(target):
-                cell = (anchor[0] + step[0] * offset, anchor[1] + step[1] * offset)
-                if not (0 <= cell[0] < height and 0 <= cell[1] < width):
-                    return None
-                prior = claimed.get(cell)
-                if prior is not None and prior != color:
-                    return None
-                claimed[cell] = color
-        for (r, c), color in claimed.items():
-            output[r][c] = color
-        return tuple(tuple(row) for row in output)
+        return _render_equalized(input_grid, lengths[1])
+
+
+def _training_target_observations(
+    training_pairs: Sequence[TrainingPair],
+) -> Optional[tuple[tuple[tuple[int, ...], int], ...]]:
+    observations: list[tuple[tuple[int, ...], int]] = []
+    for input_grid, output_grid in training_pairs:
+        input_segments = _segments(input_grid)
+        output_segments = _segments(output_grid)
+        if input_segments is None or output_segments is None:
+            return None
+        output_lengths = {len(cells) for _, cells, _ in output_segments}
+        if len(output_lengths) != 1:
+            return None
+        target = next(iter(output_lengths))
+        observations.append((tuple(len(cells) for _, cells, _ in input_segments), target))
+    return tuple(observations)
 
 
 def propose_segment_hypotheses(
     training_pairs: Sequence[TrainingPair],
     enabled_operator_families: Sequence[str] | None = None,
-) -> list[SecondLongestSegmentEqualize]:
-    if enabled_operator_families is not None and (
-        "second_longest_segment_equalize" not in enabled_operator_families
-    ):
-        return []
+) -> list[SegmentStatisticEqualize | SecondLongestSegmentEqualize]:
     if not training_pairs:
         return []
-    candidate = SecondLongestSegmentEqualize()
-    return [candidate] if all(
-        candidate.predict(input_grid) == output_grid
-        for input_grid, output_grid in training_pairs
-    ) else []
+    enabled = set(enabled_operator_families or ()) if enabled_operator_families is not None else None
+    candidates: list[SegmentStatisticEqualize | SecondLongestSegmentEqualize] = []
+
+    if enabled is None or "segment_statistic_equalize" in enabled:
+        observations = _training_target_observations(training_pairs)
+        if observations is not None:
+            fiber = compatible_integer_sequence_expression_fiber(observations)
+            candidates.extend(SegmentStatisticEqualize(expression) for expression in fiber)
+
+    # Keep the old named rule solely so historical packets that explicitly
+    # request it remain reproducible. New default operation uses the fiber.
+    if enabled is None or "second_longest_segment_equalize" in enabled:
+        candidate = SecondLongestSegmentEqualize()
+        if all(candidate.predict(input_grid) == output_grid for input_grid, output_grid in training_pairs):
+            candidates.append(candidate)
+
+    return [
+        candidate
+        for candidate in candidates
+        if all(candidate.predict(input_grid) == output_grid for input_grid, output_grid in training_pairs)
+    ]
