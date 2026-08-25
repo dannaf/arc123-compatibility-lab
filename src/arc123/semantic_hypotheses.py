@@ -176,6 +176,39 @@ class MacroMicroGate:
 
 
 @dataclass(frozen=True)
+class ModalMacroStamp:
+    """Stamp the whole input into macro cells whose source value is the input mode."""
+
+    blank_color: int
+    name: str = "modal_macro_stamp"
+    description_length: int = 4
+
+    @property
+    def callosal_summary(self) -> dict[str, object]:
+        return {
+            "interface": "macro_cell_is_modal -> stamped_micro_grid",
+            "trigger": "modal input color, recomputed per evidence world",
+            "blank_color": self.blank_color,
+            "forward_deterministic": True,
+            "backward_semantics": "nonblank output block certifies modal-valued macro source",
+        }
+
+    def predict(self, input_grid: Grid) -> PartialGrid:
+        trigger = background_color(input_grid)
+        height = len(input_grid)
+        width = len(input_grid[0])
+        output = [[self.blank_color for _ in range(width * width)] for _ in range(height * height)]
+        for macro_row in range(height):
+            for macro_column in range(width):
+                if input_grid[macro_row][macro_column] != trigger:
+                    continue
+                for micro_row in range(height):
+                    for micro_column in range(width):
+                        output[macro_row * height + micro_row][macro_column * width + micro_column] = input_grid[micro_row][micro_column]
+        return tuple(tuple(row) for row in output)
+
+
+@dataclass(frozen=True)
 class RowColumnPermutationCompletion:
     """Complete a square using the intersection of row and column missing-symbol fibers."""
 
@@ -309,6 +342,44 @@ def _propose_macro_micro(training_pairs: Sequence[TrainingPair]) -> list[MacroMi
     return candidates
 
 
+def _propose_modal_macro_stamp(training_pairs: Sequence[TrainingPair]) -> Optional[ModalMacroStamp]:
+    if not _macro_micro_shape(training_pairs):
+        return None
+    learned_blank: Optional[int] = None
+    saw_active = False
+    saw_inactive = False
+    for input_grid, output_grid in training_pairs:
+        trigger = background_color(input_grid)
+        height = len(input_grid)
+        width = len(input_grid[0])
+        for mr in range(height):
+            for mc in range(width):
+                block = tuple(
+                    tuple(output_grid[mr * height + r][mc * width + c] for c in range(width))
+                    for r in range(height)
+                )
+                if input_grid[mr][mc] == trigger:
+                    saw_active = True
+                    if block != input_grid:
+                        return None
+                else:
+                    saw_inactive = True
+                    block_colors = {color for row in block for color in row}
+                    if len(block_colors) != 1:
+                        return None
+                    blank = next(iter(block_colors))
+                    if learned_blank is None:
+                        learned_blank = blank
+                    elif learned_blank != blank:
+                        return None
+    if not saw_active or not saw_inactive or learned_blank is None:
+        return None
+    candidate = ModalMacroStamp(learned_blank)
+    if any(candidate.predict(input_grid) != output_grid for input_grid, output_grid in training_pairs):
+        return None
+    return candidate
+
+
 def _propose_permutation_completion(
     training_pairs: Sequence[TrainingPair],
 ) -> Optional[RowColumnPermutationCompletion]:
@@ -365,6 +436,7 @@ def propose_semantic_hypotheses(
                 "column_downward_propagation",
                 "enclosed_background_fill",
                 "macro_micro_gate",
+                "modal_macro_stamp",
                 "row_column_permutation_completion",
             }
         )
@@ -384,6 +456,10 @@ def propose_semantic_hypotheses(
             candidates.append(enclosed)
     if "macro_micro_gate" in enabled:
         candidates.extend(_propose_macro_micro(training_pairs))
+    if "modal_macro_stamp" in enabled:
+        modal_stamp = _propose_modal_macro_stamp(training_pairs)
+        if modal_stamp is not None:
+            candidates.append(modal_stamp)
     if "row_column_permutation_completion" in enabled:
         permutation = _propose_permutation_completion(training_pairs)
         if permutation is not None:
