@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "packet_id": "P0005-ARC12-FROZEN-DISJOINT-20",
+  "source_cohort": "ARC12-COHORT-IMPORT-001:frozen_disjoint_50",
+  "report_title": "# P0005 Frozen Disjoint ARC12 10+10 Transfer Cohort",
+  "report_root": "reports/P0005_arc12_frozen_disjoint_20",
+  "claim_boundary": "This packet is a fixed 20-task slice of the pre-existing frozen_disjoint_50 cohort, selected before the 2026-08-25 semantic-callosal refinement wave. The task IDs were chosen solely by the pre-existing SHA-256 filename ranking and were not inspected for grid semantics before this packet was frozen. Live inference receives training demonstrations and test inputs only; held-out targets are accessed only after a complete prediction is committed for exact V&V.",
+  "selection_protocol": {
+    "method": "first ten ARC1 + first ten ARC2 entries in the already-frozen hash-ranked frozen_disjoint_50 cohort",
+    "selection_salt_inherited": "arc12-issue-2-frozen-unselected-v1",
+    "task_semantics_inspected_before_freeze": false,
+    "curated_60_excluded": true
+  },
+  "controller": {
+    "candidate_limit": 64,
+    "forbidden_live_inputs": [
+      "task_id",
+      "historical selected schema",
+      "ARC12 decomposition mapping",
+      "GT feature contract",
+      "GT solver code",
+      "held_out test output before commit"
+    ],
+    "generic_operator_families": [
+      "identity",
+      "recolor",
+      "mirror",
+      "translate",
+      "line_extend",
+      "row_span_fill",
+      "row_marker_column_to_constant_row",
+      "column_downward_propagation",
+      "enclosed_background_fill",
+      "rectangular_enclosure_area_fill",
+      "macro_micro_gate",
+      "row_column_permutation_completion",
+      "alternating_mirror_tile",
+      "cross_object_bridge",
+      "partial-with-identity composition"
+    ]
+  },
+  "source_pins": {
+    "arc1": {
+      "commit": "399030444e0ab0cc8b4e199870fb20b863846f34",
+      "repository": "https://github.com/fchollet/ARC-AGI",
+      "task_directory": "data"
+    },
+    "arc2": {
+      "commit": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "repository": "https://github.com/arcprize/ARC-AGI-2",
+      "task_directory": "data"
+    }
+  },
+  "tasks": [
+    {"benchmark":"arc1","selection_rank_sha256":"00026bc36224df425718ec12f1f497a8d9961dc300f7b3f1e1daab4d71b83064","split":"evaluation","task_id":"456873bc"},
+    {"benchmark":"arc1","selection_rank_sha256":"00d4e6189510d248cb5da285da2c44565c726bedae9ee858d9c739f9331b25a7","split":"evaluation","task_id":"94414823"},
+    {"benchmark":"arc1","selection_rank_sha256":"011d7ab9dda1a4b3f20504b069c1a4e9fb78f5af5ba7059b6bc9a9bc1ff9b566","split":"evaluation","task_id":"f0afb749"},
+    {"benchmark":"arc1","selection_rank_sha256":"01c5e308cd3de19bf61af009c80bd1793c271cd15ae5e6de31e7c386f2c7286c","split":"evaluation","task_id":"1c02dbbe"},
+    {"benchmark":"arc1","selection_rank_sha256":"03eed1f08e8d22fb158464586e10f9a2e6e88fefb937061bb43af7db5a0336f5","split":"evaluation","task_id":"e872b94a"},
+    {"benchmark":"arc1","selection_rank_sha256":"0438f5eb49f86f89546af44b782ed1f6bc1b655fed3de0c8651bde90c40ff8c2","split":"evaluation","task_id":"896d5239"},
+    {"benchmark":"arc1","selection_rank_sha256":"048996ac82bf1a2cf5ba9a2e1cadb850c3eaf5dd00073b4e64c79d326ff21074","split":"evaluation","task_id":"358ba94e"},
+    {"benchmark":"arc1","selection_rank_sha256":"04d39b7763469b2bd39c43ef861c92795be041afc7c8e8d1c07ab55dd5ef82a5","split":"evaluation","task_id":"d37a1ef5"},
+    {"benchmark":"arc1","selection_rank_sha256":"069ebd4f9db40d5c197fcf6e5a304f1449a2c8aa2100c4a58c8138f68bb2b0b9","split":"evaluation","task_id":"423a55dc"},
+    {"benchmark":"arc1","selection_rank_sha256":"0709604fd17304e6b45ed07ab8a0119396bfe4911b287e3f49008b3eeb1d1b50","split":"evaluation","task_id":"e7b06bea"},
+    {"benchmark":"arc2","selection_rank_sha256":"031f2bf6f18efac9ba7d0948195eb44e14f580cbfe6abde1cbc81ecfaac60280","split":"evaluation","task_id":"89565ca0"},
+    {"benchmark":"arc2","selection_rank_sha256":"04d6a86d9aa9a00256fdd3b409b8bd4c5ee054fcccc29db7ee9b16cac7255560","split":"evaluation","task_id":"271d71e2"},
+    {"benchmark":"arc2","selection_rank_sha256":"06995cbe02822e0a02933ffe4d820a94b9b8a7fb03e77349869d818cc21e7180","split":"evaluation","task_id":"2b83f449"},
+    {"benchmark":"arc2","selection_rank_sha256":"0a70c5a308c3fad12aa020693d009c6cdf8844d4275422b92ee31d072241415e","split":"evaluation","task_id":"1ae2feb7"},
+    {"benchmark":"arc2","selection_rank_sha256":"0c3cef9e0e0b412a0073f1ab40deba494bff16d0d5e110df2965795b5c20a4e5","split":"evaluation","task_id":"88bcf3b4"},
+    {"benchmark":"arc2","selection_rank_sha256":"0ddaaa8e16ac5698d4b96e11fcaa1d0c8288826c353d7da312a2576e4587f164","split":"evaluation","task_id":"b5ca7ac4"},
+    {"benchmark":"arc2","selection_rank_sha256":"10d9c84ad298ecb209199aa4be342f09b1a77a2d5689b7e7c1d3608c7248008f","split":"evaluation","task_id":"a6f40cea"},
+    {"benchmark":"arc2","selection_rank_sha256":"15937a365fd928350db2968239bfc748a28b719ce5507e5bf041cc9b5d2669ee","split":"evaluation","task_id":"e376de54"},
+    {"benchmark":"arc2","selection_rank_sha256":"18b456adbe438dd518c9ab8e8c32037f8587811c6756ec66e234869798d1c725","split":"evaluation","task_id":"97d7923e"},
+    {"benchmark":"arc2","selection_rank_sha256":"19db4f204c4ddf003cb1f46c35331d7312924a4584fab9af718967552cea3da8","split":"evaluation","task_id":"9bbf930d"}
+  ]
+}
