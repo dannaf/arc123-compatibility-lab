@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "packet_id": "P0009-FB-OBSERVATIONAL-SYNTHESIS-ABLATION-2",
+  "parent_packets": ["P0008-TYPED-SYNTHESIS-REDISCOVERY-2"],
+  "claim_boundary": "Architecture-development ablation on two already-open ARC1 evaluation tasks. This is not unseen-transfer evidence. Forward-only and forward-backward modes receive identical training pairs, test inputs, grammar, terminal renderer declarations and cost bound. Only the F/B mode intersects forward semantic states with exact backward-preimage fibers derived from visible training outputs. Held-out test outputs enter only post-search for validation.",
+  "search": {
+    "max_cost": 4,
+    "terminal_renderers": ["crop_bbox", "render_background_column", "equalize_segments"],
+    "required_invariants": [
+      "same exact represented prediction fiber between forward-only and F/B",
+      "no held-out output enters either synthesis mode",
+      "F/B may prune only via declared exact backward preimage relations",
+      "prediction commit only at one exact test-prediction group"
+    ]
+  },
+  "source_pins": {
+    "arc1": {
+      "commit": "399030444e0ab0cc8b4e199870fb20b863846f34",
+      "repository": "https://github.com/fchollet/ARC-AGI",
+      "task_directory": "data"
+    },
+    "arc2": {
+      "commit": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "repository": "https://github.com/arcprize/ARC-AGI-2",
+      "task_directory": "data"
+    }
+  },
+  "tasks": [
+    {"benchmark": "arc1", "split": "evaluation", "task_id": "e872b94a"},
+    {"benchmark": "arc1", "split": "evaluation", "task_id": "358ba94e"}
+  ]
+}
