@@ -1,8 +1,9 @@
-from itertools import product
+from itertools import combinations, product
 
 from arc123.callosal_separator import (
     SemanticObservation,
     learn_minimal_separator,
+    separator_bcq_width,
     separator_exists,
 )
 
@@ -22,6 +23,7 @@ def test_row_marker_example_discovers_marker_column_not_row_or_color():
     assert model.predict({"row": 99, "marker_column": 1, "marker_color": 9}) == 4
     assert model.predict({"marker_column": 7}) is None  # unsupported key remains UNKNOWN
     assert model.backward_deterministic
+    assert model.callosal_summary["bcq_separation_width"] == 1
 
 
 def test_rectangle_examples_discover_interior_area_over_frame_color():
@@ -81,12 +83,13 @@ def test_no_separator_under_arity_cap_when_effect_requires_two_bits():
     model = learn_minimal_separator(observations, max_arity=2)
     assert model is not None
     assert model.descriptor_names == ("a", "b")
+    assert separator_bcq_width(observations) == 2
 
 
 def test_relative_completeness_decision_matches_bruteforce_small_descriptor_spaces():
     # For every Boolean effect table over two Boolean descriptors, verify that
-    # the exhaustive learner's arity<=2 existence decision agrees with the
-    # obvious fact that the full pair (a,b) always determines a table.
+    # the exact conflict-cover learner's arity<=2 existence decision agrees with
+    # the obvious fact that the full pair (a,b) always determines a table.
     keys = list(product((0, 1), repeat=2))
     for effects in product((0, 1), repeat=4):
         observations = [
@@ -94,6 +97,39 @@ def test_relative_completeness_decision_matches_bruteforce_small_descriptor_spac
             for (a, b), effect in zip(keys, effects)
         ]
         assert separator_exists(observations, ("a", "b"), 2)
+
+
+def _bruteforce_width(observations, names):
+    effects = {observation.effect for observation in observations}
+    if len(effects) < 2:
+        return 1
+    for arity in range(1, len(names) + 1):
+        for subset in combinations(names, arity):
+            table = {}
+            deterministic = True
+            for observation in observations:
+                key = tuple(observation.descriptors[name] for name in subset)
+                prior = table.get(key)
+                if key in table and prior != observation.effect:
+                    deterministic = False
+                    break
+                table[key] = observation.effect
+            if deterministic:
+                return arity
+    return None
+
+
+def test_conflict_cover_bcq_width_matches_exhaustive_search_for_every_three_bit_boolean_table():
+    names = ("a", "b", "c")
+    keys = list(product((0, 1), repeat=3))
+    for effects in product((0, 1), repeat=len(keys)):
+        observations = [
+            SemanticObservation({"a": a, "b": b, "c": c}, effect)
+            for (a, b, c), effect in zip(keys, effects)
+        ]
+        assert separator_bcq_width(observations, names) == _bruteforce_width(
+            observations, names
+        )
 
 
 def test_unsupported_color_direction_key_stays_unknown():
