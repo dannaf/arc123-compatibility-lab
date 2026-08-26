@@ -1,0 +1,81 @@
+name: fb-observational-synthesis-ablation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/arc123/observational_program_synthesis.py'
+      - 'src/arc123/observational_arc_grammar.py'
+      - 'tests/test_forward_backward_synthesis_ablation.py'
+      - 'scripts/run_fb_observational_synthesis_ablation.py'
+      - 'research/packets/P0009_FB_OBSERVATIONAL_SYNTHESIS_ABLATION_2.json'
+      - '.github/workflows/fb-observational-synthesis-ablation.yml'
+  workflow_dispatch:
+
+jobs:
+  ablate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout learner
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install learner and tests
+        run: python -m pip install -e . pytest
+
+      - name: Run F/B synthesis contract tests
+        run: python -m pytest -q tests/test_forward_backward_synthesis_ablation.py tests/test_observational_program_synthesis.py
+
+      - name: Clone pinned ARC-AGI-1 source
+        run: |
+          git clone --quiet https://github.com/fchollet/ARC-AGI.git /tmp/arc1
+          git -C /tmp/arc1 checkout --quiet 399030444e0ab0cc8b4e199870fb20b863846f34
+          test "$(git -C /tmp/arc1 rev-parse HEAD)" = "399030444e0ab0cc8b4e199870fb20b863846f34"
+
+      - name: Clone pinned ARC-AGI-2 source
+        run: |
+          git clone --quiet https://github.com/arcprize/ARC-AGI-2.git /tmp/arc2
+          git -C /tmp/arc2 checkout --quiet f3283f727488ad98fe575ea6a5ac981e4a188e49
+          test "$(git -C /tmp/arc2 rev-parse HEAD)" = "f3283f727488ad98fe575ea6a5ac981e4a188e49"
+
+      - name: Run opened-task controlled ablation
+        run: |
+          mkdir -p reports/P0009_fb_observational_synthesis_ablation_2
+          python scripts/run_fb_observational_synthesis_ablation.py \
+            --packet research/packets/P0009_FB_OBSERVATIONAL_SYNTHESIS_ABLATION_2.json \
+            --arc1-source /tmp/arc1 \
+            --arc2-source /tmp/arc2 \
+            --output reports/P0009_fb_observational_synthesis_ablation_2/receipt.json
+
+      - name: Enforce scientific ablation invariants
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          receipt = json.loads(Path('reports/P0009_fb_observational_synthesis_ablation_2/receipt.json').read_text())
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          assert receipt['task_count'] == 2
+          assert receipt['all_prediction_fibers_preserved'] is True
+          assert receipt['forward_only_exact_solve_count'] == 2
+          assert receipt['forward_backward_exact_solve_count'] == 2
+          assert receipt['tasks_with_positive_state_reduction'] >= 1
+          assert receipt['total_backward_pruned_terminal_terms'] > 0
+          for task in receipt['tasks']:
+              assert task['invariants']['exact_prediction_fiber_equal'] is True
+              assert task['invariants']['prediction_singularity_equal'] is True
+              assert task['invariants']['minimum_exact_cost_equal'] is True
+              assert task['agent_input_contract']['held_out_outputs_passed_to_forward_only'] is False
+              assert task['agent_input_contract']['held_out_outputs_passed_to_forward_backward'] is False
+          PY
+
+      - name: Upload receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: P0009-fb-observational-synthesis-ablation-2
+          path: reports/P0009_fb_observational_synthesis_ablation_2
+          if-no-files-found: warn
