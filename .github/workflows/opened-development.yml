@@ -81,7 +81,7 @@ jobs:
             --arc2-source /tmp/arc2 \
             --packet research/packets/P0006_ARC12_OPENED_DEV_20.json \
             --report-root reports/P0006_arc12_opened_dev_21
-      - name: Print development score
+      - name: Print development score and frozen next-15 receipt
         run: |
           python - <<'PY'
           import json
@@ -91,6 +91,29 @@ jobs:
           print(json.dumps(r, indent=2, sort_keys=True))
           assert r['attempt_count'] == 21
           assert r['controller_oracle_boundary_scan'] == 'pass'
+          next15 = (
+              '456873bc','94414823','f0afb749','1c02dbbe','e872b94a',
+              '896d5239','d37a1ef5','423a55dc','e7b06bea','89565ca0',
+              '271d71e2','2b83f449','1ae2feb7','88bcf3b4','b5ca7ac4',
+          )
+          by_id={a['task_id']: a for a in r['attempts']}
+          assert set(next15) <= set(by_id)
+          exact=[tid for tid in next15 if by_id[tid]['all_cells_match'] and by_id[tid]['training_exact']]
+          wrong=[tid for tid in next15 if by_id[tid]['training_exact'] and not by_id[tid]['all_cells_match']]
+          summary={
+              'cohort':'PF-FBSL-OPENED-NEXT15-2026-08-26',
+              'claim_boundary':'already-open P0006 development tasks; not held-out transfer evidence',
+              'task_count':15,
+              'exact_count':len(exact),
+              'exact_task_ids':exact,
+              'certified_wrong_count':len(wrong),
+              'certified_wrong_task_ids':wrong,
+              'p0007_touched':False,
+          }
+          print('NEXT15_RECEIPT=' + json.dumps(summary, sort_keys=True))
+          Path('reports/P0006_arc12_opened_dev_21/next15_receipt.json').write_text(json.dumps(summary, indent=2, sort_keys=True))
+          if wrong:
+              raise SystemExit('certified wrong next-15 prediction')
           PY
       - name: Upload reports
         if: always()
