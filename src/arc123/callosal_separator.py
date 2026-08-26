@@ -1,12 +1,17 @@
 """Generic finite semantic-separator learning for Forward–Backward Singularity Learning.
 
 The learner receives observations with a typed descriptor dictionary and an
-observed effect. It exhaustively searches descriptor subsets.  Crucially, it
-can return the *fiber* of all equally minimum-description deterministic
-separators rather than silently choosing one lexical representative.  That is
-necessary when the demonstrations do not identify one semantic coordinate:
-ambiguity is retained until downstream prediction singularity, not erased by
-a tie-break.
+observed effect.  Deterministic separator induction is formulated as an exact
+bad-collision cover: every pair of observations carrying different effects must
+be separated by at least one selected descriptor.  This is equivalent to the
+older exhaustive-subset definition but exposes the true BCQ semantic width and
+permits contradiction-directed fixed-parameter search.
+
+Crucially, the learner returns the *fiber* of all equally minimum-description
+deterministic separators rather than silently choosing one lexical
+representative.  That is necessary when demonstrations do not identify one
+semantic coordinate: ambiguity is retained until downstream prediction
+singularity, not erased by a tie-break.
 
 This is intentionally domain-independent: rows, objects, frames, transitions,
 and ARC3 state/action records can all feed the same core once perception has
@@ -17,10 +22,10 @@ descriptor vocabulary and configured maximum separator arity.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from itertools import combinations
 from typing import Hashable, Iterable, Mapping, Optional, Sequence
 
 SemanticValue = Hashable
+ConflictPair = tuple[int, int]
 
 
 @dataclass(frozen=True)
@@ -84,6 +89,9 @@ class SeparatorModel:
         return {
             "descriptor_names": self.descriptor_names,
             "separator_arity": self.arity,
+            # For a model returned by learn_minimal_separator[_fiber], arity is
+            # exactly the local bad-collision-cover / BCQ separation width.
+            "bcq_separation_width": self.arity,
             "forward_rows": len(self.forward_table),
             "forward_deterministic": True,
             "backward_deterministic": self.backward_deterministic,
@@ -162,6 +170,141 @@ def _score_subset(
     )
 
 
+def _effect_conflicts(observations: Sequence[SemanticObservation]) -> tuple[ConflictPair, ...]:
+    """Pairs that must be separated for the forward map to be deterministic."""
+
+    return tuple(
+        (left, right)
+        for left in range(len(observations))
+        for right in range(left + 1, len(observations))
+        if observations[left].effect != observations[right].effect
+    )
+
+
+def _descriptor_conflict_coverage(
+    observations: Sequence[SemanticObservation],
+    names: Sequence[str],
+    conflicts: Sequence[ConflictPair],
+) -> dict[str, frozenset[int]]:
+    return {
+        name: frozenset(
+            conflict_index
+            for conflict_index, (left, right) in enumerate(conflicts)
+            if observations[left].descriptors[name] != observations[right].descriptors[name]
+        )
+        for name in names
+    }
+
+
+def _minimum_conflict_covers(
+    observations: Sequence[SemanticObservation],
+    names: Sequence[str],
+    max_arity: int,
+) -> tuple[tuple[str, ...], ...]:
+    """Return every minimum-cardinality descriptor cover up to `max_arity`.
+
+    A descriptor subset S yields a deterministic effect table iff, for each pair
+    of observations with different effects, at least one descriptor in S has a
+    different value on that pair.  Thus minimum separator arity is exactly a
+    minimum hitting-set problem on effect-conflict pairs.
+
+    Search branches on one currently uncovered contradiction and only on
+    descriptors capable of repairing it.  Generic hitting set remains NP-hard,
+    but this is fixed-parameter in the optimum separator arity (the local BCQ
+    separation width) and avoids enumerating every k-subset of the vocabulary.
+    """
+
+    if max_arity < 1 or not names:
+        return ()
+
+    conflicts = _effect_conflicts(observations)
+    if not conflicts:
+        # Preserve historical semantics for require_effect_variation=False:
+        # the learner returns the best arity-1 representation, not an empty key.
+        return tuple((name,) for name in names)
+
+    coverage = _descriptor_conflict_coverage(observations, names, conflicts)
+    separators: list[tuple[str, ...]] = []
+    for conflict_index in range(len(conflicts)):
+        repairing = tuple(name for name in names if conflict_index in coverage[name])
+        if not repairing:
+            return ()
+        separators.append(repairing)
+
+    universe = frozenset(range(len(conflicts)))
+    best_width = max_arity + 1
+    solutions: set[frozenset[str]] = set()
+    seen: set[frozenset[str]] = set()
+
+    def search(selected: frozenset[str], covered: frozenset[int]) -> None:
+        nonlocal best_width, solutions
+        if len(selected) > max_arity or len(selected) > best_width:
+            return
+        if selected in seen:
+            return
+        seen.add(selected)
+        if covered == universe:
+            if len(selected) < best_width:
+                best_width = len(selected)
+                solutions = {selected}
+            elif len(selected) == best_width:
+                solutions.add(selected)
+            return
+        if len(selected) >= min(max_arity, best_width):
+            return
+
+        uncovered = universe - covered
+        pivot = min(
+            uncovered,
+            key=lambda conflict_index: (
+                len([name for name in separators[conflict_index] if name not in selected]),
+                conflict_index,
+            ),
+        )
+        branches = [name for name in separators[pivot] if name not in selected]
+        branches.sort(
+            key=lambda name: (
+                -len(coverage[name] - covered),
+                name,
+            )
+        )
+        for name in branches:
+            search(selected | frozenset((name,)), covered | coverage[name])
+
+    search(frozenset(), frozenset())
+    return tuple(
+        sorted(
+            (tuple(sorted(solution)) for solution in solutions),
+            key=lambda subset: subset,
+        )
+    )
+
+
+def separator_bcq_width(
+    observations: Sequence[SemanticObservation],
+    candidate_descriptors: Iterable[str] | None = None,
+    *,
+    max_arity: int | None = None,
+) -> Optional[int]:
+    """Return exact local BCQ separation width, or None if the language/cap fails."""
+
+    if not observations:
+        return None
+    if candidate_descriptors is None:
+        names = sorted(
+            set.intersection(*(set(observation.descriptors) for observation in observations))
+        )
+    else:
+        names = sorted(set(candidate_descriptors))
+        if any(not set(names).issubset(observation.descriptors) for observation in observations):
+            return None
+    if not names:
+        return None
+    limit = len(names) if max_arity is None else min(max_arity, len(names))
+    covers = _minimum_conflict_covers(observations, names, limit)
+    return len(covers[0]) if covers else None
+
+
 def learn_minimal_separator_fiber(
     observations: Sequence[SemanticObservation],
     candidate_descriptors: Iterable[str] | None = None,
@@ -171,16 +314,16 @@ def learn_minimal_separator_fiber(
 ) -> tuple[SeparatorModel, ...]:
     """Return every equally minimum-description exact separator.
 
-    Search is exhaustive by arity. At the first arity having any deterministic
-    representation, all subsets are scored by table compression, repeated
-    support, minimum support and semantic-domain encoding. Every subset tied at
-    the optimal score is retained.  Lexical order makes the returned tuple
-    reproducible but does *not* erase the tie.
+    Minimum arity is found by exact contradiction-directed conflict-cover
+    search. At that arity, all minimum covers are scored by table compression,
+    repeated support, minimum support and semantic-domain encoding. Every subset
+    tied at the optimal score is retained. Lexical order makes the returned
+    tuple reproducible but does *not* erase the tie.
 
-    This is the correct object for singularity learning: if several semantic
-    explanations remain observationally indistinguishable, downstream code can
-    ask whether they nevertheless induce one prediction.  It must not invent a
-    unique latent program merely because one descriptor name sorts first.
+    If several semantic explanations remain observationally indistinguishable,
+    downstream code can ask whether they nevertheless induce one prediction.
+    It must not invent a unique latent program merely because one descriptor
+    name sorts first.
     """
 
     if not observations:
@@ -201,28 +344,31 @@ def learn_minimal_separator_fiber(
     if not names:
         return ()
     limit = len(names) if max_arity is None else min(max_arity, len(names))
-    for arity in range(1, limit + 1):
-        viable: list[
-            tuple[
-                tuple[int, int, int, int],
-                tuple[str, ...],
-                dict[tuple[SemanticValue, ...], SemanticValue],
-            ]
-        ] = []
-        for subset in combinations(names, arity):
-            table = _deterministic_table(observations, subset)
-            if table is None:
-                continue
-            viable.append((_score_subset(observations, subset, table), subset, table))
-        if viable:
-            best_score = min(item[0] for item in viable)
-            tied = [item for item in viable if item[0] == best_score]
-            models = []
-            for _, subset, table in sorted(tied, key=lambda item: item[1]):
-                rows = tuple(sorted(table.items(), key=lambda item: repr(item[0])))
-                models.append(SeparatorModel(subset, rows))
-            return tuple(models)
-    return ()
+    covers = _minimum_conflict_covers(observations, names, limit)
+    if not covers:
+        return ()
+
+    viable: list[
+        tuple[
+            tuple[int, int, int, int],
+            tuple[str, ...],
+            dict[tuple[SemanticValue, ...], SemanticValue],
+        ]
+    ] = []
+    for subset in covers:
+        table = _deterministic_table(observations, subset)
+        if table is None:
+            # This would violate the conflict-cover equivalence theorem.
+            raise AssertionError("conflict cover did not induce a deterministic table")
+        viable.append((_score_subset(observations, subset, table), subset, table))
+
+    best_score = min(item[0] for item in viable)
+    tied = [item for item in viable if item[0] == best_score]
+    models = []
+    for _, subset, table in sorted(tied, key=lambda item: item[1]):
+        rows = tuple(sorted(table.items(), key=lambda item: repr(item[0])))
+        models.append(SeparatorModel(subset, rows))
+    return tuple(models)
 
 
 def learn_minimal_separator(
